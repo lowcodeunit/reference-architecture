@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@lcu-ide/common": [
+        "dist/common"
+      ],
+      "@lcu-ide/common/*": [
+        "dist/common/*"
+      ]
+    }
   }
 }
