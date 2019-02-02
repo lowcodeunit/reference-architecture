@@ -9,7 +9,7 @@ export class RouterHelpersService {
   constructor(protected route: ActivatedRoute, protected router: Router) {}
 
   // 	API Methods
-  public RunOnNavigation(action: Function, navEventType: any = null) {
+  public RunOnNavigation(action: (event: any) => void, navEventType: any = null) {
     return this.router.events.subscribe((event: any) => {
       if (navEventType == null || event instanceof navEventType) {
         action(event);
@@ -17,23 +17,23 @@ export class RouterHelpersService {
     });
   }
 
-  public RunOnNavigationCancel(action: Function) {
+  public RunOnNavigationCancel(action: (event: any) => void) {
     return this.RunOnNavigation(action, NavigationCancel);
   }
 
-  public RunOnNavigationEnd(action: Function) {
+  public RunOnNavigationEnd(action: (event: any) => void) {
     return this.RunOnNavigation(action, NavigationEnd);
   }
 
-  public RunOnNavigationError(action: Function) {
+  public RunOnNavigationError(action: (event: any) => void) {
     return this.RunOnNavigation(action, NavigationError);
   }
 
-  public RunOnNavigationStart(action: Function) {
+  public RunOnNavigationStart(action: (event: any) => void) {
     return this.RunOnNavigation(action, NavigationStart);
   }
 
-  public RunOnQueryParam(param: string, action: Function, checkVal: any = null) {
+  public RunOnQueryParam(param: string, action: (params: any) => void, checkVal: any = null) {
     return this.route.queryParams.subscribe((params: any) => {
       if ((checkVal == null && params[param] != null) || (checkVal != null && params[param] === checkVal)) {
         action(params);
@@ -41,7 +41,7 @@ export class RouterHelpersService {
     });
   }
 
-  public RunOnRouteParam(param: string, action: Function, checkVal: any = null) {
+  public RunOnRouteParam(param: string, action: (params: any) => void, checkVal: any = null) {
     return this.route.params.subscribe((params: any) => {
       if ((checkVal == null && params[param] != null) || (checkVal != null && params[param] === checkVal)) {
         action(params);
