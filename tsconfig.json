@@ -24,6 +24,12 @@
       ],
       "@lcu-ide/common/*": [
         "dist/common/*"
+      ],
+      "@lcu-ide/elements": [
+        "dist/elements"
+      ],
+      "@lcu-ide/elements/*": [
+        "dist/elements/*"
       ]
     }
   }
