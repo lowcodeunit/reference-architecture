@@ -7,4 +7,6 @@ export * from './lib/json-schema';
 export * from './lib/loading';
 export * from './lib/pageable';
 export * from './lib/routing.api';
+export * from './lib/state/state-action.model';
+export * from './lib/state/state-manager.context';
 export * from './lib/status';

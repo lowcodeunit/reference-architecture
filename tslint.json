@@ -50,6 +50,7 @@
     "no-switch-case-fall-through": true,
     "no-use-before-declare": true,
     "no-var-requires": false,
+    "no-angle-bracket-type-assertion": false,
     "object-literal-key-quotes": [
       true,
       "as-needed"
@@ -59,6 +60,19 @@
     "quotemark": [
       true,
       "single"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-type-operator",
+      "check-preblock",
+      "check-postbrace"
     ],
     "trailing-comma": false,
     "no-output-on-prefix": true,

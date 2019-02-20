@@ -4,7 +4,7 @@ export class Status {
   public get Metadata(): any {
     const meta = {};
 
-    const self = <any>this;
+    const self = this as any;
 
     for (const prop in self) {
       if (prop !== 'Code' && prop !== 'Message' && prop !== 'Metadata') {
