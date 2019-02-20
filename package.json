@@ -1,6 +1,6 @@
 {
 	"name": "@lcu-ide/reference-architecture",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:common && npm run deploy:elements",
