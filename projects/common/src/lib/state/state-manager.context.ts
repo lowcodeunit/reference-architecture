@@ -19,46 +19,54 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   public Load() {
-    this.hub = this.buildHub();
+    this.buildHub().then(hub => {
+      this.hub = hub;
 
-    this.hub
-      .start()
-      .then(() => console.log('Connection started'))
-      .catch(err => console.log('Error while starting connection: ' + err));
+      this.hub
+        .start()
+        .then(() => console.log('Connection started'))
+        .catch(err => console.log('Error while starting connection: ' + err));
 
-    this.hub.on('ReceiveState', req => {
-      this.subject.next(req.State);
+      this.hub.on('ReceiveState', req => {
+        this.subject.next(req.State);
+      });
     });
   }
 
   //  API Methods
-  protected buildHub() {
-    const url = this.buildHubUrl();
+  protected async buildHub() {
+    const url = await this.buildHubUrl();
 
     return new signalR.HubConnectionBuilder().withUrl(url).build();
   }
 
-  protected buildHubUrl() {
-    const url = this.loadHubUrl();
+  protected async buildHubUrl() {
+    const url = await this.loadHubUrl();
 
-    const stateKey = this.loadStateKey();
+    const stateKey = await this.loadStateKey();
 
-    const stateName = this.loadStateName();
+    const stateName = await this.loadStateName();
 
-    return `${url}?state=${stateName}&key=${stateKey}`;
+    const username = (await this.useUsername()) ? '&username' : '';
+
+    return `${url}?state=${stateName}&key=${stateKey}${username}`;
   }
 
   protected defaultValue(): T {
     return <T>{};
   }
 
-  protected executeAction(action: StateAction) {
+  protected async executeAction(action: StateAction) {
     return this.hub.invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments });
   }
 
-  protected abstract loadHubUrl();
+  protected abstract async loadHubUrl();
 
-  protected abstract loadStateKey();
+  protected abstract async loadStateKey();
 
-  protected abstract loadStateName();
+  protected abstract async loadStateName();
+
+  protected async useUsername() {
+    return false;
+  }
 }
