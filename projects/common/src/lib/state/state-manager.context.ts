@@ -2,6 +2,8 @@ import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
 
+//  TODO:  Need to manage reconnection to hub scenarios here
+
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
   protected hub: signalR.HubConnection;
@@ -30,10 +32,19 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
       this.hub.on('ReceiveState', req => {
         this.subject.next(req.State);
       });
+
+      this.$Refresh();
     });
   }
 
-  //  API Methods
+  public $Refresh(args: any = {}) {
+    this.Execute({
+      Arguments: args,
+      Type: '$refresh'
+    });
+  }
+
+  //  Helpers
   protected async buildHub() {
     const url = await this.buildHubUrl();
 
