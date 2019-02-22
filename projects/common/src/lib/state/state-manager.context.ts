@@ -26,14 +26,16 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
       this.hub
         .start()
-        .then(() => console.log('Connection started'))
+        .then(() => {
+          console.log('Connection started');
+
+          this.$Refresh();
+        })
         .catch(err => console.log('Error while starting connection: ' + err));
 
       this.hub.on('ReceiveState', req => {
         this.subject.next(req.State);
       });
-
-      this.$Refresh();
     });
   }
 
