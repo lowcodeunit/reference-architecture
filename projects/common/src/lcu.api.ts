@@ -1,6 +1,7 @@
 export * from './lib/address';
 export * from './lib/amount';
 export * from './lib/api.api';
+export * from './lib/elements.api';
 export * from './lib/guid';
 export * from './lib/hosting.api';
 export * from './lib/json-schema';
