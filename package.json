@@ -2,7 +2,7 @@
 	"name": "@lcu-ide/reference-architecture",
 	"version": "0.0.15",
 	"scripts": {
-		"deploy": "ng build common && npm version patch && npm run deploy:all",
+		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:common && npm run deploy:elements",
 		"deploy:common": "npm version patch --prefix projects/common && ng build common && npm publish ./dist/common --access public",
 		"deploy:elements": "npm version patch --prefix projects/elements && ng build elements && npm publish ./dist/elements --access public",
