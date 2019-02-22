@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Injector, ChangeDetectorRef } from '@angular/core';
-import { CONTEXT } from '@angular/core/src/render3/interfaces/view';
+import { OnInit, Input, Injector } from '@angular/core';
 
 export abstract class LcuElementComponent<T> implements OnInit {
   //  Fields
