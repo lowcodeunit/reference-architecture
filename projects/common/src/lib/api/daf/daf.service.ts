@@ -4,23 +4,20 @@ import { Injector } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BaseResponse } from '../base-response';
 import { BaseModeledResponse } from '../base-modeled-response';
-
-export class DAFServiceSettings {
-  public APIRoot?: string;
-}
+import { LCUServiceSettings } from '../lcu-service-settings';
 
 export abstract class DAFService {
   // 	Fields
   protected http: HttpClient;
 
-  protected settings: DAFServiceSettings;
+  protected settings: LCUServiceSettings;
 
   //  Constructors
   constructor(protected injector: Injector) {
     this.http = injector.get(HttpClient);
 
     try {
-      this.settings = injector.get(DAFServiceSettings);
+      this.settings = injector.get(LCUServiceSettings);
     } catch (err) {}
   }
 

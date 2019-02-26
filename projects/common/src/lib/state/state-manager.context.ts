@@ -1,6 +1,8 @@
 import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
+import { Injector } from '@angular/core';
+import { LCUServiceSettings } from '../api/lcu-service-settings';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -8,9 +10,15 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   //  Fields
   protected hub: signalR.HubConnection;
 
+  protected settings: LCUServiceSettings;
+
   //  Constructors
-  constructor() {
+  constructor(protected injector: Injector) {
     super();
+
+    try {
+      this.settings = injector.get(LCUServiceSettings);
+    } catch (err) {}
 
     this.Load();
   }
@@ -73,7 +81,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     return this.hub.invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments });
   }
 
-  protected abstract async loadHubUrl();
+  protected async loadHubUrl() {
+    const apiRoot = this.settings ? this.settings.APIRoot || '' : '';
+
+    return `${apiRoot}/state`;
+  }
 
   protected abstract async loadStateKey();
 
