@@ -1,7 +1,7 @@
 import * as signalR from '@aspnet/signalr';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -14,7 +14,7 @@ export class RealTimeService {
 
   protected settings: LCUServiceSettings;
 
-  protected started: BehaviorSubject<signalR.HubConnection>;
+  protected started: ReplaySubject<signalR.HubConnection>;
 
   protected url: string;
 
@@ -27,7 +27,7 @@ export class RealTimeService {
       this.settings = injector.get(LCUServiceSettings);
     } catch (err) {}
 
-    this.started = new BehaviorSubject(null);
+    this.started = new ReplaySubject();
 
     this.Started = this.started.asObservable();
 
