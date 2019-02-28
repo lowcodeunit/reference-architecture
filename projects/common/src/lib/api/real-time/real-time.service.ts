@@ -98,7 +98,7 @@ export class RealTimeService {
   }
 
   protected async loadHubPath() {
-    return `/hub`;
+    return ``;
   }
 
   protected async loadHubUrl(urlRoot: string) {
