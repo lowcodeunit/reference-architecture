@@ -122,7 +122,12 @@ export class RealTimeService {
   protected async buildHub(urlRoot: string) {
     this.url = this.buildHubUrl(urlRoot);
 
-    return new signalR.HubConnectionBuilder().withUrl(this.url, { transport: signalR.HttpTransportType.LongPolling }).build();
+    return new signalR.HubConnectionBuilder()
+      .withUrl(this.url)
+      // .withUrl(this.url, {
+      //   transport: signalR.HttpTransportType.LongPolling
+      // })
+      .build();
   }
 
   protected buildHubUrl(urlRoot: string) {
