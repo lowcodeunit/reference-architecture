@@ -26,16 +26,14 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   public async Setup() {
-    this.rt.Start().then(() => {
-      const stateKey = await this.loadStateKey();
-
-      const stateName = await this.loadStateName();
-
+    this.rt.Start().then(async () => {
       this.$Refresh();
 
       this.rt.RegisterHandler('ReceiveState').then(req => {
         this.subject.next(req.State);
       });
+
+      await this.connectToState();
     });
   }
 
@@ -47,6 +45,14 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   //  Helpers
+  protected async connectToState() {
+    const stateKey = await this.loadStateKey();
+
+    const stateName = await this.loadStateName();
+
+    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName });
+  }
+
   protected defaultValue(): T {
     return <T>{};
   }
