@@ -15,7 +15,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   constructor(protected injector: Injector) {
     super();
 
-    this.rt = injector.get(RealTimeService);
+    this.rt = new RealTimeService(injector); // injector.get(RealTimeService);
 
     this.setup();
   }

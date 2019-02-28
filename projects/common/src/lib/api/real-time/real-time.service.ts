@@ -10,13 +10,7 @@ import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
 })
 export class RealTimeService {
   //  Fields
-  protected get hub(): signalR.HubConnection {
-    return window['lcu:hub'];
-  }
-
-  protected set hub(hub: signalR.HubConnection) {
-    window['lcu:hub'] = hub;
-  }
+  protected hub: signalR.HubConnection;
 
   protected settings: LCUServiceSettings;
 
@@ -43,28 +37,22 @@ export class RealTimeService {
   //  API Methods
   public Start() {
     return new Promise<signalR.HubConnection>((resolve, reject) => {
-      if (!this.hub) {
-        this.buildHub('').then(async hub => {
-          this.hub = hub;
+      this.buildHub('').then(async hub => {
+        this.hub = hub;
 
-          this.hub
-            .start()
-            .then(() => {
-              console.log(`Connection started`);
+        this.hub
+          .start()
+          .then(() => {
+            console.log(`Connection started`);
 
-              resolve(this.hub);
-            })
-            .catch(err => {
-              console.log('Error while starting connection: ' + err);
+            resolve(this.hub);
+          })
+          .catch(err => {
+            console.log('Error while starting connection: ' + err);
 
-              reject(err);
-            });
-        });
-      } else {
-        console.log('Reusing lcu:hub...');
-
-        resolve(this.hub);
-      }
+            reject(err);
+          });
+      });
     });
   }
 
