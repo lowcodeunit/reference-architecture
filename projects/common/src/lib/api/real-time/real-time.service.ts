@@ -47,7 +47,7 @@ export class RealTimeService {
 
             setTimeout(() => {
               resolve(this.hub);
-            }, 50);
+            }, 250);
           })
           .catch(err => {
             console.log('Error while starting connection: ' + err);
