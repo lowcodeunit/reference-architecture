@@ -32,10 +32,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     this.rt.Start(`/${stateName}/${stateKey}`).then(() => {
       this.$Refresh();
-    });
 
-    this.rt.RegisterHandler('ReceiveState').then(req => {
-      this.subject.next(req.State);
+      this.rt.RegisterHandler('ReceiveState').then(req => {
+        this.subject.next(req.State);
+      });
     });
   }
 
