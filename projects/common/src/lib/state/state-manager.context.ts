@@ -10,12 +10,21 @@ import { RealTimeService } from '../api/real-time/real-time.service';
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
   protected rt: RealTimeService;
+  // protected get rt(): RealTimeService {
+  //   return window['lcu:state:rt'];
+  // }
+
+  // protected set rt(value: RealTimeService) {
+  //   window['lcu:state:rt'] = value;
+  // }
 
   //  Constructors
   constructor(protected injector: Injector) {
     super();
 
-    this.rt = new RealTimeService(injector); // injector.get(RealTimeService);
+    if (!this.rt) {
+      this.rt = injector.get(RealTimeService); // new RealTimeService(injector);
+    }
 
     this.setup();
   }
@@ -27,7 +36,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
   public async Setup() {
     this.rt.Started.subscribe(async () => {
-      this.setupReceiveState();
+      await this.setupReceiveState();
 
       await this.connectToState();
 
@@ -71,8 +80,12 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     this.Setup().then();
   }
 
-  protected setupReceiveState() {
-    this.rt.RegisterHandler('ReceiveState').subscribe(req => {
+  protected async setupReceiveState() {
+    const stateKey = await this.loadStateKey();
+
+    const stateName = await this.loadStateName();
+
+    this.rt.RegisterHandler(`ReceiveState${stateName}${stateKey}`).subscribe(req => {
       this.subject.next(req.State);
     });
   }
