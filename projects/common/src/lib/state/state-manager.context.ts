@@ -22,7 +22,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
   //  API Methods
   public Execute(action: StateAction) {
-    this.executeAction(action);
+    return this.executeAction(action);
   }
 
   public async Setup() {
@@ -57,8 +57,12 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     return <T>{};
   }
 
-  protected executeAction(action: StateAction) {
-    return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments });
+  protected async executeAction(action: StateAction) {
+    const stateKey = await this.loadStateKey();
+
+    const stateName = await this.loadStateName();
+
+    return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments, Key: stateKey, State: stateName });
   }
 
   protected abstract async loadStateKey();
