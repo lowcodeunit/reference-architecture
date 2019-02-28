@@ -1,7 +1,7 @@
 import * as signalR from '@aspnet/signalr';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
-import { Observable, BehaviorSubject, ReplaySubject } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject, Observer } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -94,17 +94,12 @@ export class RealTimeService {
   public WithHub(action: (hub: signalR.HubConnection) => void | Observable<any>): Observable<any> {
     try {
       return Observable.create(obs => {
-        const res = action(this.hub);
-
-        if (res) {
-          res.subscribe(
-            r => {
-              obs.next(r);
-            },
-            e => {
-              obs.error(e);
-            }
-          );
+        if (this.hub.state !== signalR.HubConnectionState.Connected) {
+          this.Start().then(hub => {
+            this.runWithHub(obs, action);
+          });
+        } else {
+          this.runWithHub(obs, action);
         }
       });
     } catch (err) {
@@ -139,6 +134,21 @@ export class RealTimeService {
     const hubPath = this.loadHubPath();
 
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
+  }
+
+  protected runWithHub(obs: Observer<any>, action: (hub: signalR.HubConnection) => void | Observable<any>) {
+    const res = action(this.hub);
+
+    if (res) {
+      res.subscribe(
+        r => {
+          obs.next(r);
+        },
+        e => {
+          obs.error(e);
+        }
+      );
+    }
   }
 
   protected start() {
