@@ -25,13 +25,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
   public async Setup() {
     this.rt.Started.subscribe(async () => {
+      this.setupReceiveState();
+
       await this.connectToState();
 
       this.$Refresh();
-
-      this.rt.RegisterHandler('ReceiveState').then(req => {
-        this.subject.next(req.State);
-      });
     });
   }
 
@@ -66,4 +64,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected abstract async loadStateKey();
 
   protected abstract async loadStateName();
+
+  protected setupReceiveState() {
+    this.rt.RegisterHandler('ReceiveState').then(req => {
+      this.subject.next(req.State);
+    });
+  }
 }
