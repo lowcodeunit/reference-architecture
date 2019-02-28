@@ -40,20 +40,36 @@ export class RealTimeService {
       this.buildHub('').then(hub => {
         this.hub = hub;
 
-        this.hub
-          .start()
-          .then(() => {
-            console.log(`Connection started`);
+        this.hub.onclose(err => {
+          console.log(err);
 
-            setTimeout(() => {
-              resolve(this.hub);
-            }, 750);
-          })
-          .catch(err => {
-            console.log('Error while starting connection: ' + err);
+          this.start();
+        });
 
-            reject(err);
-          });
+        try {
+          this.hub
+            .start()
+            .then(() => {
+              console.log(`Connection started`);
+
+              setTimeout(() => {
+                resolve(this.hub);
+              }, 750);
+            })
+            .catch(err => {
+              console.log('Error while starting connection: ' + err);
+
+              this.start();
+
+              reject(err);
+            });
+        } catch (err) {
+          console.log('Error while starting connection: ' + err);
+
+          this.start();
+
+          reject(err);
+        }
       });
     });
   }
