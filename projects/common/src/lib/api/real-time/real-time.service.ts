@@ -52,9 +52,7 @@ export class RealTimeService {
             .then(() => {
               console.log(`Connection started`);
 
-              setTimeout(() => {
-                resolve(this.hub);
-              }, 750);
+              resolve(this.hub);
             })
             .catch(err => {
               console.log('Error while starting connection: ' + err);
@@ -104,6 +102,7 @@ export class RealTimeService {
       return Observable.create(obs => {
         if (this.hub.state !== signalR.HubConnectionState.Connected) {
           this.Start().then(hub => {
+            console.log('Restartting connection in flight...');
             this.runWithHub(obs, action);
           });
         } else {
@@ -160,6 +159,8 @@ export class RealTimeService {
   }
 
   protected start() {
-    this.Start().then(hub => this.started.next(hub));
+    setTimeout(() => {
+      this.Start().then(hub => this.started.next(hub));
+    }, 50);
   }
 }
