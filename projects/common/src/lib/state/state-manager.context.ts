@@ -9,21 +9,21 @@ import { RealTimeService } from '../api/real-time/real-time.service';
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
-  protected rt: RealTimeService;
-  // protected get rt(): RealTimeService {
-  //   return window['lcu:state:rt'];
-  // }
+  // protected rt: RealTimeService;
+  protected get rt(): RealTimeService {
+    return window['lcu:state:rt'];
+  }
 
-  // protected set rt(value: RealTimeService) {
-  //   window['lcu:state:rt'] = value;
-  // }
+  protected set rt(value: RealTimeService) {
+    window['lcu:state:rt'] = value;
+  }
 
   //  Constructors
   constructor(protected injector: Injector) {
     super();
 
     if (!this.rt) {
-      this.rt = injector.get(RealTimeService); // new RealTimeService(injector);
+      this.rt = injector.get(RealTimeService);
     }
 
     this.setup();
