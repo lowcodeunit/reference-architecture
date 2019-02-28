@@ -37,15 +37,25 @@ export class RealTimeService {
   //  API Methods
   public Start() {
     return new Promise<signalR.HubConnection>((resolve, reject) => {
-      this.buildHub('').then(async hub => {
+      this.buildHub('').then(hub => {
         this.hub = hub;
 
         this.hub
           .start()
           .then(() => {
-            console.log(`Connection started`);
+            if (this.hub.state === signalR.HubConnectionState.Connected) {
+              console.log(`Connection started`);
 
-            resolve(this.hub);
+              resolve(this.hub);
+            } else {
+              console.log(`Connection not started, reattempting`);
+
+              setTimeout(() => {
+                this.start();
+              }, 50);
+
+              reject(this.hub);
+            }
           })
           .catch(err => {
             console.log('Error while starting connection: ' + err);
@@ -69,13 +79,15 @@ export class RealTimeService {
   public Invoke(methodName: string, ...args: any[]) {
     return this.WithHub(hub => {
       return Observable.create(obs => {
-        hub.invoke(methodName, ...args).then(res => {
-          obs.next(res);
-        })
-        .catch(e => {
-          obs.error(e);
-        });
-      })
+        hub
+          .invoke(methodName, ...args)
+          .then(res => {
+            obs.next(res);
+          })
+          .catch(e => {
+            obs.error(e);
+          });
+      });
     });
   }
 
@@ -106,25 +118,25 @@ export class RealTimeService {
 
   //  Helpers
   protected async buildHub(urlRoot: string) {
-    this.url = await this.buildHubUrl(urlRoot);
+    this.url = this.buildHubUrl(urlRoot);
 
     return new signalR.HubConnectionBuilder().withUrl(this.url).build();
   }
 
-  protected async buildHubUrl(urlRoot: string) {
-    const url = await this.loadHubUrl(urlRoot);
+  protected buildHubUrl(urlRoot: string) {
+    const url = this.loadHubUrl(urlRoot);
 
     return url;
   }
 
-  protected async loadHubPath() {
-    return ``;
+  protected loadHubPath() {
+    return `/state`;
   }
 
-  protected async loadHubUrl(urlRoot: string) {
+  protected loadHubUrl(urlRoot: string) {
     const apiRoot = this.settings ? this.settings.APIRoot || '' : '';
 
-    const hubPath = await this.loadHubPath();
+    const hubPath = this.loadHubPath();
 
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
   }

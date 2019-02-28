@@ -1,6 +1,6 @@
 {
   "name": "@lcu-ide/elements",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"
