@@ -1,6 +1,7 @@
 import * as signalR from '@aspnet/signalr';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -13,9 +14,12 @@ export class RealTimeService {
 
   protected settings: LCUServiceSettings;
 
-  protected start: Promise<signalR.HubConnection>;
+  protected started: BehaviorSubject<signalR.HubConnection>;
 
   protected url: string;
+
+  //  Properties
+  public Started: Observable<signalR.HubConnection>;
 
   //  Constructors
   constructor(protected injector: Injector) {
@@ -23,33 +27,33 @@ export class RealTimeService {
       this.settings = injector.get(LCUServiceSettings);
     } catch (err) {}
 
-    this.Start().then();
+    this.started = new BehaviorSubject(null);
+
+    this.Started = this.started.asObservable();
+
+    this.start();
   }
 
   //  API Methods
   public Start() {
-    if (!this.start) {
-      this.start = new Promise<signalR.HubConnection>((resolve, reject) => {
-        this.buildHub('').then(async hub => {
-          this.hub = hub;
+    return new Promise<signalR.HubConnection>((resolve, reject) => {
+      this.buildHub('').then(async hub => {
+        this.hub = hub;
 
-          this.hub
-            .start()
-            .then(() => {
-              console.log(`Connection started`);
+        this.hub
+          .start()
+          .then(() => {
+            console.log(`Connection started`);
 
-              resolve(this.hub);
-            })
-            .catch(err => {
-              console.log('Error while starting connection: ' + err);
+            resolve(this.hub);
+          })
+          .catch(err => {
+            console.log('Error while starting connection: ' + err);
 
-              reject(err);
-            });
-        });
+            reject(err);
+          });
       });
-    }
-
-    return this.start;
+    });
   }
 
   public RegisterHandler(methodName: string) {
@@ -113,5 +117,9 @@ export class RealTimeService {
     const hubPath = await this.loadHubPath();
 
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
+  }
+
+  protected start() {
+    this.Start().then(hub => this.started.next(hub));
   }
 }
