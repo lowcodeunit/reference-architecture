@@ -1,0 +1,109 @@
+import * as signalR from '@aspnet/signalr';
+import { Injectable, Injector } from '@angular/core';
+import { LCUServiceSettings } from '../lcu-service-settings';
+
+//  TODO:  Need to manage reconnection to hub scenarios here
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RealTimeService {
+  //  Fields
+  protected hub: signalR.HubConnection;
+
+  protected settings: LCUServiceSettings;
+
+  protected url: string;
+
+  //  Constructors
+  constructor(protected injector: Injector) {
+    try {
+      this.settings = injector.get(LCUServiceSettings);
+    } catch (err) {}
+  }
+
+  //  API Methods
+  public Start(urlRoot: string = '') {
+    return new Promise<signalR.HubConnection>((resolve, reject) => {
+      this.buildHub(urlRoot).then(async hub => {
+        this.hub = hub;
+
+        this.hub
+          .start()
+          .then(() => {
+            console.log(`Connection started`);
+
+            resolve(this.hub);
+          })
+          .catch(err => {
+            console.log('Error while starting connection: ' + err);
+
+            reject(err);
+          });
+      });
+    });
+  }
+
+  public RegisterHandler(methodName: string) {
+    return this.WithHub(hub => {
+      return new Promise<any>((resolve, reject) => {
+        hub.on(methodName, req => {
+          resolve(req);
+        });
+      });
+    });
+  }
+
+  public Invoke(methodName: string, ...args: any[]) {
+    return this.WithHub(hub => {
+      return hub.invoke(methodName, ...args);
+    });
+  }
+
+  public WithHub(action: (hub: signalR.HubConnection) => void | Promise<any>): Promise<any> {
+    try {
+      return new Promise<any>((resolve, reject) => {
+        const res = action(this.hub);
+
+        if (res) {
+          res
+            .then(r => {
+              resolve(r);
+            })
+            .catch(e => {
+              reject(e);
+            });
+        }
+      });
+    } catch (err) {
+      return new Promise<any>((resolve, reject) => {
+        reject(err);
+      });
+    }
+  }
+
+  //  Helpers
+  protected async buildHub(urlRoot: string) {
+    this.url = await this.buildHubUrl(urlRoot);
+
+    return new signalR.HubConnectionBuilder().withUrl(this.url).build();
+  }
+
+  protected async buildHubUrl(urlRoot: string) {
+    const url = await this.loadHubUrl(urlRoot);
+
+    return url;
+  }
+
+  protected async loadHubPath() {
+    return `/hub`;
+  }
+
+  protected async loadHubUrl(urlRoot: string) {
+    const apiRoot = this.settings ? this.settings.APIRoot || '' : '';
+
+    const hubPath = await this.loadHubPath();
+
+    return `${apiRoot}${urlRoot || ''}${hubPath}`;
+  }
+}

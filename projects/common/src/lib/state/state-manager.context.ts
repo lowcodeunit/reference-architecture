@@ -3,24 +3,21 @@ import { ObservableContextService } from '../api/observable-context/observable-c
 import { StateAction } from './state-action.model';
 import { Injector } from '@angular/core';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
+import { RealTimeService } from '../api/real-time/real-time.service';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
-  protected hub: signalR.HubConnection;
-
-  protected settings: LCUServiceSettings;
+  protected rt: RealTimeService;
 
   //  Constructors
   constructor(protected injector: Injector) {
     super();
 
-    try {
-      this.settings = injector.get(LCUServiceSettings);
-    } catch (err) {}
+    this.rt = injector.get(RealTimeService);
 
-    this.Load();
+    this.Setup().then();
   }
 
   //  API Methods
@@ -28,22 +25,17 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     this.executeAction(action);
   }
 
-  public Load() {
-    this.buildHub().then(hub => {
-      this.hub = hub;
+  public async Setup() {
+    const stateKey = await this.loadStateKey();
 
-      this.hub
-        .start()
-        .then(() => {
-          console.log('Connection started');
+    const stateName = await this.loadStateName();
 
-          this.$Refresh();
-        })
-        .catch(err => console.log('Error while starting connection: ' + err));
+    this.rt.Start(`/${stateName}/${stateKey}`).then(() => {
+      this.$Refresh();
+    });
 
-      this.hub.on('ReceiveState', req => {
-        this.subject.next(req.State);
-      });
+    this.rt.RegisterHandler('ReceiveState').then(req => {
+      this.subject.next(req.State);
     });
   }
 
@@ -55,43 +47,15 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   //  Helpers
-  protected async buildHub() {
-    const url = await this.buildHubUrl();
-
-    return new signalR.HubConnectionBuilder().withUrl(url).build();
-  }
-
-  protected async buildHubUrl() {
-    const url = await this.loadHubUrl();
-
-    const stateKey = await this.loadStateKey();
-
-    const stateName = await this.loadStateName();
-
-    const username = (await this.useUsername()) ? '&username' : '';
-
-    return `${url}?state=${stateName}&key=${stateKey}${username}`;
-  }
-
   protected defaultValue(): T {
     return <T>{};
   }
 
-  protected async executeAction(action: StateAction) {
-    return this.hub.invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments });
-  }
-
-  protected async loadHubUrl() {
-    const apiRoot = this.settings ? this.settings.APIRoot || '' : '';
-
-    return `${apiRoot}/state`;
+  protected executeAction(action: StateAction) {
+    return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments });
   }
 
   protected abstract async loadStateKey();
 
   protected abstract async loadStateName();
-
-  protected async useUsername() {
-    return false;
-  }
 }
