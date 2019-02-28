@@ -16,8 +16,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     super();
 
     this.rt = injector.get(RealTimeService);
-
-    this.Setup().then();
   }
 
   //  API Methods

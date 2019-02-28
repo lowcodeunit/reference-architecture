@@ -13,6 +13,8 @@ export class RealTimeService {
 
   protected settings: LCUServiceSettings;
 
+  protected start: Promise<signalR.HubConnection>;
+
   protected url: string;
 
   //  Constructors
@@ -26,24 +28,28 @@ export class RealTimeService {
 
   //  API Methods
   public Start() {
-    return new Promise<signalR.HubConnection>((resolve, reject) => {
-      this.buildHub('').then(async hub => {
-        this.hub = hub;
+    if (!this.start) {
+      this.start = new Promise<signalR.HubConnection>((resolve, reject) => {
+        this.buildHub('').then(async hub => {
+          this.hub = hub;
 
-        this.hub
-          .start()
-          .then(() => {
-            console.log(`Connection started`);
+          this.hub
+            .start()
+            .then(() => {
+              console.log(`Connection started`);
 
-            resolve(this.hub);
-          })
-          .catch(err => {
-            console.log('Error while starting connection: ' + err);
+              resolve(this.hub);
+            })
+            .catch(err => {
+              console.log('Error while starting connection: ' + err);
 
-            reject(err);
-          });
+              reject(err);
+            });
+        });
       });
-    });
+    }
+
+    return this.start;
   }
 
   public RegisterHandler(methodName: string) {
