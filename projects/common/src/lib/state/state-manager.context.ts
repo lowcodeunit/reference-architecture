@@ -16,6 +16,8 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     super();
 
     this.rt = injector.get(RealTimeService);
+
+    this.setup();
   }
 
   //  API Methods
@@ -64,6 +66,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected abstract async loadStateKey();
 
   protected abstract async loadStateName();
+
+  protected setup() {
+    this.Setup().then();
+  }
 
   protected setupReceiveState() {
     this.rt.RegisterHandler('ReceiveState').then(req => {
