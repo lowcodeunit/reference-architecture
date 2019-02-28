@@ -27,13 +27,13 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
   public async Setup() {
     this.rt.Start().then(async () => {
+      await this.connectToState();
+
       this.$Refresh();
 
       this.rt.RegisterHandler('ReceiveState').then(req => {
         this.subject.next(req.State);
       });
-
-      await this.connectToState();
     });
   }
 
