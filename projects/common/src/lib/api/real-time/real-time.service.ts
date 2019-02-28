@@ -20,12 +20,14 @@ export class RealTimeService {
     try {
       this.settings = injector.get(LCUServiceSettings);
     } catch (err) {}
+
+    this.Start().then();
   }
 
   //  API Methods
-  public Start(urlRoot: string = '') {
+  public Start() {
     return new Promise<signalR.HubConnection>((resolve, reject) => {
-      this.buildHub(urlRoot).then(async hub => {
+      this.buildHub('').then(async hub => {
         this.hub = hub;
 
         this.hub

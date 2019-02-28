@@ -26,11 +26,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   public async Setup() {
-    const stateKey = await this.loadStateKey();
+    this.rt.Start().then(() => {
+      const stateKey = await this.loadStateKey();
 
-    const stateName = await this.loadStateName();
+      const stateName = await this.loadStateName();
 
-    this.rt.Start(`/${stateName}/${stateKey}`).then(() => {
       this.$Refresh();
 
       this.rt.RegisterHandler('ReceiveState').then(req => {
