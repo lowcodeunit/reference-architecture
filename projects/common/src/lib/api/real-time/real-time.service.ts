@@ -43,19 +43,11 @@ export class RealTimeService {
         this.hub
           .start()
           .then(() => {
-            if (this.hub.state === signalR.HubConnectionState.Connected) {
-              console.log(`Connection started`);
+            console.log(`Connection started`);
 
+            setTimeout(() => {
               resolve(this.hub);
-            } else {
-              console.log(`Connection not started, reattempting`);
-
-              setTimeout(() => {
-                this.start();
-              }, 50);
-
-              reject(this.hub);
-            }
+            }, 50);
           })
           .catch(err => {
             console.log('Error while starting connection: ' + err);
