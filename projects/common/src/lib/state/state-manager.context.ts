@@ -72,7 +72,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   protected setupReceiveState() {
-    this.rt.RegisterHandler('ReceiveState').then(req => {
+    this.rt.RegisterHandler('ReceiveState').subscribe(req => {
       this.subject.next(req.State);
     });
   }

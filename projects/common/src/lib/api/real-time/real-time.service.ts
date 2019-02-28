@@ -58,9 +58,9 @@ export class RealTimeService {
 
   public RegisterHandler(methodName: string) {
     return this.WithHub(hub => {
-      return new Promise<any>((resolve, reject) => {
+      return Observable.create(obs => {
         hub.on(methodName, req => {
-          resolve(req);
+          obs.next(req);
         });
       });
     });
@@ -68,28 +68,38 @@ export class RealTimeService {
 
   public Invoke(methodName: string, ...args: any[]) {
     return this.WithHub(hub => {
-      return hub.invoke(methodName, ...args);
+      return Observable.create(obs => {
+        hub.invoke(methodName, ...args).then(res => {
+          obs.next(res);
+        })
+        .catch(e => {
+          obs.error(e);
+        });
+      })
     });
   }
 
-  public WithHub(action: (hub: signalR.HubConnection) => void | Promise<any>): Promise<any> {
+  public WithHub(action: (hub: signalR.HubConnection) => void | Observable<any>): Observable<any> {
     try {
-      return new Promise<any>((resolve, reject) => {
+      return Observable.create(obs => {
         const res = action(this.hub);
 
         if (res) {
-          res
-            .then(r => {
-              resolve(r);
-            })
-            .catch(e => {
-              reject(e);
-            });
+          res.subscribe(
+            r => {
+              obs.next(r);
+            },
+            e => {
+              obs.error(e);
+            }
+          );
         }
       });
     } catch (err) {
-      return new Promise<any>((resolve, reject) => {
-        reject(err);
+      return Observable.create(obs => {
+        obs.error(err);
+
+        obs.complete();
       });
     }
   }
