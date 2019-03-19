@@ -35,12 +35,12 @@ export class FathymSharedModule {
                 winAny.LCU && winAny.LCU.Application.EnterprisePrimaryAPIKey ? winAny.LCU.Application.EnterprisePrimaryAPIKey : 'test-app'
             }
           }
-        },
-        {
-          provide: HTTP_INTERCEPTORS,
-          useClass: LCUInterceptor,
-          multi: true
         }
+        // {
+        //   provide: HTTP_INTERCEPTORS,
+        //   useClass: LCUInterceptor,
+        //   multi: true
+        // },
       ]
     };
   }
