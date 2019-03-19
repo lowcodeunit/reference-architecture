@@ -16,16 +16,22 @@ import { LCUServiceSettings } from '../api/lcu-service-settings';
 })
 export class FathymSharedModule {
   //  Fields
+  static get apiRoot(): string {
+    return this.window && this.window.LCU ? this.window.LCU.APIRoot : 'http://localhost:52235';
+  }
+
   static get appId(): string {
-    return this.window && this.window.LCU ? this.window.LCU.Application.ID : '';
+    return this.window && this.window.LCU && this.window.LCU.Application ? this.window.LCU.Application.ID : 'test-app';
   }
 
   static get appEntApiKey(): string {
-    return this.window && this.window.LCU ? this.window.LCU.Application.EnterprisePrimaryAPIKey : '';
+    return this.window && this.window.LCU && this.window.LCU.Application.EnterprisePrimaryAPIKey
+      ? this.window.LCU.Application.EnterprisePrimaryAPIKey
+      : 'test-app';
   }
 
   static get window(): any {
-    return (<any>window);
+    return <any>window;
   }
 
   //  API Methods
@@ -37,7 +43,7 @@ export class FathymSharedModule {
         {
           provide: LCUServiceSettings,
           useValue: <LCUServiceSettings>{
-            APIRoot: apiRoot || (environment.production ? `` : `http://localhost:52235`),
+            APIRoot: apiRoot || (environment.production ? `` : this.apiRoot),
             AppConfig: {
               ID: this.appId,
               EnterpriseAPIKey: this.appEntApiKey
