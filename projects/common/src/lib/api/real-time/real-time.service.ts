@@ -10,6 +10,14 @@ import { Observable, BehaviorSubject, ReplaySubject, Observer } from 'rxjs';
 })
 export class RealTimeService {
   //  Fields
+  protected get appId(): string {
+    return this.window && this.window.LCU ? this.window.LCU.Application.ID : '';
+  }
+
+  protected get appEntApiKey(): string {
+    return this.window && this.window.LCU ? this.window.LCU.Application.EnterprisePrimaryAPIKey : '';
+  }
+
   protected hub: signalR.HubConnection;
 
   protected settings: LCUServiceSettings;
@@ -18,8 +26,8 @@ export class RealTimeService {
 
   protected url: string;
 
-  protected get AppEntAPIKey(): string {
-    return (<any>window).LCU.ApplicationEntAPIKey;
+  protected get window(): any {
+    return (<any>window);
   }
 
   //  Properties
@@ -143,7 +151,7 @@ export class RealTimeService {
   }
 
   protected loadHubPath() {
-    return `/state?lcu-app-ent-api-key=${this.AppEntAPIKey}`;
+    return `/state?lcu-app-id=${this.appId}&lcu-app-ent-api-key=${this.appEntApiKey}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
