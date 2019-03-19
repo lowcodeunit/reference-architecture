@@ -47,7 +47,7 @@ export class RealTimeService {
         });
 
         try {
-          this.hub.this.hub
+          this.hub
             .start()
             .then(() => {
               console.log(`Connection started`);
