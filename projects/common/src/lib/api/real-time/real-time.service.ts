@@ -47,7 +47,7 @@ export class RealTimeService {
         });
 
         try {
-          this.hub
+          this.hub.this.hub
             .start()
             .then(() => {
               console.log(`Connection started`);
@@ -122,14 +122,12 @@ export class RealTimeService {
   protected async buildHub(urlRoot: string) {
     this.url = this.buildHubUrl(urlRoot);
 
-    return (
-      new signalR.HubConnectionBuilder()
-        .withUrl(this.url)
-        // .withUrl(this.url, {
-        //   transport: signalR.HttpTransportType.LongPolling
-        // })
-        .build()
-    );
+    return new signalR.HubConnectionBuilder()
+      .withUrl(this.url)
+      //   , <signalR.IHttpConnectionOptions>{
+      //   transport: signalR.HttpTransportType.LongPolling
+      // })
+      .build();
   }
 
   protected buildHubUrl(urlRoot: string) {
@@ -139,7 +137,7 @@ export class RealTimeService {
   }
 
   protected loadHubPath() {
-    return `/state?lcu-app-id=${this.settings.AppConfig.ID}&lcu-app-ent-api-key=${this.settings.AppConfig.EnterpriseAPIKey}`;
+    return `/state`;
   }
 
   protected loadHubUrl(urlRoot: string) {
