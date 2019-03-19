@@ -18,6 +18,10 @@ export class RealTimeService {
 
   protected url: string;
 
+  protected get AppEntAPIKey(): string {
+    return (<any>window).LCU.ApplicationEntAPIKey;
+  }
+
   //  Properties
   public Started: Observable<signalR.HubConnection>;
 
@@ -122,12 +126,14 @@ export class RealTimeService {
   protected async buildHub(urlRoot: string) {
     this.url = this.buildHubUrl(urlRoot);
 
-    return new signalR.HubConnectionBuilder()
-      .withUrl(this.url)
-      // .withUrl(this.url, {
-      //   transport: signalR.HttpTransportType.LongPolling
-      // })
-      .build();
+    return (
+      new signalR.HubConnectionBuilder()
+        .withUrl(this.url)
+        // .withUrl(this.url, {
+        //   transport: signalR.HttpTransportType.LongPolling
+        // })
+        .build()
+    );
   }
 
   protected buildHubUrl(urlRoot: string) {
@@ -137,7 +143,7 @@ export class RealTimeService {
   }
 
   protected loadHubPath() {
-    return `/state`;
+    return `/state?lcu-app-ent-api-key=${this.AppEntAPIKey}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
