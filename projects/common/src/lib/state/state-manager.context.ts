@@ -9,7 +9,6 @@ import { RealTimeService } from '../api/real-time/real-time.service';
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
-  protected settings: LCUServiceSettings;
 
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
@@ -23,10 +22,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   //  Constructors
   constructor(protected injector: Injector) {
     super();
-
-    try {
-      this.settings = injector.get(LCUServiceSettings);
-    } catch (err) {}
 
     if (!this.rt) {
       this.rt = injector.get(RealTimeService);
@@ -63,7 +58,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     const stateName = await this.loadStateName();
 
-    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName, ApplicationID: this.settings.AppConfig.ID }).subscribe();
+    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName }).subscribe();
   }
 
   protected defaultValue(): T {
@@ -75,15 +70,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     const stateName = await this.loadStateName();
 
-    return this.rt
-      .Invoke('ExecuteAction', {
-        Type: action.Type,
-        Arguments: action.Arguments,
-        Key: stateKey,
-        State: stateName,
-        ApplicationID: this.settings.AppConfig.ID
-      })
-      .subscribe();
+    return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments, Key: stateKey, State: stateName }).subscribe();
   }
 
   protected abstract async loadStateKey();
