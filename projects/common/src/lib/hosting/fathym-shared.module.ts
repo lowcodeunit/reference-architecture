@@ -38,12 +38,12 @@ export class FathymSharedModule {
       ngModule: FathymSharedModule,
       providers: [
         RealTimeService,
-        // {
-        //   provide: HTTP_INTERCEPTORS,
-        //   useClass: LCUInterceptor,
-        //   multi: true,
-        //   deps: [LCUServiceSettings]
-        // }
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: LCUInterceptor,
+          multi: true,
+          deps: [LCUServiceSettings]
+        }
       ]
     };
   }
