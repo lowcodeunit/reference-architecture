@@ -29,7 +29,7 @@ export class FathymSharedModule {
       APIRoot:
         apiRoot || (environment.production ? `` : winAny().LCU && winAny().LCU.APIRoot ? winAny().LCU.APIRoot : 'http://localhost:52235'),
       AppConfig: {
-        ID: winAny().LCU && winAny().LCU.Application ? winAny().LCU.Application.ID : 'test-app',
+        ID: winAny().LCU && winAny().LCU.Application && winAny().LCU.Application.ID ? winAny().LCU.Application.ID : 'test-app',
         EnterpriseAPIKey:
           winAny().LCU && winAny().LCU.Application.EnterprisePrimaryAPIKey ? winAny().LCU.Application.EnterprisePrimaryAPIKey : 'test-app'
       }
@@ -37,14 +37,17 @@ export class FathymSharedModule {
   }
 
   static forRoot(environment: { production: boolean }, apiRoot?: string): ModuleWithProviders {
-    console.log(winAny().LCU);
+    const defaultSettings = FathymSharedModule.DefaultServiceSettings(environment, apiRoot);
+
+    console.log(defaultSettings);
+
     return {
       ngModule: FathymSharedModule,
       providers: [
         RealTimeService,
         {
           provide: LCUServiceSettings,
-          useValue: FathymSharedModule.DefaultServiceSettings(environment, apiRoot)
+          useValue: defaultSettings
         },
         {
           provide: HTTP_INTERCEPTORS,
