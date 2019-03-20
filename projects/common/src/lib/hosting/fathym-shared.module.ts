@@ -26,7 +26,8 @@ export class FathymSharedModule {
   //  API Methods
   static DefaultServiceSettings(environment: { production: boolean }, apiRoot?: string) {
     return <LCUServiceSettings>{
-      APIRoot: apiRoot || (environment.production ? `` : winAny().LCU ? winAny().LCU.APIRoot : 'http://localhost:52235'),
+      APIRoot:
+        apiRoot || (environment.production ? `` : winAny().LCU && winAny().LCU.APIRoot ? winAny().LCU.APIRoot : 'http://localhost:52235'),
       AppConfig: {
         ID: winAny().LCU && winAny().LCU.Application ? winAny().LCU.Application.ID : 'test-app',
         EnterpriseAPIKey:
