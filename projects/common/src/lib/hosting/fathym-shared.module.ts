@@ -42,6 +42,10 @@ export class FathymSharedModule {
       providers: [
         RealTimeService,
         {
+          provide: LCUServiceSettings,
+          useValue: FathymSharedModule.DefaultServiceSettings(environment, apiRoot)
+        },
+        {
           provide: HTTP_INTERCEPTORS,
           useClass: LCUInterceptor,
           multi: true,
