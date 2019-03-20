@@ -35,8 +35,6 @@ export class FathymSharedModule {
       }
     };
 
-    console.log(defaultSettings);
-
     return {
       ngModule: FathymSharedModule,
       providers: [
