@@ -24,8 +24,8 @@ export class FathymSharedModule {
   //  Fields
 
   //  API Methods
-  static DefaultServiceSettings(environment: { production: boolean }, apiRoot?: string) {
-    return <LCUServiceSettings>{
+  static forRoot(environment: { production: boolean }, apiRoot?: string): ModuleWithProviders {
+    const defaultSettings = <LCUServiceSettings>{
       APIRoot:
         apiRoot || (environment.production ? `` : winAny().LCU && winAny().LCU.APIRoot ? winAny().LCU.APIRoot : 'http://localhost:52235'),
       AppConfig: {
@@ -34,10 +34,6 @@ export class FathymSharedModule {
           winAny().LCU && winAny().LCU.Application.EnterprisePrimaryAPIKey ? winAny().LCU.Application.EnterprisePrimaryAPIKey : 'test-app'
       }
     };
-  }
-
-  static forRoot(environment: { production: boolean }, apiRoot?: string): ModuleWithProviders {
-    const defaultSettings = FathymSharedModule.DefaultServiceSettings(environment, apiRoot);
 
     console.log(defaultSettings);
 
