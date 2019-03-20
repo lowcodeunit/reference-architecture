@@ -10,7 +10,9 @@ import { LCUServiceSettings } from '../api/lcu-service-settings';
 
 import 'hammerjs';
 
-export const winAny: any = window;
+export function winAny(): any {
+  return window;
+}
 
 @NgModule({
   imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
@@ -30,11 +32,13 @@ export class FathymSharedModule {
         {
           provide: LCUServiceSettings,
           useValue: <LCUServiceSettings>{
-            APIRoot: apiRoot || (environment.production ? `` : winAny.LCU ? winAny.LCU.APIRoot : 'http://localhost:52235'),
+            APIRoot: apiRoot || (environment.production ? `` : winAny().LCU ? winAny().LCU.APIRoot : 'http://localhost:52235'),
             AppConfig: {
-              ID: winAny.LCU && winAny.LCU.Application ? winAny.LCU.Application.ID : 'test-app',
+              ID: winAny().LCU && winAny().LCU.Application ? winAny().LCU.Application.ID : 'test-app',
               EnterpriseAPIKey:
-                winAny.LCU && winAny.LCU.Application.EnterprisePrimaryAPIKey ? winAny.LCU.Application.EnterprisePrimaryAPIKey : 'test-app'
+                winAny().LCU && winAny().LCU.Application.EnterprisePrimaryAPIKey
+                  ? winAny().LCU.Application.EnterprisePrimaryAPIKey
+                  : 'test-app'
             }
           }
         },
