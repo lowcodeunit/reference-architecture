@@ -43,7 +43,8 @@ export class RealTimeService {
         this.hub.onclose(err => {
           console.log(err);
 
-          this.start();
+          //  TODO: Need to better handle reconnect without endless loop
+          // this.start();
         });
 
         try {
