@@ -25,6 +25,7 @@ export class FathymSharedModule {
 
   //  API Methods
   static forRoot(environment: { production: boolean }, apiRoot?: string): ModuleWithProviders {
+    console.log(winAny().LCU);
     return {
       ngModule: FathymSharedModule,
       providers: [
