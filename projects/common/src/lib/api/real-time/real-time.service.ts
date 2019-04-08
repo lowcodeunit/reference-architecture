@@ -169,7 +169,7 @@ export class RealTimeService {
         r => {
           obs.next(r);
 
-          this.zone.run(() => { });
+          this.zone.run(() => {});
         },
         e => {
           obs.error(e);
