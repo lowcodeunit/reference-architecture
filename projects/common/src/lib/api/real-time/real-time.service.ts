@@ -1,4 +1,5 @@
 import * as signalR from '@aspnet/signalr';
+import { NgZone } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
 import { Observable, BehaviorSubject, ReplaySubject, Observer } from 'rxjs';
@@ -18,6 +19,8 @@ export class RealTimeService {
 
   protected url: string;
 
+  private zone: NgZone;
+
   //  Properties
   public Started: Observable<signalR.HubConnection>;
 
@@ -25,6 +28,8 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
     try {
       this.settings = injector.get(LCUServiceSettings);
+
+      this.zone = injector.get(NgZone);
     } catch (err) {}
 
     this.started = new ReplaySubject();
@@ -78,6 +83,8 @@ export class RealTimeService {
       return Observable.create(obs => {
         hub.on(methodName, req => {
           obs.next(req);
+
+          this.zone.run(() => {});
         });
       });
     });
@@ -90,6 +97,8 @@ export class RealTimeService {
           .invoke(methodName, ...args)
           .then(res => {
             obs.next(res);
+
+            this.zone.run(() => {});
           })
           .catch(e => {
             obs.error(e);
@@ -104,6 +113,7 @@ export class RealTimeService {
         if (this.hub.state !== signalR.HubConnectionState.Connected) {
           this.Start().then(hub => {
             console.log('Restartting connection in flight...');
+
             this.runWithHub(obs, action);
           });
         } else {
@@ -158,6 +168,8 @@ export class RealTimeService {
       res.subscribe(
         r => {
           obs.next(r);
+
+          this.zone.run(() => { });
         },
         e => {
           obs.error(e);
