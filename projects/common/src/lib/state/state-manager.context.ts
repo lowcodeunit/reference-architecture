@@ -58,7 +58,9 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     const stateName = await this.loadStateName();
 
-    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName }).subscribe();
+    const env = await this.loadEnvironment();
+
+    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName, Environment: env }).subscribe();
   }
 
   protected defaultValue(): T {
@@ -71,6 +73,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     const stateName = await this.loadStateName();
 
     return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments, Key: stateKey, State: stateName }).subscribe();
+  }
+
+  protected async loadEnvironment() {
+    return this.rt.Settings.StateConfig.Environment;
   }
 
   protected abstract async loadStateKey();

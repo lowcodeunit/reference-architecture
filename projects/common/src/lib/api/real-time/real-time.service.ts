@@ -13,8 +13,6 @@ export class RealTimeService {
   //  Fields
   protected hub: signalR.HubConnection;
 
-  protected settings: LCUServiceSettings;
-
   protected started: ReplaySubject<signalR.HubConnection>;
 
   protected url: string;
@@ -22,12 +20,14 @@ export class RealTimeService {
   private zone: NgZone;
 
   //  Properties
+  public Settings: LCUServiceSettings;
+
   public Started: Observable<signalR.HubConnection>;
 
   //  Constructors
   constructor(protected injector: Injector) {
     try {
-      this.settings = injector.get(LCUServiceSettings);
+      this.Settings = injector.get(LCUServiceSettings);
 
       this.zone = injector.get(NgZone);
     } catch (err) {}
@@ -150,11 +150,11 @@ export class RealTimeService {
   }
 
   protected loadHubPath() {
-    return `/state?lcu-app-id=${this.settings.AppConfig.ID}&lcu-app-ent-api-key=${this.settings.AppConfig.EnterpriseAPIKey}`;
+    return `/state?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
-    const apiRoot = this.settings ? this.settings.APIRoot || '' : '';
+    const apiRoot = this.Settings ? this.Settings.APIRoot || '' : '';
 
     const hubPath = this.loadHubPath();
 
