@@ -4,6 +4,7 @@ export * from './lib/api.api';
 export * from './lib/elements.api';
 export * from './lib/guid';
 export * from './lib/hosting.api';
+export * from './lib/icon';
 export * from './lib/json-schema';
 export * from './lib/loading';
 export * from './lib/pageable';
