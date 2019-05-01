@@ -1,6 +1,10 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import * as libphonenumber from 'google-libphonenumber';
 
+// @dynamic
+/**
+ * @dynamic need this because there are static memebers
+ */
 export class PhoneValidator {
 
 // https://angular-templates.io/tutorials/about/angular-forms-and-validations

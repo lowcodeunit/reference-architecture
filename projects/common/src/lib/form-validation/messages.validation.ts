@@ -4,12 +4,10 @@ import { UserValidationMessagesConstants } from '../utils/constants/user-validat
 import { Constants } from '../utils/constants/constants';
 import { PasswordValidationMessagesConstants } from '../utils/constants/password-validation-messages.constants';
 
-
 // @dynamic
 /**
  * @dynamic need this because there are static memebers
  */
-
 export class ValidationMessages {
   public static readonly UserName: Array<ValidationMessageModel> = [
     { Type: Constants.REQUIRED, Message: UserValidationMessagesConstants.REQUIRED },
