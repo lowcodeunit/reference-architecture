@@ -1,5 +1,10 @@
 import { FormGroup, FormControl } from '@angular/forms';
 
+// @dynamic
+
+/**
+ * @dynamic is used because this class contains static properties
+ */
 export class PasswordValidator {
 
   /**
@@ -49,3 +54,4 @@ export class PasswordValidator {
       PasswordsEqual: true
     };
   }
+}

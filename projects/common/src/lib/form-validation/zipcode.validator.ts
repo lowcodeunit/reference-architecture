@@ -1,3 +1,7 @@
+// @dynamic
+/**
+ * @dynamic need this because there are static memebers
+ */
 export class ZipcodeValidator {
 
   /**

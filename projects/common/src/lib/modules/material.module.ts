@@ -25,15 +25,15 @@ import {
           MatMenuModule,
           MatOptionModule,
           MatDividerModule,
-          MatAutocompleteModule,,,,,,,,,
-          MatRadioModule
-          MatSliderModule
-          MatSlideToggleModule
-          MatGridListModule
-          MatStepperModule
-          MatExpansionModule
-          MatButtonToggleModule
-          MatTooltipModule
+          MatAutocompleteModule,
+          MatRadioModule,
+          MatSliderModule,
+          MatSlideToggleModule,
+          MatGridListModule,
+          MatStepperModule,
+          MatExpansionModule,
+          MatButtonToggleModule,
+          MatTooltipModule,
           MatSnackBarModule
          } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';

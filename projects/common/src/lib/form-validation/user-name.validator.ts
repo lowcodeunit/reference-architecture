@@ -1,5 +1,9 @@
 import { FormControl } from '@angular/forms';
 
+// @dynamic
+/**
+ * @dynamic need this because there are static memebers
+ */
 export class UserNameValidator {
 
 /**
