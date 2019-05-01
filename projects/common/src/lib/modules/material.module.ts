@@ -23,8 +23,21 @@ import {
           MatProgressBarModule,
           MatChipsModule,
           MatMenuModule,
-          MatOptionModule
+          MatOptionModule,
+          MatDividerModule,
+          MatAutocompleteModule,,,,,,,,,
+          MatRadioModule
+          MatSliderModule
+          MatSlideToggleModule
+          MatGridListModule
+          MatStepperModule
+          MatExpansionModule
+          MatButtonToggleModule
+          MatTooltipModule
+          MatSnackBarModule
          } from '@angular/material';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [],
@@ -51,9 +64,44 @@ import {
     MatSortModule,
     MatPaginatorModule,
     FlexLayoutModule,
-    MatChipsModule
+    MatChipsModule,
+    MatDividerModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
   exports: [
+    CommonModule,
     MatOptionModule,
     MatButtonModule,
     MatIconModule,
@@ -76,7 +124,40 @@ import {
     MatPaginatorModule,
     FlexLayoutModule,
     MatChipsModule,
-    MatMenuModule
+    MatDividerModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatCheckboxModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatButtonToggleModule,
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 export class MaterialModule { }
