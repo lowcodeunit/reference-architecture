@@ -22,13 +22,15 @@ import {
           MatPaginatorModule,
           MatProgressBarModule,
           MatChipsModule,
-          MatMenuModule
+          MatMenuModule,
+          MatOptionModule
          } from '@angular/material';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
+    MatOptionModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -52,6 +54,7 @@ import {
     MatChipsModule
   ],
   exports: [
+    MatOptionModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
