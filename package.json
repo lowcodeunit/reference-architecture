@@ -59,5 +59,8 @@
 		"tslib": "^1.9.0",
 		"tslint": "~5.11.0",
 		"typescript": "~3.2.2"
-	}
+  },
+  "peerDependencies": {
+    "google-libphonenumber": "^3.2.2"
+  }
 }
