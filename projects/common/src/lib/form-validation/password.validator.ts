@@ -20,7 +20,7 @@ export class PasswordValidator {
    *
    * Minimum of eight characters
    */
-  public static readonly Strong: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$/gmi;
+  public static readonly Strong: RegExp = /^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/gmi;
 
   public static readonly Medium: RegExp = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})$/gmi;
 
