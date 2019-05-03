@@ -1,5 +1,6 @@
 import { FormGroup, FormControl } from '@angular/forms';
 
+
 // @dynamic
 
 /**
@@ -49,11 +50,9 @@ export class PasswordValidator {
     }
 
     if (valid) {
-      return null;
+      return (null);
+    } else {
+      return ({ PasswordsMatch: true });
     }
-
-    return {
-      passwordsMatch: true
-    };
   }
 }
