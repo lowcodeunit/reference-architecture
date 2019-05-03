@@ -11,7 +11,7 @@ export class PasswordValidationMessagesConstants {
   /**
    * Constant for confirm password equal
    */
-  public static readonly CONFIRM_EQUAL: string = 'Password mismatch';
+  public static readonly PASSWORDS_MATCH: string = 'Password mismatch';
 
   /**
    * Constant for confirm password required
