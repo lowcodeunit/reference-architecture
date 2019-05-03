@@ -76,7 +76,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   protected async loadEnvironment() {
-    return this.rt.Settings.StateConfig.Environment;
+    return this.rt.Settings.StateConfig ? this.rt.Settings.StateConfig.Environment : null;
   }
 
   protected abstract async loadStateKey();
