@@ -32,7 +32,6 @@ export class PasswordValidator {
    */
   public static PasswordsMatch(formGroup: FormGroup): { [key: string]: any } {
     let value: string;
-    let valid: boolean = true;
 
     for (const key in formGroup.controls) {
       if (formGroup.controls.hasOwnProperty(key)) {
@@ -42,17 +41,13 @@ export class PasswordValidator {
           value = control.value;
         } else {
           if (value !== control.value) {
-            valid = false;
+            return ({ PasswordsMatch: true });
             break;
           }
         }
       }
     }
 
-    if (valid) {
-      return (null);
-    } else {
-      return ({ PasswordsMatch: true });
-    }
+    return null;
   }
 }
