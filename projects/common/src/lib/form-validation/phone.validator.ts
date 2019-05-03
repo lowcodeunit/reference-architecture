@@ -8,6 +8,7 @@ import * as libphonenumber from 'google-libphonenumber';
 export class PhoneValidator {
 
 // https://angular-templates.io/tutorials/about/angular-forms-and-validations
+
   public static ValidCountryPhone = (countryControl: AbstractControl): ValidatorFn => {
 
     let subscribe = false;
