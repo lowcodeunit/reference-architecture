@@ -29,7 +29,7 @@ export class PasswordValidator {
    *
    * @param formGroup formGroup containing the password and confirm password fields
    */
-  public static PasswordsEqual(formGroup: FormGroup): { [key: string]: any } {
+  public static PasswordsMatch(formGroup: FormGroup): { [key: string]: any } {
     let value: string;
     let valid: boolean = true;
 
@@ -53,7 +53,7 @@ export class PasswordValidator {
     }
 
     return {
-      PasswordsEqual: true
+      passwordsMatch: true
     };
   }
 }
