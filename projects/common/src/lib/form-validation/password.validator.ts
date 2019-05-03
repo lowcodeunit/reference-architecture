@@ -20,7 +20,9 @@ export class PasswordValidator {
    *
    * Minimum of eight characters
    */
-  public static readonly UpLowDigitSpecial8: RegExp = /^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$/gmi;
+  public static readonly Strong: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$/gmi;
+
+  public static readonly Medium: RegExp = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})$/gmi;
 
   /**
    * Check if password and confirm password are equal
