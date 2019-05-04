@@ -1,4 +1,4 @@
-import { FormGroup, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 
 
 // @dynamic
@@ -31,7 +31,7 @@ export class PasswordValidator {
    * @param password password control
    * @param confirm confirm password control
    */
-  public static PasswordsMatch(password: FormControl, confirm: FormControl): ValidatorFn {
+  public static PasswordsMatch(password: AbstractControl, confirm: AbstractControl): ValidatorFn {
     return (formGroup): ValidationErrors => {
       if (password.value !== confirm.value) {
         confirm.setErrors({ PasswordsMatch: true });
