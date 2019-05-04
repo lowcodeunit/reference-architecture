@@ -1,4 +1,4 @@
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
 
 // @dynamic
@@ -26,28 +26,45 @@ export class PasswordValidator {
   public static readonly Medium: RegExp = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})$/gmi;
 
   /**
+   * Check if password and confirm password match
+   *
+   * @param password password control
+   * @param confirm confirm password control
+   */
+  public static PasswordsMatch(password: FormControl, confirm: FormControl): ValidatorFn {
+    return (formGroup): ValidationErrors => {
+      if (password.value !== confirm.value) {
+        confirm.setErrors({ PasswordsMatch: true });
+      } else {
+        confirm.setErrors(null);
+      }
+      return;
+    };
+  }
+
+  /**
    * Check if password and confirm password are equal
    *
    * @param formGroup formGroup containing the password and confirm password fields
    */
-  public static PasswordsMatch(formGroup: FormGroup): { [key: string]: any } {
-    let value: string;
+  // public static PasswordsMatch(formGroup: FormGroup): { [key: string]: any } {
+  //   let value: string;
 
-    for (const key in formGroup.controls) {
-      if (formGroup.controls.hasOwnProperty(key)) {
-        const control: FormControl = <FormControl>formGroup.controls[key];
+  //   for (const key in formGroup.controls) {
+  //     if (formGroup.controls.hasOwnProperty(key)) {
+  //       const control: FormControl = <FormControl>formGroup.controls[key];
 
-        if (value === undefined) {
-          value = control.value;
-        } else {
-          if (value !== control.value) {
-            return ({ PasswordsMatch: true });
-            break;
-          }
-        }
-      }
-    }
+  //       if (value === undefined) {
+  //         value = control.value;
+  //       } else {
+  //         if (value !== control.value) {
+  //           return ({ PasswordsMatch: true });
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    return null;
-  }
+  //   return null;
+  // }
 }
