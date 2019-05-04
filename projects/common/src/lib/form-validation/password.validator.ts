@@ -32,6 +32,9 @@ export class PasswordValidator {
    * @param confirm confirm password control
    */
   public static PasswordsMatch(password: AbstractControl, confirm: AbstractControl): ValidatorFn {
+
+    if (!password || !confirm) { return; }
+
     return (formGroup): ValidationErrors => {
       if (password.value !== confirm.value) {
         confirm.setErrors({ PasswordsMatch: true });
