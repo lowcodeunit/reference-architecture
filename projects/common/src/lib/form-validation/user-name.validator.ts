@@ -11,7 +11,7 @@ export class UserNameValidator {
  *
  * letters and numbers only
  */
- public static readonly UsernamePattern: RegExp = /^[a-zA-Z0-9]*$/gmi;
+ public static readonly UsernamePattern: RegExp = /^[a-z0-9]*$/gmi;
 
  /**
   * Username regular expression pattern
