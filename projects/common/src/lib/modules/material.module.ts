@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
           MatButtonModule,
           MatIconModule,
@@ -65,7 +64,6 @@ import {
     FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -123,7 +121,6 @@ import {
     FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
