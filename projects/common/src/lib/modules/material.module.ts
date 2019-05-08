@@ -34,6 +34,7 @@ import {
           MatTooltipModule,
           MatSnackBarModule
          } from '@angular/material';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
