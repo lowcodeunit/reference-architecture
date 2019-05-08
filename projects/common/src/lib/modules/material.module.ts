@@ -1,5 +1,3 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
           MatButtonModule,
@@ -40,7 +38,6 @@ import {
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     MatOptionModule,
     MatButtonModule,
     MatIconModule,
@@ -97,7 +94,6 @@ import {
     MatPaginatorModule
   ],
   exports: [
-    CommonModule,
     MatOptionModule,
     MatButtonModule,
     MatIconModule,
