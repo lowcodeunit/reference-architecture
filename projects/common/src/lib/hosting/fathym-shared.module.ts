@@ -9,13 +9,12 @@ import { RealTimeService } from '../api/real-time/real-time.service';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 
 import 'hammerjs';
-import { MaterialModule } from '../modules/material.module';
 
 export const winAny = <any>window;
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule, MaterialModule],
-  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule, MaterialModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
+  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   providers: [],
   entryComponents: []
 })
