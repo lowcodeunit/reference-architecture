@@ -193,7 +193,7 @@ export class RealTimeService {
   }
 
   protected stop(): void {
-    this.hub.stop();
+    // this.hub.stop();
   }
 
   protected tryingToReconnect(): void {
