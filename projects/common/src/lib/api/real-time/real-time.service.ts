@@ -210,9 +210,9 @@ export class RealTimeService {
    * Attempt to reconnect
    */
   protected reconnect(): void {
-    this.reconnectedNotification();
-
     this.attemptingToReconnect = true;
+
+    this.reconnectedNotification();
     this.start();
   }
 
@@ -220,9 +220,9 @@ export class RealTimeService {
    * Stop trying to reconnect
    */
   protected stopReconnection(): void {
-    this.reconnectedNotification();
-
     this.attemptingToReconnect = false;
+
+    this.reconnectedNotification();
     this.stop();
   }
 
