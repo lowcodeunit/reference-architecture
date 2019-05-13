@@ -70,7 +70,7 @@ export class RealTimeService {
             .catch(err => {
               console.log('Error while starting connection: ' + err);
 
-              if (this.connectionAttempts === 5) {
+              if (this.connectionAttempts > 5) {
                 reject(err);
               }
 
