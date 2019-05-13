@@ -70,8 +70,9 @@ export class RealTimeService {
             .catch(err => {
               console.log('Error while starting connection: ' + err);
 
-              this.start();
-              // this.tryingToReconnect();
+             // this.start();
+             // try to reconnnect
+              this.tryingToReconnect();
 
               reject(err);
             });
