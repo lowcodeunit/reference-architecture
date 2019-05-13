@@ -20,12 +20,19 @@ export class RealTimeService {
   private zone: NgZone;
 
   //  Properties
+  protected attemptingToReconnect: boolean;
+
+  protected connectionAttempts: number;
+
   public Settings: LCUServiceSettings;
 
   public Started: Observable<signalR.HubConnection>;
 
   //  Constructors
   constructor(protected injector: Injector) {
+
+    this.connectionAttempts = 0;
+  
     try {
       this.Settings = injector.get(LCUServiceSettings);
 
@@ -42,7 +49,7 @@ export class RealTimeService {
   //  API Methods
   public Start() {
     return new Promise<signalR.HubConnection>((resolve, reject) => {
-      this.buildHub('').then(hub => {
+      this.buildHub('').then((hub: signalR.HubConnection) => {
         this.hub = hub;
 
         this.hub.onclose(err => {
@@ -63,14 +70,15 @@ export class RealTimeService {
             .catch(err => {
               console.log('Error while starting connection: ' + err);
 
-              this.start();
+             // this.start();
+              this.tryingToReconnect(this.hub);
 
               reject(err);
             });
         } catch (err) {
           console.log('Error while starting connection: ' + err);
 
-          this.start();
+         // this.start();
 
           reject(err);
         }
@@ -182,5 +190,28 @@ export class RealTimeService {
     setTimeout(() => {
       this.Start().then(hub => this.started.next(hub));
     }, 50);
+  }
+
+  protected tryingToReconnect(hub: signalR.HubConnection): void {
+    this.connectionAttempts += 1;
+
+    (this.connectionAttempts <= 5) ? this.attemptRecconection() : this.stopReconnectionAttempts();
+  }
+
+  protected reconnected(): void {
+    this.attemptingToReconnect = false;
+  }
+
+  protected attemptRecconection(): void {
+    this.attemptingToReconnect = true;
+    console.log('attempting to reconnect');
+    this.hub.start();
+    // notify user of reconnection attempt
+  }
+
+  protected stopReconnectionAttempts(): void {
+    this.attemptingToReconnect = false;
+    console.log('stop reconnection attempts');
+    this.hub.stop();
   }
 }
