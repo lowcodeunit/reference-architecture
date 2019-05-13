@@ -203,7 +203,7 @@ export class RealTimeService {
   protected retryConnection(): void {
     this.connectionAttempts += 1;
 
-    (this.connectionAttempts <= 5) ? this.reconnect() : this.stopReconnection();
+    (this.connectionAttempts < 5) ? this.reconnect() : this.stopReconnection();
   }
 
   /**
