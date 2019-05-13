@@ -70,14 +70,11 @@ export class RealTimeService {
             .catch(err => {
               console.log('Error while starting connection: ' + err);
 
-             // this.start();
-             // try to reconnnect
               this.retryConnection();
 
               if (this.connectionAttempts === 5) {
                 reject(err);
               }
-             
             });
         } catch (err) {
           console.log('Error while starting connection: ' + err);
@@ -235,5 +232,7 @@ export class RealTimeService {
   protected reconnectedNotification(): void {
     let message: string;
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
+
+    console.log(message);
   }
 }
