@@ -71,7 +71,7 @@ export class RealTimeService {
               console.log('Error while starting connection: ' + err);
 
              // this.start();
-              this.tryingToReconnect(this.hub);
+              this.tryingToReconnect(this);
 
               reject(err);
             });
@@ -192,7 +192,11 @@ export class RealTimeService {
     }, 50);
   }
 
-  protected tryingToReconnect(hub: signalR.HubConnection): void {
+  protected stop(): void {
+    this.hub.stop();
+  }
+
+  protected tryingToReconnect(): void {
     this.connectionAttempts += 1;
 
     (this.connectionAttempts <= 5) ? this.attemptRecconection() : this.stopReconnectionAttempts();
@@ -205,13 +209,13 @@ export class RealTimeService {
   protected attemptRecconection(): void {
     this.attemptingToReconnect = true;
     console.log('attempting to reconnect');
-    this.hub.start();
+    this.start();
     // notify user of reconnection attempt
   }
 
   protected stopReconnectionAttempts(): void {
     this.attemptingToReconnect = false;
     console.log('stop reconnection attempts');
-    this.hub.stop();
+    this.stop();
   }
 }
