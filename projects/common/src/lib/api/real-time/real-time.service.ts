@@ -71,7 +71,7 @@ export class RealTimeService {
               console.log('Error while starting connection: ' + err);
 
              // this.start();
-              this.tryingToReconnect(this);
+              this.tryingToReconnect();
 
               reject(err);
             });
