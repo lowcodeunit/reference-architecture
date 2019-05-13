@@ -72,7 +72,7 @@ export class RealTimeService {
 
              // this.start();
              // try to reconnnect
-              this.tryingToReconnect();
+              this.retryConnection();
 
               if (this.connectionAttempts === 5) {
                 reject(err);
@@ -200,26 +200,40 @@ export class RealTimeService {
     // this.hub.stop();
   }
 
-  protected tryingToReconnect(): void {
+  /**
+   * Retry connection
+   */
+  protected retryConnection(): void {
     this.connectionAttempts += 1;
 
-    (this.connectionAttempts <= 5) ? this.attemptRecconection() : this.stopReconnectionAttempts();
+    (this.connectionAttempts <= 5) ? this.reconnect() : this.stopReconnection();
   }
 
-  protected reconnected(): void {
-    this.attemptingToReconnect = false;
-  }
+  /**
+   * Attempt to reconnect
+   */
+  protected reconnect(): void {
+    this.reconnectedNotification();
 
-  protected attemptRecconection(): void {
     this.attemptingToReconnect = true;
-    console.log('attempting to reconnect');
     this.start();
-    // notify user of reconnection attempt
   }
 
-  protected stopReconnectionAttempts(): void {
+  /**
+   * Stop trying to reconnect
+   */
+  protected stopReconnection(): void {
+    this.reconnectedNotification();
+
     this.attemptingToReconnect = false;
-    console.log('stop reconnection attempts');
     this.stop();
+  }
+
+  /**
+   * Notify user of reconnection attempt(s)
+   */
+  protected reconnectedNotification(): void {
+    let message: string;
+    message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
   }
 }
