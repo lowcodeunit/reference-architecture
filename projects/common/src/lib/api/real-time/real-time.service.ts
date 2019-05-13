@@ -74,7 +74,10 @@ export class RealTimeService {
              // try to reconnnect
               this.tryingToReconnect();
 
-              reject(err);
+              if (this.connectionAttempts === 5) {
+                reject(err);
+              }
+             
             });
         } catch (err) {
           console.log('Error while starting connection: ' + err);
