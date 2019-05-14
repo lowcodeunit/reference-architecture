@@ -13,13 +13,8 @@ import 'hammerjs';
 export const winAny = <any>window;
 
 @NgModule({
-<<<<<<< HEAD
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule, MaterialModule],
-  exports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule, MaterialModule],
-=======
   imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   exports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
->>>>>>> bfcf00cfcdc2311c0294253c14f6a6a4a8e1059c
   providers: [],
   entryComponents: []
 })
