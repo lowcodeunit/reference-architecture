@@ -56,10 +56,9 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
   //  Helpers
 
-  public ReconnectAttempt(): string {
-    this.rt.ReconnectionMessage.subscribe((data: string) => {
+  public ReconnectAttempt() {
+    return this.rt.ReconnectionMessage.subscribe((data: string) => {
       console.log('reconnect message', data);
-      return data;
     });
   }
 
