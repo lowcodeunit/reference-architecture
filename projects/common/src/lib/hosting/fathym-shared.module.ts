@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -14,8 +14,8 @@ import { MaterialModule } from '../modules/material.module';
 export const winAny = <any>window;
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule, MaterialModule],
-  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule, MaterialModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule, MaterialModule],
+  exports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule, MaterialModule],
   providers: [],
   entryComponents: []
 })
