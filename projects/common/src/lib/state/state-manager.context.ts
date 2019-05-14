@@ -30,10 +30,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     }
 
     this.setup();
-
-    this.reconnectionMessage = this.rt.ReconnectionMessage.subscribe((data: string) => {
-      console.log('reconnect message', data);
-    });
   }
 
   //  API Methods
@@ -59,6 +55,14 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   //  Helpers
+
+  public ReconnectAttempt(): string {
+    this.rt.ReconnectionMessage.subscribe((data: string) => {
+      console.log('reconnect message', data);
+      return data;
+    });
+  }
+
   protected async connectToState() {
     const stateKey = await this.loadStateKey();
 
