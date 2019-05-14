@@ -235,7 +235,7 @@ export class RealTimeService {
     let message: string;
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
 
-    this.ReconnectionMessage.next(message);
+   // this.ReconnectionMessage.next(message);
     console.log(message);
   }
 }
