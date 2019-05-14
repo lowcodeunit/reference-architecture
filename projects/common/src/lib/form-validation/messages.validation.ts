@@ -30,6 +30,6 @@ export class ValidationMessages {
 
   public static readonly ConfirmPassword: Array<ValidationMessageModel> = [
     { Type: Constants.REQUIRED, Message: PasswordValidationMessagesConstants.CONFIRM_REQUIRED },
-    { Type: Constants.CONFIRM_EQUAL, Message: PasswordValidationMessagesConstants.CONFIRM_EQUAL }
+    { Type: Constants.PASSWORDS_MATCH, Message: PasswordValidationMessagesConstants.PASSWORDS_MATCH }
   ]
 }

@@ -4,12 +4,14 @@ import { StateAction } from './state-action.model';
 import { Injector } from '@angular/core';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 import { RealTimeService } from '../api/real-time/real-time.service';
+import { Subscription } from 'rxjs/internal/Subscription';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
-
+  protected reconnectionMessage: Subscription;
+  
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
     return window['lcu:state:rt'];
@@ -53,6 +55,13 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   //  Helpers
+
+  public ReconnectAttempt() {
+    return this.rt.ReconnectionMessage.subscribe((data: string) => {
+      console.log('reconnect message', data);
+    });
+  }
+
   protected async connectToState() {
     const stateKey = await this.loadStateKey();
 

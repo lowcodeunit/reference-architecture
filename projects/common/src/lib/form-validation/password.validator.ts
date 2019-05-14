@@ -1,4 +1,5 @@
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+
 
 // @dynamic
 
@@ -20,40 +21,55 @@ export class PasswordValidator {
    *
    * Minimum of eight characters
    */
-  public static readonly Strong: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})$/gmi;
+  public static readonly StrongPassword: RegExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}$)/gm;
+  // public static readonly StrongPassword: string = '\(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,}$)';
+                                                
 
-  public static readonly Medium: RegExp = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})$/gmi;
+  public static readonly MediumPassword: RegExp = /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})$/gm;
+
+  /**
+   * Check if password and confirm password match
+   *
+   * @param password password control
+   * @param confirm confirm password control
+   */
+  public static PasswordsMatch(password: AbstractControl, confirm: AbstractControl): ValidatorFn {
+
+    if (!password || !confirm) { return; }
+
+    return (formGroup): ValidationErrors => {
+      if (password.value !== confirm.value) {
+        confirm.setErrors({ PasswordsMatch: true });
+      } else {
+        confirm.setErrors(null);
+      }
+      return;
+    };
+  }
 
   /**
    * Check if password and confirm password are equal
    *
    * @param formGroup formGroup containing the password and confirm password fields
    */
-  public static PasswordsEqual(formGroup: FormGroup): { [key: string]: any } {
-    let value: string;
-    let valid: boolean = true;
+  // public static PasswordsMatch(formGroup: FormGroup): { [key: string]: any } {
+  //   let value: string;
 
-    for (const key in formGroup.controls) {
-      if (formGroup.controls.hasOwnProperty(key)) {
-        const control: FormControl = <FormControl>formGroup.controls[key];
+  //   for (const key in formGroup.controls) {
+  //     if (formGroup.controls.hasOwnProperty(key)) {
+  //       const control: FormControl = <FormControl>formGroup.controls[key];
 
-        if (value === undefined) {
-          value = control.value;
-        } else {
-          if (value !== control.value) {
-            valid = false;
-            break;
-          }
-        }
-      }
-    }
+  //       if (value === undefined) {
+  //         value = control.value;
+  //       } else {
+  //         if (value !== control.value) {
+  //           return ({ PasswordsMatch: true });
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    if (valid) {
-      return null;
-    }
-
-    return {
-      PasswordsEqual: true
-    };
-  }
+  //   return null;
+  // }
 }

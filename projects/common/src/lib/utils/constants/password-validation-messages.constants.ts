@@ -11,7 +11,7 @@ export class PasswordValidationMessagesConstants {
   /**
    * Constant for confirm password equal
    */
-  public static readonly CONFIRM_EQUAL: string = 'Password mismatch';
+  public static readonly PASSWORDS_MATCH: string = 'Password mismatch';
 
   /**
    * Constant for confirm password required
@@ -21,7 +21,7 @@ export class PasswordValidationMessagesConstants {
   /**
    * Constant for password pattern
    */
-  public static readonly PATTERN: string = 'Your password must contain at least one uppercase, one lowercase, and one number';
+  public static readonly PATTERN: string = 'Password must contain at least one uppercase, one lowercase, one special character, and one number';
 
   /**
    * Constant for password required

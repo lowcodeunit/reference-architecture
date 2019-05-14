@@ -12,8 +12,8 @@ export class Constants {
 
   public static readonly PATTERN: string = 'pattern';
 
-  public static readonly VALID_USERNAME: string = 'validUsername';
+  public static readonly VALID_USERNAME: string = 'ValidUsername';
 
-  public static readonly CONFIRM_EQUAL: string = 'confirmEqual';
+  public static readonly PASSWORDS_MATCH: string = 'PasswordsMatch';
 
 }

@@ -1,8 +1,4 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
           MatButtonModule,
           MatIconModule,
@@ -38,11 +34,11 @@ import {
           MatTooltipModule,
           MatSnackBarModule
          } from '@angular/material';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     MatOptionModule,
     MatButtonModule,
     MatIconModule,
@@ -66,8 +62,6 @@ import {
     FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
@@ -101,7 +95,6 @@ import {
     MatPaginatorModule
   ],
   exports: [
-    CommonModule,
     MatOptionModule,
     MatButtonModule,
     MatIconModule,
@@ -125,8 +118,6 @@ import {
     FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatCheckboxModule,
     MatButtonModule,
