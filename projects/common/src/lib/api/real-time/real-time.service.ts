@@ -32,7 +32,7 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
 
     this.connectionAttempts = 0;
-  
+
     try {
       this.Settings = injector.get(LCUServiceSettings);
 
@@ -53,7 +53,7 @@ export class RealTimeService {
         this.hub = hub;
 
         this.hub.onclose(err => {
-          console.log(err);
+          console.log('onclose', err);
 
           //  TODO: Need to better handle reconnect without endless loop
           // this.start();
