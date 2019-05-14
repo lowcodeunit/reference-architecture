@@ -81,9 +81,11 @@ export class RealTimeService {
         } catch (err) {
           console.log('Error while starting connection: ' + err);
 
-         // this.start();
+          if (this.connectionAttempts > 5) {
+            reject(err);
+          }
 
-          reject(err);
+          this.retryConnection();
         }
       });
     });
@@ -235,7 +237,7 @@ export class RealTimeService {
     let message: string;
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
 
-   // this.ReconnectionMessage.next(message);
+    this.ReconnectionMessage.next(message);
     console.log(message);
   }
 }
