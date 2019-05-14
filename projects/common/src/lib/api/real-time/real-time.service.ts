@@ -2,7 +2,7 @@ import * as signalR from '@aspnet/signalr';
 import { NgZone } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
-import { Observable, BehaviorSubject, ReplaySubject, Observer } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -23,6 +23,8 @@ export class RealTimeService {
   protected attemptingToReconnect: boolean;
 
   protected connectionAttempts: number;
+
+  public ReconnectionMessage: Subject<string>;
 
   public Settings: LCUServiceSettings;
 
@@ -52,12 +54,12 @@ export class RealTimeService {
       this.buildHub('').then((hub: signalR.HubConnection) => {
         this.hub = hub;
 
-        this.hub.onclose(err => {
-          console.log('onclose', err);
+        // this.hub.onclose(err => {
+        //   console.log('onclose', err);
 
-          //  TODO: Need to better handle reconnect without endless loop
-          // this.start();
-        });
+        //   //  TODO: Need to better handle reconnect without endless loop
+        //   // this.start();
+        // });
 
         try {
           this.hub
@@ -121,7 +123,7 @@ export class RealTimeService {
       return Observable.create(obs => {
         if (this.hub.state !== signalR.HubConnectionState.Connected) {
           this.Start().then(hub => {
-            console.log('Restartting connection in flight...');
+            console.log('Restarting connection in flight...');
 
             this.runWithHub(obs, action);
           });
@@ -212,7 +214,7 @@ export class RealTimeService {
   protected reconnect(): void {
     this.attemptingToReconnect = true;
 
-    this.reconnectedNotification();
+    this.reconnectionMessage();
     this.start();
   }
 
@@ -222,17 +224,18 @@ export class RealTimeService {
   protected stopReconnection(): void {
     this.attemptingToReconnect = false;
 
-    this.reconnectedNotification();
+    this.reconnectionMessage();
     this.stop();
   }
 
   /**
    * Notify user of reconnection attempt(s)
    */
-  protected reconnectedNotification(): void {
+  protected reconnectionMessage(): void {
     let message: string;
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
 
+    this.ReconnectionMessage.next(message);
     console.log(message);
   }
 }
