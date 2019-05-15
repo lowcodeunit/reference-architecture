@@ -82,11 +82,11 @@ export class RealTimeService {
         } catch (err) {
           console.log('Error while starting connection: ' + err);
 
-          if (this.connectionAttempts > 5) {
-            reject(err);
-          }
+          // if (this.connectionAttempts > 5) {
+          //   reject(err);
+          // }
 
-          this.retryConnection();
+          // this.retryConnection();
         }
       });
     });
