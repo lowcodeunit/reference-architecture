@@ -229,7 +229,7 @@ export class RealTimeService {
 
     this.reconnectionMessage();
     this.stop();
-    this.ReconnectionMessage.unsubscribe();
+   // this.ReconnectionMessage.unsubscribe();
   }
 
   /**
