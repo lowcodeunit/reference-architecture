@@ -75,19 +75,18 @@ export class RealTimeService {
 
               if (this.connectionAttempts > 5) {
                 reject(err);
+              } else if (this.connectionAttempts <=  5) {
+                this.retryConnection();
               }
-
-              this.retryConnection();
             });
         } catch (err) {
           console.log('Error while starting connection: ' + err);
 
           if (this.connectionAttempts > 5) {
             reject(err);
+          } else if (this.connectionAttempts <=  5) {
+            this.retryConnection();
           }
-
-          this.retryConnection();
-        }
       });
     });
   }
