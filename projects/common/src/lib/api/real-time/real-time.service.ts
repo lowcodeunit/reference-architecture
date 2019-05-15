@@ -214,8 +214,8 @@ export class RealTimeService {
    */
   protected reconnect(): void {
     this.attemptingToReconnect = true;
-
-    // this.reconnectionMessage();
+    this.emitReconnect();
+    this.reconnectionMessage();
     this.start();
   }
 
@@ -224,8 +224,8 @@ export class RealTimeService {
    */
   protected stopReconnection(): void {
     this.attemptingToReconnect = false;
-
-    // this.reconnectionMessage();
+    this.emitReconnect();
+    this.reconnectionMessage();
     this.stop();
   }
 
@@ -236,8 +236,8 @@ export class RealTimeService {
   /**
    * Notify user of reconnection attempt(s)
    */
-  // public reconnectionMessage(): void {
-  //   let message: string;
-  //   message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
-  // }
+  public reconnectionMessage(): void {
+    let message: string;
+    message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
+  }
 }
