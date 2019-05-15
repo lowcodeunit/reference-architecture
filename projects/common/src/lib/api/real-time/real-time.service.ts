@@ -215,6 +215,7 @@ export class RealTimeService {
    */
   protected reconnect(): void {
     this.attemptingToReconnect = true;
+    this.emitReconnect();
     this.reconnectionMessage();
     this.start();
   }
@@ -224,12 +225,14 @@ export class RealTimeService {
    */
   protected stopReconnection(): void {
     this.attemptingToReconnect = false;
+    this.emitReconnect();
     this.reconnectionMessage();
-    this.stop();
+    this.Reconnecting.unsubscribe();
+    // this.stop();
   }
 
   protected emitReconnect(): void {
-   // this.Reconnecting.next(this.attemptingToReconnect);
+   this.Reconnecting.next(this.attemptingToReconnect);
   }
 
   /**

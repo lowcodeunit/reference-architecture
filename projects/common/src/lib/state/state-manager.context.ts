@@ -27,7 +27,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     }
 
     this.rt.Reconnecting.subscribe(val => {
-      this.Reconnect(val);
+     // this.Reconnect(val);
+      this.Execute({
+        Arguments: val,
+        Type: 'reconnect'
+      })
     });
 
     this.setup();
