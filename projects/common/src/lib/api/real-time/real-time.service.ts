@@ -199,7 +199,7 @@ export class RealTimeService {
   }
 
   protected stop(): void {
-    // this.hub.stop();
+    this.hub.stop();
   }
 
   /**
@@ -238,7 +238,7 @@ export class RealTimeService {
     let message: string;
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
 
-    this.ReconnectionMessage.next(message);
     console.log(message);
+   // this.ReconnectionMessage.next(message);
   }
 }
