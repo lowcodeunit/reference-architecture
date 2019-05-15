@@ -77,7 +77,9 @@ export class RealTimeService {
                 reject(err);
               }
 
-              this.retryConnection();
+              if (this.connectionAttempts < 5) {
+                this.retryConnection();
+              }
             });
         } catch (err) {
           console.log('Error while starting connection 02: ' + err);
@@ -243,9 +245,7 @@ export class RealTimeService {
    * Notify user of reconnection attempt(s)
    */
   protected reconnectionMessage(): void {
-
     console.log((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
-
     this.ReconnectionMessage.next(this.attemptingToReconnect);
   }
 }
