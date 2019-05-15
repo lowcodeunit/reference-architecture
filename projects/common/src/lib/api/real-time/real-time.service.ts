@@ -208,7 +208,14 @@ export class RealTimeService {
   protected retryConnection(): void {
     this.connectionAttempts += 1;
     console.log(this.connectionAttempts);
-    (this.connectionAttempts < 5) ? this.reconnect() : this.stopReconnection();
+
+    if (this.connectionAttempts < 5) {
+      this.reconnect();
+    } else if (this.connectionAttempts === 6) {
+      this.stopReconnection();
+    }
+
+   // (this.connectionAttempts < 5) ? this.reconnect() : this.stopReconnection();
   }
 
   /**
@@ -237,10 +244,8 @@ export class RealTimeService {
    */
   protected reconnectionMessage(): void {
 
-    console.log((this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts');
+    console.log((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
 
-    if (this.connectionAttempts <= 5) {
-      this.ReconnectionMessage.next(this.attemptingToReconnect);
-    }
+    this.ReconnectionMessage.next(this.attemptingToReconnect);
   }
 }
