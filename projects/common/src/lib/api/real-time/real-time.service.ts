@@ -24,7 +24,7 @@ export class RealTimeService {
 
   protected connectionAttempts: number;
 
-  public ReconnectionMessage: Subject<string>;
+  public ReconnectionMessage: Subject<boolean>;
 
   public Settings: LCUServiceSettings;
 
@@ -241,8 +241,8 @@ export class RealTimeService {
 
     console.log(message);
 
-    if (this.connectionAttempts === 5) {
-      this.ReconnectionMessage.next(message);
+    if (this.connectionAttempts <= 5) {
+      this.ReconnectionMessage.next(this.attemptingToReconnect);
     }
   }
 }
