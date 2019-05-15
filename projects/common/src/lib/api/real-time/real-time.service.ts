@@ -229,6 +229,7 @@ export class RealTimeService {
 
     this.reconnectionMessage();
     this.stop();
+    this.ReconnectionMessage.unsubscribe();
   }
 
   /**
@@ -239,6 +240,6 @@ export class RealTimeService {
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
 
     console.log(message);
-   // this.ReconnectionMessage.next(message);
+    this.ReconnectionMessage.next(message);
   }
 }
