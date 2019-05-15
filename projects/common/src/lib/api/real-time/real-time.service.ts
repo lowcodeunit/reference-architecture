@@ -75,10 +75,8 @@ export class RealTimeService {
 
               if (this.connectionAttempts > 5) {
                 reject(err);
-
-                return;
               }
-              
+
               this.retryConnection();
             });
         } catch (err) {
@@ -213,7 +211,7 @@ export class RealTimeService {
 
     if (this.connectionAttempts < 5) {
       this.reconnect();
-    } else if (this.connectionAttempts === 6) {
+    } else if (this.connectionAttempts === 5) {
       this.stopReconnection();
     }
 
