@@ -241,7 +241,7 @@ export class RealTimeService {
 
     console.log(message);
 
-    if (this.connectionAttempts === 6) {
+    if (this.connectionAttempts === 5) {
       this.ReconnectionMessage.next(message);
     }
   }
