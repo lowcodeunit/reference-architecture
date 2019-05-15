@@ -34,6 +34,7 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
 
     this.connectionAttempts = 0;
+    this.Reconnecting = new Subject<boolean>();
 
     try {
       this.Settings = injector.get(LCUServiceSettings);
