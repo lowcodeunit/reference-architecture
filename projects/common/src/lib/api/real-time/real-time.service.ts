@@ -240,6 +240,9 @@ export class RealTimeService {
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
 
     console.log(message);
-    this.ReconnectionMessage.next(message);
+
+    if (this.connectionAttempts === 6) {
+      this.ReconnectionMessage.next(message);
+    }
   }
 }
