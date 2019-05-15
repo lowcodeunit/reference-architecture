@@ -84,9 +84,10 @@ export class RealTimeService {
 
           if (this.connectionAttempts > 5) {
             reject(err);
-          } else if (this.connectionAttempts <=  5) {
+          } else if (this.connectionAttempts <= 5) {
             this.retryConnection();
           }
+        }
       });
     });
   }
