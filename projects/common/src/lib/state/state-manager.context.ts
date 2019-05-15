@@ -27,7 +27,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     }
 
     this.rt.ReconnectionMessage.subscribe(val => {
-     // this.Reconnect(val);
       this.Execute({
         Arguments: val,
         Type: 'reconnect'
@@ -59,12 +58,12 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     });
   }
 
-  public Reconnect(args: boolean) {
-    this.Execute({
-      Arguments: args,
-      Type: 'reconnect'
-    });
-  }
+  // public Reconnect(args: boolean) {
+  //   this.Execute({
+  //     Arguments: args,
+  //     Type: 'reconnect'
+  //   });
+  // }
 
   //  Helpers
 
