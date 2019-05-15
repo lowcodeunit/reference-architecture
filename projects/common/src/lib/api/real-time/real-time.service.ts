@@ -24,7 +24,7 @@ export class RealTimeService {
 
   protected connectionAttempts: number;
 
-  public Reconnecting: Subject<boolean>;
+  public ReconnectionMessage: Subject<string>;
 
   public Settings: LCUServiceSettings;
 
@@ -34,7 +34,7 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
 
     this.connectionAttempts = 0;
-    this.Reconnecting = new Subject<boolean>();
+    this.ReconnectionMessage = new Subject();
 
     try {
       this.Settings = injector.get(LCUServiceSettings);
@@ -207,6 +207,7 @@ export class RealTimeService {
    */
   protected retryConnection(): void {
     this.connectionAttempts += 1;
+    console.log(this.connectionAttempts);
     (this.connectionAttempts < 5) ? this.reconnect() : this.stopReconnection();
   }
 
@@ -215,7 +216,7 @@ export class RealTimeService {
    */
   protected reconnect(): void {
     this.attemptingToReconnect = true;
-    this.emitReconnect();
+
     this.reconnectionMessage();
     this.start();
   }
@@ -225,21 +226,19 @@ export class RealTimeService {
    */
   protected stopReconnection(): void {
     this.attemptingToReconnect = false;
-    this.emitReconnect();
-    this.reconnectionMessage();
-    this.Reconnecting.unsubscribe();
-    // this.stop();
-  }
 
-  protected emitReconnect(): void {
-   this.Reconnecting.next(this.attemptingToReconnect);
+    this.reconnectionMessage();
+    this.stop();
   }
 
   /**
    * Notify user of reconnection attempt(s)
    */
-  public reconnectionMessage(): void {
+  protected reconnectionMessage(): void {
     let message: string;
     message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
+
+    this.ReconnectionMessage.next(message);
+    console.log(message);
   }
 }
