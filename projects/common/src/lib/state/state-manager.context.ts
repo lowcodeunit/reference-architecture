@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
 
-  public ReconnectionAttempt: Subject<string> = new Subject<string>();
+ // public ReconnectionAttempt: Subject<string> = new Subject<string>();
 
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
@@ -31,9 +31,9 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     this.setup();
 
-    this.rt.ReconnectionAttempt.subscribe((val: string) => {
-      this.ReconnectionAttempt.next(val);
-    });
+    // this.rt.ReconnectionAttempt.subscribe((val: string) => {
+    //   this.ReconnectionAttempt.next(val);
+    // });
   }
 
   //  API Methods
