@@ -22,7 +22,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     window['lcu:state:rt'] = value;
   }
 
-  protected reconnectNotification: Subject<string> = new Subject();
+  public reconnectNotification: Subject<string> = new Subject();
 
   //  Constructors
   constructor(protected injector: Injector) {
@@ -33,6 +33,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     }
 
     this.setup();
+
+    this.StateReconnectEvent.next('state test');
+    this.StateReconnectEvent.emit('emit test');
+    this.reconnectNotification.next('tttttt');
   }
 
   //  API Methods
@@ -70,8 +74,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   protected defaultValue(): T {
-    this.StateReconnectEvent.next('state test');
-    this.StateReconnectEvent.emit('emit test');
     return <T>{};
   }
 
