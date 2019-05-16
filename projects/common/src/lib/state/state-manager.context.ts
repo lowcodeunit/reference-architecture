@@ -33,8 +33,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     }
 
     this.setup();
-
-    this.StateReconnectEvent.next('state test');
   }
 
   //  API Methods
@@ -72,6 +70,8 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   protected defaultValue(): T {
+    this.StateReconnectEvent.next('state test');
+    this.StateReconnectEvent.emit('emit test');
     return <T>{};
   }
 
