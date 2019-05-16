@@ -28,7 +28,8 @@ export class RealTimeService {
 
   //  Properties
 
-  public ReconnectionAttempt: Subject<string> = new Subject<string>();
+  @Output()
+  public RealTimeReconnectEvent: EventEmitter<string> = new EventEmitter<string>();
 
   public Settings: LCUServiceSettings;
 
@@ -248,6 +249,7 @@ export class RealTimeService {
    * Notify user of reconnection attempt(s)
    */
   protected reconnectionMessage(): void {
-   this.ReconnectionAttempt.next((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
+    console.log((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
+    this.RealTimeReconnectEvent.next((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
   }
 }
