@@ -26,14 +26,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
       this.rt = injector.get(RealTimeService);
     }
 
-    this.rt.ReconnectionAttempt.subscribe(async (val: boolean) => {
-      await this.setupReceiveState();
-
-      await this.connectToState();
-
-      this.Execute({ Arguments: { AttemptToReconnect: val }, Type: 'attempt-to-reconnect' });
-    });
-
     this.setup();
   }
 
