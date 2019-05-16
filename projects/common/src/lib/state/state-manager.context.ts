@@ -1,14 +1,18 @@
 import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
-import { Injector } from '@angular/core';
+import { Injector, EventEmitter, Output } from '@angular/core';
 import { RealTimeService } from '../api/real-time/real-time.service';
+import { Subject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
-  
+
+  @Output()
+  public StateReconnectEvent: EventEmitter<string> = new EventEmitter<string>();
+
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
     return window['lcu:state:rt'];
@@ -17,6 +21,8 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected set rt(value: RealTimeService) {
     window['lcu:state:rt'] = value;
   }
+
+  protected reconnectNotification: Subject<string> = new Subject();
 
   //  Constructors
   constructor(protected injector: Injector) {
@@ -27,6 +33,8 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     }
 
     this.setup();
+
+    this.StateReconnectEvent.next('state test');
   }
 
   //  API Methods
