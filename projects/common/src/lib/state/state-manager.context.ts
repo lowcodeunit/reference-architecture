@@ -22,7 +22,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     window['lcu:state:rt'] = value;
   }
 
-  protected reconnectNotification: Subject<string> = new Subject();
+  public ReconnectionAttempt: Subject<string> = new Subject();
 
   //  Constructors
   constructor(protected injector: Injector) {
@@ -34,7 +34,9 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     this.setup();
 
-    this.StateReconnectEvent.next('state test');
+    this.rt.ReconnectionAttempt.subscribe((val: string) => {
+      this.ReconnectionAttempt.next(val);
+    });
   }
 
   //  API Methods
