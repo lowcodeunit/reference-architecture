@@ -10,8 +10,7 @@ import { Subject } from 'rxjs';
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
 
-  @Output()
-  public StateReconnectEvent: EventEmitter<string> = new EventEmitter<string>();
+  public ReconnectionAttempt: Subject<string>;
 
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
@@ -21,8 +20,6 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected set rt(value: RealTimeService) {
     window['lcu:state:rt'] = value;
   }
-
-  public reconnectNotification: Subject<string> = new Subject();
 
   //  Constructors
   constructor(protected injector: Injector) {
@@ -34,10 +31,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     this.setup();
 
-    this.rt.RealTimeReconnectEvent.subscribe(val => {
-      this.StateReconnectEvent.next('state test');
-      this.StateReconnectEvent.emit('emit test');
-      this.reconnectNotification.next('tttttt');
+    this.ReconnectionAttempt  = new Subject<string>();
+
+    this.rt.ReconnectionAttempt.subscribe((val: string) => {
+      this.ReconnectionAttempt.next(val);
     });
   }
 
