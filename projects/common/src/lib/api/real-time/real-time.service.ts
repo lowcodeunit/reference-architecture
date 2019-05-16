@@ -208,7 +208,7 @@ export class RealTimeService {
   protected stop(): void {
    // this.hub.stop();
    this.showConnectionError = true;
-   this.ReconnectionAttempt.unsubscribe();
+   this.ReconnectionAttempt.complete();
   }
 
   /**
