@@ -22,11 +22,13 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     window['lcu:state:rt'] = value;
   }
 
-  public ReconnectionAttempt: Subject<string> = new Subject();
+  public ReconnectionAttempt: Subject<boolean>;
 
   //  Constructors
   constructor(protected injector: Injector) {
     super();
+
+    this.ReconnectionAttempt = new Subject();
 
     if (!this.rt) {
       this.rt = injector.get(RealTimeService);
@@ -34,7 +36,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     this.setup();
 
-    this.rt.ReconnectionAttempt.subscribe((val: string) => {
+    this.rt.ReconnectionAttempt.subscribe((val: boolean) => {
       this.ReconnectionAttempt.next(val);
     });
   }
