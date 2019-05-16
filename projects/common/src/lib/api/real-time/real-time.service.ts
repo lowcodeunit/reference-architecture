@@ -37,7 +37,7 @@ export class RealTimeService {
   //  Constructors
   constructor(protected injector: Injector) {
 
-    this.ReconnectionAttempt = new Subject();
+    this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
 
     try {
