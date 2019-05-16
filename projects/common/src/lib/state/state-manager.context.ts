@@ -34,9 +34,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     this.setup();
 
-    this.StateReconnectEvent.next('state test');
-    this.StateReconnectEvent.emit('emit test');
-    this.reconnectNotification.next('tttttt');
+    this.rt.RealTimeReconnectEvent.subscribe(val => {
+      this.StateReconnectEvent.next('state test');
+      this.StateReconnectEvent.emit('emit test');
+      this.reconnectNotification.next('tttttt');
+    });
   }
 
   //  API Methods

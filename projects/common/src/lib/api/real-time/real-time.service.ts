@@ -250,6 +250,6 @@ export class RealTimeService {
    */
   protected reconnectionMessage(): void {
     console.log((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
-    this.RealTimeReconnectEvent.emit((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
+    this.RealTimeReconnectEvent.next((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
   }
 }
