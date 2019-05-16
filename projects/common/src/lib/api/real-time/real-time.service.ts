@@ -1,5 +1,5 @@
 import * as signalR from '@aspnet/signalr';
-import { NgZone } from '@angular/core';
+import { NgZone, Output, EventEmitter } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
 import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'rxjs';
@@ -28,7 +28,8 @@ export class RealTimeService {
 
   //  Properties
 
-  public ReconnectionAttempt: Subject<boolean> = new Subject();
+  @Output('reconnection-message')
+  public ReconnectMessage: EventEmitter<string> = new EventEmitter<string>();
 
   public Settings: LCUServiceSettings;
 
@@ -250,6 +251,6 @@ export class RealTimeService {
    */
   protected reconnectionMessage(): void {
     console.log((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
-    this.ReconnectionAttempt.next(this.attemptingToReconnect);
+    this.ReconnectMessage.emit((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
   }
 }
