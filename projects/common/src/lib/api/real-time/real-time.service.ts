@@ -11,7 +11,14 @@ import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'r
 })
 export class RealTimeService {
   //  Fields
+
+  protected attemptingToReconnect: boolean;
+
+  protected connectionAttempts: number;
+
   protected hub: signalR.HubConnection;
+
+  protected showConnectionError: boolean;
 
   protected started: ReplaySubject<signalR.HubConnection>;
 
@@ -20,9 +27,6 @@ export class RealTimeService {
   private zone: NgZone;
 
   //  Properties
-  protected attemptingToReconnect: boolean;
-
-  protected connectionAttempts: number;
 
   public ReconnectionAttempt: Subject<boolean> = new Subject();
 
@@ -73,13 +77,12 @@ export class RealTimeService {
 
               if (this.connectionAttempts < 5) {
                 this.retryConnection();
-
-                return;
               }
 
-              if (this.connectionAttempts === 5) {
+              if (this.showConnectionError) {
                 reject(err);
                 console.log('Error while starting connection: ' + err);
+                this.showConnectionError = false;
               }
 
             });
@@ -204,6 +207,7 @@ export class RealTimeService {
 
   protected stop(): void {
    // this.hub.stop();
+   this.showConnectionError = true;
    this.ReconnectionAttempt.unsubscribe();
   }
 
