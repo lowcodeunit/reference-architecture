@@ -77,10 +77,10 @@ export class RealTimeService {
                 return;
               }
 
-             // if (this.connectionAttempts === 5) {
-              reject(err);
-              console.log('Error while starting connection: ' + err);
-             // }
+              if (this.connectionAttempts === 5) {
+                reject(err);
+                console.log('Error while starting connection: ' + err);
+              }
 
             });
         } catch (err) {
@@ -204,6 +204,7 @@ export class RealTimeService {
 
   protected stop(): void {
    // this.hub.stop();
+   this.ReconnectionAttempt.unsubscribe();
   }
 
   /**
@@ -218,8 +219,6 @@ export class RealTimeService {
     } else if (this.connectionAttempts === 5) {
       this.stopReconnection();
     }
-
-   // (this.connectionAttempts < 5) ? this.reconnect() : this.stopReconnection();
   }
 
   /**
@@ -240,7 +239,6 @@ export class RealTimeService {
 
     this.reconnectionMessage();
     this.stop();
-   // this.ReconnectionAttempt.unsubscribe();
   }
 
   /**
