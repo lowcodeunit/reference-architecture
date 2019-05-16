@@ -28,8 +28,8 @@ export class RealTimeService {
 
   //  Properties
 
-  @Output()
-  public RealTimeReconnectEvent: EventEmitter<string> = new EventEmitter<string>();
+  // @Output()
+  // public ReconnectEvent: EventEmitter<string> = new EventEmitter<string>();
 
   public Settings: LCUServiceSettings;
 
@@ -250,6 +250,6 @@ export class RealTimeService {
    */
   protected reconnectionMessage(): void {
     console.log((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
-    this.RealTimeReconnectEvent.next((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
+  //  this.ReconnectEvent.emit((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
   }
 }
