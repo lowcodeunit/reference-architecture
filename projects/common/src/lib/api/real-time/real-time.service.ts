@@ -249,6 +249,6 @@ export class RealTimeService {
    * Notify user of reconnection attempt(s)
    */
   protected reconnectionMessage(): void {
-    this.ReconnectionAttempt.next((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
+   // this.ReconnectionAttempt.next((this.attemptingToReconnect) ? 'Reconnecting' : 'Disconnected');
   }
 }
