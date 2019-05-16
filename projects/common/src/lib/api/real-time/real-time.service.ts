@@ -28,8 +28,8 @@ export class RealTimeService {
 
   //  Properties
 
-  @Output('reconnection-message')
-  public ReconnectMessage: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  public ReconnectEvent: EventEmitter<string> = new EventEmitter<string>();
 
   public Settings: LCUServiceSettings;
 
