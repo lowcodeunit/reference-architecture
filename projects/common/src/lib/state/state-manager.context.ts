@@ -35,11 +35,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     return this.executeAction(action);
   }
 
-  public async Setup() {
+  public async Setup(shouldUpdate: boolean) {
     this.rt.Started.subscribe(async () => {
       await this.setupReceiveState();
 
-      await this.connectToState();
+      await this.connectToState(shouldUpdate);
 
       this.$Refresh();
     });
@@ -53,14 +53,14 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   //  Helpers
-  protected async connectToState() {
+  protected async connectToState(shouldUpdate: boolean) {
     const stateKey = await this.loadStateKey();
 
     const stateName = await this.loadStateName();
 
     const env = await this.loadEnvironment();
 
-    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName, Environment: env }).subscribe();
+    return this.rt.Invoke('ConnectToState', { ShouldSend: shouldUpdate, Key: stateKey, State: stateName, Environment: env }).subscribe();
   }
 
   protected defaultValue(): T {
@@ -84,7 +84,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected abstract async loadStateName();
 
   protected setup() {
-    this.Setup().then();
+    this.Setup(false).then();
   }
 
   protected async setupReceiveState() {
