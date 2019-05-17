@@ -1,5 +1,5 @@
 import * as signalR from '@aspnet/signalr';
-import { NgZone } from '@angular/core';
+import { NgZone, Output, EventEmitter } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
 import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'rxjs';
@@ -11,7 +11,14 @@ import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'r
 })
 export class RealTimeService {
   //  Fields
+
+  protected attemptingToReconnect: boolean;
+
+  protected connectionAttempts: number;
+
   protected hub: signalR.HubConnection;
+
+  protected showConnectionError: boolean;
 
   protected started: ReplaySubject<signalR.HubConnection>;
 
@@ -20,11 +27,8 @@ export class RealTimeService {
   private zone: NgZone;
 
   //  Properties
-  protected attemptingToReconnect: boolean;
 
-  protected connectionAttempts: number;
-
-  public ReconnectionMessage: Subject<string>;
+  public ReconnectionAttempt: Subject<boolean>;
 
   public Settings: LCUServiceSettings;
 
@@ -33,8 +37,8 @@ export class RealTimeService {
   //  Constructors
   constructor(protected injector: Injector) {
 
+    this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
-    this.ReconnectionMessage = new Subject();
 
     try {
       this.Settings = injector.get(LCUServiceSettings);
@@ -71,22 +75,26 @@ export class RealTimeService {
               resolve(this.hub);
             })
             .catch(err => {
-              console.log('Error while starting connection: ' + err);
 
-              if (this.connectionAttempts > 5) {
-                reject(err);
+              if (this.connectionAttempts < 5) {
+                this.retryConnection();
               }
 
-              this.retryConnection();
+              if (this.showConnectionError) {
+                reject(err);
+                console.log('Error while starting connection: ' + err);
+                this.showConnectionError = false;
+              }
+
             });
         } catch (err) {
-          console.log('Error while starting connection: ' + err);
+          console.log('Error while starting connection 02: ' + err);
 
-          if (this.connectionAttempts > 5) {
-            reject(err);
-          }
+          // if (this.connectionAttempts > 5) {
+          //   reject(err);
+          // }
 
-          this.retryConnection();
+          // this.retryConnection();
         }
       });
     });
@@ -199,7 +207,8 @@ export class RealTimeService {
   }
 
   protected stop(): void {
-    // this.hub.stop();
+   // this.hub.stop();
+   this.showConnectionError = true;
   }
 
   /**
@@ -208,7 +217,12 @@ export class RealTimeService {
   protected retryConnection(): void {
     this.connectionAttempts += 1;
     console.log(this.connectionAttempts);
-    (this.connectionAttempts < 5) ? this.reconnect() : this.stopReconnection();
+
+    if (this.connectionAttempts < 5) {
+      this.reconnect();
+    } else if (this.connectionAttempts === 5) {
+      this.stopReconnection();
+    }
   }
 
   /**
@@ -235,10 +249,6 @@ export class RealTimeService {
    * Notify user of reconnection attempt(s)
    */
   protected reconnectionMessage(): void {
-    let message: string;
-    message = (this.attemptingToReconnect) ? 'Attempting to reconnect' : 'Stopping reconnection attempts';
-
-    this.ReconnectionMessage.next(message);
-    console.log(message);
+   this.ReconnectionAttempt.next(this.attemptingToReconnect);
   }
 }
