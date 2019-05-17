@@ -1,14 +1,15 @@
 import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
-import { Injector } from '@angular/core';
-import { LCUServiceSettings } from '../api/lcu-service-settings';
+import { Injector, EventEmitter, Output } from '@angular/core';
 import { RealTimeService } from '../api/real-time/real-time.service';
+import { Subject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
+
 
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
@@ -19,15 +20,23 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     window['lcu:state:rt'] = value;
   }
 
+  public ReconnectionAttempt: Subject<boolean>;
+
   //  Constructors
   constructor(protected injector: Injector) {
     super();
+
+    this.ReconnectionAttempt = new Subject<boolean>();
 
     if (!this.rt) {
       this.rt = injector.get(RealTimeService);
     }
 
     this.setup();
+
+    this.rt.ReconnectionAttempt.subscribe((val: boolean) => {
+      this.ReconnectionAttempt.next(val);
+    });
   }
 
   //  API Methods
