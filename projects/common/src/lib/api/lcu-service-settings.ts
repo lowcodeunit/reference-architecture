@@ -14,4 +14,6 @@ export class LCUApplicationConfig {
 
 export class LCUStateConfig {
   public Environment: string;
+
+  public UsernameMock: string;
 }

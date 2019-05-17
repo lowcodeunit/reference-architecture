@@ -11,7 +11,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
   protected reconnectionMessage: Subscription;
-  
+
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
     return window['lcu:state:rt'];
@@ -69,7 +69,9 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     const env = await this.loadEnvironment();
 
-    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName, Environment: env }).subscribe();
+    const unMock = await this.loadUsernameMock();
+
+    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName, Environment: env, UsernameMock: unMock }).subscribe();
   }
 
   protected defaultValue(): T {
@@ -91,6 +93,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected abstract async loadStateKey();
 
   protected abstract async loadStateName();
+
+  protected async loadUsernameMock() {
+    return this.rt.Settings.StateConfig ? this.rt.Settings.StateConfig.UsernameMock : null;
+  }
 
   protected setup() {
     this.Setup().then();
