@@ -31,7 +31,8 @@ export class FathymSharedModule {
           winAny.LCU && winAny.LCU.Application.EnterprisePrimaryAPIKey ? winAny.LCU.Application.EnterprisePrimaryAPIKey : 'test-app'
       },
       StateConfig: {
-        Environment: winAny.LCU.State ? winAny.LCU.State.Environment : ''
+        Environment: winAny.LCU.State ? winAny.LCU.State.Environment : '',
+        UsernameMock: winAny.LCU.State ? winAny.LCU.State.UsernameMock : ''
       }
     };
   }

@@ -9,11 +9,6 @@ import { Subject } from 'rxjs';
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
-<<<<<<< HEAD
-  protected reconnectionMessage: Subscription;
-=======
-
->>>>>>> 0110e014a5a061c74f2e7c6257159863963f4a71
 
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
