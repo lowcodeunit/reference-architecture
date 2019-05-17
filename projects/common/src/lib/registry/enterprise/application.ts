@@ -7,6 +7,8 @@ export class Application {
 
   public ID?: string;
 
+  public IsPrivate?: boolean;
+
   public IsReadOnly?: boolean;
 
   public Name: string;

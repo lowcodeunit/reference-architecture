@@ -1,7 +1,8 @@
 import * as signalR from '@aspnet/signalr';
+import { NgZone, Output, EventEmitter } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
-import { Observable, BehaviorSubject, ReplaySubject, Observer } from 'rxjs';
+import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -10,21 +11,39 @@ import { Observable, BehaviorSubject, ReplaySubject, Observer } from 'rxjs';
 })
 export class RealTimeService {
   //  Fields
+
+  protected attemptingToReconnect: boolean;
+
+  protected connectionAttempts: number;
+
   protected hub: signalR.HubConnection;
 
-  protected settings: LCUServiceSettings;
+  protected showConnectionError: boolean;
 
   protected started: ReplaySubject<signalR.HubConnection>;
 
   protected url: string;
 
+  private zone: NgZone;
+
   //  Properties
+
+  public ReconnectionAttempt: Subject<boolean>;
+
+  public Settings: LCUServiceSettings;
+
   public Started: Observable<signalR.HubConnection>;
 
   //  Constructors
   constructor(protected injector: Injector) {
+
+    this.ReconnectionAttempt = new Subject<boolean>();
+    this.connectionAttempts = 0;
+
     try {
-      this.settings = injector.get(LCUServiceSettings);
+      this.Settings = injector.get(LCUServiceSettings);
+
+      this.zone = injector.get(NgZone);
     } catch (err) {}
 
     this.started = new ReplaySubject();
@@ -37,15 +56,15 @@ export class RealTimeService {
   //  API Methods
   public Start() {
     return new Promise<signalR.HubConnection>((resolve, reject) => {
-      this.buildHub('').then(hub => {
+      this.buildHub('').then((hub: signalR.HubConnection) => {
         this.hub = hub;
 
-        this.hub.onclose(err => {
-          console.log(err);
+        // this.hub.onclose(err => {
+        //   console.log('onclose', err);
 
-          //  TODO: Need to better handle reconnect without endless loop
-          // this.start();
-        });
+        //   //  TODO: Need to better handle reconnect without endless loop
+        //   // this.start();
+        // });
 
         try {
           this.hub
@@ -56,18 +75,26 @@ export class RealTimeService {
               resolve(this.hub);
             })
             .catch(err => {
-              console.log('Error while starting connection: ' + err);
 
-              this.start();
+              if (this.connectionAttempts < 5) {
+                this.retryConnection();
+              }
 
-              reject(err);
+              if (this.showConnectionError) {
+                reject(err);
+                console.log('Error while starting connection: ' + err);
+                this.showConnectionError = false;
+              }
+
             });
         } catch (err) {
-          console.log('Error while starting connection: ' + err);
+          console.log('Error while starting connection 02: ' + err);
 
-          this.start();
+          // if (this.connectionAttempts > 5) {
+          //   reject(err);
+          // }
 
-          reject(err);
+          // this.retryConnection();
         }
       });
     });
@@ -78,6 +105,8 @@ export class RealTimeService {
       return Observable.create(obs => {
         hub.on(methodName, req => {
           obs.next(req);
+
+          this.zone.run(() => {});
         });
       });
     });
@@ -90,6 +119,8 @@ export class RealTimeService {
           .invoke(methodName, ...args)
           .then(res => {
             obs.next(res);
+
+            this.zone.run(() => {});
           })
           .catch(e => {
             obs.error(e);
@@ -103,7 +134,8 @@ export class RealTimeService {
       return Observable.create(obs => {
         if (this.hub.state !== signalR.HubConnectionState.Connected) {
           this.Start().then(hub => {
-            console.log('Restartting connection in flight...');
+            console.log('Restarting connection in flight...');
+
             this.runWithHub(obs, action);
           });
         } else {
@@ -140,11 +172,11 @@ export class RealTimeService {
   }
 
   protected loadHubPath() {
-    return `/state?lcu-app-id=${this.settings.AppConfig.ID}&lcu-app-ent-api-key=${this.settings.AppConfig.EnterpriseAPIKey}`;
+    return `/state?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
-    const apiRoot = this.settings ? this.settings.APIRoot || '' : '';
+    const apiRoot = this.Settings ? this.Settings.APIRoot || '' : '';
 
     const hubPath = this.loadHubPath();
 
@@ -158,6 +190,8 @@ export class RealTimeService {
       res.subscribe(
         r => {
           obs.next(r);
+
+          this.zone.run(() => {});
         },
         e => {
           obs.error(e);
@@ -170,5 +204,51 @@ export class RealTimeService {
     setTimeout(() => {
       this.Start().then(hub => this.started.next(hub));
     }, 50);
+  }
+
+  protected stop(): void {
+   // this.hub.stop();
+   this.showConnectionError = true;
+  }
+
+  /**
+   * Retry connection
+   */
+  protected retryConnection(): void {
+    this.connectionAttempts += 1;
+    console.log(this.connectionAttempts);
+
+    if (this.connectionAttempts < 5) {
+      this.reconnect();
+    } else if (this.connectionAttempts === 5) {
+      this.stopReconnection();
+    }
+  }
+
+  /**
+   * Attempt to reconnect
+   */
+  protected reconnect(): void {
+    this.attemptingToReconnect = true;
+
+    this.reconnectionMessage();
+    this.start();
+  }
+
+  /**
+   * Stop trying to reconnect
+   */
+  protected stopReconnection(): void {
+    this.attemptingToReconnect = false;
+
+    this.reconnectionMessage();
+    this.stop();
+  }
+
+  /**
+   * Notify user of reconnection attempt(s)
+   */
+  protected reconnectionMessage(): void {
+   this.ReconnectionAttempt.next(this.attemptingToReconnect);
   }
 }

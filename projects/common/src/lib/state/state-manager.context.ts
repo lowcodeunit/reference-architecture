@@ -1,14 +1,15 @@
 import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
-import { Injector } from '@angular/core';
-import { LCUServiceSettings } from '../api/lcu-service-settings';
+import { Injector, EventEmitter, Output } from '@angular/core';
 import { RealTimeService } from '../api/real-time/real-time.service';
+import { Subject } from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
+
 
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
@@ -19,15 +20,23 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     window['lcu:state:rt'] = value;
   }
 
+  public ReconnectionAttempt: Subject<boolean>;
+
   //  Constructors
   constructor(protected injector: Injector) {
     super();
+
+    this.ReconnectionAttempt = new Subject<boolean>();
 
     if (!this.rt) {
       this.rt = injector.get(RealTimeService);
     }
 
     this.setup();
+
+    this.rt.ReconnectionAttempt.subscribe((val: boolean) => {
+      this.ReconnectionAttempt.next(val);
+    });
   }
 
   //  API Methods
@@ -35,11 +44,11 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     return this.executeAction(action);
   }
 
-  public async Setup() {
+  public async Setup(shouldUpdate: boolean) {
     this.rt.Started.subscribe(async () => {
       await this.setupReceiveState();
 
-      await this.connectToState();
+      await this.connectToState(shouldUpdate);
 
       this.$Refresh();
     });
@@ -53,12 +62,14 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   }
 
   //  Helpers
-  protected async connectToState() {
+  protected async connectToState(shouldUpdate: boolean) {
     const stateKey = await this.loadStateKey();
 
     const stateName = await this.loadStateName();
 
-    return this.rt.Invoke('ConnectToState', { Key: stateKey, State: stateName }).subscribe();
+    const env = await this.loadEnvironment();
+
+    return this.rt.Invoke('ConnectToState', { ShouldSend: shouldUpdate, Key: stateKey, State: stateName, Environment: env }).subscribe();
   }
 
   protected defaultValue(): T {
@@ -73,12 +84,16 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
     return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments, Key: stateKey, State: stateName }).subscribe();
   }
 
+  protected async loadEnvironment() {
+    return this.rt.Settings.StateConfig ? this.rt.Settings.StateConfig.Environment : null;
+  }
+
   protected abstract async loadStateKey();
 
   protected abstract async loadStateName();
 
   protected setup() {
-    this.Setup().then();
+    this.Setup(false).then();
   }
 
   protected async setupReceiveState() {
