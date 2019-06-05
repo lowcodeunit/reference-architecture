@@ -1,4 +1,3 @@
-import { MaterialModule } from './../modules/material.module';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,8 +13,8 @@ import 'hammerjs';
 export const winAny = <any>window;
 
 @NgModule({
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule, MaterialModule],
-  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule, MaterialModule],
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
+  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   providers: [],
   entryComponents: []
 })
