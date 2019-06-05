@@ -9,6 +9,7 @@ import {
           MatCheckboxModule,
           MatSidenavModule,
           MatToolbarModule,
+          MatToolbarRow,
           MatListModule,
           MatTabsModule,
           MatSelectModule,
