@@ -4,7 +4,7 @@
 	"scripts": {
 		"deploy": "npm version patch && npm run deploy:all",
 		"deploy:all": "npm run deploy:common && npm run deploy:elements",
-		"deploy:common": "npm version patch --prefix projects/common && ng build common && npm run styles:common && npm publish ./dist/common --access public",
+		"deploy:common": "npm version patch --prefix projects/common && ng build common && npm run copy:assets && npm publish ./dist/common --access public",
 		"deploy:elements": "npm version patch --prefix projects/elements && ng build elements && npm publish ./dist/elements --access public",
 		"ng": "ng",
 		"start": "ng serve",
@@ -12,8 +12,7 @@
 		"test": "ng test",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
-		"styles:common": "npm run styles:common:scss",
-		"styles:common:scss": "cpx \"./projects/common/assets/styles/**/*.scss\" \"./dist/foo-lib/assets/styles/\""
+		"copy:assets": "cpx \"./projects/common/assets/**/*\" \"./dist/common/assets/styles/\""
 	},
 	"private": false,
 	"dependencies": {
