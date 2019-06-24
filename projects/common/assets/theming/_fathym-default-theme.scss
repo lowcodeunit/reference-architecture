@@ -1,0 +1,14 @@
+@import '../colors/fathym-ivy';
+
+// define 3 theme color
+// mat-palette accepts $palette-name, main, lighter and darker variants
+$primary: mat-palette($fathym-ivy-flipper);
+$accent: mat-palette($fathym-ivy-fipper-accent);
+$warn: mat-palette($mat-deep-orange, A200);
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$default-theme: mat-light-theme(
+    $primary,
+    $accent,
+    $warn
+);
