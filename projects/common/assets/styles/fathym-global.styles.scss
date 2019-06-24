@@ -14,7 +14,7 @@ $brand-white: rgb(245, 245, 245) !default;
     $accent:  map-get($theme, accent);
     $warn:  map-get($theme, warn);
 
-    @include angular-material-theme($fathym-contrast-theme);
+    @include angular-material-theme($theme);
 }
 
 
