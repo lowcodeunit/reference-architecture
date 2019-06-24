@@ -13,7 +13,7 @@
 		"lint": "ng lint",
 		"e2e": "ng e2e",
 		"styles:common": "npm run styles:common:scss",
-    	"styles:common:scss": "cpx \"./projects/common/assets/styles/**/*.scss\" \"./dist/foo-lib/assets/styles/\""
+		"styles:common:scss": "cpx \"./projects/common/assets/styles/**/*.scss\" \"./dist/foo-lib/assets/styles/\""
 	},
 	"private": false,
 	"dependencies": {
@@ -46,6 +46,7 @@
 		"@types/jasminewd2": "~2.0.3",
 		"@types/node": "~8.9.4",
 		"codelyzer": "~4.5.0",
+		"cpx": "^1.5.0",
 		"jasmine-core": "~2.99.1",
 		"jasmine-spec-reporter": "~4.2.1",
 		"karma": "~3.1.1",
