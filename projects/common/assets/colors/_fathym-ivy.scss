@@ -98,6 +98,47 @@ $daisy-complement-3: #A89AAB;
 $daisy-complement-4: #8D7593;
 
 /**
+Theme colors sea green constrast
+*/
+$fathym-ivy-sea-green-contrast: (
+  100: $sea-green-primary-1,
+  200: $sea-green-primary-2,
+  300: $sea-green-primary-3,
+  400: $sea-green-primary-4,
+  500: $sea-green-primary-0,
+  contrast: (
+      100: #fcfdfd,
+      200: #f9fbfb,
+      300: #f7f8fa,
+      400: #f4f6f8,
+      500: $ice
+)
+);
+
+$fathym-ivy-sea-green-accent-contrast: (
+  100: #48515f,
+  200: #404855,
+  300: #383f4a,
+  400: #303640,
+  500: #282d35,
+  600: #20242a,
+  700: #181b20,
+  800: #101215,
+  900: #08090b,
+  contrast: (
+      100: #fc7992,
+      200: #f96b82,
+      300: #f55e71,
+      400: #f25061,
+      500: #ef4351,
+      600: #bf3641,
+      700: #bf3641,
+      800: #bf3641,
+      900: #bf3641
+)
+);
+
+/**
 Theme colors flipper
 */
 $fathym-ivy-flipper: (
