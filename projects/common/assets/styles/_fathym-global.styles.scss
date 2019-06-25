@@ -13,18 +13,134 @@ $brand-white: rgb(245, 245, 245) !default;
     $primary: map-get($theme, primary);
     $accent:  map-get($theme, accent);
     $warn:  map-get($theme, warn);
-    $foreground: map-get($theme, foreground);
-    $background: map-get($theme, background);
 
+    $foreground: primary;
+    $background: accent;
+
+    ::-webkit-scrollbar {
+		width: .75rem;
+	}
+
+	::-webkit-scrollbar-track {
+		background: mat-color($primary);
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: mat-color($accent);
+	}
+
+	html, body {
+		height: 100%;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+		background-color: whitesmoke;
+	}
+
+	iframe {
+		border: none;
+	}
+
+	.filler {
+		flex: 1 1 auto;
+		display: inline-block !important;
+	}
+
+	.sticky {
+		position: sticky;
+		z-index: 750;
+		top: 0;
+	}
+
+	.inline {
+		display: inline-block;
+	}
+
+	.contents {
+		display: contents;
+	}
+
+	.page-element {
+		display: contents;
+	}
+
+	.simple-flex {
+		display: flex;
+		box-sizing: border-box;
+		padding: 0 16px;
+		width: 100%;
+		flex-direction: row;
+		align-items: center;
+		white-space: nowrap;
+	}
+
+	.h1 {
+		font-size: 2em;
+	}
+
+	.h2 {
+		font-size: 1.5em;
+	}
+
+	.h3 {
+		font-size: 1.17em;
+	}
+
+	.h4 {
+		font-size: 1em;
+	}
+
+	.h5 {
+		font-size: 0.83em;
+	}
+
+	.h6 {
+		font-size: 0.67em;
+	}
+
+	forge-component-display {
+		display: block;
+	}
+
+	.mat-button, .mat-raised-button, .mat-icon-button {
+		&.active {
+			.mat-button-focus-overlay {
+				opacity: .05;
+			}
+		}
+	}
+
+	.mainscreen {
+		height: calc(100% - 64px);
+		display: block;
+
+		.mat-sidenav {
+			width: 300px;
+			background-size: cover;
+			background-position: 100% 0;
+			background-image: linear-gradient(to bottom, transparentize(mat-color($primary, 900), .15), transparentize(mat-color($primary, 900), .15)), url(/marketing/assets/img/gray-texture.jpg);
+
+			.nav {
+				&.pre-actions, &.post-actions {
+					z-index: 500;
+					background-size: cover;
+					background-position: 100% 0;
+					background-image: linear-gradient(to bottom, transparentize(mat-color($primary, 900), .15), transparentize(mat-color($primary, 900), .15)), url(/marketing/assets/img/gray-texture.jpg);
+
+					.mat-nav-list {
+						padding: 0;
+					}
+				}
+			}
+
+			.mat-accordion {
+				.mat-list .mat-list-item, .mat-nav-list .mat-list-item {
+					color: mat-color($primary);
+				}
+			}
+		}
+	}
     @include angular-material-theme($theme);
 }
-
-
-// Create the theme object (a Sass map containing all of the palettes).
-// $fathym-contrast-theme: mat-dark-theme($fathym-contrast-primary, $fathym-contrast-accent, $fathym-contrast-warn);
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-// @include angular-material-theme($fathym-contrast-theme);
-
