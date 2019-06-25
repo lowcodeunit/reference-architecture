@@ -100,47 +100,6 @@ $brand-white: rgb(245, 245, 245) !default;
 		font-size: 0.67em;
 	}
 
-	forge-component-display {
-		display: block;
-	}
 
-	.mat-button, .mat-raised-button, .mat-icon-button {
-		&.active {
-			.mat-button-focus-overlay {
-				opacity: .05;
-			}
-		}
-	}
-
-	.mainscreen {
-		height: calc(100% - 64px);
-		display: block;
-
-		.mat-sidenav {
-			width: 300px;
-			background-size: cover;
-			background-position: 100% 0;
-			background-image: linear-gradient(to bottom, transparentize(mat-color($primary, 900), .15), transparentize(mat-color($primary, 900), .15)), url(/marketing/assets/img/gray-texture.jpg);
-
-			.nav {
-				&.pre-actions, &.post-actions {
-					z-index: 500;
-					background-size: cover;
-					background-position: 100% 0;
-					background-image: linear-gradient(to bottom, transparentize(mat-color($primary, 900), .15), transparentize(mat-color($primary, 900), .15)), url(/marketing/assets/img/gray-texture.jpg);
-
-					.mat-nav-list {
-						padding: 0;
-					}
-				}
-			}
-
-			.mat-accordion {
-				.mat-list .mat-list-item, .mat-nav-list .mat-list-item {
-					color: mat-color($primary);
-				}
-			}
-		}
-	}
     @include angular-material-theme($theme);
 }
