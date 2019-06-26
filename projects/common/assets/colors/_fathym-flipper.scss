@@ -9,15 +9,15 @@ $flipper-primary-7: #A4BAB3;
 $flipper-primary-8: #62706b;
 $flipper-primary-9: #424a48;
 
-$flipper-accent-1: #fcfdfd;
-$flipper-accent-2: #f9fbfb;
-$flipper-accent-3: #f7f8fa;
-$flipper-accent-4: #f4f6f8;
-$flipper-accent-5: #f1f4f6; // default accent
-$flipper-accent-6: #c1c3c5;
-$flipper-accent-7: #919294;
-$flipper-accent-8: #606262;
-$flipper-accent-9: #303131;
+$flipper-contrast-1: #fcfdfd;
+$flipper-contrast-2: #f9fbfb;
+$flipper-contrast-3: #f7f8fa;
+$flipper-contrast-4: #f4f6f8;
+$flipper-contrast-5: #f1f4f6; // default contrast
+$flipper-contrast-6: #c1c3c5;
+$flipper-contrast-7: #919294;
+$flipper-contrast-8: #606262;
+$flipper-contrast-9: #303131;
 
 $fathym-ivy-flipper-primary: (
   100: $flipper-primary-1,
@@ -29,7 +29,7 @@ $fathym-ivy-flipper-primary: (
   700: $flipper-primary-7,
   800: $flipper-primary-8,
   900: $flipper-primary-9,
-  accent: (
+  contrast: (
       100: #424a48,
       200: #424a48,
       300: #424a48,
@@ -42,17 +42,17 @@ $fathym-ivy-flipper-primary: (
     )
 );
 
-$fathym-ivy-flipper-accent: (
-  100: $flipper-accent-1,
-  200: $flipper-accent-2,
-  300: $flipper-accent-3,
-  400: $flipper-accent-4,
-  500: $flipper-accent-5,
-  600: $flipper-accent-6,
-  700: $flipper-accent-7,
-  800: $flipper-accent-8,
-  900: $flipper-accent-9,
-  accent: (
+$fathym-ivy-flipper-contrast: (
+  100: $flipper-contrast-1,
+  200: $flipper-contrast-2,
+  300: $flipper-contrast-3,
+  400: $flipper-contrast-4,
+  500: $flipper-contrast-5,
+  600: $flipper-contrast-6,
+  700: $flipper-contrast-7,
+  800: $flipper-contrast-8,
+  900: $flipper-contrast-9,
+  contrast: (
       100: #424a48,
       200: #424a48,
       300: #424a48,

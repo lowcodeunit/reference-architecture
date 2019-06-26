@@ -9,15 +9,15 @@ $white-mint-primary-7: #868f91;
 $white-mint-primary-8: #596061;
 $white-mint-primary-9: #2d3030;
 
-$white-mint-accent-1: #fcfdfd;
-$white-mint-accent-2: #f9fbfb;
-$white-mint-accent-3: #f7f8fa;
-$white-mint-accent-4: #f4f6f8;
-$white-mint-accent-5: #f1f4f6; // default accent
-$white-mint-accent-6: #c1c3c5;
-$white-mint-accent-7: #919294;
-$white-mint-accent-8: #606262;
-$white-mint-accent-9: #303131;
+$white-mint-contrast-1: #fcfdfd;
+$white-mint-contrast-2: #f9fbfb;
+$white-mint-contrast-3: #f7f8fa;
+$white-mint-contrast-4: #f4f6f8;
+$white-mint-contrast-5: #f1f4f6; // default contrast
+$white-mint-contrast-6: #c1c3c5;
+$white-mint-contrast-7: #919294;
+$white-mint-contrast-8: #606262;
+$white-mint-contrast-9: #303131;
 
 $fathym-ivy-white-mint-primary: (
   100: $white-mint-primary-1,
@@ -29,7 +29,7 @@ $fathym-ivy-white-mint-primary: (
   700: $white-mint-primary-7,
   800: $white-mint-primary-8,
   900: $white-mint-primary-9,
-  accent: (
+  contrast: (
       100: #2d3030,
       200: #2d3030,
       300: #2d3030,
@@ -42,17 +42,17 @@ $fathym-ivy-white-mint-primary: (
     )
 );
 
-$fathym-ivy-white-mint-accent: (
-  100: $white-mint-accent-1,
-  200: $white-mint-accent-2,
-  300: $white-mint-accent-3,
-  400: $white-mint-accent-4,
-  500: $white-mint-accent-5,
-  600: $white-mint-accent-6,
-  700: $white-mint-accent-7,
-  800: $white-mint-accent-8,
-  900: $white-mint-accent-9,
-  accent: (
+$fathym-ivy-white-mint-contrast: (
+  100: $white-mint-contrast-1,
+  200: $white-mint-contrast-2,
+  300: $white-mint-contrast-3,
+  400: $white-mint-contrast-4,
+  500: $white-mint-contrast-5,
+  600: $white-mint-contrast-6,
+  700: $white-mint-contrast-7,
+  800: $white-mint-contrast-8,
+  900: $white-mint-contrast-9,
+  contrast: (
       100: #424a48,
       200: #424a48,
       300: #424a48,
