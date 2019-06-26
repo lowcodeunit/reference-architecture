@@ -14,8 +14,8 @@ $brand-white: rgb(245, 245, 245) !default;
     $accent:  map-get($theme, accent);
     $warn:  map-get($theme, warn);
 
-    $foreground: primary;
-    $background: accent;
+    $foreground: mat-get($theme, foreground);
+    $background: mat-get($theme, bbackground);
 
     ::-webkit-scrollbar {
 		width: .75rem;
@@ -43,6 +43,14 @@ $brand-white: rgb(245, 245, 245) !default;
 		border: none;
 	}
 
+    .primary-background {
+        background: mat-color($primary);
+    }
+
+    .accent-background {
+        background: mat-color($accent);
+    }
+
 	.filler {
 		flex: 1 1 auto;
 		display: inline-block !important;
@@ -64,16 +72,6 @@ $brand-white: rgb(245, 245, 245) !default;
 
 	.page-element {
 		display: contents;
-	}
-
-	.simple-flex {
-		display: flex;
-		box-sizing: border-box;
-		padding: 0 16px;
-		width: 100%;
-		flex-direction: row;
-		align-items: center;
-		white-space: nowrap;
 	}
 
 	.h1 {
