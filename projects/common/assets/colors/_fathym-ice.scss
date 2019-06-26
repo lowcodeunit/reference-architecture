@@ -1,0 +1,68 @@
+
+    // ice colors
+    $ice-primary-1: #edf1f0;
+    $ice-primary-2: #f9fbfb;
+    $ice-primary-3: #f7f8fa;
+    $ice-primary-4: #f4f6f8;
+    $ice-primary-5: #f1f4f6; // default accent
+    $ice-primary-6: #c1c3c5;
+    $ice-primary-7: #919294;
+    $ice-primary-8: #606262;
+    $ice-primary-9: #303131;
+    
+    // daisy colors
+    $ice-accent-1: #fefefd;
+    $ice-accent-2: #fdfefb;
+    $ice-accent-3: #fdfdf8;
+    $ice-accent-4: #fcfdf6;
+    $ice-accent-5: #fbfcf4; // default primary
+    $ice-accent-6: #c9cac3;
+    $ice-accent-7: #979792;
+    $ice-accent-8: #646562;
+    $ice-accent-9: #323231;
+    
+    $fathym-ivy-ice-primary: (
+      100: $ice-primary-1,
+      200: $ice-primary-2,
+      300: $ice-primary-3,
+      400: $ice-primary-4,
+      500: $ice-primary-5,
+      600: $ice-primary-6,
+      700: $ice-primary-7,
+      800: $ice-primary-8,
+      900: $ice-primary-9,
+      accent: (
+        100: #424a48,
+        200: #424a48,
+        300: #424a48,
+        400: #424a48,
+        500: #A4BAB3,
+        600: #F1F4F6,
+        700: #F1F4F6,
+        800: #F1F4F6,
+        900: #F1F4F6
+        )
+    );
+    
+    $fathym-ivy-artic-accent: (
+      100: $artic-accent-1,
+      200: $artic-accent-2,
+      300: $artic-accent-3,
+      400: $artic-accent-4,
+      500: $artic-accent-5,
+      600: $artic-accent-6,
+      700: $artic-accent-7,
+      800: $artic-accent-8,
+      900: $artic-accent-9,
+      accent: (
+        100: #323231,
+        200: #323231,
+        300: #323231,
+        400: #323231,
+        500: #A4BAB3,
+        600: #F1F4F6,
+        700: #F1F4F6,
+        800: #F1F4F6,
+        900: #F1F4F6
+        )
+    );

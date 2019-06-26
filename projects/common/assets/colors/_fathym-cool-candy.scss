@@ -1,0 +1,68 @@
+
+    // cool candy colors
+    $cool-candy-primary-1: #b9f4f3;
+    $cool-candy-primary-2: #a5e9e8;
+    $cool-candy-primary-3: #90dddc;
+    $cool-candy-primary-4: #7cd2d1;
+    $cool-candy-primary-5: #67c7c5; // default primary
+    $cool-candy-primary-6: #529f9e;
+    $cool-candy-primary-7: #3e7776;
+    $cool-candy-primary-8: #29504f;
+    $cool-candy-primary-9: #152827;
+    
+    // artic colors
+    $cool-candy-accent-1: #ebf7f7;
+    $cool-candy-accent-2: #d7efef;
+    $cool-candy-accent-3: #c4e8e7;
+    $cool-candy-accent-4: #b0e0df;
+    $cool-candy-accent-5: #9cd8d7; // default accent
+    $cool-candy-accent-6: #7dadac;
+    $cool-candy-accent-7: #5e8281;
+    $cool-candy-accent-8: #3e5656;
+    $cool-candy-accent-9: #1f2b2b;
+    
+    $fathym-ivy-cool-candy: (
+      100: $cool-candy-primary-1,
+      200: $cool-candy-primary-2,
+      300: $cool-candy-primary-3,
+      400: $cool-candy-primary-4,
+      500: $cool-candy-primary-5,
+      600: $cool-candy-primary-6,
+      700: $cool-candy-primary-7,
+      800: $cool-candy-primary-8,
+      900: $cool-candy-primary-9,
+      accent: (
+          100: #152827,
+          200: #152827,
+          300: #152827,
+          400: #152827,
+          500: #9CD8D7,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6
+        )
+    );
+    
+    $fathym-ivy-cool-candy-accent: (
+      100: $cool-candy-accent-1,
+      200: $cool-candy-accent-2,
+      300: $cool-candy-accent-3,
+      400: $cool-candy-accent-4,
+      500: $cool-candy-accent-5,
+      600: $cool-candy-accent-6,
+      700: $cool-candy-accent-7,
+      800: $cool-candy-accent-8,
+      900: $cool-candy-accent-9,
+      accent: (
+          100: #1f2b2b,
+          200: #1f2b2b,
+          300: #1f2b2b,
+          400: #1f2b2b,
+          500: #67C7C5,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6
+        )
+    );
