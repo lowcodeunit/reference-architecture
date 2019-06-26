@@ -1,0 +1,66 @@
+
+    $sea-green-primary-1: #85e9e8;
+    $sea-green-primary-2: #76d3d2;
+    $sea-green-primary-3: #68bdbb;
+    $sea-green-primary-4: #59a7a5;
+    $sea-green-primary-5: #4a918e; // default primary
+    $sea-green-primary-6: #4a918e;
+    $sea-green-primary-7: #2c5755;
+    $sea-green-primary-8: #1e3a39;
+    $sea-green-primary-9: #0f1d1c;
+    
+    $sea-green-accent-1: #b9f4f3;
+    $sea-green-accent-2: #a5e9e8;
+    $sea-green-accent-3: #90dddc;
+    $sea-green-accent-4: #7cd2d1;
+    $sea-green-accent-5: #67c7c5; // default accent
+    $sea-green-accent-6: #529f9e;
+    $sea-green-accent-7: #3e7776;
+    $sea-green-accent-8: #29504f;
+    $sea-green-accent-9: #152827;
+    
+    $fathym-ivy-sea-green: (
+      100: $sea-green-primary-1,
+      200: $sea-green-primary-2,
+      300: $sea-green-primary-3,
+      400: $sea-green-primary-4,
+      500: $sea-green-primary-5,
+      600: $sea-green-primary-6,
+      700: $sea-green-primary-7,
+      800: $sea-green-primary-8,
+      900: $sea-green-primary-9,
+      accent: (
+          100: #0f1d1c,
+          200: #0f1d1c,
+          300: #0f1d1c,
+          400: #0f1d1c,
+          500: #F1F4F6,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6
+        )
+    );
+    
+    $fathym-ivy-sea-green-accent: (
+      100: $sea-green-accent-1,
+      200: $sea-green-accent-2,
+      300: $sea-green-accent-3,
+      400: $sea-green-accent-4,
+      500: $sea-green-accent-5,
+      600: $sea-green-accent-6,
+      700: $sea-green-accent-7,
+      800: $sea-green-accent-8,
+      900: $sea-green-accent-9,
+      accent: (
+          100: #152827,
+          200: #152827,
+          300: #152827,
+          400: #152827,
+          500: #4A918E,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6
+        )
+    );

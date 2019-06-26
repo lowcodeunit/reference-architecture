@@ -1,0 +1,66 @@
+	// Main Primary flipper */
+$flipper-primary-1: #edf1f0;
+$flipper-primary-2: #dbe3e1;
+$flipper-primary-3: #c8d6d1;
+$flipper-primary-4: #c8d6d1;
+$flipper-primary-5: #A4BAB3; // default primary
+$flipper-primary-6: #83958f;
+$flipper-primary-7: #A4BAB3;
+$flipper-primary-8: #62706b;
+$flipper-primary-9: #424a48;
+
+$flipper-accent-1: #fcfdfd;
+$flipper-accent-2: #f9fbfb;
+$flipper-accent-3: #f7f8fa;
+$flipper-accent-4: #f4f6f8;
+$flipper-accent-5: #f1f4f6; // default accent
+$flipper-accent-6: #c1c3c5;
+$flipper-accent-7: #919294;
+$flipper-accent-8: #606262;
+$flipper-accent-9: #303131;
+
+$fathym-ivy-flipper-primary: (
+  100: $flipper-primary-1,
+  200: $flipper-primary-2,
+  300: $flipper-primary-3,
+  400: $flipper-primary-4,
+  500: $flipper-primary-5,
+  600: $flipper-primary-6,
+  700: $flipper-primary-7,
+  800: $flipper-primary-8,
+  900: $flipper-primary-9,
+  accent: (
+      100: #424a48,
+      200: #424a48,
+      300: #424a48,
+      400: #424a48,
+      500: #F1F4F6,
+      600: #F1F4F6,
+      700: #F1F4F6,
+      800: #F1F4F6,
+      900: #F1F4F6
+    )
+);
+
+$fathym-ivy-flipper-accent: (
+  100: $flipper-accent-1,
+  200: $flipper-accent-2,
+  300: $flipper-accent-3,
+  400: $flipper-accent-4,
+  500: $flipper-accent-5,
+  600: $flipper-accent-6,
+  700: $flipper-accent-7,
+  800: $flipper-accent-8,
+  900: $flipper-accent-9,
+  accent: (
+      100: #424a48,
+      200: #424a48,
+      300: #424a48,
+      400: #424a48,
+      500: #A4BAB3,
+      600: #F1F4F6,
+      700: #F1F4F6,
+      800: #F1F4F6,
+      900: #F1F4F6
+    )
+);
