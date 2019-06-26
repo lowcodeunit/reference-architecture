@@ -21,7 +21,7 @@
     $cool-candy-contrast-8: #3e5656;
     $cool-candy-contrast-9: #1f2b2b;
 
-    $fathym-ivy-cool-candy: (
+    $fathym-ivy-cool-candy-primary: (
       100: $cool-candy-primary-1,
       200: $cool-candy-primary-2,
       300: $cool-candy-primary-3,
@@ -44,7 +44,7 @@
         )
     );
     
-    $fathym-ivy-cool-candy-contrast: (
+    $fathym-ivy-cool-candy-accent: (
       100: $cool-candy-contrast-1,
       200: $cool-candy-contrast-2,
       300: $cool-candy-contrast-3,
