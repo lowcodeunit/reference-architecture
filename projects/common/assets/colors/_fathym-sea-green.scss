@@ -9,15 +9,15 @@
     $sea-green-primary-8: #1e3a39;
     $sea-green-primary-9: #0f1d1c;
     
-    $sea-green-accent-1: #b9f4f3;
-    $sea-green-accent-2: #a5e9e8;
-    $sea-green-accent-3: #90dddc;
-    $sea-green-accent-4: #7cd2d1;
-    $sea-green-accent-5: #67c7c5; // default accent
-    $sea-green-accent-6: #529f9e;
-    $sea-green-accent-7: #3e7776;
-    $sea-green-accent-8: #29504f;
-    $sea-green-accent-9: #152827;
+    $sea-green-contrast-1: #b9f4f3;
+    $sea-green-contrast-2: #a5e9e8;
+    $sea-green-contrast-3: #90dddc;
+    $sea-green-contrast-4: #7cd2d1;
+    $sea-green-contrast-5: #67c7c5; // default contrast
+    $sea-green-contrast-6: #529f9e;
+    $sea-green-contrast-7: #3e7776;
+    $sea-green-contrast-8: #29504f;
+    $sea-green-contrast-9: #152827;
     
     $fathym-ivy-sea-green: (
       100: $sea-green-primary-1,
@@ -29,7 +29,7 @@
       700: $sea-green-primary-7,
       800: $sea-green-primary-8,
       900: $sea-green-primary-9,
-      accent: (
+      contrast: (
           100: #0f1d1c,
           200: #0f1d1c,
           300: #0f1d1c,
@@ -42,17 +42,17 @@
         )
     );
     
-    $fathym-ivy-sea-green-accent: (
-      100: $sea-green-accent-1,
-      200: $sea-green-accent-2,
-      300: $sea-green-accent-3,
-      400: $sea-green-accent-4,
-      500: $sea-green-accent-5,
-      600: $sea-green-accent-6,
-      700: $sea-green-accent-7,
-      800: $sea-green-accent-8,
-      900: $sea-green-accent-9,
-      accent: (
+    $fathym-ivy-sea-green-contrast: (
+      100: $sea-green-contrast-1,
+      200: $sea-green-contrast-2,
+      300: $sea-green-contrast-3,
+      400: $sea-green-contrast-4,
+      500: $sea-green-contrast-5,
+      600: $sea-green-contrast-6,
+      700: $sea-green-contrast-7,
+      800: $sea-green-contrast-8,
+      900: $sea-green-contrast-9,
+      contrast: (
           100: #152827,
           200: #152827,
           300: #152827,

@@ -11,16 +11,16 @@
     $cool-candy-primary-9: #152827;
     
     // artic colors
-    $cool-candy-accent-1: #ebf7f7;
-    $cool-candy-accent-2: #d7efef;
-    $cool-candy-accent-3: #c4e8e7;
-    $cool-candy-accent-4: #b0e0df;
-    $cool-candy-accent-5: #9cd8d7; // default accent
-    $cool-candy-accent-6: #7dadac;
-    $cool-candy-accent-7: #5e8281;
-    $cool-candy-accent-8: #3e5656;
-    $cool-candy-accent-9: #1f2b2b;
-    
+    $cool-candy-contrast-1: #ebf7f7;
+    $cool-candy-contrast-2: #d7efef;
+    $cool-candy-contrast-3: #c4e8e7;
+    $cool-candy-contrast-4: #b0e0df;
+    $cool-candy-contrast-5: #9cd8d7; // default contrast
+    $cool-candy-contrast-6: #7dadac;
+    $cool-candy-contrast-7: #5e8281;
+    $cool-candy-contrast-8: #3e5656;
+    $cool-candy-contrast-9: #1f2b2b;
+
     $fathym-ivy-cool-candy: (
       100: $cool-candy-primary-1,
       200: $cool-candy-primary-2,
@@ -31,7 +31,7 @@
       700: $cool-candy-primary-7,
       800: $cool-candy-primary-8,
       900: $cool-candy-primary-9,
-      accent: (
+      contrast: (
           100: #152827,
           200: #152827,
           300: #152827,
@@ -44,17 +44,17 @@
         )
     );
     
-    $fathym-ivy-cool-candy-accent: (
-      100: $cool-candy-accent-1,
-      200: $cool-candy-accent-2,
-      300: $cool-candy-accent-3,
-      400: $cool-candy-accent-4,
-      500: $cool-candy-accent-5,
-      600: $cool-candy-accent-6,
-      700: $cool-candy-accent-7,
-      800: $cool-candy-accent-8,
-      900: $cool-candy-accent-9,
-      accent: (
+    $fathym-ivy-cool-candy-contrast: (
+      100: $cool-candy-contrast-1,
+      200: $cool-candy-contrast-2,
+      300: $cool-candy-contrast-3,
+      400: $cool-candy-contrast-4,
+      500: $cool-candy-contrast-5,
+      600: $cool-candy-contrast-6,
+      700: $cool-candy-contrast-7,
+      800: $cool-candy-contrast-8,
+      900: $cool-candy-contrast-9,
+      contrast: (
           100: #1f2b2b,
           200: #1f2b2b,
           300: #1f2b2b,
