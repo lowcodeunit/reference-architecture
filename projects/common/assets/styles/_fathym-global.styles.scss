@@ -43,8 +43,11 @@ $brand-white: rgb(245, 245, 245) !default;
 		border: none;
 	}
 
-	.global-logo {
-		background-image: $logoProp;
+	.primary-logo {
+		background-image: url($primary-logo);
+		background-position: center;
+  		background-repeat: no-repeat;
+  		background-size: cover;
 	}
 
     .primary-background {
