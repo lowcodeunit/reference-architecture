@@ -1,6 +1,5 @@
 @import '../colors/fathym-white-mint';
 
-// define 3 theme color
 // mat-palette accepts $palette-name, main, lighter and darker variants
 $primary: mat-palette($fathym-ivy-white-mint-primary);
 $accent: mat-palette($fathym-ivy-white-mint-accent);
