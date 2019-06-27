@@ -5,7 +5,7 @@
 $primary: mat-palette($fathym-ivy-flipper-primary);
 $accent: mat-palette($fathym-ivy-flipper-accent);
 $warn: mat-palette($mat-deep-orange, A200);
-$logoProp: '../images/logos/thinky_circle_red.png';
+$logoProp: './images/logos/thinky_circle_red.png';
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
 $default-theme: mat-light-theme(
@@ -14,6 +14,3 @@ $default-theme: mat-light-theme(
     $warn
 );
 
-.logo {
-   // background-image: url('../images/logos/thinky_circle_red.png');
-}
