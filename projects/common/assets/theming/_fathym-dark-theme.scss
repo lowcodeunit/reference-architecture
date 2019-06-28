@@ -6,6 +6,7 @@
 $primary: mat-palette($fathym-contrast-gray);
 $accent: mat-palette($fathym-contrast-accent);
 $warn: mat-palette($mat-deep-orange, A200);
+$primary-logo: $fathym-red-logo;
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
 $dark-theme: mat-dark-theme(
