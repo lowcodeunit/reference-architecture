@@ -1,7 +1,9 @@
 
+@import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import './node_modules/@angular/material/theming';
 @import './margins-padding';
+@import './reset';
 
 
 @include mat-core();
@@ -29,20 +31,6 @@ $brand-white: rgb(245, 245, 245) !default;
 		background: mat-color($accent);
 	}
 
-	html, body {
-		height: 100%;
-	}
-
-	body {
-		margin: 0;
-		padding: 0;
-		background-color: whitesmoke;
-	}
-
-	iframe {
-		border: none;
-	}
-
 	.primary-logo {
 		background-image: url($primary-logo);
 		background-position: center;
@@ -58,53 +46,96 @@ $brand-white: rgb(245, 245, 245) !default;
         background: mat-color($accent);
     }
 
-	.filler {
-		flex: 1 1 auto;
-		display: inline-block !important;
-	}
-
-	.sticky {
-		position: sticky;
-		z-index: 750;
-		top: 0;
-	}
-
-	.inline {
-		display: inline-block;
-	}
-
-	.contents {
-		display: contents;
-	}
-
-	.page-element {
-		display: contents;
-	}
-
-	.h1 {
-		font-size: 2em;
-	}
-
-	.h2 {
-		font-size: 1.5em;
-	}
-
-	.h3 {
-		font-size: 1.17em;
-	}
-
-	.h4 {
-		font-size: 1em;
-	}
-
-	.h5 {
-		font-size: 0.83em;
-	}
-
-	.h6 {
-		font-size: 0.67em;
-	}
-
-
+	
     @include angular-material-theme($theme);
 }
+
+html, body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	// background-color: whitesmoke;
+	font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+iframe {
+	border: none;
+}
+
+.filler {
+	flex: 1 1 auto;
+	display: inline-block !important;
+}
+
+.sticky {
+	position: sticky;
+	z-index: 750;
+	top: 0;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.contents {
+	display: contents;
+}
+
+.page-element {
+	display: contents;
+}
+
+.h1 {
+	font-size: 2em;
+}
+
+.h2 {
+	font-size: 1.5em;
+}
+
+.h3 {
+	font-size: 1.17em;
+}
+
+.h4 {
+	font-size: 1em;
+}
+
+.h5 {
+	font-size: 0.83em;
+}
+
+.h6 {
+	font-size: 0.67em;
+}
+
+.mat-spinner {
+    margin: auto;
+  }
+
+  .mat-full-width {
+    width: 100%;
+  }
+
+  .spread {
+    margin: 2rem;
+  }
+
+  .spread-thin {
+    margin: 1rem;
+  }
+
+  .overlay {
+    position: sticky !important;
+
+    &.top {
+      top: 0;
+    }
+
+    &.bottom {
+      bottom: 0;
+    }
+  }
