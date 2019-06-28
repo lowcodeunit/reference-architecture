@@ -14,7 +14,8 @@ $brand-white: rgb(245, 245, 245) !default;
 @mixin custom-theme($theme) {
     $primary: map-get($theme, primary);
     $accent:  map-get($theme, accent);
-    $warn:  map-get($theme, warn);
+	$warn:  map-get($theme, warn);
+	$primary-logo: map-get($theme, primary-logo);
 
     $foreground: mat-get($theme, foreground);
 	$background: mat-get($theme, bbackground);
