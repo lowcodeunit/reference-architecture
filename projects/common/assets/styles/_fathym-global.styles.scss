@@ -32,6 +32,8 @@ $brand-white: rgb(245, 245, 245) !default;
 	}
 
 	.primary-logo {
+		height: 100%;
+		width: auto;
 		background-image: url($primary-logo);
 		background-position: center;
   		background-repeat: no-repeat;
