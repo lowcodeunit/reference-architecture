@@ -1,6 +1,7 @@
 @import '../colors/fathym-contrast';
 
 // define 3 theme color
+
 // mat-palette accepts $palette-name, main, lighter and darker variants
 $primary: mat-palette($fathym-contrast-gray);
 $accent: mat-palette($fathym-contrast-accent);

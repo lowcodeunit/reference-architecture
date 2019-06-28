@@ -1,6 +1,5 @@
 @import '../colors/fathym-white-mint';
 
-// mat-palette accepts $palette-name, main, lighter and darker variants
 $primary: mat-palette($fathym-ivy-white-mint-primary);
 $accent: mat-palette($fathym-ivy-white-mint-accent);
 $warn: mat-palette($mat-deep-orange, A200);
