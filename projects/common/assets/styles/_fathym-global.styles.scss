@@ -32,14 +32,25 @@ $brand-white: rgb(245, 245, 245) !default;
 		background: mat-color($accent);
 	}
 
-	.primary-logo {
-		height: 100%;
-		width: auto;
-		background-image: url($primary-logo);
-		background-position: center;
-  		background-repeat: no-repeat;
-  		background-size: cover;
+	@mixin logo($logo) {
+		.primary-logo {
+			height: 100%;
+			width: auto;
+			background-image: url($logo);
+			background-position: center;
+			  background-repeat: no-repeat;
+			  background-size: cover;
+		}
 	}
+
+	// .primary-logo {
+	// 	height: 100%;
+	// 	width: auto;
+	// 	background-image: url($primary-logo);
+	// 	background-position: center;
+  	// 	background-repeat: no-repeat;
+  	// 	background-size: cover;
+	// }
 
     .primary-background {
         background: mat-color($primary);
