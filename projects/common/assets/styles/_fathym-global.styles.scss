@@ -32,17 +32,6 @@ $brand-white: rgb(245, 245, 245) !default;
 		background: mat-color($accent);
 	}
 
-	@mixin logo($logo) {
-		.primary-logo {
-			height: 100%;
-			width: auto;
-			background-image: url($logo);
-			background-position: center;
-			  background-repeat: no-repeat;
-			  background-size: cover;
-		}
-	}
-
 	// .primary-logo {
 	// 	height: 100%;
 	// 	width: auto;
@@ -62,6 +51,17 @@ $brand-white: rgb(245, 245, 245) !default;
 
 	
     @include angular-material-theme($theme);
+}
+
+@mixin logo($logo) {
+	.primary-logo {
+		height: 100%;
+		width: auto;
+		background-image: url($logo);
+		background-position: center;
+		  background-repeat: no-repeat;
+		  background-size: cover;
+	}
 }
 
 html, body {
