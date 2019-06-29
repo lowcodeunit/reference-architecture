@@ -15,6 +15,7 @@ $brand-white: rgb(245, 245, 245) !default;
     $primary: map-get($theme, primary);
     $accent:  map-get($theme, accent);
 	$warn:  map-get($theme, warn);
+	// $primary-logo: map-merge($map1: , $map2: )
 
     $foreground: mat-get($theme, foreground);
 	$background: mat-get($theme, bbackground);
