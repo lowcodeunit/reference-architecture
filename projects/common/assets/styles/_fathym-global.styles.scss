@@ -55,22 +55,22 @@ $brand-white: rgb(245, 245, 245) !default;
 
 @font-face {
 	font-family: 'encode-sans-semi';
-	src: url('../fonts/EncodeSansSemiCondensed-Black.ttf');
+	src: url('/fonts/EncodeSansSemiCondensed-Black.ttf');
 }
 
 @font-face {
 	font-family: 'opens-sans-condensed-light';
-	src: url('../fonts/OpenSansCondensed-Light.ttf');
+	src: url('/fonts/OpenSansCondensed-Light.ttf');
 }
 
 @font-face {
 	font-family: 'opens-sans-light';
-	src: url('../fonts/OpenSans-Light.ttf');
+	src: url('/fonts/OpenSans-Light.ttf');
 }
 
 @font-face {
 	font-family: 'opens-sans-regular';
-	src: url('../fonts/OpenSans-Regular.ttf');
+	src: url('/fonts/OpenSans-Regular.ttf');
 }
 
 html, body {
