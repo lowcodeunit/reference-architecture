@@ -1,6 +1,5 @@
-@import '../styles/colors/fathym-flipper';
-@import '../styles/logos/fathym-icons';
-
+@import '../styles/branding/colors/fathym-flipper';
+@import '../styles/branding/logos/fathym-icons';
 // define 3 theme color
 // mat-palette accepts $palette-name, main, lighter and darker variants
 $primary: mat-palette($fathym-ivy-flipper-primary);
