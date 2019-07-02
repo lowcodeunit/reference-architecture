@@ -3,7 +3,6 @@
 $primary: mat-palette($nide-primary);
 $accent: mat-palette($nide-accent, A200, A100, A400t);
 $warn: mat-palette($nide-warn);
-$primary-logo: $fathym-red-logo;
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
-$nide-theme: mat-light-theme($nide-app-primary, $nide-app-accent, $nide-app-warn);
+$nide-theme: mat-light-theme($primary, $accent, $warn);
