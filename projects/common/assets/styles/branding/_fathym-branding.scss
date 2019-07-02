@@ -4,7 +4,19 @@
 @import './colors/fathym-flipper';
 @import './fonts/fathym-fonts';
 @import './colors/fathym-ice';
-@import './colors/fathym-nide';
+// @import './colors/fathym-nide';
 @import './colors/fathym-sea-green';
 @import './colors/fathym-white-mint';
 @import './logos/fathym-icons';
+
+.title, .header {
+    font-family: 'encode sans semi';
+}
+
+.paragraph-title, .tagline {
+    font-family: 'opens sans regular';
+}
+
+.plain-text, .remarks {
+    font-family: 'opens sans light';
+}

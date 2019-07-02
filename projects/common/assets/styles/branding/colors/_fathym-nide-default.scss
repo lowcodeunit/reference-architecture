@@ -1,0 +1,118 @@
+
+    $nide-primary-1: #edf1f0;
+    $nide-primary-2: #dbe3e1;
+    $nide-primary-3: #c8d6d1;
+    $nide-primary-4: #c8d6d1;
+    $nide-primary-5: #A4BAB3; // default primary
+    $nide-primary-6: #83958f;
+    $nide-primary-7: #A4BAB3;
+    $nide-primary-8: #62706b;
+    $nide-primary-9: #424a48;
+    
+    $nide-contrast-1: #fcfdfd;
+    $nide-contrast-2: #f9fbfb;
+    $nide-contrast-3: #f7f8fa;
+    $nide-contrast-4: #f4f6f8;
+    $nide-contrast-5: #f1f4f6; // default contrast
+    $nide-contrast-6: #c1c3c5;
+    $nide-contrast-7: #919294;
+    $nide-contrast-8: #606262;
+    $nide-contrast-9: #303131;
+    
+    $nide-primary: (
+      100: $nide-primary-1,
+      200: $nide-primary-2,
+      300: $nide-primary-3,
+      400: $nide-primary-4,
+      500: $nide-primary-5,
+      600: $nide-primary-6,
+      700: $nide-primary-7,
+      800: $nide-primary-8,
+      900: $nide-primary-9,
+      A100: #9df0ff,
+      A200: #6ae9ff,
+      A400: #37e1ff,
+      A700: #1eddff,
+      contrast: (
+          100: #424a48,
+          200: #424a48,
+          300: #424a48,
+          400: #424a48,
+          500: #424a48,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6,
+          A100: #000000,
+          A200: #000000,
+          A400: #000000,
+          A700: #000000
+        )
+    );
+    
+    $nide-accent: (
+      100: $nide-contrast-1,
+      200: $nide-contrast-2,
+      300: $nide-contrast-3,
+      400: $nide-contrast-4,
+      500: $nide-contrast-5,
+      600: $nide-contrast-6,
+      700: $nide-contrast-7,
+      800: $nide-contrast-8,
+      900: $nide-contrast-9,
+      A100: #d0e2ff,
+      A200: #9dc2ff,
+      A400: #6aa2ff,
+      A700: #5192ff,
+      contrast: (
+          100: #303131,
+          200: #303131,
+          300: #303131,
+          400: #303131,
+          500: #303131,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6,
+          A100: #000000,
+          A200: #000000,
+          A400: #000000,
+          A700: #000000
+        )
+    );
+
+$nide-warn: (
+  50: #f8e7e8,
+  100: #edc3c7,
+  200: #e29ca1,
+  300: #d6747b,
+  400: #cd565f,
+  500: #c43843,
+  600: #be323d,
+  700: #b62b34,
+  800: #af242c,
+  900: #a2171e,
+  A100: #ffd6d8,
+  A200: #ffa3a7,
+  A400: #ff7075,
+  A700: #ff575d,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$nide-black: rgb(10, 10, 10);
+$nide-white: rgb(245, 245, 245);
