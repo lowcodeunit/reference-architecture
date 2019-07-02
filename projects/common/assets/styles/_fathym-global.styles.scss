@@ -4,6 +4,7 @@
 @import './node_modules/@angular/material/theming';
 @import '../styles/utils/reset';
 @import '../styles/utils/margins-padding';
+@import '../styles/branding/fathym-branding';
 
 
 @include mat-core();
@@ -81,7 +82,8 @@ html, body {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: Roboto, 'Helvetica Neue', sans-serif;
+	// font-family: Roboto, 'Helvetica Neue', sans-serif;
+	font-family: 'opens sans regular', sans-serif;
 }
 
 iframe {
