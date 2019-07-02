@@ -1,0 +1,66 @@
+
+    $sea-green-primary-1: #85e9e8;
+    $sea-green-primary-2: #76d3d2;
+    $sea-green-primary-3: #68bdbb;
+    $sea-green-primary-4: #59a7a5;
+    $sea-green-primary-5: #4a918e; // default primary
+    $sea-green-primary-6: #4a918e;
+    $sea-green-primary-7: #2c5755;
+    $sea-green-primary-8: #1e3a39;
+    $sea-green-primary-9: #0f1d1c;
+    
+    $sea-green-contrast-1: #b9f4f3;
+    $sea-green-contrast-2: #a5e9e8;
+    $sea-green-contrast-3: #90dddc;
+    $sea-green-contrast-4: #7cd2d1;
+    $sea-green-contrast-5: #67c7c5; // default contrast
+    $sea-green-contrast-6: #529f9e;
+    $sea-green-contrast-7: #3e7776;
+    $sea-green-contrast-8: #29504f;
+    $sea-green-contrast-9: #152827;
+    
+    $fathym-ivy-sea-green-primary: (
+      100: $sea-green-primary-1,
+      200: $sea-green-primary-2,
+      300: $sea-green-primary-3,
+      400: $sea-green-primary-4,
+      500: $sea-green-primary-5,
+      600: $sea-green-primary-6,
+      700: $sea-green-primary-7,
+      800: $sea-green-primary-8,
+      900: $sea-green-primary-9,
+      contrast: (
+          100: #0f1d1c,
+          200: #0f1d1c,
+          300: #0f1d1c,
+          400: #0f1d1c,
+          500: #0f1d1c,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6
+        )
+    );
+    
+    $fathym-ivy-sea-green-accent: (
+      100: $sea-green-contrast-1,
+      200: $sea-green-contrast-2,
+      300: $sea-green-contrast-3,
+      400: $sea-green-contrast-4,
+      500: $sea-green-contrast-5,
+      600: $sea-green-contrast-6,
+      700: $sea-green-contrast-7,
+      800: $sea-green-contrast-8,
+      900: $sea-green-contrast-9,
+      contrast: (
+          100: #152827,
+          200: #152827,
+          300: #152827,
+          400: #152827,
+          500: #152827,
+          600: #F1F4F6,
+          700: #F1F4F6,
+          800: #F1F4F6,
+          900: #F1F4F6
+        )
+    );

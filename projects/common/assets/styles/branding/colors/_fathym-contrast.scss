@@ -1,0 +1,92 @@
+// used http://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF for color picking
+
+$contrast-red-primary-0: #EF4351;	// Main Primary contrast-red */
+$contrast-red-primary-1: #FC929A;
+$contrast-red-primary-2: #FA6772;
+$contrast-red-primary-3: #E21524;
+$contrast-red-primary-4: #AC0A16;
+
+$contrast-red-complement-0: #4DCB39;	// Main Complement contrast-red */
+$contrast-red-complement-1: #94E887;
+$contrast-red-complement-2: #6CDA5A;
+$contrast-red-complement-3: #2AC012;
+$contrast-red-complement-4: #1B9209;
+
+$contrast-gray-primary-0: #282D35;  // Main Primary contrast-gray */
+$contrast-gray-primary-1: #616A77;
+$contrast-gray-primary-2: #454D5A;
+$contrast-gray-primary-3: #19202D;
+$contrast-gray-primary-4: #0F1826;
+
+$contrast-gray-complement-0: #50483A;	// Main Complement contrast-gray */
+$contrast-gray-complement-1: #B4A78F;
+$contrast-gray-complement-2: #887B66;
+$contrast-gray-complement-3: #433723;
+$contrast-gray-complement-4: #3A2C13;
+
+$contrast-warn: #ff5722;
+
+$fathym-contrast-gray: (
+    100: #48515f,
+    200: #404855,
+    300: #383f4a,
+    400: #303640,
+    500: #282d35,
+    600: #20242a,
+    700: #181b20,
+    800: #101215,
+    900: #08090b,
+    contrast: (
+        100: #fc7992,
+        200: #f96b82,
+        300: #f55e71,
+        400: #f25061,
+        500: #ef4351,
+        600: #bf3641,
+        700: #bf3641,
+        800: #bf3641,
+        900: #bf3641
+  )
+);
+
+$fathym-contrast-accent-alt: (
+  100: $contrast-red-complement-1,
+  200: $contrast-red-complement-2,
+  300: $contrast-red-complement-3,
+  400: $contrast-red-complement-4,
+  500: $contrast-red-complement-0,
+  contrast: (
+      100: #48515f,
+      200: #404855,
+      300: #383f4a,
+      400: #303640,
+      500: #282d35,
+      600: #20242a,
+      700: #181b20,
+      800: #101215,
+      900: #08090b,
+  )
+);
+
+$fathym-contrast-accent: (
+    100: #fc7992,
+    200: #f96b82,
+    300: #f55e71,
+    400: #f25061,
+    500: #ef4351,
+    600: #bf3641,
+    700: #8f2831,
+    800: #601b20,
+    900: #300d10,
+    contrast: (
+        100: #48515f,
+        200: #404855,
+        300: #383f4a,
+        400: #303640,
+        500: #303640,
+        600: #303640,
+        700: #fff,
+        800: #fff,
+        900: #fff
+  )
+);

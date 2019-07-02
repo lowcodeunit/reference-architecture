@@ -10,7 +10,6 @@ import { Subject } from 'rxjs';
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
 
-
   // protected rt: RealTimeService;
   protected get rt(): RealTimeService {
     return window['lcu:state:rt'];
@@ -69,7 +68,15 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     const env = await this.loadEnvironment();
 
-    return this.rt.Invoke('ConnectToState', { ShouldSend: shouldUpdate, Key: stateKey, State: stateName, Environment: env }).subscribe();
+    const unMock = await this.loadUsernameMock();
+
+    return this.rt.Invoke('ConnectToState', {
+      ShouldSend: shouldUpdate,
+      Key: stateKey,
+      State: stateName,
+      Environment: env,
+      UsernameMock: unMock
+    }).subscribe();
   }
 
   protected defaultValue(): T {
@@ -91,6 +98,10 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
   protected abstract async loadStateKey();
 
   protected abstract async loadStateName();
+
+  protected async loadUsernameMock() {
+    return this.rt.Settings.StateConfig ? this.rt.Settings.StateConfig.UsernameMock : null;
+  }
 
   protected setup() {
     this.Setup(false).then();

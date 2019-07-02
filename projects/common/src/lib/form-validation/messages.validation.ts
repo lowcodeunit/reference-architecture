@@ -3,6 +3,7 @@ import { ValidationMessageModel } from './../models/validation-message.model';
 import { UserValidationMessagesConstants } from '../utils/constants/user-validation-messages.constants';
 import { Constants } from '../utils/constants/constants';
 import { PasswordValidationMessagesConstants } from '../utils/constants/password-validation-messages.constants';
+import { ZipcodeValidationMessagesConstants } from '../utils/zipcode-validataion-messages.constants';
 
 // @dynamic
 /**
@@ -31,5 +32,9 @@ export class ValidationMessages {
   public static readonly ConfirmPassword: Array<ValidationMessageModel> = [
     { Type: Constants.REQUIRED, Message: PasswordValidationMessagesConstants.CONFIRM_REQUIRED },
     { Type: Constants.PASSWORDS_MATCH, Message: PasswordValidationMessagesConstants.PASSWORDS_MATCH }
-  ]
+  ];
+
+  public static readonly Zipcode: Array<ValidationMessageModel> = [
+    { Type: Constants.PATTERN, Message: ZipcodeValidationMessagesConstants.PATTERN }
+  ];
 }

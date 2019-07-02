@@ -1,0 +1,13 @@
+@import '../styles/branding/colors/fathym-white-mint';
+
+$primary: mat-palette($fathym-ivy-white-mint-primary);
+$accent: mat-palette($fathym-ivy-white-mint-accent);
+$warn: mat-palette($mat-deep-orange, A200);
+$primary-logo: $fathym-primary-flipper-logo;
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$light-theme: mat-light-theme(
+    $primary,
+    $accent,
+    $warn
+);

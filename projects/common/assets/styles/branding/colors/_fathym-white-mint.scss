@@ -1,0 +1,66 @@
+// white mint colors
+$white-mint-primary-1: #f9fcfc;
+$white-mint-primary-2: #f2f9fa;
+$white-mint-primary-3: #ecf5f7;
+$white-mint-primary-4: #e5f2f5;
+$white-mint-primary-5: #dfeff2; // default primary
+$white-mint-primary-6: #b2bfc2;
+$white-mint-primary-7: #868f91;
+$white-mint-primary-8: #596061;
+$white-mint-primary-9: #2d3030;
+
+$white-mint-contrast-1: #fcfdfd;
+$white-mint-contrast-2: #f9fbfb;
+$white-mint-contrast-3: #f7f8fa;
+$white-mint-contrast-4: #f4f6f8;
+$white-mint-contrast-5: #f1f4f6; // default contrast
+$white-mint-contrast-6: #c1c3c5;
+$white-mint-contrast-7: #919294;
+$white-mint-contrast-8: #606262;
+$white-mint-contrast-9: #303131;
+
+$fathym-ivy-white-mint-primary: (
+  100: $white-mint-primary-1,
+  200: $white-mint-primary-2,
+  300: $white-mint-primary-3,
+  400: $white-mint-primary-4,
+  500: $white-mint-primary-5,
+  600: $white-mint-primary-6,
+  700: $white-mint-primary-7,
+  800: $white-mint-primary-8,
+  900: $white-mint-primary-9,
+  contrast: (
+      100: #2d3030,
+      200: #2d3030,
+      300: #2d3030,
+      400: #2d3030,
+      500: #2d3030,
+      600: #F1F4F6,
+      700: #F1F4F6,
+      800: #F1F4F6,
+      900: #F1F4F6
+    )
+);
+
+$fathym-ivy-white-mint-accent: (
+  100: $white-mint-contrast-1,
+  200: $white-mint-contrast-2,
+  300: $white-mint-contrast-3,
+  400: $white-mint-contrast-4,
+  500: $white-mint-contrast-5,
+  600: $white-mint-contrast-6,
+  700: $white-mint-contrast-7,
+  800: $white-mint-contrast-8,
+  900: $white-mint-contrast-9,
+  contrast: (
+      100: #424a48,
+      200: #424a48,
+      300: #424a48,
+      400: #424a48,
+      500: #424a48,
+      600: #F1F4F6,
+      700: #F1F4F6,
+      800: #F1F4F6,
+      900: #F1F4F6
+    )
+);

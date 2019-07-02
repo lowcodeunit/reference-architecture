@@ -10,7 +10,7 @@ export class UserValidationMessagesConstants {
   /**
    * Constant for username pattern
    */
-  public static readonly PATTERN: string = 'Your username must contain only numbers and letters';
+  public static readonly PATTERN: string = 'Username cannot end or begin with _ or .';
 
   /**
    * Constant for username required
