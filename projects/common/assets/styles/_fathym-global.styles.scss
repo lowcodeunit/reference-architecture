@@ -11,6 +11,28 @@
 $brand-black: rgb(10, 10, 10) !default;
 $brand-white: rgb(245, 245, 245) !default;
 
+@mixin primary-logo($url: null, $background-size: null) {
+
+	@if ($url) {
+		$url: $url;
+	} else {
+		$url: $primary-logo;
+	}
+
+	@if ($background-size) {
+		$background-size: $background-size;
+	} else {
+		$background-size: 150px;
+	}
+
+	height: 100%;
+	width: auto;
+	background-image: url($url);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: $background-size;
+}
+
 @mixin custom-theme($theme) {
     $primary: map-get($theme, primary);
     $accent:  map-get($theme, accent);
@@ -31,14 +53,14 @@ $brand-white: rgb(245, 245, 245) !default;
 		background: mat-color($accent);
 	}
 
-	.primary-logo {
-		height: 100%;
-		width: auto;
-		background-image: url($primary-logo);
-		background-position: center;
-  		background-repeat: no-repeat;
-  		background-size: cover;
-	}
+	// .primary-logo {
+	// 	height: 100%;
+	// 	width: auto;
+	// 	background-image: url($primary-logo);
+	// 	background-position: center;
+  	// 	background-repeat: no-repeat;
+  	// 	background-size: cover;
+	// }
 
     .primary-background {
         background: mat-color($primary);
