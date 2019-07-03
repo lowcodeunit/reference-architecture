@@ -2,8 +2,8 @@
 @import '../styles/branding/logos/fathym-icons';
 // define 3 theme color
 // mat-palette accepts $palette-name, main, lighter and darker variants
-$primary: mat-palette($fathym-ivy-flipper-primary);
-$accent: mat-palette($fathym-ivy-flipper-accent);
+$primary: mat-palette($fathym-flipper-primary);
+$accent: mat-palette($fathym-flipper-accent);
 $warn: mat-palette($mat-deep-orange, A200);
 $primary-logo: $fathym-primary-flipper-logo;
 

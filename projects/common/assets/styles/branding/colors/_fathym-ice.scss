@@ -1,68 +1,68 @@
 
-    // ice colors
-    $ice-primary-1: #edf1f0;
-    $ice-primary-2: #f9fbfb;
-    $ice-primary-3: #f7f8fa;
-    $ice-primary-4: #f4f6f8;
-    $ice-primary-5: #f1f4f6; // default contrast
-    $ice-primary-6: #c1c3c5;
-    $ice-primary-7: #919294;
-    $ice-primary-8: #606262;
-    $ice-primary-9: #303131;
-    
-    // daisy colors
-    $ice-contrast-1: #fefefd;
-    $ice-contrast-2: #fdfefb;
-    $ice-contrast-3: #fdfdf8;
-    $ice-contrast-4: #fcfdf6;
-    $ice-contrast-5: #fbfcf4; // default primary
-    $ice-contrast-6: #c9cac3;
-    $ice-contrast-7: #979792;
-    $ice-contrast-8: #646562;
-    $ice-contrast-9: #323231;
-    
-    $fathym-ivy-ice-primary: (
-      100: $ice-primary-1,
-      200: $ice-primary-2,
-      300: $ice-primary-3,
-      400: $ice-primary-4,
-      500: $ice-primary-5,
-      600: $ice-primary-6,
-      700: $ice-primary-7,
-      800: $ice-primary-8,
-      900: $ice-primary-9,
-      contrast: (
-        100: #424a48,
-        200: #424a48,
-        300: #424a48,
-        400: #424a48,
-        500: #424a48,
-        600: #F1F4F6,
-        700: #F1F4F6,
-        800: #F1F4F6,
-        900: #F1F4F6
-        )
-    );
-    
-    $fathym-ivy-ice-accent: (
-      100: $ice-contrast-1,
-      200: $ice-contrast-2,
-      300: $ice-contrast-3,
-      400: $ice-contrast-4,
-      500: $ice-contrast-5,
-      600: $ice-contrast-6,
-      700: $ice-contrast-7,
-      800: $ice-contrast-8,
-      900: $ice-contrast-9,
-      contrast: (
-        100: #323231,
-        200: #323231,
-        300: #323231,
-        400: #323231,
-        500: #323231,
-        600: #F1F4F6,
-        700: #F1F4F6,
-        800: #F1F4F6,
-        900: #F1F4F6
-        )
-    );
+$fathym-ice-primary: (
+  50 : #fdfefe,
+  100 : #fbfcfc,
+  200 : #f8fafb,
+  300 : #f5f7f9,
+  400 : #f3f6f7,
+  500 : #f1f4f6,
+  600 : #eff3f5,
+  700 : #edf1f3,
+  800 : #ebeff2,
+  900 : #e7ecef,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #ffffff,
+  A700 : #ffffff,
+  contrast: (
+    50 : #202020,
+    100 : #202020,
+    200 : #202020,
+    300 : #202020,
+    400 : #202020,
+    500 : #202020,
+    600 : #202020,
+    700 : #202020,
+    800 : #202020,
+    900 : #202020,
+    A100 : #202020,
+    A200 : #202020,
+    A400 : #202020,
+    A700 : #202020,
+    )
+);
+
+$fathym-ice-accent: (
+  50 : #fffffe,
+    100 : #fefefc,
+    200 : #fdfefa,
+    300 : #fcfdf7,
+    400 : #fcfcf6,
+    500 : #fbfcf4,
+    600 : #fafcf3,
+    700 : #fafbf1,
+    800 : #f9fbef,
+    900 : #f8faec,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  contrast: (
+    50 : #202020,
+    100 : #202020,
+    200 : #202020,
+    300 : #202020,
+    400 : #202020,
+    500 : #202020,
+    600 : #202020,
+    700 : #202020,
+    800 : #202020,
+    900 : #202020,
+    A100 : #202020,
+    A200 : #202020,
+    A400 : #202020,
+    A700 : #202020,
+    )
+);
+
+
