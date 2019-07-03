@@ -1,0 +1,260 @@
+@mixin material-shadow() {
+	box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+@mixin material-fills() {
+	.mat-body-3 {
+		font: 500 14px/24px Roboto, "Helvetica Neue", sans-serif;
+		font-size: 18px;
+	}
+
+	.mat-button-xs {
+		font-size: 9px !important;
+		min-width: 54px !important;
+		line-height: 23px !important;
+		padding: 0 11px !important;
+	}
+
+	.mat-button-sm {
+		font-size: 12px !important;
+		min-width: 72px !important;
+		line-height: 30px !important;
+		padding: 0 14px !important;
+	}
+
+	.mat-button-md {
+		font-size: 18px !important;
+		min-width: 110px !important;
+		line-height: 45px !important;
+		padding: 0 20px !important;
+	}
+
+	.mat-button-lg {
+		font-size: 22px !important;
+		min-width: 132px !important;
+		line-height: 54px !important;
+		padding: 0 24px !important;
+	}
+
+	.mat-full-width {
+		width: 100%;
+	}
+
+	.mat-centered {
+		text-align: center;
+		margin: auto unset;
+	}
+
+	.mat-dialog-container {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	.mat-dialog-content {
+		padding: 0 !important;
+		margin: 0 !important;
+		overflow: auto !important;
+	}
+
+	// .mat-dialog-content {
+	// 	max-height: 100%;
+	// }
+
+	.mat-expansion-panel-header-description {
+		flex-grow: initial;
+	}
+
+	.mat-display-1, .mat-display-2, .mat-display-3, .mat-display-4, .mat-h1, .mat-h2, .mat-h3, .mat-h4, .mat-h5, .mat-h6 {
+		margin: 0;
+	}
+}
+
+@mixin push-and-pull() {
+	.pull-down {
+		padding-top: 2rem;
+	}
+
+	.pull-left {
+		padding-right: 2rem;
+	}
+
+	.pull-right {
+		padding-left: 2rem;
+	}
+
+	.pull-up {
+		padding-bottom: 2rem;
+	}
+
+	.pull-vertical {
+		@extend .pull-down;
+		@extend .pull-up;
+	}
+
+	.pull-horizontal {
+		@extend .pull-left;
+		@extend .pull-right;
+	}
+
+	.pull-in {
+		@extend .pull-vertical;
+		@extend .pull-horizontal;
+	}
+
+	.push-down {
+		margin-top: 2rem;
+	}
+
+	.push-left {
+		margin-right: 2rem;
+	}
+
+	.push-right {
+		margin-left: 2rem;
+	}
+
+	.push-up {
+		margin-bottom: 2rem;
+	}
+
+	.push-vertical {
+		@extend .push-down;
+		@extend .push-up;
+	}
+
+	.push-horizontal {
+		@extend .push-left;
+		@extend .push-right;
+	}
+
+	.push-out {
+		@extend .push-vertical;
+		@extend .push-horizontal;
+	}
+}
+
+@mixin set-page-width() {
+	width: 80%;
+	padding: 2rem;
+	margin: auto;
+
+	@media screen and (max-width: 599px) {
+		width: 95%;
+	}
+
+	@media screen and (min-width: 600px) and (max-width: 959px) {
+		width: 90%;
+	}
+}
+
+@mixin sidenav($theme) {
+	$config: mat-typography-config();
+
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$warn: map-get($theme, warn);
+
+	forge-side-nav {
+		text-align: center;
+		color: mat-color($primary, 50);
+
+		.secured {
+			height: 100%;
+			overflow: hidden;
+
+			.profile {
+				margin: 2rem;
+
+				h4 {
+					margin: 0;
+				}
+
+				p {
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+				}
+
+				&.mat-card {
+					padding: .5rem;
+
+					.mat-card-header {
+						.mat-card-title {
+							margin: .5rem;
+						}
+					}
+
+					.mat-card-avatar {
+						margin: auto;
+						width: 100px;
+						height: 100px;
+					}
+				}
+			}
+
+			.nav {
+				&.pre-actions {
+					position: sticky;
+					top: 0;
+				}
+
+				&.actions {
+					height: calc(100% - 132px);
+					overflow-x: hidden;
+					overflow-y: auto;
+				}
+
+				&.post-actions {
+					position: sticky;
+					bottom: 0;
+				}
+
+				fieldset {
+					border: none;
+					border-top: 6px solid transparent;
+					border-image: linear-gradient(to right, transparent 10%, mat-color($primary, 500), transparent 90%);
+					border-image-slice: 1;
+					margin-top: 2rem;
+				}
+
+				.mat-list .mat-list-item, .mat-nav-list .mat-list-item {
+					color: mat-color($primary, 50);
+				}
+
+				.mat-nav-list {
+					padding: 0;
+
+					a.mat-list-item {
+						position: relative;
+
+						&:hover {
+							background-color: rgba(mat-color($primary, 500), .4);
+						}
+
+						&.active {
+							background-color: rgba(mat-color($primary, 900), .8);
+						}
+
+						&.details {
+							margin-left: 2rem;
+							background-color: rgba(mat-color($primary, 500), .7);
+							border-bottom: 3px solid rgba(mat-color($primary, 900), .8);
+
+							&:hover {
+								background-color: rgba(mat-color($primary, 500), .4);
+							}
+
+							&.active {
+								background-color: rgba(mat-color($primary, 800), .8);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	::ng-deep .mat-card-header-text {
+		margin: 0;
+		width: 100%;
+	}
+}
