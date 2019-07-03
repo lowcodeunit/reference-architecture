@@ -58,25 +58,24 @@ export class RealTimeService {
       this.buildHub('').then((hub: signalR.HubConnection) => {
         this.hub = hub;
 
-        // this.hub.onclose(err => {
-        //   console.log('onclose', err);
+        this.hub.onclose(err => {
+          console.log('onclose: ' + err);
 
-        //   //  TODO: Need to better handle reconnect without endless loop
-        //   // this.start();
-        // });
+          this.retryConnection();
+        });
 
         try {
           this.hub
             .start()
             .then(() => {
+              this.connectionAttempts = 0;
+
               console.log(`Connection started`);
 
               resolve(this.hub);
             })
             .catch(err => {
-              if (this.connectionAttempts < 5) {
-                this.retryConnection();
-              }
+              this.retryConnection();
 
               if (this.showConnectionError) {
                 reject(err);
@@ -87,11 +86,7 @@ export class RealTimeService {
         } catch (err) {
           console.log('Error while starting connection 02: ' + err);
 
-          // if (this.connectionAttempts > 5) {
-          //   reject(err);
-          // }
-
-          // this.retryConnection();
+          this.retryConnection();
         }
       });
     });
@@ -229,12 +224,13 @@ export class RealTimeService {
    * Retry connection
    */
   protected retryConnection(): void {
-    this.connectionAttempts += 1;
-    console.log(this.connectionAttempts);
-
     if (this.connectionAttempts < 5) {
+      console.log(`Retring connection attempt ${this.connectionAttempts}`);
+
+      this.connectionAttempts += 1;
+
       this.reconnect();
-    } else if (this.connectionAttempts === 5) {
+    } else if (this.connectionAttempts >= 5) {
       this.stopReconnection();
     }
   }
