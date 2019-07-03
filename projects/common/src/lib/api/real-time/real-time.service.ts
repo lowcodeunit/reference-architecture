@@ -36,7 +36,6 @@ export class RealTimeService {
 
   //  Constructors
   constructor(protected injector: Injector) {
-
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
 
@@ -75,7 +74,6 @@ export class RealTimeService {
               resolve(this.hub);
             })
             .catch(err => {
-
               if (this.connectionAttempts < 5) {
                 this.retryConnection();
               }
@@ -85,7 +83,6 @@ export class RealTimeService {
                 console.log('Error while starting connection: ' + err);
                 this.showConnectionError = false;
               }
-
             });
         } catch (err) {
           console.log('Error while starting connection 02: ' + err);
@@ -103,11 +100,19 @@ export class RealTimeService {
   public RegisterHandler(methodName: string) {
     return this.WithHub(hub => {
       return Observable.create(obs => {
-        hub.on(methodName, req => {
-          obs.next(req);
+        try {
+          hub.on(methodName, req => {
+            obs.next(req);
 
-          this.zone.run(() => {});
-        });
+            this.zone.run(() => {});
+          });
+        } catch (err) {
+          console.log(`Error while handling ${methodName}: ` + err);
+
+          obs.error(err);
+
+          this.retryConnection();
+        }
       });
     });
   }
@@ -115,16 +120,24 @@ export class RealTimeService {
   public Invoke(methodName: string, ...args: any[]) {
     return this.WithHub(hub => {
       return Observable.create(obs => {
-        hub
-          .invoke(methodName, ...args)
-          .then(res => {
-            obs.next(res);
+        try {
+          hub
+            .invoke(methodName, ...args)
+            .then(res => {
+              obs.next(res);
 
-            this.zone.run(() => {});
-          })
-          .catch(e => {
-            obs.error(e);
-          });
+              this.zone.run(() => {});
+            })
+            .catch(e => {
+              obs.error(e);
+            });
+        } catch (err) {
+          console.log(`Error while invoking ${methodName}: ` + err);
+
+          obs.error(err);
+
+          this.retryConnection();
+        }
       });
     });
   }
@@ -157,6 +170,7 @@ export class RealTimeService {
 
     return (
       new signalR.HubConnectionBuilder()
+        .configureLogging(signalR.LogLevel.Information)
         .withUrl(this.url)
         // .withUrl(this.url, {
         //   transport: signalR.HttpTransportType.LongPolling
@@ -207,8 +221,8 @@ export class RealTimeService {
   }
 
   protected stop(): void {
-   // this.hub.stop();
-   this.showConnectionError = true;
+    // this.hub.stop();
+    this.showConnectionError = true;
   }
 
   /**
@@ -249,6 +263,6 @@ export class RealTimeService {
    * Notify user of reconnection attempt(s)
    */
   protected reconnectionMessage(): void {
-   this.ReconnectionAttempt.next(this.attemptingToReconnect);
+    this.ReconnectionAttempt.next(this.attemptingToReconnect);
   }
 }
