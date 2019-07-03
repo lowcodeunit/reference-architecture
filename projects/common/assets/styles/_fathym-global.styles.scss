@@ -2,14 +2,15 @@
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import './node_modules/@angular/material/theming';
+
+@import '../styles/utils/fathym-mixins';
+@import '../styles/utils/fathym-miscellaneous-styles';
 @import '../styles/utils/reset';
 @import '../styles/utils/margins-padding';
+@import '../styles/branding/fonts/fathym-fonts';
 
 
 @include mat-core();
-
-$brand-black: rgb(10, 10, 10) !default;
-$brand-white: rgb(245, 245, 245) !default;
 
 // @mixin primary-logo($url: null, $background-size: null) {
 
@@ -70,7 +71,6 @@ $brand-white: rgb(245, 245, 245) !default;
         background: mat-color($accent);
     }
 
-
     @include angular-material-theme($theme);
 }
 
@@ -81,7 +81,6 @@ html, body {
 body {
 	margin: 0;
 	padding: 0;
-	// font-family: Roboto, 'Helvetica Neue', sans-serif;
 	font-family: 'opens sans regular', sans-serif;
 }
 
@@ -89,77 +88,8 @@ iframe {
 	border: none;
 }
 
-.filler {
-	flex: 1 1 auto;
-	display: inline-block !important;
-}
+	@include push-and-pull();
 
-.sticky {
-	position: sticky;
-	z-index: 750;
-	top: 0;
-}
+	@include material-fills();
 
-.inline {
-	display: inline-block;
-}
-
-.contents {
-	display: contents;
-}
-
-.page-element {
-	display: contents;
-}
-
-.h1 {
-	font-size: 2em;
-}
-
-.h2 {
-	font-size: 1.5em;
-}
-
-.h3 {
-	font-size: 1.17em;
-}
-
-.h4 {
-	font-size: 1em;
-}
-
-.h5 {
-	font-size: 0.83em;
-}
-
-.h6 {
-	font-size: 0.67em;
-}
-
-.mat-spinner {
-    margin: auto;
-  }
-
-  .mat-full-width {
-    width: 100%;
-  }
-
-  .spread {
-    margin: 2rem;
-  }
-
-  .spread-thin {
-    margin: 1rem;
-  }
-
-  .overlay {
-    position: sticky !important;
-
-    &.top {
-      top: 0;
-    }
-
-    &.bottom {
-      bottom: 0;
-    }
-  }
+	@include sidenav($theme);

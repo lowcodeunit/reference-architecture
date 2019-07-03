@@ -1,0 +1,50 @@
+.filler {
+	flex: 1 1 auto;
+	display: inline-block !important;
+}
+
+.sticky {
+	position: sticky;
+	z-index: 750;
+	top: 0;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.contents {
+	display: contents;
+}
+
+.page-element {
+	display: contents;
+}
+
+.mat-spinner {
+    margin: auto;
+  }
+
+  .mat-full-width {
+    width: 100%;
+  }
+
+  .spread {
+    margin: 2rem;
+  }
+
+  .spread-thin {
+    margin: 1rem;
+  }
+
+  .overlay {
+    position: sticky !important;
+
+    &.top {
+      top: 0;
+    }
+
+    &.bottom {
+      bottom: 0;
+    }
+  }
