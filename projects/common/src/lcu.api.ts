@@ -15,3 +15,4 @@ export * from './lib/state/state-manager.context';
 export * from './lib/status';
 export * from './lib/modules.api';
 export * from './lib/validators.api';
+export * from './lib/utils.api';

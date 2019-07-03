@@ -1,4 +1,3 @@
-import { FlexLayoutModule } from '@angular/flex-layout';
 import {
           MatButtonModule,
           MatIconModule,
@@ -10,6 +9,7 @@ import {
           MatCheckboxModule,
           MatSidenavModule,
           MatToolbarModule,
+          MatToolbarRow,
           MatListModule,
           MatTabsModule,
           MatSelectModule,
@@ -59,7 +59,6 @@ import { NgModule } from '@angular/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
     MatCheckboxModule,
@@ -115,7 +114,6 @@ import { NgModule } from '@angular/core';
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    FlexLayoutModule,
     MatChipsModule,
     MatDividerModule,
     MatCheckboxModule,

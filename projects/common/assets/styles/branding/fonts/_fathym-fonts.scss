@@ -1,0 +1,61 @@
+@font-face {
+	font-family: "encode sans semi";
+	src: url('/assets/fonts/EncodeSansSemiCondensed-Black.ttf') format("truetype");
+}
+
+@font-face {
+	font-family: "opens sans condensed light";
+	src: url('/assets/fonts/OpenSansCondensed-Light.ttf') format("truetype");
+}
+
+@font-face {
+	font-family: "opens sans light";
+	src: url('/assets/fonts/OpenSans-Light.ttf') format("truetype");
+}
+
+@font-face {
+	font-family: "opens sans regular";
+	src: url('/assets/fonts/OpenSans-Regular.ttf') format("truetype");
+}
+
+// @import url('https://fonts.googleapis.com/css?family=Encode+Sans:400,700,800&display=swap');
+// font-family: 'Encode Sans', sans-serif;
+
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap');
+// font-family: 'Open Sans', sans-serif;
+
+.title, .header {
+    font-family: 'encode sans semi';
+}
+
+.paragraph-title, .tagline {
+    font-family: 'opens sans regular';
+}
+
+.plain-text, .remarks {
+    font-family: 'opens sans light';
+}
+
+.h1 {
+	font-size: 2em;
+}
+
+.h2 {
+	font-size: 1.5em;
+}
+
+.h3 {
+	font-size: 1.17em;
+}
+
+.h4 {
+	font-size: 1em;
+}
+
+.h5 {
+	font-size: 0.83em;
+}
+
+.h6 {
+	font-size: 0.67em;
+}
