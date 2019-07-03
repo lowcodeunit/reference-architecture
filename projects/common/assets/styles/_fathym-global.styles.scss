@@ -71,7 +71,8 @@
         background: mat-color($accent);
     }
 
-    @include angular-material-theme($theme);
+	@include angular-material-theme($theme);
+	// @include sidenav($theme);
 }
 
 html, body {
@@ -91,5 +92,3 @@ iframe {
 	@include push-and-pull();
 
 	@include material-fills();
-
-	@include sidenav($theme);
