@@ -181,7 +181,9 @@ export class RealTimeService {
   }
 
   protected loadHubPath() {
-    return `/state?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+    const stateRoot = this.loadStateRoot();
+
+    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
@@ -190,6 +192,10 @@ export class RealTimeService {
     const hubPath = this.loadHubPath();
 
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
+  }
+
+  protected async loadStateRoot() {
+    return this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined ? this.Settings.StateConfig.Root : '/state';
   }
 
   protected runWithHub(obs: Observer<any>, action: (hub: signalR.HubConnection) => void | Observable<any>) {
