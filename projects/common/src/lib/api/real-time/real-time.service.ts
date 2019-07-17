@@ -194,7 +194,7 @@ export class RealTimeService {
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
   }
 
-  protected async loadStateRoot() {
+  protected loadStateRoot() {
     return this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined ? this.Settings.StateConfig.Root : '/state';
   }
 
