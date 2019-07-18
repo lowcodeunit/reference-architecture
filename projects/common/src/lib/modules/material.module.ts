@@ -149,4 +149,5 @@ import {
     MatPaginatorModule
   ]
 })
+
 export class MaterialModule {}
