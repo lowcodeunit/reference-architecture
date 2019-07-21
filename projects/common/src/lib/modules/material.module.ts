@@ -1,3 +1,4 @@
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import {
           MatButtonModule,
           MatIconModule,
@@ -34,7 +35,6 @@ import {
           MatTooltipModule,
           MatSnackBarModule
          } from '@angular/material';
-import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [],
@@ -149,4 +149,5 @@ import { NgModule } from '@angular/core';
     MatPaginatorModule
   ]
 })
-export class MaterialModule { }
+
+export class MaterialModule {}
