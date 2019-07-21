@@ -68,7 +68,7 @@ export class RealTimeService {
           this.hub
             .start()
             .then(() => {
-              this.connectionAttempts = 0;
+              // this.connectionAttempts = 0;
 
               console.log(`Connection started`);
 
