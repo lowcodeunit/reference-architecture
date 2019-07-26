@@ -39,9 +39,6 @@
     $primary: map-get($theme, primary);
     $accent:  map-get($theme, accent);
 	$warn:  map-get($theme, warn);
-
-   // $foreground: mat-get($theme, foreground);
-   // $background: mat-get($theme, bbackground);
 	
     ::-webkit-scrollbar {
 		width: .75rem;
