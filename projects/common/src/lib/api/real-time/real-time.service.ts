@@ -231,7 +231,7 @@ export class RealTimeService {
    */
   protected retryConnection(): void {
     if (this.connectionAttempts < 5) {
-      console.log(`Retring connection attempt ${this.connectionAttempts}`);
+      console.log(`Retrying connection attempt ${this.connectionAttempts}`);
 
       this.connectionAttempts += 1;
 
