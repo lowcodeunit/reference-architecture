@@ -88,7 +88,7 @@ export abstract class StateManagerContext<T> extends ObservableContextService<T>
 
     const stateName = await this.loadStateName();
 
-    return this.rt.Invoke('ExecuteAction', { Type: action.Type, Arguments: action.Arguments, Key: stateKey, State: stateName }).subscribe();
+    return this.rt.Invoke('ExecuteAction', { ...action, Key: stateKey, State: stateName }).subscribe();
   }
 
   protected async loadEnvironment() {
