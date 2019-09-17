@@ -18,17 +18,15 @@ public static GetBase64(event): Base64Model {
     let me = this;
     let reader = new FileReader();
     let base64Object: Base64Model;
+
     reader.readAsDataURL(file);
-    reader.onload = function ()  {
-      //console.log(reader.result);
-      base64Object = new Base64Model(reader.result.toString(), file);
-      return base64Object;
-    //   me.buildImageMessage(reader.result.toString(), file);
-    };
-    reader.onerror = function (error) {
+    reader.onload = () => new Base64Model(reader.result.toString(), file);
+
+    reader.onerror = (error) => {
       console.log('Error: ', error);
       return;
     };
+
     return base64Object;
  }
 }
