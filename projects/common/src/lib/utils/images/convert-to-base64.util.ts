@@ -1,4 +1,5 @@
 import { Base64Model } from '../../models/base64.model';
+import { Observable, Subscriber } from 'rxjs';
 
 // @dynamic
 
@@ -13,17 +14,26 @@ export class ConvertToBase64Util{
      * 
      * Converts to Base64 and returns Object{base64 string, original file/blob passed in}
      */
-public static GetBase64(event): Base64Model {
-    let file = event;
-    let me = this;
-    let reader = new FileReader();
+public static GetBase64(event): Observable<any> {
+    const reader = new FileReader();
     let base64Object: Base64Model;
 
-    reader.readAsDataURL(file);
-    reader.onload = (val) => {
-      console.log('val', val);
-      return () => new Base64Model(reader.result.toString(), file);
-    };
+    return Observable.create((observer: Subscriber<any>): void => {
+      reader.onload = ((ev: Event): void => {
+        console.log('reader', reader);
+        console.log('ev', ev);
+        base64Object = new Base64Model(reader.result.toString(), event);
+      });
+
+      observer.next(base64Object);
+      observer.complete();
+    });
+
+    reader.readAsDataURL(event);
+    // reader.onload = (val) => {
+    //   console.log('val', val);
+    //   // return () => new Base64Model(reader.result.toString(), file);
+    // };
 
     reader.onerror = (error) => {
       console.log('Error: ', error);
