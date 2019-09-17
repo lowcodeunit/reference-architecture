@@ -22,6 +22,7 @@ public static GetBase64(event): Base64Model {
     reader.onload = function ()  {
       //console.log(reader.result);
       base64Object = new Base64Model(reader.result.toString(), file);
+      return base64Object;
     //   me.buildImageMessage(reader.result.toString(), file);
     };
     reader.onerror = function (error) {
