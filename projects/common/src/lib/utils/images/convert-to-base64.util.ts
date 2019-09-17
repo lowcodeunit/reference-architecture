@@ -20,7 +20,10 @@ public static GetBase64(event): Base64Model {
     let base64Object: Base64Model;
 
     reader.readAsDataURL(file);
-    reader.onload = () => new Base64Model(reader.result.toString(), file);
+    reader.onload = (val) => {
+      console.log('val', val);
+      return () => new Base64Model(reader.result.toString(), file);
+    };
 
     reader.onerror = (error) => {
       console.log('Error: ', error);
