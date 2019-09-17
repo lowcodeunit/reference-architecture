@@ -25,7 +25,7 @@ public static GetBase64(event): Observable<Base64Model> {
         base64Object = new Base64Model(reader.result.toString(), event);
       });
 
-      observer.next(base64Object);
+      observer.next(this);
       observer.complete();
     });
 
