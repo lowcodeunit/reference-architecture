@@ -14,7 +14,7 @@ export class ConvertToBase64Util{
      * 
      * Converts to Base64 and returns Object{base64 string, original file/blob passed in}
      */
-public static GetBase64(event): Observable<any> {
+public static GetBase64(event): Observable<Base64Model> {
     const reader = new FileReader();
     let base64Object: Base64Model;
 
@@ -37,9 +37,6 @@ public static GetBase64(event): Observable<any> {
 
     reader.onerror = (error) => {
       console.log('Error: ', error);
-      return;
     };
-
-    return base64Object;
  }
 }
