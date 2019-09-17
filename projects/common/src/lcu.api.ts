@@ -14,5 +14,7 @@ export * from './lib/state/state-action.model';
 export * from './lib/state/state-manager.context';
 export * from './lib/status';
 export * from './lib/modules.api';
+export * from './lib/models.api';
 export * from './lib/validators.api';
 export * from './lib/utils.api';
+
