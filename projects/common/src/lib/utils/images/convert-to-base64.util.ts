@@ -27,7 +27,7 @@ export class ConvertToBase64Util {
           // base64Observable.next(new Base64Model(reader.result.toString(), itm));
         };
 
-        reader.readAsDataURL(itm);
+        reader.readAsDataURL(itm['file'].rawFile);
         reader.onerror = (error) => {
           console.error('Error: ', error);
         };
