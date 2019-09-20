@@ -19,16 +19,16 @@
       "dom"
     ],
     "paths": {
-      "@lcu-ide/common": [
+      "@lcu/common": [
         "dist/common"
       ],
-      "@lcu-ide/common/*": [
+      "@lcu/common/*": [
         "dist/common/*"
       ],
-      "@lcu-ide/elements": [
+      "@lcu/elements": [
         "dist/elements"
       ],
-      "@lcu-ide/elements/*": [
+      "@lcu/elements/*": [
         "dist/elements/*"
       ]
     }
