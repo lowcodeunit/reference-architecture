@@ -15,18 +15,27 @@ export class ConvertToBase64Util {
      *
      * Converts to Base64 and returns an observable of Base64Model
      */
-    public static GetBase64(event: File): Observable<Base64Model> {
-      const reader = new FileReader();
-      const base64Observable = new Subject<Base64Model>();
+    public static GetBase64(files: Array<File>): Observable<Array<Base64Model>> {
+      const base64Observable = new Subject<Array<Base64Model>>();
+      const baseArray: Array<Base64Model> = [];
+      let file: File;
 
-      reader.onload = () => {
-        base64Observable.next(new Base64Model(reader.result.toString(), event));
-      };
+      for (file of files) {
+        const reader = new FileReader();
 
-      reader.readAsDataURL(event);
-      reader.onerror = (error) => {
-        console.error('Error: ', error);
-      };
+        reader.onload = () => {
+          baseArray.push(new Base64Model(reader.result.toString(), file));
+
+          if (baseArray.length === files.length) {
+            base64Observable.next(baseArray);
+          }
+        };
+
+        reader.readAsDataURL(file['file'].rawFile);
+        reader.onerror = (error) => {
+          console.error('Error: ', error);
+        };
+      }
 
       return base64Observable;
    }
