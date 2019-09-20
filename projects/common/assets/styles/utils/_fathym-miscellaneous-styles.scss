@@ -1,3 +1,8 @@
+.disabled {
+  opacity: 0.5;
+   filter: alpha(opacity=50); /* For IE8 and earlier */
+ }
+
 .filler {
 	flex: 1 1 auto;
 	display: inline-block !important;
