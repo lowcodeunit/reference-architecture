@@ -1,11 +1,12 @@
-import { Base64Model } from '../../models/base64.model';
-import { Observable, Subscriber, Subject } from 'rxjs';
-
 // @dynamic
 
 /**
  * @dynamic is used because this class contains static properties
  */
+
+import { Base64Model } from '../../models/base64.model';
+import { Observable, Subscriber, Subject } from 'rxjs';
+
 export class ConvertToBase64Util {
 
     /**
@@ -14,18 +15,23 @@ export class ConvertToBase64Util {
      *
      * Converts to Base64 and returns an observable of Base64Model
      */
-    public static GetBase64(event: File): Observable<Base64Model> {
-      const reader = new FileReader();
-      const base64Observable = new Subject<Base64Model>();
+    public static GetBase64(event: Array<File>): Observable<Array<Base64Model>> {
+      const base64Observable = new Subject<Array<Base64Model>>();
+      const baseArray: Array<Base64Model> = [];
 
-      reader.onload = () => {
-        base64Observable.next(new Base64Model(reader.result.toString(), event));
-      };
+      for (const itm of event) {
+        const reader = new FileReader();
 
-      reader.readAsDataURL(event);
-      reader.onerror = (error) => {
-        console.error('Error: ', error);
-      };
+        reader.onload = () => {
+          baseArray.push(new Base64Model(reader.result.toString(), itm));
+          // base64Observable.next(new Base64Model(reader.result.toString(), itm));
+        };
+
+        reader.readAsDataURL(itm);
+        reader.onerror = (error) => {
+          console.error('Error: ', error);
+        };
+      }
 
       return base64Observable;
    }
