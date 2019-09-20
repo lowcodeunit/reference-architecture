@@ -1,11 +1,12 @@
-import { Base64Model } from '../../models/base64.model';
-import { Observable, Subscriber, Subject } from 'rxjs';
-
 // @dynamic
 
 /**
  * @dynamic is used because this class contains static properties
  */
+
+import { Base64Model } from '../../models/base64.model';
+import { Observable, Subscriber, Subject } from 'rxjs';
+
 export class ConvertToBase64Util {
 
     /**

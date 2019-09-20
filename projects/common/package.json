@@ -1,5 +1,5 @@
 {
-  "name": "@lcu-ide/common",
+  "name": "@lcu/common",
   "version": "0.0.51",
   "peerDependencies": {
     "@angular/common": "~8.1.2",
