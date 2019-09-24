@@ -1,4 +1,4 @@
-import { Icon } from '@lcu-ide/common';
+import { Icon } from '../../icon';
 
 export class DataFlowAction {
   public Action: string;

@@ -1,5 +1,5 @@
-import { Status } from '@lcu-ide/common';
 import { DataFlowAction } from './DataFlowAction';
+import { Status } from '../../status';
 
 export class DataFlowModule {
   public Actions?: DataFlowAction[];
