@@ -9,6 +9,8 @@ export class StateAction {
 export class ImageMessage {
   public Data: any;
 
+  public DataString: string;
+
   public Headers: string;
 }
 
