@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import {
           MatButtonModule,
+          MatBadgeModule,
           MatIconModule,
           MatFormFieldModule,
           MatInputModule,
@@ -40,6 +41,7 @@ import {
   declarations: [],
   imports: [
     MatOptionModule,
+    MatBadgeModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
@@ -95,6 +97,7 @@ import {
   ],
   exports: [
     MatOptionModule,
+    MatBadgeModule,
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
