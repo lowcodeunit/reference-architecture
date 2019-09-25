@@ -1,4 +1,5 @@
 export * from './models/base64.model';
+export * from './models/data-flows/DataFlow';
 export * from './models/data-flows/DataFlowAction';
 export * from './models/data-flows/DataFlowActionEvent';
 export * from './models/data-flows/DataFlowLayout';
