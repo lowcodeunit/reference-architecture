@@ -54,14 +54,14 @@
 		background: mat-color($accent);
 	}
 
-	// .primary-logo {
-	// 	height: 100%;
-	// 	width: auto;
-	// 	background-image: url($primary-logo);
-	// 	background-position: center;
-	// 	background-repeat: no-repeat;
-	// 	background-size: 150px;
-	// }
+	.primary-logo {
+		height: 100%;
+		width: auto;
+		background-image: url($primary-logo);
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 150px;
+	}
 
     .primary-background {
         background: mat-color($primary);
