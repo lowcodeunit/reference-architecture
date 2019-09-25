@@ -3,7 +3,7 @@
 $primary: mat-palette($fathym-white-mint-primary);
 $accent: mat-palette($fathym-white-mint-accent);
 $warn: mat-palette($mat-deep-orange, A200);
-$primary-logo: fathym-logo('logo', thinky-full-logo, #202020);
+$primary-logo: $fathym-primary-flipper-logo;
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
 $light-theme: mat-light-theme(
