@@ -9,10 +9,12 @@ import { RealTimeService } from '../api/real-time/real-time.service';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 
 import 'hammerjs';
+import { DataPipes } from '../utils/pipes/data.pipes';
 
 export const winAny = <any>window;
 
 @NgModule({
+  declarations: [DataPipes],
   imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   exports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   providers: [],
