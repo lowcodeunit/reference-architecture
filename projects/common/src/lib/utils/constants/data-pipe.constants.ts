@@ -1,3 +1,10 @@
+// @dynamic
+/**
+ * @dynamic need this because there are static memebers
+ *
+ * Data pipe constants
+ */
+
 export class DataPipeConstants {
     public static readonly DATE_FMT = 'dd/MMM/yyyy';
     public static readonly DATE_TIME_FMT = `${DataPipeConstants.DATE_FMT} hh:mm:ss`;
