@@ -56,14 +56,6 @@
 		background: mat-color($accent);
 	}
 
-	@function primary-color() {
-		@return $primary-color;
-	}
-
-	@function accent-color() {
-		@return $accent-color;
-	}
-
 	.primary-logo {
 		height: 100%;
 		width: auto;
