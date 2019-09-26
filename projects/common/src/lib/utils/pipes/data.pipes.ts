@@ -4,7 +4,7 @@ import { DataPipeConstants } from '../constants/data-pipe.constants';
 
 
 @Pipe({
-  name: 'data-pipes'
+  name: 'dataPipes'
 })
 
 /**
