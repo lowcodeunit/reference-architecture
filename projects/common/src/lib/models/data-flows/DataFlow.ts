@@ -1,5 +1,4 @@
 import { DataFlowOutput } from './DataFlowOutput';
-import { DataFlowModulesValidation } from './DataFlowModulesValidation';
 
 export class DataFlow {
   public Description?: string;
@@ -11,6 +10,4 @@ export class DataFlow {
   public Name?: string;
 
   public Output?: DataFlowOutput;
-
-  public Validations?: DataFlowModulesValidation;
 }

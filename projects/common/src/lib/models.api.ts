@@ -10,7 +10,6 @@ export * from './models/data-flows/DataFlowModuleOption';
 export * from './models/data-flows/DataFlowModulePack';
 export * from './models/data-flows/DataFlowModulePackSetup';
 export * from './models/data-flows/DataFlowModuleShapeTypes';
-export * from './models/data-flows/DataFlowModulesValidation';
 export * from './models/data-flows/DataFlowOutput';
 export * from './models/data-flows/DataFlowStream';
 export * from './models/ide/activity';
