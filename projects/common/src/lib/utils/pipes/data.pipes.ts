@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 import { DataPipeConstants } from '../constants/data-pipe.constants';
+import { TemperatureConversion } from '../conversion/temperature.conversion';
 
 
 @Pipe({
@@ -72,7 +73,16 @@ export class DataPipes implements PipeTransform {
     }
 
     /**
-     * Return percentage
+     * Return percentage with two decimals
+     */
+    if (args.toLowerCase() === DataPipeConstants.PIPE_DECIMAL_TWO) {
+      const pipe = new DecimalPipe('en-US');
+      const transformed = pipe.transform(value, '1.2-2');
+      return transformed;
+    }
+
+    /**
+     * Return percentage with four decimals
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_DECIMAL_FOUR) {
       const pipe = new DecimalPipe('en-US');
@@ -85,10 +95,22 @@ export class DataPipes implements PipeTransform {
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_TEMP_FAHRENHEIT) {
       const pipe = new DecimalPipe('en-US');
-     // const temperature = (value * 32) + 1.8;
+      // const temperature = (value * 32) + 1.8;
       const transformed = pipe.transform(value, '1.0-0');
 
       return transformed + ' °F';
+    }
+
+    /**
+     * Return temperature in kelvin, append °K
+     */
+    if (args.toLowerCase() === DataPipeConstants.PIPE_TEMP_KELVIN) {
+      const pipe = new DecimalPipe('en-US');
+      // const temperature = (value * 32) + 1.8;
+      const temperature = TemperatureConversion.FahrenheitToKelvin(value);
+      const transformed = pipe.transform(temperature, '1.0-0');
+
+      return transformed + ' °K';
     }
 
     /**
@@ -96,8 +118,8 @@ export class DataPipes implements PipeTransform {
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_TEMP_CELSIUS) {
       const pipe = new DecimalPipe('en-US');
-     // const tempareature = (value - 32) / 1.8 ;
-      const transformed = pipe.transform(value, '1.0-0');
+      const temperature = TemperatureConversion.FahrenheitToCelsius(value);
+      const transformed = pipe.transform(temperature, '1.0-0');
 
       return transformed + ' °C';
     }
