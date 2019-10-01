@@ -5,7 +5,7 @@
 $primary: mat-palette($fathym-flipper-primary);
 $accent: mat-palette($fathym-flipper-accent);
 $warn: mat-palette($mat-deep-orange, A200);
-$primary-logo: $fathym-primary-flipper-logo;
+$primary-logo: $fathym-default-logo;
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
 $default-theme: mat-light-theme(
