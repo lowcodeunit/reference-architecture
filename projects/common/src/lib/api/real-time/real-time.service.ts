@@ -41,9 +41,11 @@ export class RealTimeService {
 
     try {
       // timeout needed to workaround undefined issue with using the injector like this
-     setTimeout(() => this.Settings = injector.get(LCUServiceSettings));
+     setTimeout(() => {
+       this.Settings = injector.get(LCUServiceSettings);
+      }, 1000);
 
-      this.zone = injector.get(NgZone);
+     this.zone = injector.get(NgZone);
     } catch (err) {}
 
     this.started = new ReplaySubject();
