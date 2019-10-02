@@ -40,7 +40,8 @@ export class RealTimeService {
     this.connectionAttempts = 0;
 
     try {
-      this.Settings = injector.get(LCUServiceSettings);
+      // timeout needed to workaround undefined issue with using the injector like this
+     setTimeout(() => this.Settings = injector.get(LCUServiceSettings));
 
       this.zone = injector.get(NgZone);
     } catch (err) {}
