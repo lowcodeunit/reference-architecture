@@ -195,6 +195,11 @@ export class RealTimeService {
   }
 
   protected loadStateRoot() {
+
+    if (!this.Settings) {
+      return this.Settings.StateConfig.Root;
+    }
+
     return this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined ? this.Settings.StateConfig.Root : '/state';
   }
 
