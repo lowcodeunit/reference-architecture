@@ -39,11 +39,8 @@ export class RealTimeService {
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
     try {
-      // timeout needed to workaround undefined issue with using the injector like this
-    
        this.Settings = injector.get(LCUServiceSettings);
        this.zone = injector.get(NgZone);
-     
 
     } catch (err) {}
 
