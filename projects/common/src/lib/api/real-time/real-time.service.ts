@@ -38,13 +38,13 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
-
+    setTimeout(() => {
     try {
       // timeout needed to workaround undefined issue with using the injector like this
-     setTimeout(() => {
+    
        this.Settings = injector.get(LCUServiceSettings);
        this.zone = injector.get(NgZone);
-      }, 1000);
+     
 
     } catch (err) {}
 
@@ -53,6 +53,7 @@ export class RealTimeService {
     this.Started = this.started.asObservable();
 
     this.start();
+  }, 1000);
   }
 
   //  API Methods
