@@ -41,7 +41,8 @@
 	$warn:  map-get($theme, warn);
 	
 	$primary-color: mat-color($primary);
-  	$accent-color: mat-color($accent);
+	$accent-color: mat-color($accent);
+	$primary-logo: $fathym-default-logo;
 
     ::-webkit-scrollbar {
 		width: .75rem;
