@@ -35,11 +35,11 @@ export class RealTimeService {
   public Started: Observable<signalR.HubConnection>;
 
   //  Constructors
-  constructor(protected injector: Injector, protected lcuServiceSettings: LCUServiceSettings) {
+  constructor(protected injector: Injector) {
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
     try {
-       this.Settings = injector.get(lcuServiceSettings);
+       this.Settings = injector.get(LCUServiceSettings);
        this.zone = injector.get(NgZone);
 
     } catch (err) {}
