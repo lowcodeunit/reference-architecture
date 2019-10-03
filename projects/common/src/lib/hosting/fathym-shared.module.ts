@@ -42,6 +42,7 @@ export class FathymSharedModule {
     return {
       ngModule: FathymSharedModule,
       providers: [
+        LCUServiceSettings,
         RealTimeService,
         {
           provide: HTTP_INTERCEPTORS,
