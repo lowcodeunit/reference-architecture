@@ -15,7 +15,7 @@ export const winAny = <any>window;
 @NgModule({
   imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   exports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
-  providers: [],
+  providers: [LCUServiceSettings],
   entryComponents: []
 })
 export class FathymSharedModule {
@@ -42,7 +42,6 @@ export class FathymSharedModule {
     return {
       ngModule: FathymSharedModule,
       providers: [
-        LCUServiceSettings,
         RealTimeService,
         {
           provide: HTTP_INTERCEPTORS,
