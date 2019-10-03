@@ -22,7 +22,7 @@ export class ConvertToBase64Util {
 
       for (file of files) {
         const reader = new FileReader();
-
+        console.log("file = ", file)
         reader.onload = () => {
           baseArray.push(new Base64Model(reader.result.toString(), file));
 
