@@ -42,7 +42,8 @@ export class ConvertToBase64Util {
       return base64Observable;
    }
 
-  public static GetBase64(file: any): Base64Model {
+  public static GetBase64(file: any): Observable<Base64Model> {
+    let Base64Observable = new Subject<Base64Model>();
     let Base64: Base64Model;
 
       const reader = new FileReader();
@@ -50,6 +51,9 @@ export class ConvertToBase64Util {
       reader.onload = () => {
         Base64.Blob = reader.result.toString();
         Base64.File =  file;
+        if(Base64){
+          Base64Observable.next(Base64);
+        }
       };
 
       reader.readAsDataURL(file.file.rawFile);
@@ -57,6 +61,6 @@ export class ConvertToBase64Util {
         console.error('Error: ', error);
       };
 
-    return Base64;
+    return Base64Observable;
   }
 }
