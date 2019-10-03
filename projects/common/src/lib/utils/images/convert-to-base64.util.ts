@@ -50,10 +50,9 @@ export class ConvertToBase64Util {
       reader.onload = () => {
         Base64.Blob = reader.result.toString();
         Base64.File =  file;
-        
       };
 
-      reader.readAsDataURL(file['file'].rawFile);
+      reader.readAsDataURL(file.file.rawFile);
       reader.onerror = (error) => {
         console.error('Error: ', error);
       };
