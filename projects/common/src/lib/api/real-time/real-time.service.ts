@@ -38,12 +38,10 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
-
     try {
-      // timeout needed to workaround undefined issue with using the injector like this
-     setTimeout(() => this.Settings = injector.get(LCUServiceSettings));
+       this.Settings = injector.get(LCUServiceSettings);
+       this.zone = injector.get(NgZone);
 
-      this.zone = injector.get(NgZone);
     } catch (err) {}
 
     this.started = new ReplaySubject();
