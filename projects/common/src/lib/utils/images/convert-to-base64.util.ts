@@ -53,7 +53,7 @@ export class ConvertToBase64Util {
         
       };
 
-      reader.readAsDataURL(file.rawFile);
+      reader.readAsDataURL(file['file'].rawFile);
       reader.onerror = (error) => {
         console.error('Error: ', error);
       };
