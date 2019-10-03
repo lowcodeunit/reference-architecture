@@ -24,7 +24,7 @@ export class ConvertToBase64Util {
         const reader = new FileReader();
         console.log("file = ", file)
         reader.onload = () => {
-          baseArray.push(new Base64Model(reader.result.toString(), file));
+          // baseArray.push(new Base64Model(reader.result.toString(), file));
 
           if (baseArray.length === files.length) {
             base64Observable.next(baseArray);
@@ -32,6 +32,8 @@ export class ConvertToBase64Util {
         };
 
         reader.readAsDataURL(file['file'].rawFile);
+        baseArray.push(new Base64Model(reader.result.toString(), file));
+
         reader.onerror = (error) => {
           console.error('Error: ', error);
         };
