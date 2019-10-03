@@ -3,10 +3,10 @@
 // define 3 theme color
 
 // mat-palette accepts $palette-name, main, lighter and darker variants
-$primary: mat-palette($fathym-contrast-gray);
+$primary: mat-palette($fathym-contrast-primary);
 $accent: mat-palette($fathym-contrast-accent);
 $warn: mat-palette($mat-deep-orange, A200);
-$primary-logo: $fathym-red-logo;
+$primary-logo: $fathym-default-logo;
 
 // create theme (use mat-dark-theme for themes with dark backgrounds)
 $dark-theme: mat-dark-theme(
