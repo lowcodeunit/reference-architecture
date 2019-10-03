@@ -57,6 +57,8 @@ export class RealTimeService {
       this.buildHub('').then((hub: signalR.HubConnection) => {
         this.hub = hub;
 
+        this.hub.serverTimeoutInMilliseconds = 600000;
+
         this.hub.onclose(err => {
           console.log('onclose: ' + err);
 
