@@ -22,7 +22,8 @@ export class ConvertToBase64Util {
 
       for (file of files) {
         const reader = new FileReader();
-
+        // tslint:disable-next-line:no-shadowed-variable
+        ((file) => {
         reader.onload = () => {
           baseArray.push(new Base64Model(reader.result.toString(), file));
 
@@ -30,7 +31,7 @@ export class ConvertToBase64Util {
             base64Observable.next(baseArray);
           }
         };
-
+      })(file);
         reader.readAsDataURL(file['file'].rawFile);
         reader.onerror = (error) => {
           console.error('Error: ', error);
@@ -38,5 +39,5 @@ export class ConvertToBase64Util {
       }
 
       return base64Observable;
-   }
+    }
 }
