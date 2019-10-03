@@ -38,11 +38,10 @@ export class RealTimeService {
   constructor(protected injector: Injector) {
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
-
     try {
-      this.Settings = injector.get(LCUServiceSettings);
+       this.Settings = injector.get(LCUServiceSettings);
+       this.zone = injector.get(NgZone);
 
-      this.zone = injector.get(NgZone);
     } catch (err) {}
 
     this.started = new ReplaySubject();
@@ -197,6 +196,7 @@ export class RealTimeService {
   }
 
   protected loadStateRoot() {
+
     return this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined ? this.Settings.StateConfig.Root : '/state';
   }
 

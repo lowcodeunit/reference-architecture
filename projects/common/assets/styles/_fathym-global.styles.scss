@@ -2,7 +2,6 @@
 @import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import './node_modules/@angular/material/theming';
-
 @import '../styles/utils/fathym-mixins';
 @import '../styles/utils/fathym-miscellaneous-styles';
 @import '../styles/utils/reset';
@@ -10,7 +9,6 @@
 @import '../styles/branding/fonts/fathym-fonts';
 @import '../styles/utils/fathym-fonts';
 @import '../styles/utils/fathym-cursors';
-
 
 @include mat-core();
 
@@ -42,6 +40,10 @@
     $accent:  map-get($theme, accent);
 	$warn:  map-get($theme, warn);
 	
+	$primary-color: mat-color($primary);
+	$accent-color: mat-color($accent);
+	$primary-logo: $fathym-default-logo;
+
     ::-webkit-scrollbar {
 		width: .75rem;
 	}
