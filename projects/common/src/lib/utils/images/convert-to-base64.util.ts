@@ -42,7 +42,7 @@ export class ConvertToBase64Util {
       return base64Observable;
    }
 
-  public static GetBase64(file: File): Base64Model {
+  public static GetBase64(file: any): Base64Model {
     let Base64: Base64Model;
 
       const reader = new FileReader();
@@ -53,7 +53,7 @@ export class ConvertToBase64Util {
         
       };
 
-      reader.readAsDataURL(file['file'].rawFile);
+      reader.readAsDataURL(file.rawFile);
       reader.onerror = (error) => {
         console.error('Error: ', error);
       };
