@@ -1,19 +1,47 @@
 /**
 * SVG icons of fathym logos
 */
+
 /**
-    Logo properties
+*  defines the position and dimension for the content of the <view> element
 */
 $thinkyLogo-viewBox: '0 0 75 64.53';
 $thinkyFull-viewBox: '0 0 191.29 50';
 $thinkyCircle-viewBox: '0 0 75 75';
 $thinkySlogan-viewBox: '0 0 1036.75 327.73';
+
+
+/**
+* thinky logo without circle and fathym name
+*/
+$thinky-full-path1: 'M222,216.91h0c-7.68,0-12.45,5-12.45,13.09v3.1H206v6h3.59v17.07h6V239.12h3.59v-6h-3.59V230c0-4.69,2.17-7.07,6.43-7.07h.62v-6Z';
+$thinky-full-path2: 'M326.53,234.71a9.26,9.26,0,0,0-6,1.85,9.43,9.43,0,0,0-5.94-1.85,9.06,9.06,0,0,0-4.49,1.08v-.18h-4.31v21.08h6V243.63c0-2,.53-2.9,2.89-2.9,2.52,0,3,.93,3,2.9v13.06h6V243.63c0-2,.48-2.9,2.85-2.9s3,.93,3,2.9v13.06h6V243.05C335.65,239.7,333.22,234.71,326.53,234.71Z';
+$thinky-full-path3: 'M270.58,235a11.15,11.15,0,0,0-3.09.42v-9.88h-6v31.2h6V243.63c0-2,.86-2.66,3.09-2.66s2.79.7,2.79,2.66v13.06h6V243.63C279.39,238.19,276.1,235,270.58,235Z';
+$thinky-full-path4: 'M230.37,233.1h-6v6l6-.1c3.76,0,4.85,1.86,5.26,3.73-1.1-1-3.16-1.19-4.86-1.19-4.62,0-9.15,2.31-9.15,7.63a7.46,7.46,0,0,0,2.19,5.55c1.61,1.56,3.94,2.35,6.93,2.35h.57a9.61,9.61,0,0,0,4.48-1.32v.93h6V243.83C241.8,237.21,237.42,233.1,230.37,233.1Zm5,16.15c0,2.58-2.54,2.69-4.2,2.69-1.83,0-4.2-.08-4.2-2.69s2.55-2.7,4.2-2.7C233,246.55,235.39,246.63,235.39,249.25Z';
+$thinky-full-points1: '109.16 18.08 109.16 10.49 103.14 10.49 103.14 18.08 100.76 18.08 100.76 24.1 103.14 24.1 103.14 41.69 109.16 41.69 109.16 24.1 113.47 24.1 113.47 18.08 109.16 18.08'; 
+$thinky-full-points2: '158.65 20.75 152.27 20.75 147.75 34.03 143.37 20.75 136.7 20.75 144.78 42.01 144.78 48.88 150.57 48.88 150.57 42.01 158.65 20.75';
+$thinky-full-path5: 'M147.45,241.58l.06.47c.31,2.7,1.25,10.95,10.76,10.95a9.91,9.91,0,0,0,7.77-3.35,9.64,9.64,0,0,0,2-7.86,22.18,22.18,0,0,0-1.52-4.89,17,17,0,0,1-1.58-7.1c0-2.62.82-8.71,8.38-8.71s8.39,6.09,8.39,8.71a17,17,0,0,1-1.58,7.1,22.18,22.18,0,0,0-1.52,4.89,9.6,9.6,0,0,0,2,7.86,9.91,9.91,0,0,0,7.77,3.35c9.51,0,10.45-8.25,10.76-11l0-.46c.27-2.4.49-2.4,1.42-2.4v-6.09c-4.38,0-6.89,2.63-7.47,7.82l-.05.45c-.45,3.91-1.2,5.54-4.71,5.54a3.91,3.91,0,0,1-3.12-1.18,3.6,3.6,0,0,1-.67-2.92,17.61,17.61,0,0,1,1.17-3.63,22.8,22.8,0,0,0,2-9.37c0-7.37-4.48-14.8-14.48-14.8s-14.47,7.43-14.47,14.8a22.8,22.8,0,0,0,2,9.37,17.61,17.61,0,0,1,1.17,3.63,3.6,3.6,0,0,1-.67,2.92,3.91,3.91,0,0,1-3.12,1.18c-3.51,0-4.27-1.63-4.71-5.54l-.05-.45c-.58-5.19-3.09-7.82-7.47-7.82v6.09C147,239.18,147.19,239.18,147.45,241.58Z';
+$thinky-full-path6: 'M198.94,256a15.46,15.46,0,0,1-10.53,3.8,14.56,14.56,0,0,1-11.38-5,14.23,14.23,0,0,1-1.45-2.07l-.92-1.62H172l-.92,1.62a14.23,14.23,0,0,1-1.45,2.07,14.56,14.56,0,0,1-11.38,5,15.55,15.55,0,0,1-10.43-3.7l-3.49,3.79A20.67,20.67,0,0,0,158.27,265a19.68,19.68,0,0,0,15.07-6.56A19.65,19.65,0,0,0,188.41,265c3.18,0,9.24-.68,14.06-5.2Z';
+$full-transform: 'translate(-144.35 -215)';
+
+
+/**
+* thinky logo without circle
+*/
 $thinky-path1: 'M205,238.68l.07.6c.4,3.5,1.61,14.14,13.89,14.14a12.8,12.8,0,0,0,10-4.31A12.44,12.44,0,0,0,231.55,239a28.41,28.41,0,0,0-2-6.31,22,22,0,0,1-2-9.17c0-3.37,1-11.23,10.81-11.23s10.82,7.86,10.82,11.23a21.79,21.79,0,0,1-2,9.17,29.69,29.69,0,0,0-2,6.31,12.41,12.41,0,0,0,2.62,10.15,12.8,12.8,0,0,0,10,4.31c12.27,0,13.49-10.63,13.88-14.14l.07-.6c.35-3.1.63-3.1,1.83-3.1v-7.85c-5.66,0-8.9,3.39-9.64,10.08l-.07.58c-.58,5.05-1.54,7.16-6.08,7.16a5.08,5.08,0,0,1-4-1.52,4.62,4.62,0,0,1-.86-3.77,22.5,22.5,0,0,1,1.5-4.68,29.28,29.28,0,0,0,2.61-12.1c0-9.51-5.74-19.1-18.65-19.1s-18.68,9.59-18.68,19.1a29.44,29.44,0,0,0,2.61,12.1,21.92,21.92,0,0,1,1.5,4.68,4.58,4.58,0,0,1-.86,3.77,5.06,5.06,0,0,1-4,1.52c-4.53,0-5.51-2.11-6.09-7.16l-.06-.58c-.74-6.69-4-10.08-9.64-10.08v7.85C204.33,235.58,204.62,235.58,205,238.68Z';
 $thinky-path2: 'M271.4,257.35c-4.55,4.26-10.46,4.91-13.58,4.91a18.82,18.82,0,0,1-14.69-6.48,17.09,17.09,0,0,1-1.86-2.68L240.08,251h-3.42l-1.18,2.09a18.61,18.61,0,0,1-1.87,2.68,18.8,18.8,0,0,1-14.69,6.48c-3.08,0-8.93-.62-13.45-4.78l-4.51,4.9c6.19,5.69,13.91,6.54,18,6.54a25.43,25.43,0,0,0,19.45-8.47,25.41,25.41,0,0,0,19.45,8.47c4.1,0,11.93-.87,18.14-6.72Z';
 $transform: 'translate(-200.96 -204.38)';
+
+/**
+* thinky logo with circle
+*/
 $circle-path1: 'M259.13,246.56l-.05.43c-.43,3.78-1.16,5.36-4.55,5.36a3.81,3.81,0,0,1-3-1.14,3.49,3.49,0,0,1-.65-2.82,17,17,0,0,1,1.13-3.51,22,22,0,0,0,1.95-9c0-7.12-4.32-14.29-14-14.29s-14,7.17-14,14.29a22,22,0,0,0,1.95,9,16.42,16.42,0,0,1,1.12,3.51,3.45,3.45,0,0,1-.64,2.82,3.84,3.84,0,0,1-3,1.14c-3.4,0-4.12-1.58-4.55-5.36l-.05-.43c-.56-5-3-7.56-7.22-7.56v5.89c.9,0,1.11,0,1.37,2.32l.05.45c.3,2.61,1.21,10.57,10.4,10.57a9.6,9.6,0,0,0,7.5-3.23,9.31,9.31,0,0,0,2-7.59,21.43,21.43,0,0,0-1.47-4.73,16.34,16.34,0,0,1-1.52-6.85c0-2.53.79-8.41,8.09-8.41s8.1,5.88,8.1,8.41a16.34,16.34,0,0,1-1.52,6.85,22,22,0,0,0-1.48,4.73,9.28,9.28,0,0,0,2,7.59,9.58,9.58,0,0,0,7.5,3.23c9.19,0,10.1-8,10.4-10.57l.05-.45c.25-2.32.47-2.32,1.37-2.32V239C262.11,239,259.69,241.55,259.13,246.56Z';
 $circle-path2: 'M277.5,240A37.5,37.5,0,1,0,212,264.91l0,0,.17.15a37.43,37.43,0,0,0,55.92-.25l0,0h0A37.34,37.34,0,0,0,277.5,240ZM240,272.51a32.2,32.2,0,0,1-13.06-2.75,18.77,18.77,0,0,0,13-6.27,18.8,18.8,0,0,0,13.08,6.28A32.31,32.31,0,0,1,240,272.51Zm24.5-11.18a15,15,0,0,1-10,3.51,14.06,14.06,0,0,1-11-4.85,13.22,13.22,0,0,1-1.39-2l-.89-1.56h-2.56L237.8,258a12.74,12.74,0,0,1-1.39,2,14.08,14.08,0,0,1-11,4.85,15.16,15.16,0,0,1-9.72-3.28c-5.75-5.54-8.2-13.29-8.2-21.56a32.51,32.51,0,0,1,65,0C272.51,248.16,269.94,256,264.5,261.33Z';
 $circle-transform: 'translate(-202.5 -202.5)';
+
+/**
+* thinky logo with circle and tagline(Fathym it. Build it.)
+*/
 $slogan-path1: 'M253.43,196l-.21,1.9c-1.89,16.51-5.06,23.42-19.88,23.42-5.85,0-10.4-1.73-13.16-5-2.6-3.08-3.63-7.57-2.82-12.32.9-5.36,2.76-10,4.92-15.32,3.8-9.42,8.52-21.14,8.52-39.57,0-31.08-18.88-62.44-61.08-62.44S108.64,118,108.64,149.11c0,18.43,4.72,30.15,8.52,39.57,2.16,5.35,4,10,4.92,15.32.81,4.75-.22,9.24-2.82,12.32-2.76,3.26-7.31,5-13.16,5-14.81,0-18-6.91-19.88-23.42L86,196c-2.43-21.89-13-33-31.53-33v25.7c3.93,0,4.86,0,6,10.13l.23,2C62,212.23,66,247,106.1,247c13.46,0,25.11-5,32.79-14.1,7.49-8.87,10.6-21,8.54-33.2-1.37-8.1-3.94-14.47-6.43-20.64-3.42-8.5-6.66-16.52-6.66-30,0-11.05,3.45-36.74,35.38-36.74s35.38,25.69,35.38,36.74c0,13.44-3.23,21.46-6.66,30-2.49,6.17-5.06,12.54-6.43,20.64C190,212,193.06,224,200.55,232.91c7.68,9.09,19.33,14.1,32.79,14.1,40.15,0,44.11-34.78,45.41-46.21l.23-2c1.12-10.13,2-10.13,6-10.13V163C266.47,163,255.86,174.1,253.43,196Z';
 $slogan-path2: 'M333.7,167.34C333.7,77,260.19,3.48,169.84,3.48S6,77,6,167.34A163.22,163.22,0,0,0,47.48,276.19l-.1.1c.25.23.5.42.75.64a163.56,163.56,0,0,0,244.35-1.08l.14-.12,0,0A163.15,163.15,0,0,0,333.7,167.34ZM169.84,309.41a141.18,141.18,0,0,1-57.07-12c22.64-1.57,42.62-11.14,56.93-27.41,14.37,16.33,34.43,25.9,57.16,27.43A141.34,141.34,0,0,1,169.84,309.41Zm107.07-48.84c-14.75,13.29-33.58,15.33-43.61,15.33-19.43,0-36.49-7.52-48-21.18a58.06,58.06,0,0,1-6.1-8.75l-3.88-6.85H164.12L160.24,246a58.14,58.14,0,0,1-6.11,8.76c-11.54,13.66-28.6,21.18-48,21.18-9.73,0-27.9-1.93-42.47-14.35-25.15-24.2-35.86-58.09-35.86-94.21C27.76,89,91.5,25.27,169.84,25.27S311.91,89,311.91,167.34C311.91,203,300.67,237.35,276.91,260.57Z';
 $slogan-path3: 'M441.37,53.21h-45V71.46h37.77V95.88H396.35v38H367V28.79h74.41Z';
@@ -35,15 +63,65 @@ $slogan-path18: 'M852.73,303.56a15.34,15.34,0,0,1-6.39-6.07,18.3,18.3,0,0,1-2.27
 $slogan-path19: 'M715.07,55.77h28.26L710.81,165.11h-28l9.37-31.24h-8.51l-23.15-78.1h29.75l12.49,50.55Z';
 $slogan-transform: 'translate(-5.97 -3.48)';
 
+  /**
+    Get Fathym logo and set color(s)
+    @param $logo-name - name of logo to use
+    @param $color - color, can use hex, rgb, rgba, or color name(red)
+    $clean-stroke-color - color, can use hex, rgb, rgba, or color name(red)
+    $stroke-width - width of outline
+  */
+  @function fathym-logo(
+    $logo-name, 
+    $color, 
+    $clean-stroke-color: transparent,
+    $stroke-width: 0,
+    $css: '' // arbitrary css
+    ){
+        
+    /** Replace # from HEX color with %23, needed for SVGs */    
+    $clean-fill-color: str-replace(#{$color}, '#', '%23');
+    $clean-stroke-color: str-replace(#{$color}, '#', '%23');
+
+    //         thinky-full-logo-test: '<path fill="#{$clean-fill-color}" d="#{$thinky-full-path1}" transform="#{$full-transform}"/><path fill="#{$clean-fill-color}" d="#{$thinky-full-path2}" transform="#{$full-transform}/><path fill="#{$clean-fill-color}" d="#{$thinky-full-path3}" transform="#{$full-transform}"/><path fill="#{$clean-fill-color}" d="#{$thinky-full-path4}" transform="#{$full-transform}"/><polygon fill="#{$clean-fill-color}" points="109.16 18.08 109.16 10.49 103.14 10.49 103.14 18.08 100.76 18.08 100.76 24.1 103.14 24.1 103.14 41.69 109.16 41.69 109.16 24.1 113.47 24.1 113.47 18.08 109.16 18.08"/><polygon fill="#{$clean-fill-color}" points="158.65 20.75 152.27 20.75 147.75 34.03 143.37 20.75 136.7 20.75 144.78 42.01 144.78 48.88 150.57 48.88 150.57 42.01 158.65 20.75"/><path fill="#{$clean-fill-color}" d="#{$thinky-full-path5}" transform="#{$full-transform}"/><rect fill="#{$clean-fill-color}" x="25.07" y="18.07" width="2.86" height="4.98"/><rect fill="#{$clean-fill-color}" x="30.05" y="18.07" width="2.86" height="4.98"/><path fill="#{$clean-fill-color}" d="#{$thinky-full-path6}" transform="#{$full-transform}"/>',
+
+    /** Logo storage*/
+    $logos: (
+        thinky-full-logo: '<path fill="#{$clean-fill-color}" d="M222,216.91h0c-7.68,0-12.45,5-12.45,13.09v3.1H206v6h3.59v17.07h6V239.12h3.59v-6h-3.59V230c0-4.69,2.17-7.07,6.43-7.07h.62v-6Z" transform="translate(-144.35 -215)"/><path fill="#{$clean-fill-color}" d="M326.53,234.71a9.26,9.26,0,0,0-6,1.85,9.43,9.43,0,0,0-5.94-1.85,9.06,9.06,0,0,0-4.49,1.08v-.18h-4.31v21.08h6V243.63c0-2,.53-2.9,2.89-2.9,2.52,0,3,.93,3,2.9v13.06h6V243.63c0-2,.48-2.9,2.85-2.9s3,.93,3,2.9v13.06h6V243.05C335.65,239.7,333.22,234.71,326.53,234.71Z" transform="translate(-144.35 -215)"/><path fill="#{$clean-fill-color}" d="M270.58,235a11.15,11.15,0,0,0-3.09.42v-9.88h-6v31.2h6V243.63c0-2,.86-2.66,3.09-2.66s2.79.7,2.79,2.66v13.06h6V243.63C279.39,238.19,276.1,235,270.58,235Z" transform="translate(-144.35 -215)"/><path fill="#{$clean-fill-color}" d="M230.37,233.1h-6v6l6-.1c3.76,0,4.85,1.86,5.26,3.73-1.1-1-3.16-1.19-4.86-1.19-4.62,0-9.15,2.31-9.15,7.63a7.46,7.46,0,0,0,2.19,5.55c1.61,1.56,3.94,2.35,6.93,2.35h.57a9.61,9.61,0,0,0,4.48-1.32v.93h6V243.83C241.8,237.21,237.42,233.1,230.37,233.1Zm5,16.15c0,2.58-2.54,2.69-4.2,2.69-1.83,0-4.2-.08-4.2-2.69s2.55-2.7,4.2-2.7C233,246.55,235.39,246.63,235.39,249.25Z" transform="translate(-144.35 -215)"/><polygon fill="#{$clean-fill-color}" points="109.16 18.08 109.16 10.49 103.14 10.49 103.14 18.08 100.76 18.08 100.76 24.1 103.14 24.1 103.14 41.69 109.16 41.69 109.16 24.1 113.47 24.1 113.47 18.08 109.16 18.08"/><polygon fill="#{$clean-fill-color}" points="158.65 20.75 152.27 20.75 147.75 34.03 143.37 20.75 136.7 20.75 144.78 42.01 144.78 48.88 150.57 48.88 150.57 42.01 158.65 20.75"/><path fill="#{$clean-fill-color}" d="M147.45,241.58l.06.47c.31,2.7,1.25,10.95,10.76,10.95a9.91,9.91,0,0,0,7.77-3.35,9.64,9.64,0,0,0,2-7.86,22.18,22.18,0,0,0-1.52-4.89,17,17,0,0,1-1.58-7.1c0-2.62.82-8.71,8.38-8.71s8.39,6.09,8.39,8.71a17,17,0,0,1-1.58,7.1,22.18,22.18,0,0,0-1.52,4.89,9.6,9.6,0,0,0,2,7.86,9.91,9.91,0,0,0,7.77,3.35c9.51,0,10.45-8.25,10.76-11l0-.46c.27-2.4.49-2.4,1.42-2.4v-6.09c-4.38,0-6.89,2.63-7.47,7.82l-.05.45c-.45,3.91-1.2,5.54-4.71,5.54a3.91,3.91,0,0,1-3.12-1.18,3.6,3.6,0,0,1-.67-2.92,17.61,17.61,0,0,1,1.17-3.63,22.8,22.8,0,0,0,2-9.37c0-7.37-4.48-14.8-14.48-14.8s-14.47,7.43-14.47,14.8a22.8,22.8,0,0,0,2,9.37,17.61,17.61,0,0,1,1.17,3.63,3.6,3.6,0,0,1-.67,2.92,3.91,3.91,0,0,1-3.12,1.18c-3.51,0-4.27-1.63-4.71-5.54l-.05-.45c-.58-5.19-3.09-7.82-7.47-7.82v6.09C147,239.18,147.19,239.18,147.45,241.58Z" transform="translate(-144.35 -215)"/><rect fill="#{$clean-fill-color}" x="25.07" y="18.07" width="2.86" height="4.98"/><rect fill="#{$clean-fill-color}" x="30.05" y="18.07" width="2.86" height="4.98"/><path fill="#{$clean-fill-color}" d="M198.94,256a15.46,15.46,0,0,1-10.53,3.8,14.56,14.56,0,0,1-11.38-5,14.23,14.23,0,0,1-1.45-2.07l-.92-1.62H172l-.92,1.62a14.23,14.23,0,0,1-1.45,2.07,14.56,14.56,0,0,1-11.38,5,15.55,15.55,0,0,1-10.43-3.7l-3.49,3.79A20.67,20.67,0,0,0,158.27,265a19.68,19.68,0,0,0,15.07-6.56A19.65,19.65,0,0,0,188.41,265c3.18,0,9.24-.68,14.06-5.2Z" transform="translate(-144.35 -215)"/>',
+        thinky-logo: '<path fill="#{$clean-fill-color}" d="#{$thinky-path1}" transform="#{$transform}"/><rect fill="#{$clean-fill-color}" x="32.35" y="23.32" width="3.7" height="6.42"/><rect fill="#{$clean-fill-color}" x="38.78" y="23.32" width="3.7" height="6.42"/><path fill="#{$clean-fill-color}" d="#{$thinky-path2}" transform="#{$transform}"/>',
+        thinky-circle: '<path fill="#{$clean-fill-color}" d="#{$circle-path1}" transform="#{$circle-transform}"/><rect fill="#{$clean-fill-color}" x="33.68" y="36.49" width="2.77" height="4.8"/><rect fill="#{$clean-fill-color}" x="38.5" y="36.49" width="2.77" height="4.8"/><path fill="#{$clean-fill-color}" d="#{$circle-path2}" transform="#{$circle-transform}"/>',
+        thinky-slogan: '<path fill="#{$clean-fill-color}" d="#{$slogan-path1}" transform="#{$slogan-transform}"/><rect fill="#{$clean-fill-color}" x="147.19" y="159.44" width="12.09" height="20.99"/><rect fill="#{$clean-fill-color}" x="168.23" y="159.44" width="12.09" height="20.99"/><path fill="#{$clean-fill-color}" d="#{$slogan-path2}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path3}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path4}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path5}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path6}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path18}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path7}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path8}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path9}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path10}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path11}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path12}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path13}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path14}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path15}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path16}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path17}" transform="#{$slogan-transform}"/><path fill="#{$clean-fill-color}" d="#{$slogan-path19}" transform="#{$slogan-transform}"/>'
+        );
+    
+    /** Get logo type from name*/
+    $logo-type: logo-type($logo-name);
+
+    $logo: create-svg-logo(map-get($logos, $logo-name), $logo-type);
+    @return url('data:image/svg+xml;utf8,#{$logo}');
+  }
+
 /**
     Create logo
 */
 @function create-svg-logo($logo, $logo-type) {
-    $logo: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="#{view-box($logo-type)}">#{$logo}</svg>';
-    @return $logo;
+  $logo: '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="#{view-box($logo-type)}">#{$logo}</svg>';
+  @return $logo;
+}
+
+@function logo-type($logo-name) {
+  $logoType: '';
+  @if $logo-name == thinky-full-logo {
+    $logoType: full;
+  } @else if $logo-name == thinky-logo {
+    $logoType: logo;
+  } @else if $logo-name == thinky-circle {
+    $logoType: circle;
+  } @else if $logo-name == thinky-slogan {
+    $logoType: slogan;
   }
-  
-  /**
+  @return $logoType;  
+}
+
+/**
     container size for the image, 
     this needs to be changed based off image size
   */
@@ -72,30 +150,5 @@ $slogan-transform: 'translate(-5.97 -3.48)';
     
     @return $string;
   }
-  /**
-    Get Fathym logo and set color(s)
-  */
-  @function fathym-logo(
-    $logo-type,
-    $icon-name, 
-    $color, 
-    $opacity: 1,
-    $stroke-color: transparent,
-    $stroke-width: 0,
-    $css: '' // arbitrary css
-    ){
-        
-    /** Replace # from HEX color with %23, needed for SVGs */    
-    $clean-color: str-replace(#{$color}, '#', '%23');
-    /** Logo storage*/
-    $logos: (
-        thinky-full-logo: '<path fill="#{$clean-color}" opacity="#{$opacity}" stroke="#{$stroke-color}" stroke-width="#{$stroke-width}" style="#{$css}" d="M222,216.91h0c-7.68,0-12.45,5-12.45,13.09v3.1H206v6h3.59v17.07h6V239.12h3.59v-6h-3.59V230c0-4.69,2.17-7.07,6.43-7.07h.62v-6Z" transform="translate(-144.35 -215)"/><path fill="#{$clean-color}" d="M326.53,234.71a9.26,9.26,0,0,0-6,1.85,9.43,9.43,0,0,0-5.94-1.85,9.06,9.06,0,0,0-4.49,1.08v-.18h-4.31v21.08h6V243.63c0-2,.53-2.9,2.89-2.9,2.52,0,3,.93,3,2.9v13.06h6V243.63c0-2,.48-2.9,2.85-2.9s3,.93,3,2.9v13.06h6V243.05C335.65,239.7,333.22,234.71,326.53,234.71Z" transform="translate(-144.35 -215)"/><path fill="#{$clean-color}" d="M270.58,235a11.15,11.15,0,0,0-3.09.42v-9.88h-6v31.2h6V243.63c0-2,.86-2.66,3.09-2.66s2.79.7,2.79,2.66v13.06h6V243.63C279.39,238.19,276.1,235,270.58,235Z" transform="translate(-144.35 -215)"/><path fill="#{$clean-color}" d="M230.37,233.1h-6v6l6-.1c3.76,0,4.85,1.86,5.26,3.73-1.1-1-3.16-1.19-4.86-1.19-4.62,0-9.15,2.31-9.15,7.63a7.46,7.46,0,0,0,2.19,5.55c1.61,1.56,3.94,2.35,6.93,2.35h.57a9.61,9.61,0,0,0,4.48-1.32v.93h6V243.83C241.8,237.21,237.42,233.1,230.37,233.1Zm5,16.15c0,2.58-2.54,2.69-4.2,2.69-1.83,0-4.2-.08-4.2-2.69s2.55-2.7,4.2-2.7C233,246.55,235.39,246.63,235.39,249.25Z" transform="translate(-144.35 -215)"/><polygon fill="#{$clean-color}" points="109.16 18.08 109.16 10.49 103.14 10.49 103.14 18.08 100.76 18.08 100.76 24.1 103.14 24.1 103.14 41.69 109.16 41.69 109.16 24.1 113.47 24.1 113.47 18.08 109.16 18.08"/><polygon fill="#{$clean-color}" points="158.65 20.75 152.27 20.75 147.75 34.03 143.37 20.75 136.7 20.75 144.78 42.01 144.78 48.88 150.57 48.88 150.57 42.01 158.65 20.75"/><path fill="#{$clean-color}" d="M147.45,241.58l.06.47c.31,2.7,1.25,10.95,10.76,10.95a9.91,9.91,0,0,0,7.77-3.35,9.64,9.64,0,0,0,2-7.86,22.18,22.18,0,0,0-1.52-4.89,17,17,0,0,1-1.58-7.1c0-2.62.82-8.71,8.38-8.71s8.39,6.09,8.39,8.71a17,17,0,0,1-1.58,7.1,22.18,22.18,0,0,0-1.52,4.89,9.6,9.6,0,0,0,2,7.86,9.91,9.91,0,0,0,7.77,3.35c9.51,0,10.45-8.25,10.76-11l0-.46c.27-2.4.49-2.4,1.42-2.4v-6.09c-4.38,0-6.89,2.63-7.47,7.82l-.05.45c-.45,3.91-1.2,5.54-4.71,5.54a3.91,3.91,0,0,1-3.12-1.18,3.6,3.6,0,0,1-.67-2.92,17.61,17.61,0,0,1,1.17-3.63,22.8,22.8,0,0,0,2-9.37c0-7.37-4.48-14.8-14.48-14.8s-14.47,7.43-14.47,14.8a22.8,22.8,0,0,0,2,9.37,17.61,17.61,0,0,1,1.17,3.63,3.6,3.6,0,0,1-.67,2.92,3.91,3.91,0,0,1-3.12,1.18c-3.51,0-4.27-1.63-4.71-5.54l-.05-.45c-.58-5.19-3.09-7.82-7.47-7.82v6.09C147,239.18,147.19,239.18,147.45,241.58Z" transform="translate(-144.35 -215)"/><rect fill="#{$clean-color}" x="25.07" y="18.07" width="2.86" height="4.98"/><rect fill="#{$clean-color}" x="30.05" y="18.07" width="2.86" height="4.98"/><path fill="#{$clean-color}" d="M198.94,256a15.46,15.46,0,0,1-10.53,3.8,14.56,14.56,0,0,1-11.38-5,14.23,14.23,0,0,1-1.45-2.07l-.92-1.62H172l-.92,1.62a14.23,14.23,0,0,1-1.45,2.07,14.56,14.56,0,0,1-11.38,5,15.55,15.55,0,0,1-10.43-3.7l-3.49,3.79A20.67,20.67,0,0,0,158.27,265a19.68,19.68,0,0,0,15.07-6.56A19.65,19.65,0,0,0,188.41,265c3.18,0,9.24-.68,14.06-5.2Z" transform="translate(-144.35 -215)"/>',
-        thinky-logo: '<path fill="#{$clean-color}" opacity="#{$opacity}" d="#{$thinky-path1}" transform="#{$transform}"/><rect fill="#{$clean-color}" x="32.35" y="23.32" width="3.7" height="6.42"/><rect fill="#{$clean-color}" x="38.78" y="23.32" width="3.7" height="6.42"/><path fill="#{$clean-color}" d="#{$thinky-path2}" transform="#{$transform}"/>',
-        thinky-circle: '<path fill="#{$clean-color}" d="#{$circle-path1}" transform="#{$circle-transform}"/><rect fill="#{$clean-color}" x="33.68" y="36.49" width="2.77" height="4.8"/><rect fill="#{$clean-color}" x="38.5" y="36.49" width="2.77" height="4.8"/><path fill="#{$clean-color}" d="#{$circle-path2}" transform="#{$circle-transform}"/>',
-        thinky-slogan: '<path fill="#{$clean-color}" d="#{$slogan-path1}" transform="#{$slogan-transform}"/><rect fill="#{$clean-color}" x="147.19" y="159.44" width="12.09" height="20.99"/><rect fill="#{$clean-color}" x="168.23" y="159.44" width="12.09" height="20.99"/><path fill="#{$clean-color}" d="#{$slogan-path2}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path3}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path4}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path5}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path6}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path18}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path7}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path8}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path9}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path10}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path11}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path12}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path13}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path14}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path15}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path16}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path17}" transform="#{$slogan-transform}"/><path fill="#{$clean-color}" d="#{$slogan-path19}" transform="#{$slogan-transform}"/>'
-        );
-    
-    $logo: create-svg-logo(map-get($logos, $icon-name), $logo-type);
-    @return url('data:image/svg+xml;utf8,#{$logo}');
-  }
+
   $fathym-default-logo: 'data:image/svg+xml;utf8,<svg id="thinky-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 64.53"><defs><style>.cls-1{fill:%23000;}</style></defs><title>thinky_logos</title><path class="cls-1" d="M205,238.68l.07.6c.4,3.5,1.61,14.14,13.89,14.14a12.8,12.8,0,0,0,10-4.31A12.44,12.44,0,0,0,231.55,239a28.41,28.41,0,0,0-2-6.31,22,22,0,0,1-2-9.17c0-3.37,1-11.23,10.81-11.23s10.82,7.86,10.82,11.23a21.79,21.79,0,0,1-2,9.17,29.69,29.69,0,0,0-2,6.31,12.41,12.41,0,0,0,2.62,10.15,12.8,12.8,0,0,0,10,4.31c12.27,0,13.49-10.63,13.88-14.14l.07-.6c.35-3.1.63-3.1,1.83-3.1v-7.85c-5.66,0-8.9,3.39-9.64,10.08l-.07.58c-.58,5.05-1.54,7.16-6.08,7.16a5.08,5.08,0,0,1-4-1.52,4.62,4.62,0,0,1-.86-3.77,22.5,22.5,0,0,1,1.5-4.68,29.28,29.28,0,0,0,2.61-12.1c0-9.51-5.74-19.1-18.65-19.1s-18.68,9.59-18.68,19.1a29.44,29.44,0,0,0,2.61,12.1,21.92,21.92,0,0,1,1.5,4.68,4.58,4.58,0,0,1-.86,3.77,5.06,5.06,0,0,1-4,1.52c-4.53,0-5.51-2.11-6.09-7.16l-.06-.58c-.74-6.69-4-10.08-9.64-10.08v7.85C204.33,235.58,204.62,235.58,205,238.68Z" transform="translate(-200.96 -204.38)"/><rect class="cls-1" x="32.35" y="23.32" width="3.7" height="6.42"/><rect class="cls-1" x="38.78" y="23.32" width="3.7" height="6.42"/><path class="cls-1" d="M271.4,257.35c-4.55,4.26-10.46,4.91-13.58,4.91a18.82,18.82,0,0,1-14.69-6.48,17.09,17.09,0,0,1-1.86-2.68L240.08,251h-3.42l-1.18,2.09a18.61,18.61,0,0,1-1.87,2.68,18.8,18.8,0,0,1-14.69,6.48c-3.08,0-8.93-.62-13.45-4.78l-4.51,4.9c6.19,5.69,13.91,6.54,18,6.54a25.43,25.43,0,0,0,19.45-8.47,25.41,25.41,0,0,0,19.45,8.47c4.1,0,11.93-.87,18.14-6.72Z" transform="translate(-200.96 -204.38)"/></svg>';
