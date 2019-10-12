@@ -92,4 +92,5 @@ export class MaterialModule {
       ngModule: MaterialModule,
       providers: [ MatBottomSheet ]
     };
+  }
 }
