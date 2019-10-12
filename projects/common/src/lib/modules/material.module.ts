@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkTableModule } from '@angular/cdk/table';
 import {
@@ -36,6 +36,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatBottomSheet,
          } from '@angular/material';
 
 const materialModules: Array<any> = [
@@ -85,4 +86,10 @@ const materialModules: Array<any> = [
   exports: [materialModules]
 })
 
-export class MaterialModule {}
+export class MaterialModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: MaterialModule,
+      providers: [ MatBottomSheet ]
+    };
+}
