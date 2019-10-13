@@ -5,41 +5,45 @@
 @import '../styles/branding/logos/fathym-icons';
 
 @mixin theme-extras($theme) {
-    ::-webkit-scrollbar {
-        width: .75rem;
-    }
+    // ::-webkit-scrollbar {
+    //     width: .75rem;
+    // }
 
-    ::-webkit-scrollbar-track {
-        background: mat-color($primary);
-    }
+    // ::-webkit-scrollbar-track {
+    //     background: mat-color($primary);
+    // }
 
-    ::-webkit-scrollbar-thumb {
-        background: mat-color($accent);
-    }
+    // ::-webkit-scrollbar-thumb {
+    //     background: mat-color($accent);
+    // }
 
-    .primary-logo {
-        height: 100%;
-        width: auto;
-        background-image: url($primary-logo);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 150px;
-    }
+    // .primary-logo {
+    //     height: 100%;
+    //     width: auto;
+    //     background-image: url($primary-logo);
+    //     background-position: center;
+    //     background-repeat: no-repeat;
+    //     background-size: 150px;
+    // }
 }
 
 
 /**
 *   arctic theme
 */
-$fathym-arctic-primary: mat-palette($fathym-arctic-primary);
-$fathym-arctic-accent: mat-palette($fathym-arctic-accent);
-$fathym-arctic-warn: mat-palette($fathym-warn, 500);
-
-$fathym-arctic-dark-theme: mat-dark-theme(
-  $fathym-arctic-primary,
-  $fathym-arctic-accent,
-  $fathym-arctic-warn
-);
+@function arctic-dark-theme() {
+    $primary: mat-palette($fathym-arctic-primary);
+    $accent: mat-palette($fathym-arctic-accent);
+    $warn: mat-palette($fathym-warn, 500);
+    
+        $fathym-arctic-dark-theme: mat-dark-theme(
+            $primary,
+            $accent,
+            $warn
+          );
+    
+    @return $fathym-arctic-dark-theme;
+}
 
 $fathym-arctic-light-theme: mat-light-theme(
   $fathym-arctic-primary,
