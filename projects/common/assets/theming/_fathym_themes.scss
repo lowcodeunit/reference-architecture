@@ -10,11 +10,11 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: mat-color($primary);
+        background: mat-color(map-get($theme, primary));
     }
 
     ::-webkit-scrollbar-thumb {
-        background: mat-color($accent);
+        background: mat-color(map-get($theme, accent));
     }
 
     .primary-logo {
