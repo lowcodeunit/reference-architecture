@@ -136,18 +136,18 @@ $fathym-white-mint-light-theme: mat-light-theme(
 /**
 *   ivy theme - primary and accent are the offical fathym brand colors
 */
-$fathym-ivy-primary: mat-palette($fathym-ivy-primary);
-$fathym-ivy-accent: mat-palette($fathym-ivy-accent);
-$fathym-ivy-warn: mat-palette($fathym-warn, 500);
+// $fathym-ivy-primary: mat-palette($fathym-ivy-primary);
+// $fathym-ivy-accent: mat-palette($fathym-ivy-accent);
+// $fathym-ivy-warn: mat-palette($fathym-warn, 500);
 
-$fathym-ivy-dark-theme: mat-dark-theme(
-  $fathym-ivy-primary,
-  $fathym-ivy-accent,
-  $fathym-ivy-warn
-);
+// $fathym-ivy-dark-theme: mat-dark-theme(
+//   $fathym-ivy-primary,
+//   $fathym-ivy-accent,
+//   $fathym-ivy-warn
+// );
 
-$fathym-ivy-light-theme: mat-light-theme(
-  $fathym-ivy-primary,
-  $fathym-ivy-accent,
-  $fathym-ivy-warn
-);
+// $fathym-ivy-light-theme: mat-light-theme(
+//   $fathym-ivy-primary,
+//   $fathym-ivy-accent,
+//   $fathym-ivy-warn
+// );
