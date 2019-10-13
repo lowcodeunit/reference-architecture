@@ -31,7 +31,7 @@
 /**
 *   arctic theme
 */
-@function fathym-arctic-theme($isDark) {
+@function fathym-arctic-theme($isDark: false) {
     $primary: mat-palette($fathym-arctic-primary);
     $accent: mat-palette($fathym-arctic-accent);
     $warn: mat-palette($fathym-warn, 500);
