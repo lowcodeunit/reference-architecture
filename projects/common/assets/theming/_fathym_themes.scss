@@ -5,7 +5,7 @@
 */
 $fathym-arctic-primary: mat-palette($fathym-arctic-primary);
 $fathym-arctic-accent: mat-palette($fathym-arctic-accent);
-$fathym-arctic-warn: mat-palette($mat-red, 500);
+$fathym-arctic-warn: mat-palette($fathym-warn, 500);
 
 $fathym-arctic-dark-theme: mat-dark-theme(
   $fathym-arctic-primary,
@@ -24,7 +24,7 @@ $fathym-arctic-light-theme: mat-light-theme(
 */
 $fathym-contrast-primary: mat-palette($fathym-contrast-primary);
 $fathym-contrast-accent: mat-palette($fathym-contrast-accent);
-$fathym-contrast-warn: mat-palette($mat-red, 500);
+$fathym-contrast-warn: mat-palette($fathym-warn, 500);
 
 $fathym-contrast-dark-theme: mat-dark-theme(
   $fathym-contrast-primary,
@@ -43,7 +43,7 @@ $fathym-contrast-light-theme: mat-light-theme(
 */
 $fathym-cool-candy-primary: mat-palette($fathym-cool-candy-primary);
 $fathym-cool-candy-accent: mat-palette($fathym-cool-candy-accent);
-$fathym-cool-candy-warn: mat-palette($mat-red, 500);
+$fathym-cool-candy-warn: mat-palette($fathym-warn, 500);
 
 $fathym-cool-candy-dark-theme: mat-dark-theme(
   $fathym-cool-candy-primary,
@@ -62,7 +62,7 @@ $fathym-cool-candy-light-theme: mat-light-theme(
 */
 $fathym-flipper-primary: mat-palette($fathym-flipper-primary);
 $fathym-flipper-accent: mat-palette($fathym-flipper-accent);
-$fathym-flipper-warn: mat-palette($mat-red, 500);
+$fathym-flipper-warn: mat-palette($fathym-warn, 500);
 
 $fathym-flipper-dark-theme: mat-dark-theme(
   $fathym-flipper-primary,
@@ -81,7 +81,7 @@ $fathym-flipper-light-theme: mat-light-theme(
 */
 $fathym-ice-primary: mat-palette($fathym-ice-primary);
 $fathym-ice-accent: mat-palette($fathym-ice-accent);
-$fathym-ice-warn: mat-palette($mat-red, 500);
+$fathym-ice-warn: mat-palette($fathym-warn, 500);
 
 $fathym-ice-dark-theme: mat-dark-theme(
   $fathym-ice-primary,
@@ -100,7 +100,7 @@ $fathym-ice-light-theme: mat-light-theme(
 */
 $fathym-sea-green-primary: mat-palette($fathym-sea-green-primary);
 $fathym-sea-green-accent: mat-palette($fathym-sea-green-accent);
-$fathym-sea-green-warn: mat-palette($mat-red, 500);
+$fathym-sea-green-warn: mat-palette($fathym-warn, 500);
 
 $fathym-sea-green-dark-theme: mat-dark-theme(
   $fathym-sea-green-primary,
@@ -119,7 +119,7 @@ $fathym-sea-green-light-theme: mat-light-theme(
 */
 $fathym-white-mint-primary: mat-palette($fathym-white-mint-primary);
 $fathym-white-mint-accent: mat-palette($fathym-white-mint-accent);
-$fathym-white-mint-warn: mat-palette($mat-red, 500);
+$fathym-white-mint-warn: mat-palette($fathym-warn, 500);
 
 $fathym-white-mint-dark-theme: mat-dark-theme(
   $fathym-white-mint-primary,
@@ -138,7 +138,7 @@ $fathym-white-mint-light-theme: mat-light-theme(
 */
 $fathym-ivy-primary: mat-palette($fathym-ivy-primary);
 $fathym-ivy-accent: mat-palette($fathym-ivy-accent);
-$fathym-ivy-warn: mat-palette($mat-red, 500);
+$fathym-ivy-warn: mat-palette($fathym-warn, 500);
 
 $fathym-ivy-dark-theme: mat-dark-theme(
   $fathym-ivy-primary,
