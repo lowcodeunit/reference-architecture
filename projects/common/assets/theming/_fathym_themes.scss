@@ -35,20 +35,18 @@
     $primary: mat-palette($fathym-arctic-primary);
     $accent: mat-palette($fathym-arctic-accent);
     $warn: mat-palette($fathym-warn, 500);
-    
+    $theme: mat-light-theme(
+        $primary,
+        $accent,
+        $warn
+      );
     @if $isDark {
         $theme: mat-dark-theme(
             $primary,
             $accent,
             $warn
           );
-    } @else {
-        $theme: mat-light-theme(
-            $primary,
-            $accent,
-            $warn
-          );
-    }
+    
     @return $theme;
 }
 
