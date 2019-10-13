@@ -31,25 +31,26 @@
 /**
 *   arctic theme
 */
-@function arctic-dark-theme() {
+@function fathym-arctic-theme($isDark) {
     $primary: mat-palette($fathym-arctic-primary);
     $accent: mat-palette($fathym-arctic-accent);
     $warn: mat-palette($fathym-warn, 500);
     
-        $fathym-arctic-dark-theme: mat-dark-theme(
+    @if $isDark {
+        $fathym-arctic-theme: mat-dark-theme(
             $primary,
             $accent,
             $warn
           );
-    
-    @return $fathym-arctic-dark-theme;
+    } @else {
+        $fathym-arctic-theme: mat-light-theme(
+            $primary,
+            $accent,
+            $warn
+          );
+    }
+    @return $fathym-arctic-theme;
 }
-
-$fathym-arctic-light-theme: mat-light-theme(
-  $fathym-arctic-primary,
-  $fathym-arctic-accent,
-  $fathym-arctic-warn
-);
 
 /**
 *   contrast theme
