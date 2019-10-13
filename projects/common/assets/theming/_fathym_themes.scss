@@ -2,6 +2,31 @@
 @include mat-core();
 
 @import '../styles/branding/colors/fathym-theme-colors';
+@import '../styles/branding/logos/fathym-icons';
+
+@mixin theme-extras($theme) {
+    ::-webkit-scrollbar {
+        width: .75rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: mat-color($primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: mat-color($accent);
+    }
+
+    .primary-logo {
+        height: 100%;
+        width: auto;
+        background-image: url($primary-logo);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 150px;
+    }
+}
+
 
 /**
 *   arctic theme
