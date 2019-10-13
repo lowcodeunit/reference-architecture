@@ -4,6 +4,9 @@
 @import '../styles/branding/colors/fathym-theme-colors';
 @import '../styles/branding/logos/fathym-icons';
 
+/** 
+* Set initial fathym logo
+*/
 $primary-logo: $fathym-default-logo;
 
 @mixin theme-extras($theme) {
