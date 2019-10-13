@@ -37,19 +37,19 @@
     $warn: mat-palette($fathym-warn, 500);
     
     @if $isDark {
-        $fathym-arctic-theme: mat-dark-theme(
+        $theme: mat-dark-theme(
             $primary,
             $accent,
             $warn
           );
     } @else {
-        $fathym-arctic-theme: mat-light-theme(
+        $theme: mat-light-theme(
             $primary,
             $accent,
             $warn
           );
     }
-    @return $fathym-arctic-theme;
+    @return $theme;
 }
 
 /**
