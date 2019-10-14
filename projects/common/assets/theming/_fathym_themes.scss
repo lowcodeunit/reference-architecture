@@ -30,6 +30,10 @@ $primary-logo: $fathym-default-logo;
         background-repeat: no-repeat;
         background-size: 150px;
     }
+
+    .header-background {
+        background-color: mat-color(map-get($theme, accent), A700);
+    }
 }
 
 @function fathym-theme($primary, $accent, $warn, $isDark: false) {
@@ -56,170 +60,84 @@ $primary-logo: $fathym-default-logo;
     $primary: mat-palette($fathym-arctic-primary);
     $accent: mat-palette($fathym-arctic-accent);
     $warn: mat-palette($fathym-warn, 500);
-    // $theme: mat-light-theme(
-    //     $primary,
-    //     $accent,
-    //     $warn
-    //   );
-    // @if $isDark {
-    //     $theme: mat-dark-theme(
-    //         $primary,
-    //         $accent,
-    //         $warn
-    //       );
-    // }
-    
-    @return fathym-theme($primary, $accent, $warn, 1);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
 *   contrast theme
 */
 @function fathym-contrast-theme($isDark: false) {
-    $primary: mat-palette($fathym-arctic-primary);
-    $accent: mat-palette($fathym-arctic-accent);
-    $warn: mat-palette($fathym-warn, 500);
-    $theme: mat-light-theme(
-        $primary,
-        $accent,
-        $warn
-      );
-    @if $isDark {
-        $theme: mat-dark-theme(
-            $primary,
-            $accent,
-            $warn
-          );
-    }
-    
-    @return $theme;
+    $fathym-contrast-primary: mat-palette($fathym-contrast-primary);
+    $fathym-contrast-accent: mat-palette($fathym-contrast-accent);
+    $fathym-contrast-warn: mat-palette($fathym-warn, 500);  
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
 }
-$fathym-contrast-primary: mat-palette($fathym-contrast-primary);
-$fathym-contrast-accent: mat-palette($fathym-contrast-accent);
-$fathym-contrast-warn: mat-palette($fathym-warn, 500);
-
-$fathym-contrast-dark-theme: mat-dark-theme(
-  $fathym-contrast-primary,
-  $fathym-contrast-accent,
-  $fathym-contrast-warn
-);
-
-$fathym-contrast-light-theme: mat-light-theme(
-  $fathym-contrast-primary,
-  $fathym-contrast-accent,
-  $fathym-contrast-warn
-);
 
 /**
 *   cool candy theme
 */
-$fathym-cool-candy-primary: mat-palette($fathym-cool-candy-primary);
-$fathym-cool-candy-accent: mat-palette($fathym-cool-candy-accent);
-$fathym-cool-candy-warn: mat-palette($fathym-warn, 500);
+@function fathym-cool-candy-theme($isDark: false) {
+    $fathym-cool-candy-primary: mat-palette($fathym-cool-candy-primary);
+    $fathym-cool-candy-accent: mat-palette($fathym-cool-candy-accent);
+    $fathym-cool-candy-warn: mat-palette($fathym-warn, 500);
 
-$fathym-cool-candy-dark-theme: mat-dark-theme(
-  $fathym-cool-candy-primary,
-  $fathym-cool-candy-accent,
-  $fathym-cool-candy-warn
-);
-
-$fathym-cool-candy-light-theme: mat-light-theme(
-  $fathym-cool-candy-primary,
-  $fathym-cool-candy-accent,
-  $fathym-cool-candy-warn
-);
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
 
 /**
 *   flipper theme
 */
-$fathym-flipper-primary: mat-palette($fathym-flipper-primary);
-$fathym-flipper-accent: mat-palette($fathym-flipper-accent);
-$fathym-flipper-warn: mat-palette($fathym-warn, 500);
+@function fathym-flipper-theme($isDark: false) {
+    $fathym-flipper-primary: mat-palette($fathym-flipper-primary);
+    $fathym-flipper-accent: mat-palette($fathym-flipper-accent);
+    $fathym-flipper-warn: mat-palette($fathym-warn, 500);
 
-$fathym-flipper-dark-theme: mat-dark-theme(
-  $fathym-flipper-primary,
-  $fathym-flipper-accent,
-  $fathym-flipper-warn
-);
+    @return fathym-theme($primary, $accent, $warn, $isDark);
 
-$fathym-flipper-light-theme: mat-light-theme(
-  $fathym-flipper-primary,
-  $fathym-flipper-accent,
-  $fathym-flipper-warn
-);
+}
 
 /**
 *   ice theme
 */
-$fathym-ice-primary: mat-palette($fathym-ice-primary);
-$fathym-ice-accent: mat-palette($fathym-ice-accent);
-$fathym-ice-warn: mat-palette($fathym-warn, 500);
+@function fathym-ice-theme($isDark: false) {
+    $fathym-ice-primary: mat-palette($fathym-ice-primary);
+    $fathym-ice-accent: mat-palette($fathym-ice-accent);
+    $fathym-ice-warn: mat-palette($fathym-warn, 500);
 
-$fathym-ice-dark-theme: mat-dark-theme(
-  $fathym-ice-primary,
-  $fathym-ice-accent,
-  $fathym-ice-warn
-);
-
-$fathym-ice-light-theme: mat-light-theme(
-  $fathym-ice-primary,
-  $fathym-ice-accent,
-  $fathym-ice-warn
-);
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
 
 /**
 *   sea-green theme
 */
-$fathym-sea-green-primary: mat-palette($fathym-sea-green-primary);
-$fathym-sea-green-accent: mat-palette($fathym-sea-green-accent);
-$fathym-sea-green-warn: mat-palette($fathym-warn, 500);
+@function fathym-sea-green-theme($isDark: false) {
+    $fathym-sea-green-primary: mat-palette($fathym-sea-green-primary);
+    $fathym-sea-green-accent: mat-palette($fathym-sea-green-accent);
+    $fathym-sea-green-warn: mat-palette($fathym-warn, 500);
 
-$fathym-sea-green-dark-theme: mat-dark-theme(
-  $fathym-sea-green-primary,
-  $fathym-sea-green-accent,
-  $fathym-sea-green-warn
-);
-
-$fathym-sea-green-light-theme: mat-light-theme(
-  $fathym-sea-green-primary,
-  $fathym-sea-green-accent,
-  $fathym-sea-green-warn
-);
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
 
 /**
 *   white-mint theme
 */
-$fathym-white-mint-primary: mat-palette($fathym-white-mint-primary);
-$fathym-white-mint-accent: mat-palette($fathym-white-mint-accent);
-$fathym-white-mint-warn: mat-palette($fathym-warn, 500);
+@function fathym-white-mint-theme($isDark: false) {
+    $fathym-white-mint-primary: mat-palette($fathym-white-mint-primary);
+    $fathym-white-mint-accent: mat-palette($fathym-white-mint-accent);
+    $fathym-white-mint-warn: mat-palette($fathym-warn, 500);
 
-$fathym-white-mint-dark-theme: mat-dark-theme(
-  $fathym-white-mint-primary,
-  $fathym-white-mint-accent,
-  $fathym-white-mint-warn
-);
-
-$fathym-white-mint-light-theme: mat-light-theme(
-  $fathym-white-mint-primary,
-  $fathym-white-mint-accent,
-  $fathym-white-mint-warn
-);
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
 
 /**
-*   ivy theme - primary and accent are the offical fathym brand colors
+*   ivy theme - fathym brand colors
 */
-$fathym-ivy-primary: mat-palette($fathym-ivy-primary);
-$fathym-ivy-accent: mat-palette($fathym-ivy-accent);
-$fathym-ivy-warn: mat-palette($fathym-warn, 500);
+@function fathym-ivy-theme($isDark: false) {
+    $fathym-ivy-primary: mat-palette($fathym-ivy-primary);
+    $fathym-ivy-accent: mat-palette($fathym-ivy-accent);
+    $fathym-ivy-warn: mat-palette($fathym-warn, 500);
 
-$fathym-ivy-dark-theme: mat-dark-theme(
-  $fathym-ivy-primary,
-  $fathym-ivy-accent,
-  $fathym-ivy-warn
-);
-
-$fathym-ivy-light-theme: mat-light-theme(
-  $fathym-ivy-primary,
-  $fathym-ivy-accent,
-  $fathym-ivy-warn
-);
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
