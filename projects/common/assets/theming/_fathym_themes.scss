@@ -1,0 +1,149 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import '../styles/branding/colors/fathym-theme-colors';
+@import '../styles/branding/logos/fathym-icons';
+
+/** 
+* Set initial fathym logo
+*/
+$primary-logo: $fathym-default-logo;
+
+/**
+* Put some extra love here
+*/
+@mixin theme-extras($theme) {
+    ::-webkit-scrollbar {
+        width: .75rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: mat-color(map-get($theme, primary));
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: mat-color(map-get($theme, accent));
+    }
+
+    .primary-logo {
+        height: 100%;
+        width: auto;
+        background-image: url($primary-logo);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 150px;
+    }
+
+    .header-background {
+        background-color: mat-color(map-get($theme, accent), A700);
+    }
+}
+
+/**
+* Setup light or dark theme
+*/
+@function fathym-theme($primary, $accent, $warn, $isDark: false) {
+    $theme: mat-light-theme(
+        $primary,
+        $accent,
+        $warn
+      );
+    @if $isDark {
+        $theme: mat-dark-theme(
+            $primary,
+            $accent,
+            $warn
+          );
+    }
+    
+    @return $theme;
+}
+
+/**
+*   arctic theme
+*/
+@function fathym-arctic-theme($isDark: false) {
+    $primary: mat-palette($fathym-arctic-primary);
+    $accent: mat-palette($fathym-arctic-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+*   contrast theme
+*/
+@function fathym-contrast-theme($isDark: false) {
+    $primary: mat-palette($fathym-contrast-primary);
+    $accent: mat-palette($fathym-contrast-accent);
+    $warn: mat-palette($fathym-warn, 500);  
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+*   cool candy theme
+*/
+@function fathym-cool-candy-theme($isDark: false) {
+    $primary: mat-palette($fathym-cool-candy-primary);
+    $accent: mat-palette($fathym-cool-candy-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+*   flipper theme
+*/
+@function fathym-flipper-theme($isDark: false) {
+    $primary: mat-palette($fathym-flipper-primary);
+    $accent: mat-palette($fathym-flipper-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+
+}
+
+/**
+*   ice theme
+*/
+@function fathym-ice-theme($isDark: false) {
+    $primary: mat-palette($fathym-ice-primary);
+    $accent: mat-palette($fathym-ice-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+*   sea-green theme
+*/
+@function fathym-sea-green-theme($isDark: false) {
+    $primary: mat-palette($fathym-sea-green-primary);
+    $accent: mat-palette($fathym-sea-green-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+*   white-mint theme
+*/
+@function fathym-white-mint-theme($isDark: false) {
+    $primary: mat-palette($fathym-white-mint-primary);
+    $accent: mat-palette($fathym-white-mint-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+*   ivy theme - fathym brand colors
+*/
+@function fathym-ivy-theme($isDark: false) {
+    $primary: mat-palette($fathym-ivy-primary);
+    $accent: mat-palette($fathym-ivy-accent);
+    $warn: mat-palette($fathym-warn, 500);
+
+    @return fathym-theme($primary, $accent, $warn, $isDark);
+}
