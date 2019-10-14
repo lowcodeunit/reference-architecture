@@ -32,11 +32,50 @@ $primary-logo: $fathym-default-logo;
     }
 }
 
+@function fathym-theme($primary, $accent, $warn, $isDark: false) {
+    $theme: mat-light-theme(
+        $primary,
+        $accent,
+        $warn
+      );
+    @if $isDark {
+        $theme: mat-dark-theme(
+            $primary,
+            $accent,
+            $warn
+          );
+    }
+    
+    @return $theme;
+}
 
 /**
 *   arctic theme
 */
 @function fathym-arctic-theme($isDark: false) {
+    $primary: mat-palette($fathym-arctic-primary);
+    $accent: mat-palette($fathym-arctic-accent);
+    $warn: mat-palette($fathym-warn, 500);
+    // $theme: mat-light-theme(
+    //     $primary,
+    //     $accent,
+    //     $warn
+    //   );
+    // @if $isDark {
+    //     $theme: mat-dark-theme(
+    //         $primary,
+    //         $accent,
+    //         $warn
+    //       );
+    // }
+    
+    @return fathym-theme($primary, $accent, $warn, 1);
+}
+
+/**
+*   contrast theme
+*/
+@function fathym-contrast-theme($isDark: false) {
     $primary: mat-palette($fathym-arctic-primary);
     $accent: mat-palette($fathym-arctic-accent);
     $warn: mat-palette($fathym-warn, 500);
@@ -55,10 +94,6 @@ $primary-logo: $fathym-default-logo;
     
     @return $theme;
 }
-
-/**
-*   contrast theme
-*/
 $fathym-contrast-primary: mat-palette($fathym-contrast-primary);
 $fathym-contrast-accent: mat-palette($fathym-contrast-accent);
 $fathym-contrast-warn: mat-palette($fathym-warn, 500);
