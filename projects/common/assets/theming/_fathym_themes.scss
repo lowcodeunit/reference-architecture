@@ -68,9 +68,9 @@ $primary-logo: $fathym-default-logo;
 *   contrast theme
 */
 @function fathym-contrast-theme($isDark: false) {
-    $fathym-contrast-primary: mat-palette($fathym-contrast-primary);
-    $fathym-contrast-accent: mat-palette($fathym-contrast-accent);
-    $fathym-contrast-warn: mat-palette($fathym-warn, 500);  
+    $primary: mat-palette($fathym-contrast-primary);
+    $accent: mat-palette($fathym-contrast-accent);
+    $warn: mat-palette($fathym-warn, 500);  
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
@@ -79,9 +79,9 @@ $primary-logo: $fathym-default-logo;
 *   cool candy theme
 */
 @function fathym-cool-candy-theme($isDark: false) {
-    $fathym-cool-candy-primary: mat-palette($fathym-cool-candy-primary);
-    $fathym-cool-candy-accent: mat-palette($fathym-cool-candy-accent);
-    $fathym-cool-candy-warn: mat-palette($fathym-warn, 500);
+    $primary: mat-palette($fathym-cool-candy-primary);
+    $accent: mat-palette($fathym-cool-candy-accent);
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
@@ -90,9 +90,9 @@ $primary-logo: $fathym-default-logo;
 *   flipper theme
 */
 @function fathym-flipper-theme($isDark: false) {
-    $fathym-flipper-primary: mat-palette($fathym-flipper-primary);
-    $fathym-flipper-accent: mat-palette($fathym-flipper-accent);
-    $fathym-flipper-warn: mat-palette($fathym-warn, 500);
+    $primary: mat-palette($fathym-flipper-primary);
+    $accent: mat-palette($fathym-flipper-accent);
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 
@@ -102,9 +102,9 @@ $primary-logo: $fathym-default-logo;
 *   ice theme
 */
 @function fathym-ice-theme($isDark: false) {
-    $fathym-ice-primary: mat-palette($fathym-ice-primary);
-    $fathym-ice-accent: mat-palette($fathym-ice-accent);
-    $fathym-ice-warn: mat-palette($fathym-warn, 500);
+    $primary: mat-palette($fathym-ice-primary);
+    $accent: mat-palette($fathym-ice-accent);
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
@@ -113,9 +113,9 @@ $primary-logo: $fathym-default-logo;
 *   sea-green theme
 */
 @function fathym-sea-green-theme($isDark: false) {
-    $fathym-sea-green-primary: mat-palette($fathym-sea-green-primary);
-    $fathym-sea-green-accent: mat-palette($fathym-sea-green-accent);
-    $fathym-sea-green-warn: mat-palette($fathym-warn, 500);
+    $primary: mat-palette($fathym-sea-green-primary);
+    $accent: mat-palette($fathym-sea-green-accent);
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
@@ -124,9 +124,9 @@ $primary-logo: $fathym-default-logo;
 *   white-mint theme
 */
 @function fathym-white-mint-theme($isDark: false) {
-    $fathym-white-mint-primary: mat-palette($fathym-white-mint-primary);
-    $fathym-white-mint-accent: mat-palette($fathym-white-mint-accent);
-    $fathym-white-mint-warn: mat-palette($fathym-warn, 500);
+    $primary: mat-palette($fathym-white-mint-primary);
+    $accent: mat-palette($fathym-white-mint-accent);
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
@@ -135,9 +135,9 @@ $primary-logo: $fathym-default-logo;
 *   ivy theme - fathym brand colors
 */
 @function fathym-ivy-theme($isDark: false) {
-    $fathym-ivy-primary: mat-palette($fathym-ivy-primary);
-    $fathym-ivy-accent: mat-palette($fathym-ivy-accent);
-    $fathym-ivy-warn: mat-palette($fathym-warn, 500);
+    $primary: mat-palette($fathym-ivy-primary);
+    $accent: mat-palette($fathym-ivy-accent);
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
