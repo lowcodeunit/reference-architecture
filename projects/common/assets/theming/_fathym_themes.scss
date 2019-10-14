@@ -9,6 +9,9 @@
 */
 $primary-logo: $fathym-default-logo;
 
+/**
+* Put some extra love here
+*/
 @mixin theme-extras($theme) {
     ::-webkit-scrollbar {
         width: .75rem;
@@ -36,6 +39,9 @@ $primary-logo: $fathym-default-logo;
     }
 }
 
+/**
+* Setup light or dark theme
+*/
 @function fathym-theme($primary, $accent, $warn, $isDark: false) {
     $theme: mat-light-theme(
         $primary,
