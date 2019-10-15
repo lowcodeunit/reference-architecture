@@ -62,12 +62,12 @@ $primary-logo: $fathym-default-logo;
     }
 
     .mat-focused .mat-form-field-label {
-        color: mat-color($primary,A700) !important;
+        color: mat-color(map-get($theme, primary), A700) !important;
     }
 
     .tooltip-background {
         color: mat-contrast(map-get($theme, primary), 500);
-        background-color: mat-color($primary, A700);
+        background-color: mat-color(map-get($theme, primary), A700);
     }
 }
 
