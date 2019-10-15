@@ -37,6 +37,35 @@ $primary-logo: $fathym-default-logo;
     .header-background {
         background-color: mat-color(map-get($theme, accent), A700);
     }
+
+    .mat-toolbar{
+        background-color: mat-color($primary, A700) !important; 
+    }
+    .mat-raised-button{
+        background-color: mat-color($accent, A700) !important;
+    }
+
+    .error {
+        color: #c43843;
+
+    }
+
+    .success {
+        color: #4a918e;
+    }
+
+    .mat-card{
+        background-color: rgba(164,186,179, 0.9) !important;
+    }
+
+    .mat-focused .mat-form-field-label {
+        color: mat-color($primary,A700) !important;
+    }
+
+    .tooltip-background {
+        color: mat-contrast(map-get($theme, primary), 500);
+        background-color: mat-color($primary, A700);
+    }
 }
 
 /**
