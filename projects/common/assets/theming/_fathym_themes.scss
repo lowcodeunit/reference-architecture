@@ -13,9 +13,9 @@ $primary-logo: $fathym-default-logo;
 * Put some extra love here
 */
 @mixin theme-extras($theme) {
-    $primary: mat-color(map-get($theme, primary));
-    $accent: mat-color(map-get($theme, accent));
-    
+    // $primary: mat-color(map-get($theme, primary));
+    // $accent: mat-color(map-get($theme, accent));
+
     ::-webkit-scrollbar {
         width: .75rem;
     }
@@ -42,10 +42,10 @@ $primary-logo: $fathym-default-logo;
     }
 
     .mat-toolbar{
-        background-color: mat-color($primary, A700) !important; 
+        background-color: mat-color(map-get($theme, primary), A700) !important; 
     }
     .mat-raised-button{
-        background-color: mat-color($accent, A700) !important;
+        background-color: mat-color(map-get($theme, accent), A700) !important;
     }
 
     .error {
