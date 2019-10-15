@@ -13,6 +13,9 @@ $primary-logo: $fathym-default-logo;
 * Put some extra love here
 */
 @mixin theme-extras($theme) {
+    $primary: mat-color(map-get($theme, primary));
+    $accent: mat-color(map-get($theme, accent));
+    
     ::-webkit-scrollbar {
         width: .75rem;
     }
