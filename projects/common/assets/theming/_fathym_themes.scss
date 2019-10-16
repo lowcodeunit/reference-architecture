@@ -3,16 +3,90 @@
 
 @import '../styles/branding/colors/fathym-theme-colors';
 @import '../styles/branding/logos/fathym-icons';
+@import '../styles/branding/fonts/fathym-fonts';
 
 /** 
 * Set initial fathym logo
 */
 $primary-logo: $fathym-default-logo;
 
+@mixin fathym-branding($theme) {
+    .header-background {
+        background-color: mat-color(map-get($theme, accent), A700);
+    }
+
+    .mat-tooltip {
+        color: mat-color(map-get($theme, accent), 100) !important;
+        background: mat-color(map-get($theme, primary), A700) !important; 
+      }
+
+    .mat-toolbar {
+        &.mat-primary {
+            background-color: mat-color(map-get($theme, primary), A700) !important; 
+        }
+
+        // &.mat-accent {
+        //     @include _mat-toolbar-color($accent);
+        // }
+
+        // &.mat-warn {
+        //     @include _mat-toolbar-color($warn);
+        // }
+    }
+
+    /* primary styling for fathym branding of primary buttons */
+
+    .mat-button.mat-primary,
+    .mat-stroked-button.mat-primary {
+        color: mat-color(map-get($theme, primary), A700) !important;
+    }
+    .mat-button.mat-primary:hover,
+    .mat-stroked-button.mat-primary:hover {
+        background-color: mat-color(map-get($theme, accent), 100) !important;
+    }
+
+    .mat-raised-button.mat-primary,
+    .mat-flat-button.mat-primary,
+    .mat-fab.mat-primary,
+    .mat-mini-fab.mat-primary {
+        color: mat-color(map-get($theme, accent), 100) !important;
+        background-color: mat-color(map-get($theme, primary), A700) !important;
+    }
+
+    .mat-icon-button.mat-primary {
+        color:mat-color(map-get($theme, primary), A700) !important;
+    }
+
+    .error {
+        color: #c43843;
+
+    }
+
+    .primary {
+        color: #4a918e;
+    }
+
+    .mat-card{
+        background-color: rgba(164,186,179, 0.9) !important;
+    }
+
+    .mat-focused .mat-form-field-label {
+        color: mat-color(map-get($theme, primary), A700) !important;
+    }
+
+    .tooltip-background {
+        color: mat-contrast(map-get($theme, primary), 500) !important;
+        background-color: mat-color(map-get($theme, primary), A700) !important;
+    }
+}
+
 /**
 * Put some extra love here
 */
 @mixin theme-extras($theme) {
+    // $primary: mat-color(map-get($theme, primary));
+    // $accent: mat-color(map-get($theme, accent));
+
     ::-webkit-scrollbar {
         width: .75rem;
     }
@@ -33,10 +107,6 @@ $primary-logo: $fathym-default-logo;
         background-repeat: no-repeat;
         background-size: 150px;
     }
-
-    .header-background {
-        background-color: mat-color(map-get($theme, accent), A700);
-    }
 }
 
 /**
@@ -55,7 +125,7 @@ $primary-logo: $fathym-default-logo;
             $warn
           );
     }
-    
+
     @return $theme;
 }
 
