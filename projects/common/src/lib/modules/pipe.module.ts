@@ -1,8 +1,8 @@
-import { SanitizeHtmlPipe } from './../utils/pipes/sanitze-html.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DataPipes } from './../utils/pipes/data.pipes';
+import { SanitizeHtmlPipe } from './../utils/pipes/sanitze-html.pipe';
 
 @NgModule({
     declarations: [DataPipes, SanitizeHtmlPipe],
