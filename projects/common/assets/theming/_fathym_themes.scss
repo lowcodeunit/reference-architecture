@@ -15,36 +15,32 @@ $primary-logo: $fathym-default-logo;
         background-color: mat-color(map-get($theme, accent), A700);
     }
 
-    .mat-toolbar{
+    .mat-toolbar.mat-primary {
         background-color: mat-color(map-get($theme, primary), A700) !important; 
     }
 
-    // .mat-raised-button{
-    //     background-color: mat-color(map-get($theme, accent), A700) !important;
-    // }
+    /* primary styling for fathym branding of primary buttons */
 
-/* primary syling */
+    .mat-button.mat-primary,
+    .mat-stroked-button.mat-primary {
+        color: mat-color(map-get($theme, primary), A700) !important;
+    }
+    .mat-button.mat-primary:hover,
+    .mat-stroked-button.mat-primary:hover {
+    background-color: mat-color(map-get($theme, accent), 100) !important;
+    }
 
-.mat-button.mat-primary,
-.mat-stroked-button.mat-primary {
-    color: mat-color(map-get($theme, primary), A700) !important;
-}
-.mat-button.mat-primary:hover,
-.mat-stroked-button.mat-primary:hover {
-  background-color: mat-color(map-get($theme, accent), 100) !important;
-}
+    .mat-raised-button.mat-primary,
+    .mat-flat-button.mat-primary,
+    .mat-fab.mat-primary,
+    .mat-mini-fab.mat-primary {
+    color: mat-color(map-get($theme, accent), 100) !important;
+    background-color: mat-color(map-get($theme, primary), A700) !important;
+    }
 
-.mat-raised-button.mat-primary,
-.mat-flat-button.mat-primary,
-.mat-fab.mat-primary,
-.mat-mini-fab.mat-primary {
-  color: mat-color(map-get($theme, accent), 100) !important;
-  background-color: mat-color(map-get($theme, primary), A700) !important;
-}
-
-.mat-icon-button.mat-primary {
-  color:mat-color(map-get($theme, primary), A700) !important;
-}
+    .mat-icon-button.mat-primary {
+    color:mat-color(map-get($theme, primary), A700) !important;
+    }
 
     .error {
         color: #c43843;
