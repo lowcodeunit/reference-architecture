@@ -15,8 +15,18 @@ $primary-logo: $fathym-default-logo;
         background-color: mat-color(map-get($theme, accent), A700);
     }
 
-    .mat-toolbar.mat-primary {
-        background-color: mat-color(map-get($theme, primary), A700) !important; 
+    .mat-toolbar {
+        &.mat-primary {
+            background-color: mat-color(map-get($theme, primary), A700) !important; 
+        }
+
+        // &.mat-accent {
+        //     @include _mat-toolbar-color($accent);
+        // }
+
+        // &.mat-warn {
+        //     @include _mat-toolbar-color($warn);
+        // }
     }
 
     /* primary styling for fathym branding of primary buttons */
