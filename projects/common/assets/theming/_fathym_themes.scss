@@ -10,34 +10,7 @@
 */
 $primary-logo: $fathym-default-logo;
 
-/**
-* Put some extra love here
-*/
-@mixin theme-extras($theme) {
-    // $primary: mat-color(map-get($theme, primary));
-    // $accent: mat-color(map-get($theme, accent));
-
-    ::-webkit-scrollbar {
-        width: .75rem;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: mat-color(map-get($theme, primary));
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: mat-color(map-get($theme, accent));
-    }
-
-    .primary-logo {
-        height: 100%;
-        width: auto;
-        background-image: url($primary-logo);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 150px;
-    }
-
+@mixin fathym-branding($theme) {
     .header-background {
         background-color: mat-color(map-get($theme, accent), A700);
     }
@@ -67,8 +40,37 @@ $primary-logo: $fathym-default-logo;
     }
 
     .tooltip-background {
-        color: mat-contrast(map-get($theme, primary), 500);
-        background-color: mat-color(map-get($theme, primary), A700);
+        color: mat-contrast(map-get($theme, primary), 500) !important;
+        background-color: mat-color(map-get($theme, primary), A700) !important;
+    }
+}
+
+/**
+* Put some extra love here
+*/
+@mixin theme-extras($theme) {
+    // $primary: mat-color(map-get($theme, primary));
+    // $accent: mat-color(map-get($theme, accent));
+
+    ::-webkit-scrollbar {
+        width: .75rem;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: mat-color(map-get($theme, primary));
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: mat-color(map-get($theme, accent));
+    }
+
+    .primary-logo {
+        height: 100%;
+        width: auto;
+        background-image: url($primary-logo);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 150px;
     }
 }
 
@@ -88,7 +90,7 @@ $primary-logo: $fathym-default-logo;
             $warn
           );
     }
-  
+
     @return $theme;
 }
 
