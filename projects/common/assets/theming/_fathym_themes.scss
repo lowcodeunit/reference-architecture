@@ -3,6 +3,7 @@
 
 @import '../styles/branding/colors/fathym-theme-colors';
 @import '../styles/branding/logos/fathym-icons';
+@import '../styles/branding/fonts/fathym-fonts';
 
 /** 
 * Set initial fathym logo
@@ -87,7 +88,7 @@ $primary-logo: $fathym-default-logo;
             $warn
           );
     }
-    
+  
     @return $theme;
 }
 
