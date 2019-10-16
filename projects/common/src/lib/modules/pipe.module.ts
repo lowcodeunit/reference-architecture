@@ -11,5 +11,10 @@ import { SanitizeHtmlPipe } from './../utils/pipes/sanitze-html.pipe';
 })
 
 export class PipeModule {
-
+    static forRoot() {
+        return {
+            ngModule: PipeModule,
+            providers: [],
+        };
+     }
 }
