@@ -10,4 +10,11 @@ import { DataPipes } from './../utils/pipes/data.pipes';
     exports: [DataPipes, SanitizeHtmlPipe]
 })
 
-export class PipeModule {}
+export class PipeModule {
+    static forRoot() {
+        return {
+            ngModule: PipeModule,
+            providers: [],
+        };
+     }
+}
