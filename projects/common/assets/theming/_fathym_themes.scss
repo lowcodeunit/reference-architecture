@@ -18,7 +18,7 @@ $primary-logo: $fathym-default-logo;
     .mat-tooltip {
         &.mat-primary {
             color: mat-color(map-get($theme, accent), 100) !important;
-            background-color: mat-color(map-get($theme, primary), A700) !important; 
+            background: mat-color(map-get($theme, primary), A700) !important; 
         }
       }
 
