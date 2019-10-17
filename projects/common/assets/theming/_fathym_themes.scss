@@ -58,7 +58,7 @@ $primary-logo: $fathym-default-logo;
     }
 
     .mat-card {
-        &.mat-primary {
+        &.mat-accent {
             background-color: mat-color(map-get($theme, primary), 500, .9) !important;
         }
     }
@@ -67,10 +67,10 @@ $primary-logo: $fathym-default-logo;
         color: mat-color(map-get($theme, primary), A700) !important;
     }
 
-    .tooltip-background {
-        color: mat-contrast(map-get($theme, primary), 500) !important;
-        background-color: mat-color(map-get($theme, primary), A700) !important;
-    }
+    // .tooltip-background {
+    //     color: mat-contrast(map-get($theme, primary), 500) !important;
+    //     background-color: mat-color(map-get($theme, primary), A700) !important;
+    // }
 
     .error {
         color: #c43843;
