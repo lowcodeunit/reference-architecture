@@ -7,6 +7,10 @@ export class DataFlow {
 
   public Lookup?: string;
 
+  public ModulePacks?: string[];
+
+  public ModuleSettings?: { [moduleId: string]: any };
+
   public Name?: string;
 
   public Output?: DataFlowOutput;
