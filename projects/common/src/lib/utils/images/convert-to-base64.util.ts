@@ -22,23 +22,22 @@ export class ConvertToBase64Util {
 
       for (file of files) {
         const reader = new FileReader();
-        console.log("file = ", file)
+        // tslint:disable-next-line:no-shadowed-variable
+        ((file) => {
         reader.onload = () => {
-          // baseArray.push(new Base64Model(reader.result.toString(), file));
+          baseArray.push(new Base64Model(reader.result.toString(), file));
 
           if (baseArray.length === files.length) {
             base64Observable.next(baseArray);
           }
         };
-
+      })(file);
         reader.readAsDataURL(file['file'].rawFile);
-        baseArray.push(new Base64Model(reader.result.toString(), file));
-
         reader.onerror = (error) => {
           console.error('Error: ', error);
         };
       }
 
       return base64Observable;
-   }
+    }
 }

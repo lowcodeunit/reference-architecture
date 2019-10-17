@@ -1,0 +1,13 @@
+@import '../styles/branding/colors/fathym-ivy';
+
+$primary: mat-palette($fathym-ivy-primary);
+$accent: mat-palette($fathym-ivy-accent);
+$warn: mat-palette($nide-warn, 500);
+$primary-logo: $fathym-default-logo;
+
+// create theme (use mat-dark-theme for themes with dark backgrounds)
+$ivy-light-theme: mat-light-theme(
+    $primary,
+    $accent,
+    $warn
+);
