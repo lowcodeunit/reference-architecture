@@ -12,29 +12,6 @@
 
 @include mat-core();
 
-
-// @mixin primary-logo($url: null, $background-size: null) {
-
-// 	@if ($url) {
-// 		$url: $url;
-// 	} else {
-// 		$url: $primary-logo;
-// 	}
-
-// 	@if ($background-size) {
-// 		$background-size: $background-size;
-// 	} else {
-// 		$background-size: 150px;
-// 	}
-
-// 	height: 100%;
-// 	width: auto;
-// 	background-image: url($url);
-// 	background-position: center;
-// 	background-repeat: no-repeat;
-// 	background-size: $background-size;
-// }
-
 @mixin custom-theme($theme) {
     $primary: map-get($theme, primary);
     $accent:  map-get($theme, accent);

@@ -57,17 +57,10 @@ $primary-logo: $fathym-default-logo;
         color:mat-color(map-get($theme, primary), A700) !important;
     }
 
-    .error {
-        color: #c43843;
-
-    }
-
-    .primary {
-        color: #4a918e;
-    }
-
-    .mat-card{
-        background-color: rgba(164,186,179, 0.9) !important;
+    .mat-card {
+        &.mat-primary {
+            background-color: mat-color(map-get($theme, primary), 500, .9) !important;
+        }
     }
 
     .mat-focused .mat-form-field-label {
@@ -77,6 +70,15 @@ $primary-logo: $fathym-default-logo;
     .tooltip-background {
         color: mat-contrast(map-get($theme, primary), 500) !important;
         background-color: mat-color(map-get($theme, primary), A700) !important;
+    }
+
+    .error {
+        color: #c43843;
+
+    }
+
+    .success {
+        color: #4a918e;
     }
 }
 
