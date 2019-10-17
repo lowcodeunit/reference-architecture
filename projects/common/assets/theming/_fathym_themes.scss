@@ -58,9 +58,7 @@ $primary-logo: $fathym-default-logo;
     }
 
     .mat-card {
-        &.mat-accent {
-            background-color: mat-color(map-get($theme, primary), 500, .9) !important;
-        }
+        background-color: mat-color(map-get($theme, primary), 500, .9) !important;
     }
 
     .mat-focused .mat-form-field-label {
