@@ -72,7 +72,7 @@ $primary-logo: $fathym-default-logo;
 
     .mat-raised-button:hover[class*=hover-highlight]{
         &.mat-primary {
-            background-color: mat-color(map-get($theme, accent), 100) !important;
+            background-color: mat-color(map-get($theme, accent), A700) !important;
         }
       }
 
