@@ -70,6 +70,12 @@ $primary-logo: $fathym-default-logo;
     //     background-color: mat-color(map-get($theme, primary), A700) !important;
     // }
 
+    .mat-raised-button:hover[class*=hover-highlight]{
+        &.mat-primary {
+            background-color: mat-color(map-get($theme, accent), A700) !important;
+        }
+      }
+
     .error {
         color: #c43843;
 
