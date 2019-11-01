@@ -133,66 +133,18 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static WhatType(value): string {
-        switch (value) {
-            case this.IsArray(value): {
-                return 'array';
-                break;
-            }
-
-            case this.IsBoolean(value): {
-                return 'boolean';
-                break;
-            }
-
-            case this.IsData(value): {
-                return 'data';
-                break;
-            }
-
-            case this.IsFunction(value): {
-                return 'function';
-                break;
-            }
-
-            case this.IsNull(value): {
-                return 'null';
-                break;
-            }
-
-            case this.IsNumber(value): {
-                return 'number';
-                break;
-            }
-
-            case this.IsObject(value): {
-                return 'string';
-                break;
-            }
-
-            case this.IsRegEx(value): {
-                return 'regex';
-                break;
-            }
-
-            case this.IsString(value): {
-                return 'boolean';
-                break;
-            }
-
-            case this.IsSymbol(value): {
-                return 'symbol';
-                break;
-            }
-
-            case this.IsUndefined(value): {
-                return 'undefined';
-                break;
-            }
-
-            default: {
-                throw new Error('No Datatype found');
-            }
-        }
+    public static GetDataType(value): string {
+        if (this.IsArray(value)) { return 'array';
+        } else if (this.IsBoolean(value)) { return 'boolean';
+        } else if (this.IsData(value)) { return 'data';
+        } else if (this.IsFunction(value)) { return 'function';
+        } else if (this.IsNull(value)) { return 'null';
+        } else if (this.IsNumber(value)) { return 'number';
+        } else if (this.IsObject(value)) { return 'object';
+        } else if (this.IsRegEx(value)) { return 'regex';
+        } else if (this.IsString(value)) { return 'string';
+        } else if (this.IsSymbol(value)) { return 'symbol';
+        } else if (this.IsUndefined(value)) { return 'undefined';
+        } else { throw new Error('No Datatype found'); }
     }
 }
