@@ -1,4 +1,8 @@
-import { JSONSchema } from '../../../json-schema';
+// @dynamic
+
+/**
+ * @dynamic is used because this class contains static properties
+ */
 
 export class DotNotationChangeUtil {
 
