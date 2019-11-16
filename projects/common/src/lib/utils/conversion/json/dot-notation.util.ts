@@ -7,34 +7,52 @@
 export class DotNotationUtil {
 
     /**
-     * Using dot notation, iterate the object and change the key value
+     * Using dot notation, iterate the object and change the key's value
      *
-     * @param schema JSON object
+     * @param obj object to test
      *
-     * @param dotPath Dot notation path
+     * @param propertyPath Dot notation path
      *
      * @param newVal Changed value
      */
-    public static ValueChange(json: JSON | object, dotPath: string, newVal: string): void {
-        return dotPath.split('.').reduce( (prev, curr, idx, arr) => {
-          if ( idx === (arr.length - 1) && prev ) {
-              prev[curr] = newVal;
+    public static SetValue(obj: JSON | object, propertyPath: string, newVal: string): void {
+        /**
+         * split propertyPath string into an array of strings and iterate each itm with reduce
+         *
+         * @param acc(accumulator) returned object to iterate
+         *
+         * @param curr(current value) current element being processed in the array
+         *
+         * @param idx index position of the current element being processed in the array
+         *
+         * @param arr array we created with the split function above
+         *
+         */
+        return propertyPath.split('.').reduce( (acc, curr, idx, arr) => {
+          if ( idx === (arr.length - 1) && acc ) {
+            acc[curr] = newVal;
           }
-          return prev ? prev[curr] : null;
-      }, json);
+          // return a new accumulator to the reduce callback(starts the loop with the next curr value)
+          return acc ? acc[curr] : null;
+
+        // inital value to use as the first argument(this is the item to start the iteration with)
+      }, obj);
     }
 
     /**
-     * Drill down to find nested objects
+     * Using dot notation, iterate the object and return the key's value
      *
-     * @param json object to test
+     * @param obj object to test
      *
      * @param pathArr array of names used to drill into objects
      */
-    public static GetValue(json: JSON | object, pathArr: Array<string>): any {
-        const val = pathArr.reduce((obj, key) =>
-            (obj && obj[key] !== 'undefined') ? obj[key] : undefined, json);
-
-        return val;
+    public static GetValue(obj: JSON | object, propertyPath: Array<string>): string {
+        /**
+         * @param acc(accumulator) returned object to iterate
+         *
+         * @param curr(current value) current element being processed in the array
+         */
+        return propertyPath.reduce((acc, curr) =>
+            (obj && obj[curr] !== 'undefined') ? obj[curr] : undefined, obj);
     }
 }
