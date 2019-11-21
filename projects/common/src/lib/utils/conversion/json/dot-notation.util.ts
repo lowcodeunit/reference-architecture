@@ -15,7 +15,7 @@ export class DotNotationUtil {
      *
      * @param newVal Changed value
      */
-    public static SetValue(obj: JSON | object, propertyPath: string, newVal: string): void {
+    public static SetValue(obj: JSON | object, propertyPath: string, newVal: string | object | Array<any>): void {
         /**
          * split propertyPath string into an array of strings and iterate each itm with reduce
          *
