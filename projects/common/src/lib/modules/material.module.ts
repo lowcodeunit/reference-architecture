@@ -36,6 +36,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatTreeModule,
   MatBottomSheet,
          } from '@angular/material';
 
@@ -74,7 +75,7 @@ const materialModules: Array<any> = [
       MatTabsModule,
       MatToolbarModule,
       MatTooltipModule,
-
+      MatTreeModule,
       // CDK Modules
       CdkTableModule,
       DragDropModule,
