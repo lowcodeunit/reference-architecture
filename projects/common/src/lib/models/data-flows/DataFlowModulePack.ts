@@ -4,4 +4,6 @@ export class DataFlowModulePack {
   public Lookup: string;
 
   public Name: string;
+
+  public Toolkit: string;
 }
