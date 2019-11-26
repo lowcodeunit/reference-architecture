@@ -8,6 +8,8 @@ export class DataFlowModule {
 
   public ID: string;
 
+  public Settings: any;
+
   public Status: Status;
 
   public Text: string;
