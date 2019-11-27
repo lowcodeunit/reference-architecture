@@ -13,6 +13,4 @@ export class DataFlowModule {
   public Status: Status;
 
   public Text: string;
-
-  public Toolkit: string;
 }
