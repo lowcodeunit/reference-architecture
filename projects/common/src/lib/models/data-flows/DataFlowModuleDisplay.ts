@@ -19,6 +19,8 @@ export class DataFlowModuleDisplay {
 
   public Shape: DataFlowModuleShapeTypes;
 
+  public Toolkit: string;
+
   public Top: number;
 
   public Width: number;

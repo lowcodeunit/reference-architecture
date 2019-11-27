@@ -21,7 +21,5 @@ export class DataFlowModuleOption {
 
   public Settings: any;
 
-  public Toolkit: string;
-
   public Visible: boolean;
 }
