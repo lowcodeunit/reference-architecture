@@ -14,12 +14,12 @@ export class RealTimeConnection {
   //  Fields
   protected connectionAttempts: number;
 
-  protected hub: signalR.HubConnection;
-
   protected rtUrl: string;
 
   //  Properties
   public ConnectionError: EventEmitter<any>;
+
+  public Hub: signalR.HubConnection;
 
   public MaxConnectionRetryAttempts: number;
 
@@ -47,25 +47,24 @@ export class RealTimeConnection {
     transport: signalR.HttpTransportType = signalR.HttpTransportType.WebSockets
   ) {
     this.buildHub(transport).then((hub: signalR.HubConnection) => {
-      this.hub = hub;
+      this.Hub = hub;
 
-      this.hub.serverTimeoutInMilliseconds = 600000;
+      this.Hub.serverTimeoutInMilliseconds = 600000;
 
-      this.hub.onclose(err => {
+      this.Hub.onclose(err => {
         console.log('onclose: ' + err);
 
         this.retryConnection();
       });
 
       try {
-        this.hub
-          .start()
+        this.Hub.start()
           .then(() => {
             this.connectionAttempts = 0;
 
             console.log(`Connection started`);
 
-            this.Started.emit(this.hub);
+            this.Started.emit(this.Hub);
           })
           .catch(err => {
             console.log('Error while starting connection: ' + err);
@@ -84,9 +83,9 @@ export class RealTimeConnection {
 
   public RegisterHandler(methodName: string) {
     return Observable.create(obs => {
-      if (this.hub) {
+      if (this.Hub) {
         try {
-          this.hub.on(methodName, req => {
+          this.Hub.on(methodName, req => {
             obs.next(req);
           });
         } catch (err) {
@@ -104,10 +103,9 @@ export class RealTimeConnection {
 
   public Invoke(methodName: string, ...args: any[]) {
     return Observable.create(obs => {
-      if (this.hub) {
+      if (this.Hub) {
         try {
-          this.hub
-            .invoke(methodName, ...args)
+          this.Hub.invoke(methodName, ...args)
             .then(res => {
               obs.next(res);
             })
@@ -136,7 +134,7 @@ export class RealTimeConnection {
   }
 
   protected stop(): Promise<void> {
-    return this.hub.stop();
+    return this.Hub.stop();
   }
 
   /**
@@ -148,11 +146,15 @@ export class RealTimeConnection {
 
       this.connectionAttempts += 1;
 
-      this.reconnect();
+      setTimeout(() => {
+        this.reconnect();
+      }, 1000);
     } else if (this.connectionAttempts >= this.MaxConnectionRetryAttempts) {
       this.stop().then();
 
-      this.ConnectionError.emit('The maximum number of connection retries has been met.')
+      this.ConnectionError.emit(
+        'The maximum number of connection retries has been met.'
+      );
     }
   }
 
