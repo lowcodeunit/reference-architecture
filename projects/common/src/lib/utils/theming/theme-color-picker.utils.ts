@@ -4,41 +4,47 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Injectable } from '@angular/core';
 
+// @dynamic
+
+/**
+ * @dynamic is used because this class contains static properties
+ */
+
 @Injectable({
     providedIn: 'root'
 })
 
 export class ThemeColorPickerUtil {
 
-    protected colorClass: BehaviorSubject<string>;
-    protected initialClass: string;
+    protected static colorClass: BehaviorSubject<string>;
+    protected static initialClass: string;
+    protected static overlayContainer: OverlayContainer;
 
     constructor(protected overlayContainer: OverlayContainer) {
-
-        this.initialClass = 'fathym-contrast-theme';
-        this.colorClass = new BehaviorSubject(this.initialClass);
+        ThemeColorPickerUtil.overlayContainer = overlayContainer;
+        ThemeColorPickerUtil.initialClass = 'fathym-contrast-theme';
 
         const storageClass = localStorage.getItem('theme-picker');
         console.log('color picker service', storageClass);
         if (storageClass) {
             overlayContainer.getContainerElement().classList.add(storageClass);
-            this.colorClass.next(storageClass);
+            ThemeColorPickerUtil.colorClass.next(storageClass);
         } else {
-            overlayContainer.getContainerElement().classList.add(this.initialClass);
+            overlayContainer.getContainerElement().classList.add(ThemeColorPickerUtil.initialClass);
         }
     }
 
-    public GetColorClass(): BehaviorSubject<string> {
-        return this.colorClass;
+    public static GetColorClass(): BehaviorSubject<string> {
+        return ThemeColorPickerUtil.colorClass;
     }
 
-    public SetColorClass(className: string) {
-        this.overlayContainer.getContainerElement().classList.forEach(css => {
-            this.overlayContainer.getContainerElement().classList.remove(css);
+    public static SetColorClass(className: string) {
+        ThemeColorPickerUtil.overlayContainer.getContainerElement().classList.forEach(css => {
+            ThemeColorPickerUtil.overlayContainer.getContainerElement().classList.remove(css);
         });
 
-        this.overlayContainer.getContainerElement().classList.add(className);
-        this.colorClass.next(className);
+        ThemeColorPickerUtil.overlayContainer.getContainerElement().classList.add(className);
+        ThemeColorPickerUtil.colorClass.next(className);
         localStorage.setItem('theme-picker', className);
     }
 }
