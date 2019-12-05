@@ -10,6 +10,8 @@ export class JSONSchema {
    */
   public id?: string;
 
+  public $id?: string;
+
   /**
    * It is recommended that the meta-schema is
    * included in the root of any JSON Schema
