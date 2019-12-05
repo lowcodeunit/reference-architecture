@@ -17,4 +17,5 @@ export * from './lib/modules.api';
 export * from './lib/models.api';
 export * from './lib/validators.api';
 export * from './lib/utils.api';
+export * from './lib/services.api';
 
