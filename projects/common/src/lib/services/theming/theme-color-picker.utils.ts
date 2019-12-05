@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 
-export class ThemeColorPickerUtil {
+export class ThemeColorPickerService {
 
     protected colorClass: BehaviorSubject<string>;
     protected initialClass: string;
