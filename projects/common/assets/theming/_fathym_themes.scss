@@ -61,6 +61,13 @@ $primary-logo: $fathym-default-logo;
         background-color: mat-color(map-get($theme, primary), 500, .9) !important;
     }
 
+    .mat-input-element {
+        caret-color: mat-color(map-get($theme, primary), A700) !important;
+    }
+     
+    .mat-form-field-ripple{
+        background-color: mat-color(map-get($theme, primary), A700) !important;
+    }
     .mat-focused .mat-form-field-label {
         color: mat-color(map-get($theme, primary), A700) !important;
     }
