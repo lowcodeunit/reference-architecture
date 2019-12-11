@@ -47,7 +47,7 @@ export class DotNotationUtil {
      *
      * @param pathArr array of names used to drill into objects
      */
-    public static GetValue(obj: JSON | object, propertyPath: string): string {
+    public static GetValue(obj: JSON | object, propertyPath: string): string | object | Array<any> {
         /**
          * split propertyPath string into an array of strings and iterate each itm with reduce
          *
