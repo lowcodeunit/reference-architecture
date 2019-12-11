@@ -10,14 +10,14 @@ import { Subject } from 'rxjs';
 export abstract class StateManagerContext<T> extends ObservableContextService<T> {
   //  Fields
 
-  // protected rt: RealTimeService;
-  protected get rt(): RealTimeService {
-    return window['lcu:state:rt'];
-  }
+  protected rt: RealTimeService;
+  // protected get rt(): RealTimeService {
+  //   return window['lcu:state:rt'];
+  // }
 
-  protected set rt(value: RealTimeService) {
-    window['lcu:state:rt'] = value;
-  }
+  // protected set rt(value: RealTimeService) {
+  //   window['lcu:state:rt'] = value;
+  // }
 
   public ReconnectionAttempt: Subject<boolean>;
 
