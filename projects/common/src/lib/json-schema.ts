@@ -8,7 +8,7 @@ export class JSONSchema {
    * This is important because it tells refs where
    * the root of the document is located
    */
-  public id?: string;
+  public $id?: string;
 
   /**
    * It is recommended that the meta-schema is
