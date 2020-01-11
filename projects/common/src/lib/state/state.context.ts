@@ -4,7 +4,7 @@ import { StateAction } from './state-action.model';
 import { Injector, EventEmitter, Output } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
-import { LCUServiceSettings } from '@lcu/common';
+import { LCUServiceSettings } from '../api/lcu-service-settings';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
