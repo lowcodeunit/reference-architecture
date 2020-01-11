@@ -5,12 +5,15 @@ import { Injector, EventEmitter, Output } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
+import { HttpClient } from '@angular/common/http';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Fields
   protected groupName: string;
+
+  protected http: HttpClient;
 
   protected rt: RealTimeConnection;
 
@@ -25,19 +28,23 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   constructor(protected injector: Injector) {
     super();
 
+    this.http = injector.get(HttpClient);
+
     this.ReconnectionAttempt = new Subject<boolean>();
 
     this.Settings = injector.get(LCUServiceSettings);
 
     const rtUrl = this.buildHubUrl('');
 
-    this.rt = new RealTimeConnection(rtUrl);
+    const actionUrl = this.loadActionUrl('');
 
-    this.setup();
+    this.rt = new RealTimeConnection(this.http, rtUrl, actionUrl);
 
     this.rt.ReconnectionAttempt.subscribe((val: boolean) => {
       this.ReconnectionAttempt.next(val);
     });
+
+    this.setup();
   }
 
   //  API Methods
@@ -65,6 +72,12 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   //  Helpers
+  protected buildActionUrl(urlRoot: string) {
+    const url = this.loadActionUrl(urlRoot);
+
+    return url;
+  }
+
   protected buildHubUrl(urlRoot: string) {
     const url = this.loadHubUrl(urlRoot);
 
@@ -117,8 +130,22 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     const stateName = await this.loadStateName();
 
     return this.rt
-      .Invoke('ExecuteAction', { ...action, Key: stateKey, State: stateName })
+      .InvokeAction('ExecuteAction', { ...action, Key: stateKey, State: stateName })
       .subscribe();
+  }
+
+  protected loadActionPath() {
+    const actionRoot = this.loadStateActionRoot();
+
+    return `${actionRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+  }
+
+  protected loadActionUrl(urlRoot: string) {
+    const apiRoot = this.Settings ? this.Settings.APIRoot || '' : '';
+
+    const actionPath = this.loadActionPath();
+
+    return `${apiRoot}${urlRoot || ''}${actionPath}`;
   }
 
   protected async loadEnvironment() {
@@ -151,6 +178,14 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       ? this.Settings.StateConfig.Root
       : '/state';
   }
+
+  protected loadStateActionRoot() {
+    return this.Settings.StateConfig &&
+      this.Settings.StateConfig.ActionRoot !== undefined
+      ? this.Settings.StateConfig.ActionRoot
+      : '/api';
+  }
+
   protected async loadUsernameMock() {
     return this.Settings.StateConfig
       ? this.Settings.StateConfig.UsernameMock
