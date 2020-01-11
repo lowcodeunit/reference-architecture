@@ -102,7 +102,7 @@ export class RealTimeConnection {
   }
 
   public Invoke(methodName: string, ...args: any[]) {
-    return Observable.create(obs => {
+    return new Observable(obs => {
       if (this.Hub) {
         try {
           this.Hub.invoke(methodName, ...args)

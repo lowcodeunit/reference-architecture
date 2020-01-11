@@ -10,6 +10,8 @@ import { LCUServiceSettings } from '@lcu/common';
 
 export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Fields
+  protected groupName: string;
+
   protected rt: RealTimeConnection;
 
   protected startSub: Subscription;
@@ -46,9 +48,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public async Start(shouldUpdate: boolean) {
     if (!this.startSub) {
       this.startSub = this.rt.Started.subscribe(async () => {
-        await this.setupReceiveState();
+        const groupName = await this.connectToState(shouldUpdate);
 
-        await this.connectToState(shouldUpdate);
+        this.setupReceiveState(groupName);
 
         this.$Refresh();
       });
@@ -69,7 +71,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return url;
   }
 
-  protected async connectToState(shouldUpdate: boolean) {
+  protected async connectToState(shouldUpdate: boolean): Promise<string> {
     const stateKey = await this.loadStateKey();
 
     const stateName = await this.loadStateName();
@@ -78,15 +80,31 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const unMock = await this.loadUsernameMock();
 
-    return this.rt
-      .Invoke('ConnectToState', {
-        ShouldSend: shouldUpdate,
-        Key: stateKey,
-        State: stateName,
-        Environment: env,
-        UsernameMock: unMock
-      })
-      .subscribe();
+    return new Promise<string>((resolve, reject) => {
+      this.rt
+        .Invoke('ConnectToState', {
+          ShouldSend: shouldUpdate,
+          Key: stateKey,
+          State: stateName,
+          Environment: env,
+          UsernameMock: unMock
+        })
+        .subscribe({
+          next: (req: any) => {
+            if (req.Status && req.Status.Code === 0) {
+              resolve(req.GroupName);
+            } else {
+              reject(
+                req.Status
+                  ? req.Status.Message
+                  : 'Unknonw issue connecting to state.'
+              );
+            }
+          },
+          error: err => reject(err)
+          // complete: () => console.log('Observer got a complete notification'),
+        });
+    });
   }
 
   protected defaultValue(): T {
@@ -143,13 +161,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     this.Start(false).then();
   }
 
-  protected async setupReceiveState() {
-    const stateKey = await this.loadStateKey();
-
-    const stateName = await this.loadStateName();
-
+  protected setupReceiveState(groupName: string) {
     this.rt
-      .RegisterHandler(`ReceiveState${stateName}${stateKey}`)
+      .RegisterHandler(`ReceiveState=>${groupName}`)
       .subscribe(req => {
         this.subject.next(req.State);
       });
