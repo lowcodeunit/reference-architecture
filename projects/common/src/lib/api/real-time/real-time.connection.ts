@@ -81,7 +81,7 @@ export class RealTimeConnection {
     });
   }
 
-  public RegisterHandler(methodName: string) {
+  public RegisterHandler(methodName: string): Observable<any> {
     return new Observable(obs => {
       if (this.Hub) {
         try {
