@@ -9,9 +9,12 @@ import {
   Observer,
   Subject
 } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export class RealTimeConnection {
   //  Fields
+  protected actionUrl: string;
+
   protected connectionAttempts: number;
 
   protected rtUrl: string;
@@ -28,7 +31,9 @@ export class RealTimeConnection {
   public Started: EventEmitter<signalR.HubConnection>;
 
   //  Constructors
-  constructor(rtUrl: string, maxConnectionRetryAttempts: number = 10) {
+  constructor(protected http: HttpClient, rtUrl: string, actionUrl: string, maxConnectionRetryAttempts: number = 10) {
+    this.actionUrl = actionUrl;
+
     this.connectionAttempts = 0;
 
     this.rtUrl = rtUrl;
@@ -81,8 +86,8 @@ export class RealTimeConnection {
     });
   }
 
-  public RegisterHandler(methodName: string) {
-    return Observable.create(obs => {
+  public RegisterHandler(methodName: string): Observable<any> {
+    return new Observable(obs => {
       if (this.Hub) {
         try {
           this.Hub.on(methodName, req => {
@@ -101,8 +106,14 @@ export class RealTimeConnection {
     });
   }
 
+  public InvokeAction(methodName: string, ...args: any[]) {
+    const url = `${this.actionUrl}/${methodName}`;
+
+    return this.http.post(url, args);
+  }
+
   public Invoke(methodName: string, ...args: any[]) {
-    return Observable.create(obs => {
+    return new Observable(obs => {
       if (this.Hub) {
         try {
           this.Hub.invoke(methodName, ...args)

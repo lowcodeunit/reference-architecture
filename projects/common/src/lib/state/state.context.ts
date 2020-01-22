@@ -4,12 +4,17 @@ import { StateAction } from './state-action.model';
 import { Injector, EventEmitter, Output } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
-import { LCUServiceSettings } from '@lcu/common';
+import { LCUServiceSettings } from '../api/lcu-service-settings';
+import { HttpClient } from '@angular/common/http';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Fields
+  protected groupName: string;
+
+  protected http: HttpClient;
+
   protected rt: RealTimeConnection;
 
   protected startSub: Subscription;
@@ -23,19 +28,23 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   constructor(protected injector: Injector) {
     super();
 
+    this.http = injector.get(HttpClient);
+
     this.ReconnectionAttempt = new Subject<boolean>();
 
     this.Settings = injector.get(LCUServiceSettings);
 
     const rtUrl = this.buildHubUrl('');
 
-    this.rt = new RealTimeConnection(rtUrl);
+    const actionUrl = this.loadActionUrl('');
 
-    this.setup();
+    this.rt = new RealTimeConnection(this.http, rtUrl, actionUrl);
 
     this.rt.ReconnectionAttempt.subscribe((val: boolean) => {
       this.ReconnectionAttempt.next(val);
     });
+
+    this.setup();
   }
 
   //  API Methods
@@ -46,9 +55,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public async Start(shouldUpdate: boolean) {
     if (!this.startSub) {
       this.startSub = this.rt.Started.subscribe(async () => {
-        await this.setupReceiveState();
+        const groupName = await this.connectToState(shouldUpdate);
 
-        await this.connectToState(shouldUpdate);
+        this.setupReceiveState(groupName);
 
         this.$Refresh();
       });
@@ -63,13 +72,19 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   //  Helpers
+  protected buildActionUrl(urlRoot: string) {
+    const url = this.loadActionUrl(urlRoot);
+
+    return url;
+  }
+
   protected buildHubUrl(urlRoot: string) {
     const url = this.loadHubUrl(urlRoot);
 
     return url;
   }
 
-  protected async connectToState(shouldUpdate: boolean) {
+  protected async connectToState(shouldUpdate: boolean): Promise<string> {
     const stateKey = await this.loadStateKey();
 
     const stateName = await this.loadStateName();
@@ -78,15 +93,31 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const unMock = await this.loadUsernameMock();
 
-    return this.rt
-      .Invoke('ConnectToState', {
-        ShouldSend: shouldUpdate,
-        Key: stateKey,
-        State: stateName,
-        Environment: env,
-        UsernameMock: unMock
-      })
-      .subscribe();
+    return new Promise<string>((resolve, reject) => {
+      this.rt
+        .Invoke('ConnectToState', {
+          ShouldSend: shouldUpdate,
+          Key: stateKey,
+          State: stateName,
+          Environment: env,
+          UsernameMock: unMock
+        })
+        .subscribe({
+          next: (req: any) => {
+            if (req.Status && req.Status.Code === 0) {
+              resolve(req.GroupName);
+            } else {
+              reject(
+                req.Status
+                  ? req.Status.Message
+                  : 'Unknonw issue connecting to state.'
+              );
+            }
+          },
+          error: err => reject(err)
+          // complete: () => console.log('Observer got a complete notification'),
+        });
+    });
   }
 
   protected defaultValue(): T {
@@ -99,8 +130,22 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     const stateName = await this.loadStateName();
 
     return this.rt
-      .Invoke('ExecuteAction', { ...action, Key: stateKey, State: stateName })
+      .InvokeAction('ExecuteAction', { ...action, Key: stateKey, State: stateName })
       .subscribe();
+  }
+
+  protected loadActionPath() {
+    const actionRoot = this.loadStateActionRoot();
+
+    return `${actionRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+  }
+
+  protected loadActionUrl(urlRoot: string) {
+    const apiRoot = this.Settings ? this.Settings.APIRoot || '' : '';
+
+    const actionPath = this.loadActionPath();
+
+    return `${apiRoot}${urlRoot || ''}${actionPath}`;
   }
 
   protected async loadEnvironment() {
@@ -133,6 +178,14 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       ? this.Settings.StateConfig.Root
       : '/state';
   }
+
+  protected loadStateActionRoot() {
+    return this.Settings.StateConfig &&
+      this.Settings.StateConfig.ActionRoot !== undefined
+      ? this.Settings.StateConfig.ActionRoot
+      : '/api';
+  }
+
   protected async loadUsernameMock() {
     return this.Settings.StateConfig
       ? this.Settings.StateConfig.UsernameMock
@@ -143,13 +196,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     this.Start(false).then();
   }
 
-  protected async setupReceiveState() {
-    const stateKey = await this.loadStateKey();
-
-    const stateName = await this.loadStateName();
-
+  protected setupReceiveState(groupName: string) {
     this.rt
-      .RegisterHandler(`ReceiveState${stateName}${stateKey}`)
+      .RegisterHandler(`ReceiveState=>${groupName}`)
       .subscribe(req => {
         this.subject.next(req.State);
       });
