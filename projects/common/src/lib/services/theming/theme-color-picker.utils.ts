@@ -34,7 +34,9 @@ export class ThemeColorPickerService {
 
     public SetColorClass(className: string) {
         this.overlayContainer.getContainerElement().classList.forEach(css => {
+          if (css !== 'cdk-overlay-container') {
             this.overlayContainer.getContainerElement().classList.remove(css);
+          }
         });
 
         this.overlayContainer.getContainerElement().classList.add(className);
