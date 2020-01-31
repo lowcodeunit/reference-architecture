@@ -3,9 +3,9 @@
  * @dynamic need this because there are static memebers
  */
 
-export class CountryValidator{
+export class CountryConstants{
    
-  protected static Countries: [
+  public static Countries: [
 {
       "country" : "Albania",
       "alpha2" : "AL",
