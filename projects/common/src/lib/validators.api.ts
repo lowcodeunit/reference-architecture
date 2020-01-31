@@ -1,6 +1,5 @@
 export * from './models/validation-message.model';
 export * from './form-validation/messages.validation';
-export * from './form-validation/country.validator';
 export * from './form-validation/email.validator';
 export * from './form-validation/password.validator';
 export * from './form-validation/phone.validator';
