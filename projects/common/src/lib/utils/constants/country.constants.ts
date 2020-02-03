@@ -5,7 +5,7 @@
 
 export class CountryConstants{
    
-  public static Countries: [
+  public static Countries: Array<any> = [
 {
       "country" : "Albania",
       "alpha2" : "AL",
