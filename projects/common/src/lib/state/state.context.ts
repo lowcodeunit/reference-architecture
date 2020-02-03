@@ -97,7 +97,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     return new Promise<string>((resolve, reject) => {
       this.rt
-        .Invoke('ConnectToState', {
+        .InvokeAction('ConnectToState', {
           ShouldSend: shouldUpdate,
           Key: stateKey,
           State: stateName,
@@ -139,7 +139,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected loadActionPath() {
     const actionRoot = this.loadStateActionRoot();
 
-    return `${actionRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+    return `${actionRoot}`;//?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
   }
 
   protected loadActionUrl(urlRoot: string) {
