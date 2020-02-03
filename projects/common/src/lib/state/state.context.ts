@@ -97,7 +97,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     return new Promise<string>((resolve, reject) => {
       this.rt
-        .Invoke('ConnectToState', {
+        .InvokeAction('ConnectToState', {
           ShouldSend: shouldUpdate,
           Key: stateKey,
           State: stateName,
