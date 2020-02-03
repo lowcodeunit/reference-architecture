@@ -61,6 +61,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
         this.$Refresh();
       });
+
+      this.rt.Start();
     }
   }
 
