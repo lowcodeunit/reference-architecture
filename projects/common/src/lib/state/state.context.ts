@@ -103,12 +103,12 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         })
         .subscribe({
           next: (req: any) => {
-            if (req.Status && req.Status.Code === 0) {
-              resolve(req.GroupName);
+            if (req.status && req.status.code === 0) {
+              resolve(req.groupName);
             } else {
               reject(
-                req.Status
-                  ? req.Status.Message
+                req.status
+                  ? req.status.message
                   : 'Unknown issue connecting to state.'
               );
             }
