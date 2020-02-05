@@ -198,7 +198,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       : `/${this.loadStateName()}`;
   }
 
-  protected async loadUsernameMock() {
+  protected loadUsernameMock() {
     return this.Settings.StateConfig
       ? this.Settings.StateConfig.UsernameMock
       : null;
