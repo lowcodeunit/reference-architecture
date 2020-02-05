@@ -109,7 +109,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
               reject(
                 req.Status
                   ? req.Status.Message
-                  : 'Unknonw issue connecting to state.'
+                  : 'Unknown issue connecting to state.'
               );
             }
           },
