@@ -5,7 +5,7 @@
 @import '../styles/branding/logos/fathym-icons';
 @import '../styles/branding/fonts/fathym-fonts';
 
-/** 
+/**
 * Set initial fathym logo
 */
 $primary-logo: $fathym-default-logo;
@@ -17,12 +17,12 @@ $primary-logo: $fathym-default-logo;
 
     .mat-tooltip {
         color: mat-color(map-get($theme, accent), 100) !important;
-        background: mat-color(map-get($theme, primary), A700) !important; 
+        background: mat-color(map-get($theme, primary), A700) !important;
       }
 
     .mat-toolbar {
         &.mat-primary {
-            background-color: mat-color(map-get($theme, primary), A700) !important; 
+            background-color: mat-color(map-get($theme, primary), A700) !important;
         }
 
         // &.mat-accent {
@@ -64,7 +64,7 @@ $primary-logo: $fathym-default-logo;
     .mat-input-element {
         caret-color: mat-color(map-get($theme, primary), A700) !important;
     }
-     
+
     .mat-form-field-ripple{
         background-color: mat-color(map-get($theme, primary), A700) !important;
     }
@@ -81,6 +81,10 @@ $primary-logo: $fathym-default-logo;
         &.mat-primary {
             background-color: mat-color(map-get($theme, accent), A700) !important;
         }
+      }
+
+      .mat-progress-spinner circle, .mat-spinner circle{
+        stroke: mat-color(map-get($theme, primary), A700) !important;
       }
 
     .error {
@@ -159,7 +163,7 @@ $primary-logo: $fathym-default-logo;
 @function fathym-contrast-theme($isDark: false) {
     $primary: mat-palette($fathym-contrast-primary);
     $accent: mat-palette($fathym-contrast-accent);
-    $warn: mat-palette($fathym-warn, 500);  
+    $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
 }
