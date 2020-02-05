@@ -97,13 +97,21 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     return new Promise<string>((resolve, reject) => {
       this.rt
-        .InvokeAction('ConnectToState', {
-          ShouldSend: shouldUpdate,
-          Key: stateKey,
-          State: stateName,
-          Environment: env,
-          UsernameMock: unMock
-        })
+        .InvokeAction(
+          'ConnectToState',
+          {
+            'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
+            'lcu-hub-name': this.loadStateName(),
+            'lcu-state-key': this.loadStateKey()
+          },
+          {
+            ShouldSend: shouldUpdate,
+            Key: stateKey,
+            State: stateName,
+            Environment: env,
+            UsernameMock: unMock
+          }
+        )
         .subscribe({
           next: (req: any) => {
             if (req.Status && req.Status.Code === 0) {
@@ -132,14 +140,22 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     const stateName = await this.loadStateName();
 
     return this.rt
-      .InvokeAction('ExecuteAction', { ...action, Key: stateKey, State: stateName })
+      .InvokeAction(
+        'ExecuteAction',
+        {
+          'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
+          'lcu-hub-name': this.loadStateName(),
+          'lcu-state-key': this.loadStateKey()
+        },
+        { ...action, Key: stateKey, State: stateName }
+      )
       .subscribe();
   }
 
   protected loadActionPath() {
     const actionRoot = this.loadStateActionRoot();
 
-    return `${actionRoot}`;//?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+    return `${actionRoot}`; // ?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
   }
 
   protected loadActionUrl(urlRoot: string) {
@@ -199,10 +215,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected setupReceiveState(groupName: string) {
-    this.rt
-      .RegisterHandler(`ReceiveState=>${groupName}`)
-      .subscribe(req => {
-        this.subject.next(req.State);
-      });
+    this.rt.RegisterHandler(`ReceiveState=>${groupName}`).subscribe(req => {
+      this.subject.next(req.State);
+    });
   }
 }

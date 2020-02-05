@@ -9,7 +9,7 @@ import {
   Observer,
   Subject
 } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class RealTimeConnection {
   //  Fields
@@ -106,10 +106,12 @@ export class RealTimeConnection {
     });
   }
 
-  public InvokeAction(methodName: string, ...args: any[]) {
+  public InvokeAction(methodName: string, headers: HttpHeaders | { [header: string]: string | string[]; }, ...args: any[]) {
     const url = `${this.actionUrl}/${methodName}`;
 
-    return this.http.post(url, args);
+    return this.http.post(url, args, {
+      headers
+    });
   }
 
   public Invoke(methodName: string, ...args: any[]) {
