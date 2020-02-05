@@ -106,7 +106,7 @@ export class RealTimeConnection {
     });
   }
 
-  public InvokeAction(methodName: string, headers: HttpHeaders | { [header: string]: string | string[]; }, ...args: any[]) {
+  public InvokeAction(methodName: string, headers: HttpHeaders | { [header: string]: string | string[]; }, args: {}) {
     const url = `${this.actionUrl}/${methodName}`;
 
     return this.http.post(url, args, {
