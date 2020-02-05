@@ -93,25 +93,14 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const env = await this.loadEnvironment();
 
-    const unMock = await this.loadUsernameMock();
-
     return new Promise<string>((resolve, reject) => {
       this.rt
-        .InvokeAction(
-          'ConnectToState',
-          {
-            'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
-            'lcu-hub-name': this.loadStateName(),
-            'lcu-state-key': this.loadStateKey()
-          },
-          {
-            ShouldSend: shouldUpdate,
-            Key: stateKey,
-            State: stateName,
-            Environment: env,
-            UsernameMock: unMock
-          }
-        )
+        .InvokeAction('ConnectToState', this.loadHeaders(), {
+          ShouldSend: shouldUpdate,
+          Key: stateKey,
+          State: stateName,
+          Environment: env
+        })
         .subscribe({
           next: (req: any) => {
             if (req.Status && req.Status.Code === 0) {
@@ -140,15 +129,11 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     const stateName = await this.loadStateName();
 
     return this.rt
-      .InvokeAction(
-        'ExecuteAction',
-        {
-          'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
-          'lcu-hub-name': this.loadStateName(),
-          'lcu-state-key': this.loadStateKey()
-        },
-        { ...action, Key: stateKey, State: stateName }
-      )
+      .InvokeAction('ExecuteAction', this.loadHeaders(), {
+        ...action,
+        Key: stateKey,
+        State: stateName
+      })
       .subscribe();
   }
 
@@ -170,6 +155,15 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return this.Settings.StateConfig
       ? this.Settings.StateConfig.Environment
       : null;
+  }
+
+  protected loadHeaders() {
+    return {
+      'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
+      'lcu-hub-name': this.loadStateName(),
+      'lcu-state-key': this.loadStateKey(),
+      'lcu-username-mock': this.loadUsernameMock()
+    };
   }
 
   protected loadHubPath() {
