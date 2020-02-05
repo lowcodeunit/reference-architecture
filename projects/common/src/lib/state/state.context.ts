@@ -178,14 +178,14 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return this.Settings.StateConfig &&
       this.Settings.StateConfig.Root !== undefined
       ? this.Settings.StateConfig.Root
-      : '/state';
+      : `/${this.loadStateName()}`;
   }
 
   protected loadStateActionRoot() {
     return this.Settings.StateConfig &&
       this.Settings.StateConfig.ActionRoot !== undefined
       ? this.Settings.StateConfig.ActionRoot
-      : '/api';
+      : `/${this.loadStateName()}`;
   }
 
   protected async loadUsernameMock() {
