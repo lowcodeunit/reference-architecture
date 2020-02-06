@@ -161,8 +161,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return {
       'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
       'lcu-hub-name': this.loadStateName(),
-      'lcu-state-key': this.loadStateKey(),
-      'lcu-username-mock': this.loadUsernameMock()
+      'lcu-state-key': this.loadStateKey()
     };
   }
 
@@ -196,12 +195,6 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       this.Settings.StateConfig.ActionRoot !== undefined
       ? this.Settings.StateConfig.ActionRoot
       : `/${this.loadStateName()}`;
-  }
-
-  protected loadUsernameMock() {
-    return this.Settings.StateConfig
-      ? this.Settings.StateConfig.UsernameMock
-      : '';
   }
 
   protected setup() {
