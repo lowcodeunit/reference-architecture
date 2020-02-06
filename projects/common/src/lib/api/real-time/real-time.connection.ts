@@ -110,7 +110,8 @@ export class RealTimeConnection {
     const url = `${this.actionUrl}/${methodName}`;
 
     return this.http.post(url, args, {
-      headers
+      headers,
+      withCredentials: true
     });
   }
 
