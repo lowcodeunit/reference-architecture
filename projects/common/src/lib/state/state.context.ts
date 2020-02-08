@@ -202,8 +202,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected setupReceiveState(groupName: string) {
-    this.rt.RegisterHandler(`ReceiveState=>${groupName}`).subscribe(req => {
-      this.subject.next(req.State);
+    this.rt.RegisterHandler(`ReceiveState`).subscribe(req => {//=>${groupName}
+      this.subject.next(req);
     });
   }
 }
