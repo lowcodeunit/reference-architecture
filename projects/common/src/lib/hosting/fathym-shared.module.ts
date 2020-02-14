@@ -38,7 +38,7 @@ export class FathymSharedModule {
     };
   }
 
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FathymSharedModule> {
     return {
       ngModule: FathymSharedModule,
       providers: [

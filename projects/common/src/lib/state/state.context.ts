@@ -157,11 +157,22 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       : null;
   }
 
-  protected loadHeaders() {
+  protected loadHeaders(): { [header: string]: string | string[]; } {
+    let hubName: string;
+    let stateKey: string;
+
+    this.loadStateName().then(res => {
+      hubName = res;
+    });
+
+    this.loadStateKey().then(res => {
+      stateKey = res;
+    });
+
     return {
       'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
-      'lcu-hub-name': this.loadStateName(),
-      'lcu-state-key': this.loadStateKey()
+      'lcu-hub-name': hubName,
+      'lcu-state-key': stateKey
     };
   }
 
@@ -179,9 +190,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
   }
 
-  protected abstract async loadStateKey();
+  protected abstract async loadStateKey(): Promise<string>;
 
-  protected abstract async loadStateName();
+  protected abstract async loadStateName(): Promise<string>;
 
   protected loadStateRoot() {
     return this.Settings.StateConfig &&
