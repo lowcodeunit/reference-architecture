@@ -21,5 +21,4 @@ export * from './lib/utils.api';
 export * from './lib/services.api';
 export * from './lib/utils/pipes/data.pipes';
 export * from './lib/utils/pipes/sanitze-html.pipe';
-export * from './lib/elements/lcu-element.component';
 
