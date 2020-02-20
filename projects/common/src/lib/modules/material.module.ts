@@ -33,9 +33,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
+import { MatSortModule, MatSort } from '@angular/material/sort';
+import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 
 const materialModules: Array<any> = [
       MatAutocompleteModule,
@@ -76,6 +76,13 @@ const materialModules: Array<any> = [
       DragDropModule,
     ];
 
+const providers: Array<any> = [
+  MatBottomSheet,
+  MatPaginator,
+  MatSort,
+  MatTableDataSource
+];
+
 @NgModule({
   declarations: [],
   imports: [materialModules],
@@ -86,7 +93,7 @@ export class MaterialModule {
   static forRoot(): ModuleWithProviders<MaterialModule> {
     return {
       ngModule: MaterialModule,
-      providers: [ MatBottomSheet ]
+      providers: [ providers ]
      };
    }
  }
