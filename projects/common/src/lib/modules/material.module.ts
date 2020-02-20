@@ -1,7 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkTableModule } from '@angular/cdk/table';
-
 import {
   MatAutocompleteModule,
   MatBadgeModule,
