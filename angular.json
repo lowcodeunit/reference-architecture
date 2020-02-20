@@ -14,10 +14,7 @@
           "options": {
             "tsConfig": "projects/common/tsconfig.lib.json",
             "project": "projects/common/ng-package.json"
-          },
-          "scripts": [
-            "node_modules/hammerjs/hammer.min.js"
-          ]
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
