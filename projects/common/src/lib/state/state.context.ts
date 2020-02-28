@@ -129,7 +129,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     const stateName = await this.loadStateName();
 
     return this.rt
-      .InvokeAction('ExecuteAction', this.loadHeaders(), {
+      .InvokeAction(action.Type, this.loadHeaders(), {
         ...action,
         Key: stateKey,
         State: stateName
