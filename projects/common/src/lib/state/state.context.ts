@@ -59,7 +59,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
         this.setupReceiveState(groupName);
 
-        // this.$Refresh();
+        this.$Refresh();
       });
 
       this.rt.Start();
