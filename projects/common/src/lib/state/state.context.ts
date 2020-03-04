@@ -69,7 +69,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public $Refresh(args: any = {}) {
     this.Execute({
       Arguments: args,
-      Type: '$refresh'
+      Type: 'Refresh'
     });
   }
 
