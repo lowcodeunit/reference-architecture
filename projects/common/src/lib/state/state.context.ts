@@ -55,9 +55,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public async Start(shouldUpdate: boolean) {
     if (!this.startSub) {
       this.startSub = this.rt.Started.subscribe(async () => {
-        const groupName = await this.connectToState(shouldUpdate);
+        this.setupReceiveState();
 
-        this.setupReceiveState(groupName);
+        await this.connectToState(shouldUpdate);
 
         this.$Refresh();
       });
@@ -201,8 +201,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     this.Start(false).then();
   }
 
-  protected setupReceiveState(groupName: string) {
-    this.rt.RegisterHandler(`ReceiveState`).subscribe(req => {//=>${groupName}
+  protected setupReceiveState() {
+    this.rt.RegisterHandler(`ReceiveState`).subscribe(req => {
       this.subject.next(req);
     });
   }
