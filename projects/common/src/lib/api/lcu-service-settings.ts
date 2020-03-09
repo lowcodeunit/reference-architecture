@@ -3,9 +3,11 @@ import { Injectable } from '@angular/core';
 export class LCUServiceSettings {
   public APIRoot?: string;
 
-  public AppConfig: LCUApplicationConfig;
+  public AppConfig?: LCUApplicationConfig;
 
-  public StateConfig: LCUStateConfig;
+  public Settings?: any;
+
+  public StateConfig?: LCUStateConfig;
 }
 
 export class LCUApplicationConfig {
