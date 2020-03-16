@@ -184,17 +184,22 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected abstract async loadStateName();
 
   protected loadStateRoot() {
-    return this.Settings.StateConfig &&
-      this.Settings.StateConfig.Root !== undefined
-      ? this.Settings.StateConfig.Root
-      : `/${this.loadStateName()}`;
+    const stateRoot =
+      this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined
+        ? this.Settings.StateConfig.Root
+        : '';
+
+    return `${stateRoot}/${this.loadStateName()}`;
   }
 
   protected loadStateActionRoot() {
-    return this.Settings.StateConfig &&
+    const stateActinRoot =
+      this.Settings.StateConfig &&
       this.Settings.StateConfig.ActionRoot !== undefined
-      ? this.Settings.StateConfig.ActionRoot
-      : `/${this.loadStateName()}`;
+        ? this.Settings.StateConfig.ActionRoot
+        : '';
+
+    return `${stateActinRoot}/${this.loadStateName()}`;
   }
 
   protected setup() {

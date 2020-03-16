@@ -32,6 +32,7 @@ export class FathymSharedModule {
       },
       StateConfig: {
         Environment: winAny.LCU.State ? winAny.LCU.State.Environment : '',
+        ActionRoot: winAny.LCU.State ? winAny.LCU.State.Root : '',
         Root: winAny.LCU.State ? winAny.LCU.State.Root : '',
         UsernameMock: winAny.LCU.State ? winAny.LCU.State.UsernameMock : ''
       },
