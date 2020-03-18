@@ -91,7 +91,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const stateName = await this.loadStateName();
 
-    const env = await this.loadEnvironment();
+    const env = this.loadEnvironment();
 
     return new Promise<string>((resolve, reject) => {
       this.rt
@@ -151,7 +151,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return `${apiRoot}${urlRoot || ''}${actionPath}`;
   }
 
-  protected async loadEnvironment() {
+  protected loadEnvironment() {
     return this.Settings.StateConfig
       ? this.Settings.StateConfig.Environment
       : null;
@@ -161,7 +161,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return {
       'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
       'lcu-hub-name': this.loadStateName(),
-      'lcu-state-key': this.loadStateKey()
+      'lcu-state-key': this.loadStateKey(),
+      'lcu-environment': this.loadEnvironment()
     };
   }
 
