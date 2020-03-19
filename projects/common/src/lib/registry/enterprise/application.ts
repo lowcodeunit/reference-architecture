@@ -27,6 +27,8 @@ export class DAFApplicationConfig {
 
   public ID?: string;
 
+  public Lookup?: string;
+
   public Priority?: number;
 }
 
