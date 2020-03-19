@@ -169,7 +169,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected loadHubPath() {
     const stateRoot = this.loadStateRoot();
 
-    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${this.Settings.StateConfig.Environment}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
