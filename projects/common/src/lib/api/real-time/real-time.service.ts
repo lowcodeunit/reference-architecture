@@ -2,7 +2,13 @@ import * as signalR from '@aspnet/signalr';
 import { NgZone, Output, EventEmitter } from '@angular/core';
 import { Injectable, Injector } from '@angular/core';
 import { LCUServiceSettings } from '../lcu-service-settings';
-import { Observable, BehaviorSubject, ReplaySubject, Observer, Subject } from 'rxjs';
+import {
+  Observable,
+  BehaviorSubject,
+  ReplaySubject,
+  Observer,
+  Subject
+} from 'rxjs';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -39,9 +45,8 @@ export class RealTimeService {
     this.ReconnectionAttempt = new Subject<boolean>();
     this.connectionAttempts = 0;
     try {
-       this.Settings = injector.get(LCUServiceSettings);
-       this.zone = injector.get(NgZone);
-
+      this.Settings = injector.get(LCUServiceSettings);
+      this.zone = injector.get(NgZone);
     } catch (err) {}
 
     this.started = new ReplaySubject();
@@ -138,7 +143,9 @@ export class RealTimeService {
     });
   }
 
-  public WithHub(action: (hub: signalR.HubConnection) => void | Observable<any>): Observable<any> {
+  public WithHub(
+    action: (hub: signalR.HubConnection) => void | Observable<any>
+  ): Observable<any> {
     try {
       return Observable.create(obs => {
         if (this.hub.state !== signalR.HubConnectionState.Connected) {
@@ -184,7 +191,7 @@ export class RealTimeService {
   protected loadHubPath() {
     const stateRoot = this.loadStateRoot();
 
-    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${this.Settings.StateConfig.Environment}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
@@ -196,11 +203,16 @@ export class RealTimeService {
   }
 
   protected loadStateRoot() {
-
-    return this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined ? this.Settings.StateConfig.Root : '/state';
+    return this.Settings.StateConfig &&
+      this.Settings.StateConfig.Root !== undefined
+      ? this.Settings.StateConfig.Root
+      : '/state';
   }
 
-  protected runWithHub(obs: Observer<any>, action: (hub: signalR.HubConnection) => void | Observable<any>) {
+  protected runWithHub(
+    obs: Observer<any>,
+    action: (hub: signalR.HubConnection) => void | Observable<any>
+  ) {
     const res = action(this.hub);
 
     if (res) {
