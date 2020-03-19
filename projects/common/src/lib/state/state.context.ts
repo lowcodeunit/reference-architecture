@@ -87,9 +87,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected async connectToState(shouldUpdate: boolean): Promise<string> {
-    const stateKey = await this.loadStateKey();
+    const stateKey = this.loadStateKey();
 
-    const stateName = await this.loadStateName();
+    const stateName = this.loadStateName();
 
     const env = this.loadEnvironment();
 
@@ -124,9 +124,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected async executeAction(action: StateAction) {
-    const stateKey = await this.loadStateKey();
+    const stateKey = this.loadStateKey();
 
-    const stateName = await this.loadStateName();
+    const stateName = this.loadStateName();
 
     return this.rt
       .InvokeAction(action.Type, this.loadHeaders(), {
@@ -180,9 +180,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
   }
 
-  protected abstract async loadStateKey();
+  protected abstract loadStateKey();
 
-  protected abstract async loadStateName();
+  protected abstract loadStateName();
 
   protected loadStateRoot() {
     const stateRoot =
