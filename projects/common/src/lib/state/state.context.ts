@@ -157,7 +157,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       : null;
   }
 
-  protected loadHeaders() {
+  protected loadHeaders(): { [header: string]: string | string[]; } {
     return {
       'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
       'lcu-hub-name': this.loadStateName(),
@@ -180,9 +180,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return `${apiRoot}${urlRoot || ''}${hubPath}`;
   }
 
-  protected abstract loadStateKey();
+  protected abstract loadStateKey(): string;
 
-  protected abstract loadStateName();
+  protected abstract loadStateName(): string;
 
   protected loadStateRoot() {
     const stateRoot =

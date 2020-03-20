@@ -17,7 +17,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsString(value): boolean {
+    public static IsString(value: any): boolean {
         return typeof value === 'string' || value instanceof String;
     }
 
@@ -29,7 +29,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsNumber(value): boolean {
+    public static IsNumber(value: any): boolean {
         return typeof value === 'number' && isFinite(value);
     }
 
@@ -43,7 +43,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsArray(value): boolean {
+    public static IsArray(value: any): boolean {
         return value && typeof value === 'object' && value.constructor === Array;
     }
 
@@ -52,7 +52,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsFunction(value): boolean {
+    public static IsFunction(value: any): boolean {
         return typeof value === 'function';
     }
 
@@ -64,7 +64,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsObject(value): boolean {
+    public static IsObject(value: any): boolean {
         return value && typeof value === 'object' && value.constructor === Object;
     }
 
@@ -73,7 +73,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsNull(value): boolean {
+    public static IsNull(value: any): boolean {
         return value === null;
     }
 
@@ -82,7 +82,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsUndefined(value): boolean {
+    public static IsUndefined(value: any): boolean {
         return value === 'undefined';
     }
 
@@ -91,7 +91,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsBoolean(value): boolean {
+    public static IsBoolean(value: any): boolean {
         return typeof value === 'boolean';
     }
 
@@ -102,7 +102,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsRegEx(value): boolean {
+    public static IsRegEx(value: any): boolean {
         return value && typeof value === 'object' && value.constructor === RegExp;
     }
 
@@ -113,7 +113,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsData(value): boolean {
+    public static IsData(value: any): boolean {
         return value instanceof Date;
     }
 
@@ -124,7 +124,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static IsSymbol(value): boolean {
+    public static IsSymbol(value: any): boolean {
         return typeof value === 'symbol';
     }
 
@@ -133,7 +133,7 @@ export class IsDataTypeUtil {
      *
      * @param value value to test
      */
-    public static GetDataType(value): string {
+    public static GetDataType(value: any): string {
         if (this.IsArray(value)) { return 'array';
         } else if (this.IsBoolean(value)) { return 'boolean';
         } else if (this.IsData(value)) { return 'data';

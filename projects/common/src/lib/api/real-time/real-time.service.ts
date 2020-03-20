@@ -100,7 +100,7 @@ export class RealTimeService {
 
   public RegisterHandler(methodName: string) {
     return this.WithHub(hub => {
-      return Observable.create(obs => {
+      return Observable.create((obs: Observer<any>) => {
         try {
           hub.on(methodName, req => {
             obs.next(req);
@@ -120,7 +120,7 @@ export class RealTimeService {
 
   public Invoke(methodName: string, ...args: any[]) {
     return this.WithHub(hub => {
-      return Observable.create(obs => {
+      return Observable.create((obs: Observer<any>) => {
         try {
           hub
             .invoke(methodName, ...args)
@@ -147,7 +147,7 @@ export class RealTimeService {
     action: (hub: signalR.HubConnection) => void | Observable<any>
   ): Observable<any> {
     try {
-      return Observable.create(obs => {
+      return Observable.create((obs: Observer<any>) => {
         if (this.hub.state !== signalR.HubConnectionState.Connected) {
           this.Start().then(hub => {
             console.log('Restarting connection in flight...');
@@ -159,7 +159,7 @@ export class RealTimeService {
         }
       });
     } catch (err) {
-      return Observable.create(obs => {
+      return Observable.create((obs: Observer<any>) => {
         obs.error(err);
 
         obs.complete();

@@ -101,7 +101,7 @@ export class DotNotationUtil {
   /**
    * Rename property keys
    */
-  public static RenameKeys(keysMap, obj): any {
+  public static RenameKeys(keysMap: object, obj: JSON | object): object {
     return Object
             .keys(obj)
             .reduce((acc, key) => {
