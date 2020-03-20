@@ -52,6 +52,13 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return this.executeAction(action);
   }
 
+  public $Refresh(args: any = {}) {
+    this.Execute({
+      Arguments: args,
+      Type: 'Refresh'
+    });
+  }
+
   public async Start(shouldUpdate: boolean) {
     if (!this.startSub) {
       this.startSub = this.rt.Started.subscribe(async () => {
@@ -64,13 +71,6 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
       this.rt.Start();
     }
-  }
-
-  public $Refresh(args: any = {}) {
-    this.Execute({
-      Arguments: args,
-      Type: 'Refresh'
-    });
   }
 
   //  Helpers
