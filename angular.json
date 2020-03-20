@@ -14,13 +14,13 @@
           "options": {
             "tsConfig": "projects/common/tsconfig.lib.json",
             "project": "projects/common/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/common/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -54,13 +54,13 @@
           "options": {
             "tsConfig": "projects/elements/tsconfig.lib.json",
             "project": "projects/elements/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/elements/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -84,5 +84,8 @@
       }
     }
   },
-  "defaultProject": "common"
+  "defaultProject": "common",
+  "cli": {
+    "analytics": "e2f5a02a-a0ae-49ff-a1c3-2ce052f91670"
+  }
 }
