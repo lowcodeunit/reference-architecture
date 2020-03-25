@@ -152,12 +152,18 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected loadEnvironment() {
-    return this.Settings.StateConfig
+    let env = this.Settings.StateConfig
       ? this.Settings.StateConfig.Environment
       : null;
+
+    if (!env) {
+      env = '';
+    }
+
+    return env;
   }
 
-  protected loadHeaders(): { [header: string]: string | string[]; } {
+  protected loadHeaders(): { [header: string]: string | string[] } {
     return {
       'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
       'lcu-hub-name': this.loadStateName(),
@@ -169,7 +175,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected loadHubPath() {
     const stateRoot = this.loadStateRoot();
 
-    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${this.Settings.StateConfig.Environment}`;
+    const env = this.loadEnvironment();
+
+    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${env}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
