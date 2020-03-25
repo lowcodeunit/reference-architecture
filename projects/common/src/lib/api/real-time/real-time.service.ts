@@ -203,10 +203,12 @@ export class RealTimeService {
   }
 
   protected loadStateRoot() {
-    return this.Settings.StateConfig &&
-      this.Settings.StateConfig.Root !== undefined
-      ? this.Settings.StateConfig.Root
-      : '/state';
+    // return this.Settings.StateConfig &&
+    //   this.Settings.StateConfig.Root !== undefined
+    //   ? this.Settings.StateConfig.Root
+    //   : '/state';
+
+    return '/state';
   }
 
   protected runWithHub(
