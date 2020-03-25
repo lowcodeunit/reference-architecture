@@ -48,4 +48,6 @@ export class DAFViewApplicationConfig extends DAFApplicationConfig {
   public NPMPackage?: string;
 
   public PackageVersion?: string;
+
+  public StateConfig?: any;
 }
