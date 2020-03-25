@@ -168,7 +168,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
       'lcu-hub-name': this.loadStateName(),
       'lcu-state-key': this.loadStateKey(),
-      'lcu-environment': this.loadEnvironment()
+      'lcu-environment': this.loadEnvironment(),
+      'lcu-username-mock': this.loadUsernameMock()
     };
   }
 
@@ -177,7 +178,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const env = this.loadEnvironment();
 
-    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${env}`;
+    const unmock = this.loadUsernameMock();
+
+    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
@@ -209,6 +212,10 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         : '';
 
     return `${stateActinRoot}/${this.loadStateName()}`;
+  }
+
+  protected loadUsernameMock() {
+    return this.Settings.StateConfig ? this.Settings.StateConfig.UsernameMock : '';
   }
 
   protected setup() {
