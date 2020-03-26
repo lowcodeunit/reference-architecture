@@ -13,6 +13,7 @@ export class LCUInterceptor implements HttpInterceptor {
         .set('lcu-app-id', this.settings.AppConfig.ID)
         .set('lcu-app-ent-api-key', this.settings.AppConfig.EnterpriseAPIKey)
         .set('lcu-environment', this.settings.StateConfig.Environment || '')
+        .set('lcu-username-mock', this.settings.StateConfig.UsernameMock || '')
     });
 
     // Pass the cloned request instead of the original request to the next handle

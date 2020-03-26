@@ -215,7 +215,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected loadUsernameMock() {
-    return this.Settings.StateConfig ? this.Settings.StateConfig.UsernameMock : '';
+    return this.Settings.StateConfig && this.Settings.StateConfig.UsernameMock ? this.Settings.StateConfig.UsernameMock : '';
   }
 
   protected setup() {
