@@ -62,9 +62,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public async Start(shouldUpdate: boolean) {
     if (!this.startSub) {
       this.startSub = this.rt.Started.subscribe(async () => {
-        this.setupReceiveState();
+        const groupName = await this.connectToState(shouldUpdate);
 
-        await this.connectToState(shouldUpdate);
+        this.setupReceiveState(groupName);
 
         this.$Refresh();
       });
@@ -215,15 +215,17 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected loadUsernameMock() {
-    return this.Settings.StateConfig && this.Settings.StateConfig.UsernameMock ? this.Settings.StateConfig.UsernameMock : '';
+    return this.Settings.StateConfig && this.Settings.StateConfig.UsernameMock
+      ? this.Settings.StateConfig.UsernameMock
+      : '';
   }
 
   protected setup() {
     this.Start(false).then();
   }
 
-  protected setupReceiveState() {
-    this.rt.RegisterHandler(`ReceiveState`).subscribe(req => {
+  protected setupReceiveState(groupName: string) {
+    this.rt.RegisterHandler(`ReceiveState=>${groupName}`).subscribe(req => {
       this.subject.next(req);
     });
   }
