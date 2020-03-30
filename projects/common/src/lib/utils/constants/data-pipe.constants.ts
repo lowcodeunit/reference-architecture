@@ -13,6 +13,7 @@ export class DataPipeConstants {
     public static readonly DATE_TIME_FMT = `${DataPipeConstants.DATE_FMT} hh:mm:ss`;
     public static readonly DATE_DAY_TIME = 'EEE h a';
     public static readonly PIPE_DATE = 'date';
+    public static readonly PIPE_SHORTDATE = 'short date';
     public static readonly PIPE_DECIMAL_TWO = 'decimalTwo';
     public static readonly PIPE_DECIMAL_FOUR = 'decimalfour';
     public static readonly PIPE_EPOCH = 'epoch';

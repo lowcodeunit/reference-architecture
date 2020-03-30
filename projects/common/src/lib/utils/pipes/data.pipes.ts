@@ -30,7 +30,7 @@ export class DataPipes implements PipeTransform {
     /**
      * Return date M/d/YYYY
      */
-    if (args.toLowerCase() === DataPipeConstants.DATE_SHORTDATE) {
+    if (args.toLowerCase() === DataPipeConstants.PIPE_SHORTDATE) {
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, DataPipeConstants.DATE_SHORTDATE);
       return transformed;
