@@ -28,6 +28,33 @@ export class DataPipes implements PipeTransform {
     }
 
     /**
+     * Return date M/d/YYYY
+     */
+    if (args.toLowerCase() === DataPipeConstants.DATE_SHORTDATE) {
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_SHORTDATE);
+      return transformed;
+    }
+
+    /**
+     * Return date MMM d, y
+     */
+    if (args.toLowerCase() === DataPipeConstants.DATE_MEDIUMDATE) {
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_MEDIUMDATE);
+      return transformed;
+    }
+
+    /**
+     * Return date 'EEEE, MMMM d, y'
+     */
+    if (args.toLowerCase() === DataPipeConstants.DATE_FULLDATE) {
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_FULLDATE);
+      return transformed;
+    }
+
+    /**
      * Return date from epoch value
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_EPOCH) {
