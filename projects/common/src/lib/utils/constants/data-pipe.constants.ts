@@ -14,6 +14,8 @@ export class DataPipeConstants {
     public static readonly DATE_DAY_TIME = 'EEE h a';
     public static readonly PIPE_DATE = 'date';
     public static readonly PIPE_SHORTDATE = 'shortdate';
+    public static readonly PIPE_MEDIUMDATE = 'mediumdate';
+    public static readonly PIPE_FULLDATE = 'fulldate';
     public static readonly PIPE_DECIMAL_TWO = 'decimalTwo';
     public static readonly PIPE_DECIMAL_FOUR = 'decimalfour';
     public static readonly PIPE_EPOCH = 'epoch';
