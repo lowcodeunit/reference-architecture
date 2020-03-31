@@ -18,6 +18,16 @@ export class DataPipes implements PipeTransform {
     }
 
     /**
+     * Return date M/d/YYYY
+     */
+    if (args.toLowerCase() === DataPipeConstants.PIPE_SHORTDATE) {
+      console.log("ARGS: ", args)
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_SHORTDATE);
+      return transformed;
+    }
+
+    /**
      * Return date
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_DATE) {
@@ -28,15 +38,7 @@ export class DataPipes implements PipeTransform {
       return transformed;
     }
 
-    /**
-     * Return date M/d/YYYY
-     */
-    if (args.toLowerCase() === DataPipeConstants.PIPE_SHORTDATE) {
-      console.log("ARGS: ", args)
-      const pipe = new DatePipe('en-US');
-      const transformed = pipe.transform(value, 'shortDate');
-      return transformed;
-    }
+    
 
     /**
      * Return date MMM d, y
