@@ -12,7 +12,6 @@ import { TemperatureConversion } from '../conversion/temperature.conversion';
  * Pipes for datagrid values
  */
 export class DataPipes implements PipeTransform {
-  
   transform(value: any, args?: any): any {
     if (!args) {
       return value;
@@ -32,7 +31,7 @@ export class DataPipes implements PipeTransform {
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_DATE) {
       const pipe = new DatePipe('en-US');
-      const transformed = pipe.transform(value, DataPipeConstants.DATE_SHORTDATE);
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_FMT);
       return transformed;
     }
 
@@ -42,7 +41,6 @@ export class DataPipes implements PipeTransform {
      * Return date MMM d, y
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_MEDIUMDATE) {
-      console.log("ARGS: ", args)
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, 'MMM d, y');
       return transformed;
