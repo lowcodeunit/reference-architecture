@@ -38,7 +38,7 @@ export class DataPipes implements PipeTransform {
     /**
      * Return date MMM d, y
      */
-    if (args.toLowerCase() === DataPipeConstants.DATE_MEDIUMDATE) {
+    if (args.toLowerCase() === DataPipeConstants.PIPE_MEDIUMDATE) {
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, DataPipeConstants.DATE_MEDIUMDATE);
       return transformed;
@@ -47,7 +47,7 @@ export class DataPipes implements PipeTransform {
     /**
      * Return date 'EEEE, MMMM d, y'
      */
-    if (args.toLowerCase() === DataPipeConstants.DATE_FULLDATE) {
+    if (args.toLowerCase() === DataPipeConstants.PIPE_FULLDATE) {
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, DataPipeConstants.DATE_FULLDATE);
       return transformed;
