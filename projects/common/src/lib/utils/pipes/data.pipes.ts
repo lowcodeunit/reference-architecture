@@ -13,9 +13,17 @@ import { TemperatureConversion } from '../conversion/temperature.conversion';
  */
 export class DataPipes implements PipeTransform {
   transform(value: any, args?: any): any {
-
     if (!args) {
       return value;
+    }
+
+    /**
+     * Return date M/d/YYYY
+     */
+    if (args.toLowerCase() === DataPipeConstants.PIPE_SHORTDATE) {
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_SHORTDATE);
+      return transformed;
     }
 
     /**
@@ -24,6 +32,26 @@ export class DataPipes implements PipeTransform {
     if (args.toLowerCase() === DataPipeConstants.PIPE_DATE) {
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, DataPipeConstants.DATE_FMT);
+      return transformed;
+    }
+
+    
+
+    /**
+     * Return date MMM d, y
+     */
+    if (args.toLowerCase() === DataPipeConstants.PIPE_MEDIUMDATE) {
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, 'MMM d, y');
+      return transformed;
+    }
+
+    /**
+     * Return date 'EEEE, MMMM d, y'
+     */
+    if (args.toLowerCase() === DataPipeConstants.PIPE_FULLDATE) {
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_FULLDATE);
       return transformed;
     }
 
