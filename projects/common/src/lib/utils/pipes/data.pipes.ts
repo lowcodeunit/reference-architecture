@@ -13,7 +13,6 @@ import { TemperatureConversion } from '../conversion/temperature.conversion';
  */
 export class DataPipes implements PipeTransform {
   transform(value: any, args?: any): any {
-    console.log("ARGS: ", args);
     if (!args) {
       return value;
     }
