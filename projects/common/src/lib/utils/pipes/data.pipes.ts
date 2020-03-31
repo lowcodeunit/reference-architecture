@@ -22,8 +22,9 @@ export class DataPipes implements PipeTransform {
      */
     if (args.toLowerCase() === DataPipeConstants.PIPE_SHORTDATE) {
       console.log("ARGS: ", args)
+      debugger;
       const pipe = new DatePipe('en-US');
-      const transformed = pipe.transform(value, DataPipeConstants.DATE_SHORTDATE);
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_FMT);
       return transformed;
     }
 
