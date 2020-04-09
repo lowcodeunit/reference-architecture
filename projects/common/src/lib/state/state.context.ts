@@ -180,7 +180,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const unmock = this.loadUsernameMock();
 
-    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
+    return `${stateRoot}?lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
