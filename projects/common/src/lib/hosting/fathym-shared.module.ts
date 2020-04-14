@@ -7,12 +7,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LCUInterceptor } from '../api/daf/lcu.interceptor';
 import { RealTimeService } from '../api/real-time/real-time.service';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
+import { SafePipe } from '../pipes/safe-pipe';
 
 export const winAny = <any>window;
 
 @NgModule({
+  declarations: [SafePipe],
   imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
-  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
+  exports: [CommonModule, FormsModule, HttpClientModule, RouterModule, SafePipe],
   providers: [],
   entryComponents: []
 })
