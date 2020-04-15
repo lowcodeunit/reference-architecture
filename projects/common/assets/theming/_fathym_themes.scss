@@ -98,10 +98,23 @@ $primary-logo: $fathym-default-logo;
     }
 }
 
+@mixin fathym-theme-variables($theme) {
+    $primary: mat-color(map-get($theme, primary), 500);
+    $accent: mat-color(map-get($theme, accent), 500);
+    $warn: mat-color(map-get($theme, warn), 500);
+  
+    :root {
+        --primary-color: #{$primary};
+        --accent-color: #{$accent};
+        --warn-color: #{$warn};
+    }
+  }
+
 /**
 * Put some extra love here
 */
 @mixin theme-extras($theme) {
+    @include fathym-theme-variables($theme);
     // $primary: mat-color(map-get($theme, primary));
     // $accent: mat-color(map-get($theme, accent));
 
