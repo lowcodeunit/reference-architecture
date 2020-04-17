@@ -10,6 +10,10 @@
 */
 $primary-logo: $fathym-default-logo;
 
+$primary-color: #acacac;
+$accent-color: #d3d3d3;
+$warn-color: rgb(184, 62, 25);
+
 @mixin fathym-branding($theme) {
     .header-background {
         background-color: mat-color(map-get($theme, accent), A700);
@@ -58,7 +62,7 @@ $primary-logo: $fathym-default-logo;
     }
 
     .mat-card {
-        // background-color: mat-color(map-get($theme, primary), 500, .9) !important;
+        background-color: mat-color(map-get($theme, primary), 500, .9) !important;
     }
 
     .mat-input-element {
@@ -103,25 +107,14 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-color(map-get($theme, accent), 500);
     $warn: mat-color(map-get($theme, warn), 500);
   
+    $primary-color: $primary;
+    $accent-color: $accent;
+    $warn-color: $warn;
+
     :root {
         --primary-color: #{$primary};
         --accent-color: #{$accent};
         --warn-color: #{$warn};
-        --test-color: rgb(247, 0, 255);
-    }
-
-    :host {
-        --host-primary-color: #{$primary};
-        --host-accent-color: #{$accent};
-        --host-warn-color: #{$warn};
-        --host-test-color: rgb(247, 0, 255);
-    }
-    
-    html {
-        --html-primary-color: #{$primary};
-        --html-accent-color: #{$accent};
-        --html-warn-color: #{$warn};
-        --html-test-color: rgb(247, 0, 255);
     }
   }
 
