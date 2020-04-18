@@ -33,7 +33,7 @@ $fathym-ivy-primary: (
   );
   
   $fathym-ivy-accent: (
-    50 : #fdfdfd,
+      50 : #fdfdfd,
       100 : #f5fafb,
       200 : #eff7f9,
       300 : #e9f4f6,
@@ -65,5 +65,18 @@ $fathym-ivy-primary: (
       )
   );
   
-  
+  /**
+  * return a specific theme color
+  * 
+  * @param $type which map we want to drill into, defaults to primary
+  * @param $hue which hue value we want to return, default is 500
+  */
+  @function theme-color($type: primary, $hue: 500) {
+    $map: map-get($fathym-ivy-primary, $hue);
+    @if $type == accent {
+      $map: map-get($fathym-ivy-accent, $hue);
+    }
+    
+    @return $map;
+  }
   
