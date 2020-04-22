@@ -33,20 +33,20 @@ $fathym-ivy-primary: (
   );
   
   $fathym-ivy-accent: (
-      50 : #fdfdfd,
-      100 : #f5fafb,
-      200 : #eff7f9,
-      300 : #e9f4f6,
-      400 : #e4f1f4,
-      500 : #dfeff2,
-      600 : #dbedf0,
-      700 : #d7ebee,
-      800 : #d2e8ec,
-      900 : #cae4e8,
-      A100 : #b3e3e2,
-      A200 : #95d8d6,
-      A400 : #7ecfce,
-      A700 : #67c7c5,
+      50 : #f3fafa,
+      100 : #e1f3f3,
+      200 : #ceeceb,
+      300 : #bae4e2,
+      400 : #abdedc,
+      500 : #9cd8d6,
+      600 : #94d4d1,
+      700 : #8acecc,
+      800 : #80c8c6,
+      900 : #6ebfbc,
+      A100 : #ffffff,
+      A200 : #ffffff,
+      A400 : #ffffff,
+      A700 : #f5fffe,
     contrast: (
       50 : #202020,
       100 : #202020,
@@ -65,6 +65,38 @@ $fathym-ivy-primary: (
       )
   );
   
+  $fathym-ivy-warn: (
+      50 : #f8e7e8,
+      100 : #edc3c7,
+      200 : #e29ca1,
+      300 : #d6747b,
+      400 : #cd565f,
+      500 : #c43843,
+      600 : #be323d,
+      700 : #b62b34,
+      800 : #af242c,
+      900 : #a2171e,
+      A100 : #fff0f3,
+      A200 : #ffbdca,
+      A400 : #ff8aa1,
+      A700 : #ff708d,
+    contrast: (
+      50 : #202020,
+      100 : #202020,
+      200 : #202020,
+      300 : #202020,
+      400 : #202020,
+      500 : #202020,
+      600 : #202020,
+      700 : #202020,
+      800 : #202020,
+      900 : #202020,
+      A100 : #202020,
+      A200 : #202020,
+      A400 : #202020,
+      A700 : #202020,
+      )
+  );
   /**
   * return a specific theme color
   * 
@@ -75,6 +107,9 @@ $fathym-ivy-primary: (
     $map: map-get($fathym-ivy-primary, $hue);
     @if $type == accent {
       $map: map-get($fathym-ivy-accent, $hue);
+    } 
+    @if $type == warn {
+      $map: map-get($fathym-ivy-warn, $hue);
     }
     
     @return $map;

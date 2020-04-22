@@ -10,10 +10,6 @@
 */
 $primary-logo: $fathym-default-logo;
 
-$primary-color: #acacac;
-$accent-color: #d3d3d3;
-$warn-color: rgb(184, 62, 25);
-
 @mixin fathym-branding($theme) {
     .header-background {
         background-color: mat-color(map-get($theme, accent), A700);
@@ -102,30 +98,10 @@ $warn-color: rgb(184, 62, 25);
     }
 }
 
-@mixin fathym-theme-variables($theme) {
-    $primary: mat-color(map-get($theme, primary), 500);
-    $accent: mat-color(map-get($theme, accent), 500);
-    $warn: mat-color(map-get($theme, warn), 500);
-  
-    $primary-color: $primary;
-    $accent-color: $accent;
-    $warn-color: $warn;
-
-    :root {
-        --primary-color: #{$primary};
-        --accent-color: #{$accent};
-        --warn-color: #{$warn};
-    }
-  }
-
 /**
 * Put some extra love here
 */
 @mixin theme-extras($theme) {
-    @include fathym-theme-variables($theme);
-    // $primary: mat-color(map-get($theme, primary));
-    // $accent: mat-color(map-get($theme, accent));
-
     ::-webkit-scrollbar {
         width: .75rem;
     }
@@ -255,4 +231,13 @@ $warn-color: rgb(184, 62, 25);
     $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+* pull back a specific color from a color palette
+*/
+@function palette-color($theme, $hue: 500) {
+    $palette: mat-palette($theme, $hue);
+    $color: mat-color($palette);
+    @return $color;
 }
