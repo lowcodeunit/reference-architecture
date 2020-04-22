@@ -66,3 +66,17 @@ $fathym-contrast-accent: (
 );
 
 
+ /**
+  * return a specific theme color
+  * 
+  * @param $type which map we want to drill into, defaults to primary
+  * @param $hue which hue value we want to return, default is 500
+  */
+  @function theme-color($type: primary, $hue: 500) {
+    $map: map-get($fathym-ivy-primary, $hue);
+    @if $type == accent {
+      $map: map-get($fathym-ivy-accent, $hue);
+    }
+    
+    @return $map;
+  }
