@@ -1,4 +1,6 @@
 export class Application {
+  public AccessRights?: string[];
+
   public Container?: string;
 
   public Description?: string;
