@@ -102,9 +102,6 @@ $primary-logo: $fathym-default-logo;
 * Put some extra love here
 */
 @mixin theme-extras($theme) {
-    // $primary: mat-color(map-get($theme, primary));
-    // $accent: mat-color(map-get($theme, accent));
-
     ::-webkit-scrollbar {
         width: .75rem;
     }
@@ -234,4 +231,13 @@ $primary-logo: $fathym-default-logo;
     $warn: mat-palette($fathym-warn, 500);
 
     @return fathym-theme($primary, $accent, $warn, $isDark);
+}
+
+/**
+* pull back a specific color from a color palette
+*/
+@function palette-color($theme, $hue: 500) {
+    $palette: mat-palette($theme, $hue);
+    $color: mat-color($palette);
+    @return $color;
 }
