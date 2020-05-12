@@ -1,3 +1,4 @@
+import { ThemeColorDirective } from './../directives/themes/theme-color.directive';
 import {  NgModule, ModuleWithProviders  } from '@angular/core';
 import {  DragDropModule  } from '@angular/cdk/drag-drop';
 import {  CdkTableModule  } from '@angular/cdk/table';
@@ -84,9 +85,9 @@ const providers: Array<any> = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [ThemeColorDirective],
   imports: [materialModules],
-  exports: [materialModules]
+  exports: [materialModules, ThemeColorDirective]
  })
 
 export class MaterialModule {
