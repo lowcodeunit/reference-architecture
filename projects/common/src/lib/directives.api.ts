@@ -1,1 +1,1 @@
-export * from './directives/theme-color.directive';
+export * from './directives/themes/theme-color.directive';

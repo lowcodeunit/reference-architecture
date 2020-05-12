@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeColorDirective } from '../directives/theme-color.directive';
+import { ThemeColorDirective } from '../directives/themes/theme-color.directive';
 
 @NgModule({
     declarations: [
@@ -10,10 +10,10 @@ import { ThemeColorDirective } from '../directives/theme-color.directive';
     exports: [ThemeColorDirective]
 })
 
-export class DirectivesModule {
-    static forRoot(): ModuleWithProviders<DirectivesModule> {
+export class DirectiveModule {
+    static forRoot(): ModuleWithProviders<DirectiveModule> {
     return {
-        ngModule: DirectivesModule,
+        ngModule: DirectiveModule,
         providers: [],
     };
 }
