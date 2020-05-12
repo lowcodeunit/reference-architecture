@@ -10,50 +10,6 @@
 @import '../styles/utils/fathym-fonts';
 @import '../styles/utils/fathym-cursors';
 
-@include mat-core();
-
-@mixin custom-theme($theme) {
-    $primary: map-get($theme, primary);
-    $accent:  map-get($theme, accent);
-	$warn:  map-get($theme, warn);
-	
-	$primary-color: mat-color($primary);
-	$accent-color: mat-color($accent);
-	$primary-logo: $fathym-default-logo;
-
-    ::-webkit-scrollbar {
-		width: .75rem;
-	}
-
-	::-webkit-scrollbar-track {
-		background: mat-color($primary);
-	}
-
-	::-webkit-scrollbar-thumb {
-		background: mat-color($accent);
-	}
-
-	.primary-logo {
-		height: 100%;
-		width: auto;
-		background-image: url($primary-logo);
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 150px;
-	}
-
-    .primary-background {
-        background: mat-color($primary);
-    }
-
-    .accent-background {
-        background: mat-color($accent);
-    }
-
-	@include angular-material-theme($theme);
-	// @include sidenav($theme);
-}
-
 html, body {
 	height: 100%;
 }
@@ -68,6 +24,3 @@ iframe {
 	border: none;
 }
 
-	@include push-and-pull();
-
-	@include material-fills();

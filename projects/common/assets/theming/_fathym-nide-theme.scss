@@ -1,8 +1,0 @@
-@import '../styles/branding/colors/fathym-nide-default';
-
-$primary: mat-palette($nide-primary);
-$accent: mat-palette($nide-accent, A200, A100, A400t);
-$warn: mat-palette($nide-warn);
-
-// create theme (use mat-dark-theme for themes with dark backgrounds)
-$nide-theme: mat-light-theme($primary, $accent, $warn);
