@@ -1,0 +1,132 @@
+/**
+* fathym_themes are Fathym's branded theme styles (fathym-ivy-theme, fathym-sea-green-theme, ...)
+*/
+@import "../theming/fathym_themes";
+
+/**
+* Variable to hold the current theme
+*
+* Default to fathym-ivy-theme
+*/
+$global-theme: fathym-ivy-theme(true) !default;
+
+/**
+* Get things setup and ready to go
+*
+* @param $theme current theme
+* @param $use-fathym-branding use Fathym specific branding
+*        for specific elements
+*/
+@mixin theme-setup($theme, $use-fathym-branding: false) {
+  $global-theme: $theme;
+  @include angular-material-theme($theme);
+  @include variants($theme);
+  @include theme-extras($theme);
+  
+  @if $use-fathym-branding {
+    @include fathym-branding($theme);
+  }
+}
+
+/**
+* Current theme color palattes
+*/
+@function get-color-palettes($theme) {
+  $color-palettes: (
+    primary: map-get($theme, primary),
+    accent: map-get($theme, accent),
+    warn: map-get($theme, warn)
+  );
+
+  @return $color-palettes;
+}
+
+/**
+* Dynamically create classes for default colors (primary, accent, warn)
+*
+* @param $palette-name (primary, accent, warn)
+* @param $color color value
+*/
+@mixin default-color($palette-name, $color) {
+  // creates a class (.primary {}, ...)
+  .#{$palette-name} {
+            background-color: $color !important;
+          }
+}
+
+/**
+* Dynamically create classes for theme variant colors 
+* (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700)
+*
+* @param $palette-name (primary, accent, warn)
+* @param $color color value (#f4f7f6)
+* @param $name color variant value (50, 100, 200, ...)
+*/
+@mixin variant-color($palette-name, $color, $name) {
+  // creates a class (.primary-50 {}, ...)
+  .#{$palette-name}-#{$name} {
+          background-color: $color !important;
+        }
+}
+
+/**
+* Dynamically create classes for contrast colors (font colors)
+*
+* @param $palette-name (primary, accent, warn)
+* @param $color color value (#f4f7f6)
+* @param $name color variant value (50, 100, 200, ...)
+*/
+@mixin contrast-color($palette-name, $color, $name) {
+  // creates a class (.primary-contrast-50 {}, ...)
+  .#{$palette-name}-contrast-#{$name} { 
+          color: $color !important;
+        }
+}
+
+/**
+* Create dynamic style classes
+*
+* @param $palette-name - palette name from $color-palettes (primary, accent, warn)
+* @param $color-map - list of colors within the palette - Key/Value (50: #f4f7f6)
+* @param $nested-map - Used when the Key of $color-map is a map (list) itself
+*/
+@mixin create-color-classes($palette-name, $color-map, $nested-map: null) {
+  @each $name, $color in $color-map {
+
+    // If $color is a map (list), make a recursive call back to create-color-classes()
+    @if type-of($color) == map {
+      @include create-color-classes($palette-name, $color, $name);
+      
+      // If $nested-map is empty, assume top level properties
+    } @else if $nested-map == null {
+        @include variant-color($palette-name, $color, $name);
+      
+      // Set default colors
+      @if $name == 500 {
+        @include default-color($palette-name, $color);
+      }
+      
+      // If not $nested-map, then set contrast color
+    } @else if $nested-map != null {
+      @include contrast-color($palette-name, $color, $name);
+    }
+  }
+}
+
+/**
+* Loop over each color palette
+*/
+@mixin variants($theme) {
+  // Key/Value of $color-palettes: (primary: map-get($global-theme, primary))
+  @each $palette-name, $color-map in get-color-palettes($theme) {
+   @include create-color-classes($palette-name, $color-map);
+  }
+}
+
+/**
+* Set the default theme
+*/
+@include theme-setup($global-theme);
+
+
+
