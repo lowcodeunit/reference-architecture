@@ -23,7 +23,7 @@ export class ThemeColorDirective {
 /**
  * Set the current theme class to the element
  */
-  @Input() set lcuColor(val: string) {
+  @Input() set lcuThemeColor(val: string) {
 
     // this.renderer.removeClass(this.element.nativeElement, `${val}`);
     this.renderer.addClass(this.element.nativeElement, `${val}`);
