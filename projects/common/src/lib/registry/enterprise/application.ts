@@ -13,6 +13,8 @@ export class Application {
 
   public IsReadOnly?: boolean;
 
+  public Licenses?: string[];
+
   public Name: string;
 
   public PathRegex: string;
