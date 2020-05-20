@@ -1,12 +1,12 @@
-import * as signalR from '@aspnet/signalr';
-import { ObservableContextService } from '../api/observable-context/observable-context.service';
-import { StateAction } from './state-action.model';
-import { Injector, EventEmitter, Output } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
-import { RealTimeConnection } from './../api/real-time/real-time.connection';
-import { LCUServiceSettings } from '../api/lcu-service-settings';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import * as signalR from "@aspnet/signalr";
+import { ObservableContextService } from "../api/observable-context/observable-context.service";
+import { StateAction } from "./state-action.model";
+import { Injector, EventEmitter, Output } from "@angular/core";
+import { Subject, Subscription, forkJoin } from "rxjs";
+import { RealTimeConnection } from "./../api/real-time/real-time.connection";
+import { LCUServiceSettings } from "../api/lcu-service-settings";
+import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute } from "@angular/router";
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -39,9 +39,9 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     this.Settings = injector.get(LCUServiceSettings);
 
-    const rtUrl = this.buildHubUrl('');
+    const rtUrl = this.buildHubUrl("");
 
-    const actionUrl = this.loadActionUrl('');
+    const actionUrl = this.loadActionUrl("");
 
     this.rt = new RealTimeConnection(this.http, rtUrl, actionUrl);
 
@@ -60,7 +60,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public $Refresh(args: any = {}) {
     this.Execute({
       Arguments: args,
-      Type: 'Refresh',
+      Type: "Refresh",
     });
   }
 
@@ -92,12 +92,14 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected callRefresh() {
-    const args = {
-      ...this.route.snapshot.queryParams,
-      ...this.route.snapshot.params,
-    };
+    forkJoin([
+      this.route.queryParams,
+      this.route.params
+    ]).subscribe(([queryParms, params]) => {
+      const args = { ...queryParms, ...params };
 
-    this.$Refresh(args);
+      this.$Refresh(args);
+    })
   }
 
   protected async connectToState(shouldUpdate: boolean): Promise<string> {
@@ -109,7 +111,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     return new Promise<string>((resolve, reject) => {
       this.rt
-        .InvokeAction('ConnectToState', this.loadHeaders(), {
+        .InvokeAction("ConnectToState", this.loadHeaders(), {
           ShouldSend: shouldUpdate,
           Key: stateKey,
           State: stateName,
@@ -123,7 +125,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
               reject(
                 req.status
                   ? req.status.message
-                  : 'Unknown issue connecting to state.'
+                  : "Unknown issue connecting to state."
               );
             }
           },
@@ -158,11 +160,11 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected loadActionUrl(urlRoot: string) {
-    const apiRoot = this.Settings ? this.Settings.APIRoot || '' : '';
+    const apiRoot = this.Settings ? this.Settings.APIRoot || "" : "";
 
     const actionPath = this.loadActionPath();
 
-    return `${apiRoot}${urlRoot || ''}${actionPath}`;
+    return `${apiRoot}${urlRoot || ""}${actionPath}`;
   }
 
   protected loadEnvironment() {
@@ -171,7 +173,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       : null;
 
     if (!env) {
-      env = '';
+      env = "";
     }
 
     return env;
@@ -179,11 +181,11 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected loadHeaders(): { [header: string]: string | string[] } {
     return {
-      'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
-      'lcu-hub-name': this.loadStateName(),
-      'lcu-state-key': this.loadStateKey(),
-      'lcu-environment': this.loadEnvironment(),
-      'lcu-username-mock': this.loadUsernameMock(),
+      "lcu-ent-api-key": this.Settings.AppConfig.EnterpriseAPIKey,
+      "lcu-hub-name": this.loadStateName(),
+      "lcu-state-key": this.loadStateKey(),
+      "lcu-environment": this.loadEnvironment(),
+      "lcu-username-mock": this.loadUsernameMock(),
     };
   }
 
@@ -198,11 +200,11 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected loadHubUrl(urlRoot: string) {
-    const apiRoot = this.Settings ? this.Settings.APIRoot || '' : '';
+    const apiRoot = this.Settings ? this.Settings.APIRoot || "" : "";
 
     const hubPath = this.loadHubPath();
 
-    return `${apiRoot}${urlRoot || ''}${hubPath}`;
+    return `${apiRoot}${urlRoot || ""}${hubPath}`;
   }
 
   protected abstract loadStateKey(): string;
@@ -213,7 +215,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     const stateRoot =
       this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined
         ? this.Settings.StateConfig.Root
-        : '';
+        : "";
 
     return `${stateRoot}/${this.loadStateName()}`;
   }
@@ -223,7 +225,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       this.Settings.StateConfig &&
       this.Settings.StateConfig.ActionRoot !== undefined
         ? this.Settings.StateConfig.ActionRoot
-        : '';
+        : "";
 
     return `${stateActinRoot}/${this.loadStateName()}`;
   }
@@ -231,7 +233,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected loadUsernameMock() {
     return this.Settings.StateConfig && this.Settings.StateConfig.UsernameMock
       ? this.Settings.StateConfig.UsernameMock
-      : '';
+      : "";
   }
 
   protected setup() {
