@@ -6,6 +6,7 @@ import { Subject, Subscription } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -14,6 +15,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected groupName: string;
 
   protected http: HttpClient;
+
+  protected route: ActivatedRoute;
 
   protected rt: RealTimeConnection;
 
@@ -27,6 +30,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Constructors
   constructor(protected injector: Injector) {
     super();
+
+    this.route = injector.get(ActivatedRoute);
 
     this.http = injector.get(HttpClient);
 
@@ -55,7 +60,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   public $Refresh(args: any = {}) {
     this.Execute({
       Arguments: args,
-      Type: 'Refresh'
+      Type: 'Refresh',
     });
   }
 
@@ -66,7 +71,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
         this.setupReceiveState(groupName);
 
-        this.$Refresh();
+        this.callRefresh();
       });
 
       this.rt.Start();
@@ -86,6 +91,15 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return url;
   }
 
+  protected callRefresh() {
+    const args = {
+      ...this.route.snapshot.queryParams,
+      ...this.route.snapshot.params,
+    };
+
+    this.$Refresh(args);
+  }
+
   protected async connectToState(shouldUpdate: boolean): Promise<string> {
     const stateKey = this.loadStateKey();
 
@@ -99,7 +113,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
           ShouldSend: shouldUpdate,
           Key: stateKey,
           State: stateName,
-          Environment: env
+          Environment: env,
         })
         .subscribe({
           next: (req: any) => {
@@ -113,7 +127,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
               );
             }
           },
-          error: err => reject(err)
+          error: (err) => reject(err),
           // complete: () => console.log('Observer got a complete notification'),
         });
     });
@@ -132,7 +146,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       .InvokeAction(action.Type, this.loadHeaders(), {
         ...action,
         Key: stateKey,
-        State: stateName
+        State: stateName,
       })
       .subscribe();
   }
@@ -169,7 +183,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
       'lcu-hub-name': this.loadStateName(),
       'lcu-state-key': this.loadStateKey(),
       'lcu-environment': this.loadEnvironment(),
-      'lcu-username-mock': this.loadUsernameMock()
+      'lcu-username-mock': this.loadUsernameMock(),
     };
   }
 
@@ -225,7 +239,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected setupReceiveState(groupName: string) {
-    this.rt.RegisterHandler(`ReceiveState=>${groupName}`).subscribe(req => {
+    this.rt.RegisterHandler(`ReceiveState=>${groupName}`).subscribe((req) => {
       this.subject.next(req);
     });
   }
