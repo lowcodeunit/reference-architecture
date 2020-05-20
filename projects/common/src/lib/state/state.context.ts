@@ -6,6 +6,7 @@ import { Subject, Subscription } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
@@ -14,6 +15,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected groupName: string;
 
   protected http: HttpClient;
+
+  protected route: ActivatedRoute;
 
   protected rt: RealTimeConnection;
 
@@ -27,6 +30,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Constructors
   constructor(protected injector: Injector) {
     super();
+
+    this.route = injector.get(ActivatedRoute);
 
     this.http = injector.get(HttpClient);
 
@@ -87,7 +92,12 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected callRefresh() {
-    this.$Refresh();
+    const args = {
+      ...this.route.snapshot.queryParams,
+      ...this.route.snapshot.params,
+    };
+
+    this.$Refresh(args);
   }
 
   protected async connectToState(shouldUpdate: boolean): Promise<string> {
