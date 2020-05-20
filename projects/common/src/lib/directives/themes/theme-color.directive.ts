@@ -15,7 +15,7 @@ import { ThemePalette } from '@angular/material/core';
 // type ColorClasses = 'primary-500' | 'accent-500' | 'warn-500';
 
 @Directive({
-  selector: '[lcuThemeColor]'
+  selector: '[color]'
 })
 
 export class ThemeColorDirective {
@@ -23,7 +23,7 @@ export class ThemeColorDirective {
 /**
  * Set the current theme class to the element
  */
-  @Input() set lcuThemeColor(val: string) {
+  @Input() set color(val: string) {
 
     // this.renderer.removeClass(this.element.nativeElement, `${val}`);
     this.renderer.addClass(this.element.nativeElement, `${val}`);

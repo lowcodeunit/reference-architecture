@@ -41,6 +41,10 @@ $global-warn: mat-color(map-get($global-theme, warn), 500) !default;
 $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
 
 /**
+* TODO: Create dynamic CSS variables - Shannon
+*/
+
+/**
 * Get things setup and ready to go
 *
 * @param $theme current theme
