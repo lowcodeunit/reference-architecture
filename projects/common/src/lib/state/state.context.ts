@@ -7,7 +7,7 @@ import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
-import { Status } from '@lcu/common';
+import { Status } from '../status';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
