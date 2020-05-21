@@ -2,7 +2,13 @@ import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
 import { Injector, EventEmitter, Output } from '@angular/core';
-import { Subject, Subscription, forkJoin, BehaviorSubject, Observable } from 'rxjs';
+import {
+  Subject,
+  Subscription,
+  forkJoin,
+  BehaviorSubject,
+  Observable,
+} from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 import { HttpClient } from '@angular/common/http';
@@ -36,7 +42,10 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   constructor(protected injector: Injector) {
     super();
 
-    this.connectedToState = new BehaviorSubject<Status>(<Status> { Code: -1, Message: 'Initialized' });
+    this.connectedToState = new BehaviorSubject<Status>(<Status>{
+      Code: -1,
+      Message: 'Initialized',
+    });
 
     this.ConnectedToState = this.connectedToState.asObservable();
 
@@ -80,6 +89,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
         this.setupReceiveState(groupName);
 
+        this.connectedToState.next(<Status>{ Code: 0, Message: 'Success' });
+
         this.callRefresh();
       });
 
@@ -122,8 +133,6 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         .subscribe({
           next: (req: any) => {
             if (req.status && req.status.code === 0) {
-              this.connectedToState.next(req.status);
-
               resolve(req.groupName);
             } else {
               reject(
