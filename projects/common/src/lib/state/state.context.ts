@@ -2,16 +2,19 @@ import * as signalR from '@aspnet/signalr';
 import { ObservableContextService } from '../api/observable-context/observable-context.service';
 import { StateAction } from './state-action.model';
 import { Injector, EventEmitter, Output } from '@angular/core';
-import { Subject, Subscription, forkJoin } from 'rxjs';
+import { Subject, Subscription, forkJoin, BehaviorSubject, Observable } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Status } from '@lcu/common';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
 
 export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Fields
+  protected connectedToState: BehaviorSubject<Status>;
+
   protected groupName: string;
 
   protected http: HttpClient;
@@ -23,6 +26,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected startSub: Subscription;
 
   //  Properties
+  public ConnectedToState: Observable<Status>;
+
   public ReconnectionAttempt: Subject<boolean>;
 
   public Settings: LCUServiceSettings;
@@ -30,6 +35,10 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   //  Constructors
   constructor(protected injector: Injector) {
     super();
+
+    this.connectedToState = new BehaviorSubject<Status>(<Status> { Code: -1, Message: 'Initialized' });
+
+    this.ConnectedToState = this.connectedToState.asObservable();
 
     this.route = injector.get(ActivatedRoute);
 
@@ -92,14 +101,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected callRefresh() {
-    forkJoin([
-      this.route.queryParams,
-      this.route.params
-    ]).subscribe(([queryParms, params]) => {
-      const args = { ...queryParms, ...params };
-
-      this.$Refresh(args);
-    });
+    this.$Refresh();
   }
 
   protected async connectToState(shouldUpdate: boolean): Promise<string> {
@@ -120,6 +122,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         .subscribe({
           next: (req: any) => {
             if (req.status && req.status.code === 0) {
+              this.connectedToState.next(req.status);
+
               resolve(req.groupName);
             } else {
               reject(
