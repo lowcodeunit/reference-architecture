@@ -57,9 +57,9 @@ $primary-logo: $fathym-default-logo;
         color:mat-color(map-get($theme, primary), A700) !important;
     }
 
-    .mat-card {
-        background-color: mat-color(map-get($theme, primary), 500, .9) !important;
-    }
+    // .mat-card {
+    //     background-color: mat-color(map-get($theme, primary), 500, .9) !important;
+    // }
 
     .mat-input-element {
         caret-color: mat-color(map-get($theme, primary), A700) !important;
