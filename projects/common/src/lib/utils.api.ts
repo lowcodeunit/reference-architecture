@@ -7,6 +7,7 @@ export * from './utils/type/is-data-type.util';
 export * from './utils/conversion/json/json-flatten-unflatten.util';
 export * from './utils/conversion/json/dot-notation.util';
 export * from './utils/pipes/data.pipes';
+export * from './utils/pipes/string.pipes';
 export * from './utils/pipes/decamelize.pipe';
 export * from './utils/pipes/sanitze-html.pipe';
 export * from './utils/constants/country.constants';

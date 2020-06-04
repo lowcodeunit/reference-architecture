@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { DataPipes } from './../utils/pipes/data.pipes';
 import { SanitizeHtmlPipe } from './../utils/pipes/sanitze-html.pipe';
 import { DecamelizePipe } from '../utils/pipes/decamelize.pipe';
+import { StringPipes } from '../utils/pipes/string.pipes';
 
 @NgModule({
-    declarations: [DataPipes, SanitizeHtmlPipe, DecamelizePipe],
+    declarations: [DataPipes, SanitizeHtmlPipe, DecamelizePipe, StringPipes],
     imports: [CommonModule],
-    exports: [DataPipes, SanitizeHtmlPipe, DecamelizePipe]
+    exports: [DataPipes, SanitizeHtmlPipe, DecamelizePipe, StringPipes]
 })
 
 export class PipeModule {

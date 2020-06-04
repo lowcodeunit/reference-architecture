@@ -21,6 +21,7 @@ export * from './lib/validators.api';
 export * from './lib/utils.api';
 export * from './lib/services.api';
 export * from './lib/utils/pipes/data.pipes';
+export * from './lib/utils/pipes/string.pipes';
 export * from './lib/utils/pipes/decamelize.pipe';
 export * from './lib/utils/pipes/sanitze-html.pipe';
 export * from './lib/directives/themes/theme-color.directive';
