@@ -10,82 +10,92 @@
 */
 $primary-logo: $fathym-default-logo;
 
-/**
-* Removing these overwrites, as we don't want to do this - Shannon
-*/
 @mixin fathym-branding($theme: null) {
-//     .header-background {
-//         background-color: mat-color(map-get($theme, accent), A700);
-//     }
+    // .header-background {
+    //     background-color: mat-color(map-get($theme, accent), A700);
+    // }
 
-//     .mat-tooltip {
-//         color: mat-color(map-get($theme, accent), 100) !important;
-//         background: mat-color(map-get($theme, primary), A700) !important;
-//       }
+    // .mat-tooltip {
+    //     color: mat-color(map-get($theme, accent), 100) !important;
+    //     background: mat-color(map-get($theme, primary), A700) !important;
+    //   }
 
-//     .mat-toolbar {
-//         &.mat-primary {
-//             background-color: mat-color(map-get($theme, primary), A700) !important;
-//         }
-//     }
+    // .mat-toolbar {
+    //     &.mat-primary {
+    //         background-color: mat-color(map-get($theme, primary), A700) !important;
+    //     }
 
-//     /* primary styling for fathym branding of primary buttons */
+    //     // &.mat-accent {
+    //     //     @include _mat-toolbar-color($accent);
+    //     // }
 
-//     .mat-button.mat-primary,
-//     .mat-stroked-button.mat-primary {
-//         color: mat-color(map-get($theme, primary), A700) !important;
-//     }
-//     .mat-button.mat-primary:hover,
-//     .mat-stroked-button.mat-primary:hover {
-//         background-color: mat-color(map-get($theme, accent), 100) !important;
-//     }
+    //     // &.mat-warn {
+    //     //     @include _mat-toolbar-color($warn);
+    //     // }
+    // }
 
-//     .mat-raised-button.mat-primary,
-//     .mat-flat-button.mat-primary,
-//     .mat-fab.mat-primary,
-//     .mat-mini-fab.mat-primary {
-//         color: mat-color(map-get($theme, accent), 100) !important;
-//         background-color: mat-color(map-get($theme, primary), A700) !important;
-//     }
+    // /* primary styling for fathym branding of primary buttons */
 
-//     .mat-icon-button.mat-primary {
-//         color:mat-color(map-get($theme, primary), A700) !important;
-//     }
+    // .mat-button.mat-primary,
+    // .mat-stroked-button.mat-primary {
+    //     color: mat-color(map-get($theme, primary), A700) !important;
+    // }
+    // .mat-button.mat-primary:hover,
+    // .mat-stroked-button.mat-primary:hover {
+    //     background-color: mat-color(map-get($theme, accent), 100) !important;
+    // }
 
-//     // .mat-card {
-//     //     background-color: mat-color(map-get($theme, primary), 500, .9) !important;
-//     // }
+    // .mat-raised-button.mat-primary,
+    // .mat-flat-button.mat-primary,
+    // .mat-fab.mat-primary,
+    // .mat-mini-fab.mat-primary {
+    //     color: mat-color(map-get($theme, accent), 100) !important;
+    //     background-color: mat-color(map-get($theme, primary), A700) !important;
+    // }
 
-//     .mat-input-element {
-//         caret-color: mat-color(map-get($theme, primary), A700) !important;
-//     }
+    // .mat-icon-button.mat-primary {
+    //     color:mat-color(map-get($theme, primary), A700) !important;
+    // }
 
-//     .mat-form-field-ripple{
-//         background-color: mat-color(map-get($theme, primary), A700) !important;
-//     }
-//     .mat-focused .mat-form-field-label {
-//         color: mat-color(map-get($theme, primary), A700) !important;
-//     }
+    // // .mat-card {
+    // //     background-color: mat-color(map-get($theme, primary), 500, .9) !important;
+    // // }
 
-//     .mat-raised-button:hover[class*=hover-highlight]{
-//         &.mat-primary {
-//             background-color: mat-color(map-get($theme, accent), A700) !important;
-//         }
-//       }
+    // .mat-input-element {
+    //     caret-color: mat-color(map-get($theme, primary), A700) !important;
+    // }
 
-//       /**Branded spinner color**/
-//     .mat-progress-spinner circle, .mat-spinner circle{
-//     stroke: mat-color(map-get($theme, primary), A700) !important;
-//     }
+    // .mat-form-field-ripple{
+    //     background-color: mat-color(map-get($theme, primary), A700) !important;
+    // }
+    // .mat-focused .mat-form-field-label {
+    //     color: mat-color(map-get($theme, primary), A700) !important;
+    // }
 
-//     .error {
-//         color: #c43843;
+    // // .tooltip-background {
+    // //     color: mat-contrast(map-get($theme, primary), 500) !important;
+    // //     background-color: mat-color(map-get($theme, primary), A700) !important;
+    // // }
 
-//     }
+    // .mat-raised-button:hover[class*=hover-highlight]{
+    //     &.mat-primary {
+    //         background-color: mat-color(map-get($theme, accent), A700) !important;
+    //     }
+    //   }
 
-//     .success {
-//         color: #4a918e;
-//     }
+    //   /**Branded spinner color**/
+    // .mat-progress-spinner circle, .mat-spinner circle{
+    // stroke: mat-color(map-get($theme, primary), A700) !important;
+    // }
+
+    // .error {
+    //     color: #c43843;
+
+    // }
+
+    // .success {
+    //     color: #4a918e;
+    // }
 }
 
 /**
@@ -117,7 +127,7 @@ $primary-logo: $fathym-default-logo;
 /**
 * Setup light or dark theme
 */
-@function build-theme($primary, $accent, $warn, $isDark: false) {
+@function create-theme($primary, $accent, $warn, $isDark: false) {
     $theme: mat-light-theme(
         $primary,
         $accent,
@@ -142,7 +152,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-arctic-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
@@ -153,7 +163,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-contrast-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
@@ -164,7 +174,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-cool-candy-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
@@ -175,7 +185,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-flipper-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 
 }
 
@@ -187,7 +197,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-ice-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
@@ -198,7 +208,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-sea-green-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
@@ -209,7 +219,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-white-mint-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
@@ -220,7 +230,7 @@ $primary-logo: $fathym-default-logo;
     $accent: mat-palette($fathym-accent);
     $warn: mat-palette($fathym-warn, 500);
 
-    @return build-theme($primary, $accent, $warn, $isDark);
+    @return create-theme($primary, $accent, $warn, $isDark);
 }
 
 /**
