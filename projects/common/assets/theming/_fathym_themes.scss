@@ -134,14 +134,6 @@ $primary-logo: $fathym-default-logo;
     @return $theme;
 }
 
-@function selected-theme($color-palette, $isDark: false) {
-    $primary: mat-palette(#{$color-palette}-primary);
-    $accent: mat-palette(#{$color-palette}-accent);
-    $warn: mat-palette($fathym-warn, 500);
-
-    @return build-theme($primary, $accent, $warn, $isDark);
-}
-
 /**
 *   arctic theme
 */
