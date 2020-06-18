@@ -1,0 +1,175 @@
+/**
+* Primary Fathym brand theme
+*/
+
+
+$dark-primary-text: rgba(40,45,53, 0.87);
+$dark-secondary-text: rgba(40,45,53, 0.54);
+$light-primary-text: rgb(241,244,246);
+$light-secondary-text: rgba(241,244,246, 0.7);
+
+$fathym-primary: (
+    50 : #e9f2f1,
+    100 : #c9dedd,
+    200 : #a5c8c7,
+    300 : #80b2b0,
+    400 : #65a29f,
+    500 : #4a918e,
+    600 : #438986,
+    700 : #3a7e7b,
+    800 : #327471,
+    900 : #22625f,
+    A100 : #a4fffb,
+    A200 : #71fff8,
+    A400 : #3efff6,
+    A700 : #25fff4,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
+$fathym-secondary-primary: (
+    50 : #edf8f8,
+    100 : #d1eeee,
+    200 : #b3e3e2,
+    300 : #95d8d6,
+    400 : #7ecfce,
+    500 : #67c7c5,
+    600 : #5fc1bf,
+    700 : #54bab8,
+    800 : #4ab3b0,
+    900 : #39a6a3,
+    A100 : #f3ffff,
+    A200 : #c0fffd,
+    A400 : #8dfffc,
+    A700 : #74fffb,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
+$fathym-accent: (
+    50 : #f3fafa,
+    100 : #e1f3f3,
+    200 : #ceeceb,
+    300 : #bae4e3,
+    400 : #abdedd,
+    500 : #9cd8d7,
+    600 : #94d4d3,
+    700 : #8acecd,
+    800 : #80c8c7,
+    900 : #6ebfbe,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #d2fffe,
+    A700 : #b8fffe,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $dark-primary-text,
+        600: $dark-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
+$fathym-secondary-accent: (
+    50 : #fbfdfd,
+    100 : #f5fafb,
+    200 : #eff7f9,
+    300 : #e9f4f6,
+    400 : #e4f1f4,
+    500 : #dfeff2,
+    600 : #dbedf0,
+    700 : #d7ebee,
+    800 : #d2e8ec,
+    900 : #cae4e8,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $dark-primary-text,
+        600: $dark-primary-text,
+        700: $dark-primary-text,
+        800: $dark-primary-text,
+        900: $dark-primary-text,
+        A100: $dark-primary-text,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
+$fathym-warn: (
+    50 : #fde8ea,
+    100 : #fac7cb,
+    200 : #f7a1a8,
+    300 : #f47b85,
+    400 : #f15f6b,
+    500 : #ef4351,
+    600 : #ed3d4a,
+    700 : #eb3440,
+    800 : #e82c37,
+    900 : #e41e27,
+    A100 : #ffffff,
+    A200 : #ffe6e7,
+    A400 : #ffb3b6,
+    A700 : #ff9a9e,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text,
+    )
+);
+
