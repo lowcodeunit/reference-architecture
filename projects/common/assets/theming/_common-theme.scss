@@ -53,9 +53,9 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
   @include variants($theme);
   @include theme-extras($theme);
   
-  @if $use-fathym-branding {
-    @include fathym-branding($theme);
-  }
+  // @if $use-fathym-branding {
+  //   @include fathym-branding($theme);
+  // }
 }
 
 /**

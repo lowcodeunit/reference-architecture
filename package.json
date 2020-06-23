@@ -4,8 +4,9 @@
   "scripts": {
     "deploy": "npm version patch && npm run deploy:all",
     "deploy:all": "npm run deploy:common && npm run deploy:elements",
-    "deploy:common": "npm version patch --prefix projects/common && ng build common && npm run copy:assets && npm publish ./dist/common --access public",
+    "deploy:common": "npm version patch --prefix projects/common && ng build common && npm run copy:assets && npm run build-themes && npm publish ./dist/common --access public",
     "deploy:elements": "npm version patch --prefix projects/elements && ng build elements && npm publish ./dist/elements --access public",
+    "build-themes": "bash ./projects/common/tools/build-themes.sh",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
