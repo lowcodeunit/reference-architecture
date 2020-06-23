@@ -7,7 +7,7 @@ INPUT_PATH=$DEST_PATH/theming/custom-themes/
 echo Building custom theme scss files.
 
 # Get the files
-FILES=$(find src/assets/theming/custom-themes -name "*.scss")
+FILES=$(find common/assets/theming/custom-themes -name "*.scss")
 
 for FILE in $FILES
 do
