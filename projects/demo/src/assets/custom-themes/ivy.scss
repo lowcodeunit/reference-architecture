@@ -1,0 +1,26 @@
+@import '../../../../common/assets/styles/fathym-global.styles';
+@import '../../../../common/assets/theming/common-theme';
+@import '../../../../common/assets/theming/fathym_themes';
+@import '../../../../common/assets/styles/branding/theme-colors/fathym-ivy-brand';
+
+/**
+* Can select a predefined theme
+*/
+$global-theme: fathym-ivy-theme(true);
+
+@mixin get-going($theme) {
+    $primary: mat-color(map-get($theme, primary));
+    $accent: mat-color(map-get($theme, accent));
+    $background: map-get(map-get($theme, 'background'), 'background');
+    $logo-color: map-get(map-get($theme, 'foreground'), 'icon');
+  
+    @include theme-setup($theme);
+
+}
+  
+  .ivy-theme-dark {
+    @include get-going(fathym-ivy-theme(true));
+  }
+
+  
+  @include get-going($global-theme);
