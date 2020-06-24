@@ -8,7 +8,7 @@
 		"deploy:common": "npm version patch --prefix projects/common && ng build common && npm run copy:assets && npm run build-themes && npm publish ./dist/common --access public",
 		"deploy:demo": "npm version patch --prefix projects/demo && npm run build:demo && npm run copy:assets-demo-to-common && npm run build-pre-built-themes && npm publish ./dist/demo --access public",
 		"deploy:elements": "npm version patch --prefix projects/elements && ng build elements && npm publish ./dist/elements --access public",
-		"build-pre-built-themes": "npm run build common && npm run build demo && npm run build-themes && npm run copy:assets-demo-to-common",
+		"build-pre-built-themes": "npm run build-themes && npm run copy:assets-demo-to-common",
 		"build-themes": "bash ./projects/demo/tools/build-themes.sh",
 		"ng": "ng",
 		"start": "ng serve",
