@@ -24,7 +24,7 @@ do
   echo DEST: $DEST_PATH
   echo DESTPATH AND BASENAME: $DEST_PATH/$BASENAME.css
   echo NPM: $(npm bin)/node-sass
-  $(npm bin)/node-sass $FILE > $BASENAME.css
+  $(npm bin)/node-sass $FILE > $DEST_PATH/$BASENAME.css
 done
 
 echo Finished building CSS.
