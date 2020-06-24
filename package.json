@@ -19,7 +19,7 @@
 		"e2e": "ng e2e",
 		"copy:assets": "cpx \"./projects/common/assets/**/*\" \"./dist/common/assets/\"",
 		"copy:assets-demo": "cpx \"./projects/demo/assets/**/*\" \"./dist/common/assets/\"",
-		"copy:assets-demo-to-common": "cpx \"./dist/demo/assets/prebuilt-themes**/*\" \"./dist/common/assets/prebuilt-themes/\""
+		"copy:assets-demo-to-common": "cpx \"./dist/demo/assets/prebuilt-themes/**/*\" \"./dist/common/assets/prebuilt-themes/\""
 	},
 	"private": false,
 	"dependencies": {
