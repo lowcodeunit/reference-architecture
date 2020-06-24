@@ -1,6 +1,6 @@
 {
   "name": "@lcu/common",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "peerDependencies": {
     "@angular/common": "~9.0.1",
     "@angular/core": "~9.0.1",

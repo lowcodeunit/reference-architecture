@@ -1,6 +1,6 @@
 {
 	"name": "@lcu/reference-architecture",
-	"version": "0.0.53",
+	"version": "0.0.54",
 	"scripts": {
 		"build:demo": "ng build demo --prod",
 		"deploy": "npm version patch && npm run deploy:all",
