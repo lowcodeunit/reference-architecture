@@ -2,6 +2,7 @@
 
 @mixin init() {
     $theme: fathym-ivy-theme(true);
+
     @include theme-setup($theme);
 }
 
