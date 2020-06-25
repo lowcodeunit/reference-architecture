@@ -8,7 +8,7 @@
 		"deploy:common": "npm version patch --prefix projects/common && ng build common && npm run copy:assets",
 		"deploy:demo": "npm version patch --prefix projects/demo && npm run build:demo && npm run build-pre-built-themes",
 		"deploy:elements": "npm version patch --prefix projects/elements && ng build elements && npm publish ./dist/elements --access public",
-		"build-pre-built-themes": "ng build common && ng build demo && npm run build-themes && npm run copy:assets-demo-to-common",
+		"build-pre-built-themes": "ng build common && npm run copy:assets && ng build demo && npm run build-themes && npm run copy:assets-demo-to-common",
 		"build-themes": "bash ./projects/demo/tools/build-themes.sh",
 		"publish-projects": "npm publish ./dist/common --access public && npm publish ./dist/demo --access public",
 		"ng": "ng",
@@ -19,7 +19,7 @@
 		"e2e": "ng e2e",
 		"copy:assets": "cpx \"./projects/common/assets/**/*\" \"./dist/common/assets/\"",
 		"copy:assets-demo": "cpx \"./projects/demo/assets/**/*\" \"./dist/common/assets/\"",
-		"copy:assets-demo-to-common": "cpx \"./dist/demo/assets/prebuilt-themes/**/*\" \"./dist/common/assets/prebuilt-themes\""
+		"copy:assets-demo-to-common": "cpx \"./dist/demo/assets/prebuilt-themes/**/*.css\" \"./dist/common/assets/prebuilt-themes\""
 	},
 	"private": false,
 	"dependencies": {
