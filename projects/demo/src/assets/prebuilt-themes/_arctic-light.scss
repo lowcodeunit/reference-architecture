@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.arctic-theme-light {
+  @include theme-setup(fathym-arctic-theme(false));
+}

@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.sea-green-theme-dark {
+  @include theme-setup(fathym-sea-green-theme(true));
+}

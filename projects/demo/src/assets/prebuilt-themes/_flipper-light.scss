@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.flipper-theme-light {
+  @include theme-setup(fathym-flipper-theme(false));
+}

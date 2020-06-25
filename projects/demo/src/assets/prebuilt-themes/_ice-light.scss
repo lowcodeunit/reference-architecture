@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.ice-theme-light {
+  @include theme-setup(fathym-ice-theme(false));
+}

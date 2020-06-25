@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.ivy-theme-dark {
+  @include theme-setup(fathym-ivy-theme(true));
+}

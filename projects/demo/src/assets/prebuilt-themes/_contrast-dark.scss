@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.contrast-theme-dark {
+  @include theme-setup(fathym-contrast-theme(true));
+}

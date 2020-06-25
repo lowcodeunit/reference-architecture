@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.cool-candy-theme-light {
+  @include theme-setup(fathym-cool-candy-theme(false));
+}

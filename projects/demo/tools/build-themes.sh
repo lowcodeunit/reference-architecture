@@ -1,13 +1,13 @@
 #!/bin/bash
 
 DEST_PATH=src/assets
-INPUT_PATH=$DEST_PATH/custom-themes/
+INPUT_PATH=$DEST_PATH/prebuilt-themes/
 
 
 echo Building custom theme scss files.
 
 # Get the files
-FILES=$(find projects/demo/src/assets/custom-themes -name "*.scss")
+FILES=$(find projects/demo/src/assets/prebuilt-themes -name "*.scss")
 # echo $FILES
 
 for FILE in $FILES

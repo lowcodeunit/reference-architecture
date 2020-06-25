@@ -1,0 +1,5 @@
+@import '../prebuilt-themes-utils.scss';
+
+.ivy-theme-light {
+  @include theme-setup(fathym-ivy-theme(false));
+}
