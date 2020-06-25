@@ -4,7 +4,7 @@
     $theme: fathym-ivy-theme(true);
 
     :root {
-        --theme: $global-theme;
+        --theme: $theme;
         --primary: mat-color(map-get($theme, primary), 500);
         --accent: mat-color(map-get($theme, accent), 500);
         --warn: mat-color(map-get($theme, warn), 500);
