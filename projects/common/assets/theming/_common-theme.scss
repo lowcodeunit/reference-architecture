@@ -41,6 +41,17 @@ $global-warn: mat-color(map-get($global-theme, warn), 500) !default;
 $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
 
 /**
+* CSS variables
+*/
+:root {
+  --global-theme: $global-theme;
+  --primary: mat-color(map-get($global-theme, primary), 500);
+  --accent: mat-color(map-get($global-theme, accent), 500);
+  --warn: mat-color(map-get($global-theme, warn), 500);
+  --background: rgba(map-get(map-get($theme, background), 'background'), 1);
+}
+
+/**
 * Get things setup and ready to go
 *
 * @param $theme current theme
