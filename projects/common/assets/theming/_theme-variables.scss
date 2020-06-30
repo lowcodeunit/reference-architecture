@@ -1,115 +1,113 @@
-
 /**
-* Exportable theme variables
+* Return theme variables
 */
+
 @function theme-variables($theme) {
-        //---BASE-VARIABLES---------------------
-        $primary-palette: map-get($theme, primary); 
-        $accent-palette: map-get($theme, accent); 
-        $warn-palette: map-get($theme, warn);
-        $foreground-palette: map-get($theme, foreground);
-        $background-palette: map-get($theme, background);
-        $is-dark-theme: map-get($theme, is-dark);
-        $fg-dark-primary-text: rgba(black, 0.87);
-        $fg-light-primary-text: white;
-        $fg-dark-secondary-text: rgba(black, 0.54);
-        $fg-light-secondary-text: rgba(white, 0.7);
-        $fg-dark-disabled-text: rgba(black, 0.38);
-        $fg-light-disabled-text: rgba(white, 0.5);
-        $bg-dark-dividers: rgba(black, 0.12);
-        $bg-light-dividers: rgba(white, 0.12);
-        $bg-dark-focused: rgba(black, 0.12);
-        $bg-light-focused: rgba(white, 0.12);
-    
-        @return (
-        //---01-PRIMARY---------------------
-        theme-var-primary-palette: $primary-palette,
-        theme-var-primary-color: mat-color($primary-palette, default),
-        theme-var-primary-light: mat-color($primary-palette, lighter),
-        theme-var-primary-dark: mat-color($primary-palette, darker), 
+    //---BASE-VARIABLES---------------------
+     $primary-palette: map-get($theme, primary); 
+     $accent-palette: map-get($theme, accent); 
+     $warn-palette: map-get($theme, warn);
+     $foreground-palette: map-get($theme, foreground);
+     $background-palette: map-get($theme, background);
+     $is-dark-theme: map-get($theme, is-dark);
+     $fg-dark-primary-text: rgba(black, 0.87);
+     $fg-light-primary-text: white;
+     $fg-base: mat-color($foreground-palette, base);
+     $fg-dark-secondary-text: rgba(black, 0.54);
+     $fg-light-secondary-text: rgba(white, 0.7);
+     $fg-dark-disabled-text: rgba(black, 0.38);
+     $fg-light-disabled-text: rgba(white, 0.5);
+     $fg-icon: mat-color($foreground-palette, icon);
+     $bg-dark-dividers: rgba(black, 0.12);
+     $bg-light-dividers: rgba(white, 0.12);
+     $bg-dark-focused: rgba(black, 0.12);
+     $bg-light-focused: rgba(white, 0.12);
+     $bg-card: mat-color($background-palette, card);
+ 
+     @return (
+            //---01-PRIMARY---------------------
+            theme-var-primary-color: mat-color($primary-palette, default),
+            theme-var-primary-light: mat-color($primary-palette, lighter),
+            theme-var-primary-dark: mat-color($primary-palette, darker), 
 
-        //---02-ACCENT----------------------
-        theme-var-accent-palette: $accent-palette,
-        theme-var-accent-color: mat-color($accent-palette, default),
-        theme-var-accent-light: mat-color($accent-palette, lighter),
-        theme-var-accent-dark: mat-color($accent-palette, darker), 
+            //---02-ACCENT----------------------
+            theme-var-accent-color: mat-color($accent-palette, default),
+            theme-var-accent-light: mat-color($accent-palette, lighter),
+            theme-var-accent-dark: mat-color($accent-palette, darker), 
 
-        //---02-WARN----------------------
-        theme-var-warn-palette: $warn-palette,
-        theme-var-warn-color: mat-color($warn-palette, default),
-        theme-var-warn-light: mat-color($warn-palette, lighter),
-        theme-var-warn-dark: mat-color($warn-palette, darker), 
+            //---03-WARN------------------------
+            theme-var-warn-color: mat-color($warn-palette, default),
+            theme-var-warn-light: mat-color($warn-palette, lighter),
+            theme-var-warn-dark: mat-color($warn-palette, darker), 
 
-        //---04-FOREGROUND------------------
-        theme-var-foreground-palette: $foreground-palette,
-        theme-var-fg-base: mat-color($foreground-palette, base), //full_black or full_white
-        theme-var-fg-primary-text: mat-color($foreground-palette, text),
-        theme-var-fg-secondary-text: mat-color($foreground-palette, secondary-text),
-        theme-var-fg-hint-text: mat-color($foreground-palette, hint-text),
-        theme-var-fg-disabled: mat-color($foreground-palette, disabled),
-        theme-var-fg-disabled-button: mat-color($foreground-palette, disabled-button),
-        theme-var-fg-disabled-text: mat-color($foreground-palette, disabled-text),
-        theme-var-fg-divider: mat-color($foreground-palette, divider),
-        theme-var-fg-dividers: mat-color($foreground-palette, dividers),
-        theme-var-fg-elevation: mat-color($foreground-palette, elevation),
-        theme-var-fg-icon: mat-color($foreground-palette, icon),
-        theme-var-fg-icons: mat-color($foreground-palette, icons),
-        theme-var-fg-slider-min: mat-color($foreground-palette, slider-min),
-        theme-var-fg-slider-off: mat-color($foreground-palette, slider-off),
-        theme-var-fg-slider-off-active: mat-color($foreground-palette, slider-off-active),
+            //---04-FOREGROUND------------------
+            theme-var-fg-base: $fg-base, //full_black or full_white
+            theme-var-fg-primary-text: mat-color($foreground-palette, text),
+            theme-var-fg-secondary-text: mat-color($foreground-palette, secondary-text),
+            theme-var-fg-hint-text: mat-color($foreground-palette, hint-text),
+            theme-var-fg-disabled: mat-color($foreground-palette, disabled),
+            theme-var-fg-disabled-button: mat-color($foreground-palette, disabled-button),
+            theme-var-fg-disabled-text: mat-color($foreground-palette, disabled-text),
+            theme-var-fg-divider: mat-color($foreground-palette, divider),
+            theme-var-fg-dividers: mat-color($foreground-palette, dividers),
+            theme-var-fg-elevation: mat-color($foreground-palette, elevation),
+            theme-var-fg-icon: $fg-icon,
+            theme-var-fg-icons: mat-color($foreground-palette, icons),
+            theme-var-fg-slider-min: mat-color($foreground-palette, slider-min),
+            theme-var-fg-slider-off: mat-color($foreground-palette, slider-off),
+            theme-var-fg-slider-off-active: mat-color($foreground-palette, slider-off-active),
 
-        //---05-BACKGROUND------------------
-        theme-var-background-palette: $background-palette,
-        theme-var-bg-color: mat-color($background-palette, background),
-        theme-var-bg-status-bar: mat-color($background-palette, status-bar),
-        theme-var-bg-app-bar: mat-color($background-palette, app-bar),
-        theme-var-bg-hover: mat-color($background-palette, hover),
-        theme-var-bg-card: mat-color($background-palette, card),
-        theme-var-bg-dialog: mat-color($background-palette, dialog),
-        theme-var-bg-disabled-button: mat-color($background-palette, disabled-button),
-        theme-var-bg-raised-button: mat-color($background-palette, raised-button),
-        theme-var-bg-focused-button: mat-color($background-palette, focused-button),
-        theme-var-bg-selected-button: mat-color($background-palette, selected-button),
-        theme-var-bg-selected-disabled-button: mat-color($background-palette, selected-disabled-button),
-        theme-var-bg-disabled-button-toggle: mat-color($background-palette, disabled-button-toggle),
-        theme-var-bg-unselected-chip: mat-color($background-palette, unselected-chip),
-        theme-var-bg-disabled-list-option: mat-color($background-palette, disabled-list-option),
+            //---05-BACKGROUND------------------
+            theme-var-bg-color: mat-color($background-palette, background),
+            theme-var-bg-status-bar: mat-color($background-palette, status-bar),
+            theme-var-bg-app-bar: mat-color($background-palette, app-bar),
+            theme-var-bg-hover: mat-color($background-palette, hover),
+            theme-var-bg-card: $bg-card,
+            theme-var-bg-dialog: mat-color($background-palette, dialog),
+            theme-var-bg-disabled-button: mat-color($background-palette, disabled-button),
+            theme-var-bg-raised-button: mat-color($background-palette, raised-button),
+            theme-var-bg-focused-button: mat-color($background-palette, focused-button),
+            theme-var-bg-selected-button: mat-color($background-palette, selected-button),
+            theme-var-bg-selected-disabled-button: mat-color($background-palette, selected-disabled-button),
+            theme-var-bg-disabled-button-toggle: mat-color($background-palette, disabled-button-toggle),
+            theme-var-bg-unselected-chip: mat-color($background-palette, unselected-chip),
+            theme-var-bg-disabled-list-option: mat-color($background-palette, disabled-list-option),
 
-        //---COMMON_COLORS---------------
-        // fetch from the theme directly using the is_dark_mode flag
-        theme-var-is-dark-theme: $is-dark-theme, 
+            //---COMMON_COLORS---------------
+            //fetch from the theme directly using the is_dark_mode flag
+            theme-var-is-dark-theme: $is-dark-theme, 
 
-        // primary_text
-        theme-var-fg-dark-primary-text: $fg-dark-primary-text,
-        theme-var-fg-light-primary-text: $fg-light-primary-text,
-        theme-var-fg-primary-text-inverse: if($is-dark-theme, $fg-dark-primary-text, $fg-light-primary-text), 
+            //primary_text
+            theme-var-fg-dark-primary-text: $fg-dark-primary-text,
+            theme-var-fg-light-primary-text: $fg-light-primary-text,
+            theme-var-fg-primary-text-inverse: if($is-dark-theme, $fg-dark-primary-text, $fg-light-primary-text), 
 
-        // secondary_text
-        theme-var-fg-dark-secondary-text: $fg-dark-secondary-text,
-        theme-var-fg-light-secondary-text: $fg-light-secondary-text,
-        theme-var-fg-secondary-text-inverse: if($is-dark-theme, $fg-dark-secondary-text, $fg-light-secondary-text), 
+            //secondary_text
+            theme-var-fg-dark-secondary-text: $fg-dark-secondary-text,
+            theme-var-fg-light-secondary-text: $fg-light-secondary-text,
+            theme-var-fg-secondary-text-inverse: if($is-dark-theme, $fg-dark-secondary-text, $fg-light-secondary-text), 
 
-        //disabled_text
-        theme-var-fg-dark-disabled-text: $fg-dark-disabled-text,
-        theme-var-fg-light-disabled-text: $fg-light-disabled-text,
-        theme-var-fg-disabled-text-inverse: if($is-dark-theme, $fg-dark-disabled-text, $fg-light-disabled-text), 
+            //disabled_text
+            theme-var-fg-dark-disabled-text: $fg-dark-disabled-text,
+            theme-var-fg-light-disabled-text: $fg-light-disabled-text,
+            theme-var-fg-disabled-text-inverse: if($is-dark-theme, $fg-dark-disabled-text, $fg-light-disabled-text), 
 
-        // dividers
-        theme-var-bg-dark-dividers: $bg-dark-dividers,
-        theme-var-bg-light-dividers: $bg-light-dividers,
-        theme-var-bg-dividers-inverse: if($is-dark-theme, $bg-dark-dividers, $bg-light-dividers),
+            //dividers
+            theme-var-bg-dark-dividers: bg-dark-dividers,
+            theme-var-bg-light-dividers: bg-light-dividers,
+            theme-var-bg-dividers-inverse: if($is-dark-theme, $bg-dark-dividers, $bg-light-dividers), 
 
-        // focused
-        theme-var-bg-dark-focused: $bg-dark-focused,
-        theme-var-bg-light-focused: $bg-light-focused,
-        theme-var-bg-focused-inverse: if($is-dark-theme, $bg-light-focused, $bg-light-focused),
+            //focused
+            theme-var-bg-dark-focused: $bg-dark-focused,
+            theme-var-bg-light-focused: $bg-light-focused,
+            theme-var-bg-focused-inverse: if($is-dark-theme, $bg-light-focused, $bg-light-focused) ,
 
-        //---DERIVED_COLORS--------------
-        theme-var-_bg-ripple: rgba(fg-base, 0.1), //SPEC
-        theme-var-_bg-list-item: bg-card,
-        theme-var-_scrollbar-bg: rgba(fg_icon, .4),
-        theme-var-_scrollbar-fg: rgba(fg_icon, .05),
-        theme-var-_scrollbar-hover-bg: rgba(fg_icon, .16),
-        theme-var-_scrollbar-hover-fg: rgba(fg_icon, .20)
-    );
-}
+            //---DERIVED_COLORS--------------
+            theme-var_bg-ripple: rgba($fg-base, 0.1), //SPEC
+            theme-var_bg-list-item: $bg-card,
+            theme-var_scrollbar-bg: rgba($fg_icon, .4),
+            theme-var_scrollbar-fg: rgba($fg_icon, .05),
+            theme-var_scrollbar-hover-bg: rgba($fg_icon, .16),
+            theme-var_scrollbar-hover-fg: rgba($fg_icon, .20)
+        );
+    }
