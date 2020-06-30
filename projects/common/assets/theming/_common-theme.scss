@@ -41,17 +41,6 @@
 // $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
 
 /**
-* CSS variables
-*/
-// :root {
-//   --global-theme: $global-theme;
-//   --primary: mat-color(map-get($global-theme, primary), 500);
-//   --accent: mat-color(map-get($global-theme, accent), 500);
-//   --warn: mat-color(map-get($global-theme, warn), 500);
-//   --background: rgba(map-get(map-get($theme, background), 'background'), 1);
-// }
-
-/**
 * Get things setup and ready to go
 *
 * @param $theme current theme
@@ -62,11 +51,8 @@
   @include angular-material-theme($theme);
   @include variants($theme);
   @include theme-extras($theme);
-  // $theme-test: theme-variables($theme);
-  
-  // @if $use-fathym-branding {
-  //   @include fathym-branding($theme);
-  // }
+  // $theme-variables: theme-variables($theme);
+  // @warn #{$theme-variables};
 }
 
 /**
@@ -95,10 +81,11 @@
 @mixin default-color($palette-name, $color, $name, $map) {
   // creates a class (.primary {}, ...)
   .#{$palette-name} {
-            background-color: $color !important;
-            color: get-font-color($map, $name);
-            @warn #{get-font-color($map, $name)};
-          }
+      background-color: $color !important;
+      color: get-font-color($map, $name);
+      // create a sass variable
+      // #{str-remove-whitespace(#{'$'$palette-name'-'$name})}: $color;
+    }
 }
 
 /**
@@ -112,9 +99,9 @@
 @mixin variant-color($palette-name, $color, $name, $map) {
   // creates a class (.primary-50 {}, ...)
   .#{$palette-name}-#{$name} {
-          background-color: $color !important;
-          color: get-font-color($map, $name);
-        }
+      background-color: $color !important;
+      color: get-font-color($map, $name);
+    }
 }
 
 /**
@@ -127,8 +114,8 @@
 @mixin contrast-color($palette-name, $color, $name) {
   // creates a class (.primary-contrast-50 {}, ...)
   .#{$palette-name}-contrast-#{$name} { 
-          color: $color !important;
-        }
+      color: $color !important;
+    }
 }
 
 /**
@@ -138,13 +125,20 @@
 * @param $color-map - list of colors within the palette - Key/Value (50: #f4f7f6)
 * @param $nested-map - Used when the Key of $color-map is a map (list) itself
 */
-@mixin create-color-classes($palette-name, $color-map, $nested-map: null) {
-  @each $name, $color in $color-map {
+@mixin create-color-classes($palette-name, $color-map, $theme, $nested-map: null) {
+
+  $theme-variables: theme-variables($theme);
+  // @warn #{$theme-variables};
+  $merged: map-merge($theme-variables, $color-map);
+  // @warn #{$merged};
+
+  // @each $name, $color in $color-map {
+    @each $name, $color in $merged {
 
     // If $color is a map (list), make a recursive call back to create-color-classes()
     @if type-of($color) == map {
-      @include create-color-classes($palette-name, $color, $name);
-      
+      @include create-color-classes($palette-name, $color, $theme, $name);
+
       // If $nested-map is empty, assume top level properties
     } @else if $nested-map == null {
         @include variant-color($palette-name, $color, $name, $color-map);
@@ -167,7 +161,7 @@
 @mixin variants($theme) {
   // Key/Value of $color-palettes: (primary: map-get($global-theme, primary))
   @each $palette-name, $color-map in get-color-palettes($theme) {
-   @include create-color-classes($palette-name, $color-map);
+   @include create-color-classes($palette-name, $color-map, $theme);
   }
 }
 

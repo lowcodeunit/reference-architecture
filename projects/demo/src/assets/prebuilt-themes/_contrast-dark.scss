@@ -2,7 +2,6 @@
 
 @mixin init() {
     $theme: fathym-contrast-theme(true);
-    $theme-variables: theme-variables($theme);
     @include theme-setup($theme);
 }
 
