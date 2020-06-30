@@ -2,15 +2,7 @@
 
 @mixin init() {
     $theme: fathym-ivy-theme(true);
-
-    :root {
-        --theme: $theme;
-        --primary: mat-color(map-get($theme, primary), 500);
-        --accent: mat-color(map-get($theme, accent), 500);
-        --warn: mat-color(map-get($theme, warn), 500);
-        --background: rgba(map-get(map-get($theme, background), 'background'), 1);
-      }
-
+    $theme-variables: theme-variables($theme);
     @include theme-setup($theme);
 }
 

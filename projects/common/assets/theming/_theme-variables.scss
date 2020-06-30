@@ -1,120 +1,235 @@
-@mixin theme-variables($theme) {
-    //---01-PRIMARY---------------------
-    $primary-palette: map-get($theme, primary); 
-    $primary-color: mat-color($primary-palette, default);
-    $primary-light: mat-color($primary-palette, lighter);
-    $primary-dark: mat-color($primary-palette, darker); 
+// @mixin theme-variables($theme) {
+//     //---01-PRIMARY---------------------
+//     $primary-palette: map-get($theme, primary); 
+//     $primary-color: mat-color($primary-palette, default);
+//     $primary-light: mat-color($primary-palette, lighter);
+//     $primary-dark: mat-color($primary-palette, darker); 
 
-    //---02-ACCENT----------------------
-    $accent-palette: map-get($theme, accent); 
-    $accent-color: mat-color($accent-palette, default);
-    $accent-light: mat-color($accent-palette, lighter);
-    $accent-dark: mat-color($accent-palette, darker); 
+//     //---02-ACCENT----------------------
+//     $accent-palette: map-get($theme, accent); 
+//     $accent-color: mat-color($accent-palette, default);
+//     $accent-light: mat-color($accent-palette, lighter);
+//     $accent-dark: mat-color($accent-palette, darker); 
 
-    //---03-WARN------------------------
-    $warn-palette: map-get($theme, warn); 
-    $warn-color: mat-color($warn-palette, default);
-    $warn-light: mat-color($warn-palette, lighter);
-    $warn-dark: mat-color($warn-palette, darker); 
+//     //---03-WARN------------------------
+//     $warn-palette: map-get($theme, warn); 
+//     $warn-color: mat-color($warn-palette, default);
+//     $warn-light: mat-color($warn-palette, lighter);
+//     $warn-dark: mat-color($warn-palette, darker); 
 
-    //---04-FOREGROUND------------------
-    $foreground-palette: map-get($theme, foreground); 
-    $fg-base: mat-color($foreground-palette, base); //full_black or full_white
-    $fg-icon: mat-color($foreground-palette, icon);
-    $fg-primary-text: mat-color($foreground-palette, text);
-    $fg-secondary-text: mat-color($foreground-palette, secondary-text);
-    $fg-hint-text: mat-color($foreground-palette, hint-text);
-    $fg-disabled: mat-color($foreground-palette, disabled);
-    $fg-disabled-button: mat-color($foreground-palette, disabled-button);
-    $fg-disabled-text: mat-color($foreground-palette, disabled-text);
-    $fg-divider: mat-color($foreground-palette, divider);
-    $fg-dividers: mat-color($foreground-palette, dividers);
-    $fg-elevation: mat-color($foreground-palette, elevation);
-    $fg-icon: mat-color($foreground-palette, icon);
-    $fg-icons: mat-color($foreground-palette, icons);
-    $fg-slider-min: mat-color($foreground-palette, slider-min);
-    $fg-slider-off: mat-color($foreground-palette, slider-off);
-    $fg-slider-off-active: mat-color($foreground-palette, slider-off-active);
+//     //---04-FOREGROUND------------------
+//     $foreground-palette: map-get($theme, foreground); 
+//     $fg-base: mat-color($foreground-palette, base); //full_black or full_white
+//     $fg-icon: mat-color($foreground-palette, icon);
+//     $fg-primary-text: mat-color($foreground-palette, text);
+//     $fg-secondary-text: mat-color($foreground-palette, secondary-text);
+//     $fg-hint-text: mat-color($foreground-palette, hint-text);
+//     $fg-disabled: mat-color($foreground-palette, disabled);
+//     $fg-disabled-button: mat-color($foreground-palette, disabled-button);
+//     $fg-disabled-text: mat-color($foreground-palette, disabled-text);
+//     $fg-divider: mat-color($foreground-palette, divider);
+//     $fg-dividers: mat-color($foreground-palette, dividers);
+//     $fg-elevation: mat-color($foreground-palette, elevation);
+//     $fg-icon: mat-color($foreground-palette, icon);
+//     $fg-icons: mat-color($foreground-palette, icons);
+//     $fg-slider-min: mat-color($foreground-palette, slider-min);
+//     $fg-slider-off: mat-color($foreground-palette, slider-off);
+//     $fg-slider-off-active: mat-color($foreground-palette, slider-off-active);
 
-    //---05-BACKGROUND------------------
-    $background-palette: map-get($theme, background); 
-    $bg-color: mat-color($background-palette, background);
-    $bg-status-bar: mat-color($background-palette, status-bar);
-    $bg-app-bar: mat-color($background-palette, app-bar);
-    $bg-hover: mat-color($background-palette, hover);
-    $bg-card: mat-color($background-palette, card);
-    $bg-dialog: mat-color($background-palette, dialog);
-    $bg-disabled-button: mat-color($background-palette, disabled-button);
-    $bg-raised-button: mat-color($background-palette, raised-button);
-    $bg-focused-button: mat-color($background-palette, focused-button);
-    $bg-selected-button: mat-color($background-palette, selected-button);
-    $bg-selected-disabled-button: mat-color($background-palette, selected-disabled-button);
-    $bg-disabled-button-toggle: mat-color($background-palette, disabled-button-toggle);
-    $bg-unselected-chip: mat-color($background-palette, unselected-chip);
-    $bg-disabled-list-option: mat-color($background-palette, disabled-list-option);
+//     //---05-BACKGROUND------------------
+//     $background-palette: map-get($theme, background); 
+//     $bg-color: mat-color($background-palette, background);
+//     $bg-status-bar: mat-color($background-palette, status-bar);
+//     $bg-app-bar: mat-color($background-palette, app-bar);
+//     $bg-hover: mat-color($background-palette, hover);
+//     $bg-card: mat-color($background-palette, card);
+//     $bg-dialog: mat-color($background-palette, dialog);
+//     $bg-disabled-button: mat-color($background-palette, disabled-button);
+//     $bg-raised-button: mat-color($background-palette, raised-button);
+//     $bg-focused-button: mat-color($background-palette, focused-button);
+//     $bg-selected-button: mat-color($background-palette, selected-button);
+//     $bg-selected-disabled-button: mat-color($background-palette, selected-disabled-button);
+//     $bg-disabled-button-toggle: mat-color($background-palette, disabled-button-toggle);
+//     $bg-unselected-chip: mat-color($background-palette, unselected-chip);
+//     $bg-disabled-list-option: mat-color($background-palette, disabled-list-option);
 
-    //---COMMON_COLORS---------------
-    //fetch from the theme directly using the is_dark_mode flag
-    $is-dark-theme: map-get($theme, is-dark); 
-    //primary_text
-    $fg-dark-primary-text: rgba(black, 0.87);
-    $fg-light-primary-text: white;
-    $fg-primary-text-inverse: if($is-dark-theme, $fg-dark-primary-text, $fg-light-primary-text); 
-    //secondary_text
-    $fg-dark-secondary-text: rgba(black, 0.54);
-    $fg-light-secondary-text: rgba(white, 0.7);
-    $fg-secondary-text-inverse: if($is-dark-theme, $fg-dark-secondary-text, $fg-light-secondary-text); 
-    //disabled_text
-    $fg-dark-disabled-text: rgba(black, 0.38);
-    $fg-light-disabled-text: rgba(white, 0.5);
-    $fg-disabled-text-inverse: if($is-dark-theme, $fg-dark-disabled-text, $fg-light-disabled-text); 
-    //dividers
-    $bg-dark-dividers: rgba(black, 0.12);
-    $bg-light-dividers: rgba(white, 0.12);
-    $bg-dividers-inverse: if($is-dark-theme, $bg-dark-dividers, $bg-light-dividers); 
-    //focused
-    $bg-dark-focused: rgba(black, 0.12);
-    $bg-light-focused: rgba(white, 0.12);
-    $bg-focused-inverse: if($is-dark-theme, $bg-light-focused, $bg-light-focused); 
-    //---DERIVED_COLORS--------------
-    $_bg-ripple: rgba($fg-base, 0.1); //SPEC
-    $_bg-list-item: $bg-card;
-    $_scrollbar-bg: rgba($fg_icon, .4);
-    $_scrollbar-fg: rgba($fg_icon, .05);
-    $_scrollbar-hover-bg: rgba($fg_icon, .16);
-    $_scrollbar-hover-fg: rgba($fg_icon, .20);
+//     //---COMMON_COLORS---------------
+//     //fetch from the theme directly using the is_dark_mode flag
+//     $is-dark-theme: map-get($theme, is-dark); 
+//     //primary_text
+//     $fg-dark-primary-text: rgba(black, 0.87);
+//     $fg-light-primary-text: white;
+//     $fg-primary-text-inverse: if($is-dark-theme, $fg-dark-primary-text, $fg-light-primary-text); 
+//     //secondary_text
+//     $fg-dark-secondary-text: rgba(black, 0.54);
+//     $fg-light-secondary-text: rgba(white, 0.7);
+//     $fg-secondary-text-inverse: if($is-dark-theme, $fg-dark-secondary-text, $fg-light-secondary-text); 
+//     //disabled_text
+//     $fg-dark-disabled-text: rgba(black, 0.38);
+//     $fg-light-disabled-text: rgba(white, 0.5);
+//     $fg-disabled-text-inverse: if($is-dark-theme, $fg-dark-disabled-text, $fg-light-disabled-text); 
+//     //dividers
+//     $bg-dark-dividers: rgba(black, 0.12);
+//     $bg-light-dividers: rgba(white, 0.12);
+//     $bg-dividers-inverse: if($is-dark-theme, $bg-dark-dividers, $bg-light-dividers); 
+//     //focused
+//     $bg-dark-focused: rgba(black, 0.12);
+//     $bg-light-focused: rgba(white, 0.12);
+//     $bg-focused-inverse: if($is-dark-theme, $bg-light-focused, $bg-light-focused); 
+//     //---DERIVED_COLORS--------------
+//     $_bg-ripple: rgba($fg-base, 0.1); //SPEC
+//     $_bg-list-item: $bg-card;
+//     $_scrollbar-bg: rgba($fg_icon, .4);
+//     $_scrollbar-fg: rgba($fg_icon, .05);
+//     $_scrollbar-hover-bg: rgba($fg_icon, .16);
+//     $_scrollbar-hover-fg: rgba($fg_icon, .20);
+// }
 
-    $palette: 
-    (
-        50 : #e9f2f1,
-        100 : #c9dedd,
-        200 : #a5c8c7,
-        300 : #80b2b0,
-        400 : #65a29f,
-        500 : #4a918e,
-        600 : #438986,
-        700 : #3a7e7b,
-        800 : #327471,
-        900 : #22625f,
-        A100 : #a4fffb,
-        A200 : #71fff8,
-        A400 : #3efff6,
-        A700 : #25fff4,
-        contrast: (
-            50: $dark-primary-text,
-            100: $dark-primary-text,
-            200: $dark-primary-text,
-            300: $dark-primary-text,
-            400: $dark-primary-text,
-            500: $light-primary-text,
-            600: $light-primary-text,
-            700: $light-primary-text,
-            800: $light-primary-text,
-            900: $light-primary-text,
-            A100: $dark-primary-text,
-            A200: $dark-primary-text,
-            A400: $dark-primary-text,
-            A700: $dark-primary-text,
-        )
-    );
-}
+@function theme-variables($theme) {
+    //     //---01-PRIMARY---------------------
+     $primary-palette: map-get($theme, primary); 
+     $accent-palette: map-get($theme, accent); 
+     $warn-palette: map-get($theme, warn);
+     $foreground-palette: map-get($theme, foreground);
+     $background-palette: map-get($theme, background);
+ 
+     @return (
+         primary-color: mat-color($primary-palette, default),
+         primary-light: mat-color($primary-palette, lighter),
+         primary-dark: mat-color($primary-palette, darker), 
+         accent-color: mat-color($accent-palette, default),
+         accent-light: mat-color($accent-palette, lighter),
+         accent-dark: mat-color($accent-palette, darker), 
+         warn-color: mat-color($warn-palette, default),
+         warn-light: mat-color($warn-palette, lighter),
+         warn-dark: mat-color($warn-palette, darker), 
+         fg-base: mat-color($foreground-palette, base), //full_black or full_white
+         fg-primary-text: mat-color($foreground-palette, text),
+         fg-secondary-text: mat-color($foreground-palette, secondary-text),
+         fg-hint-text: mat-color($foreground-palette, hint-text),
+         fg-disabled: mat-color($foreground-palette, disabled),
+         fg-disabled-button: mat-color($foreground-palette, disabled-button),
+         fg-disabled-text: mat-color($foreground-palette, disabled-text),
+         fg-divider: mat-color($foreground-palette, divider),
+         fg-dividers: mat-color($foreground-palette, dividers),
+         fg-elevation: mat-color($foreground-palette, elevation),
+         fg-icon: mat-color($foreground-palette, icon),
+         fg-icons: mat-color($foreground-palette, icons),
+         fg-slider-min: mat-color($foreground-palette, slider-min),
+         fg-slider-off: mat-color($foreground-palette, slider-off),
+         fg-slider-off-active: mat-color($foreground-palette, slider-off-active),
+         bg-color: mat-color($background-palette, background),
+         bg-status-bar: mat-color($background-palette, status-bar),
+         bg-app-bar: mat-color($background-palette, app-bar),
+         bg-hover: mat-color($background-palette, hover),
+         bg-card: mat-color($background-palette, card),
+         bg-dialog: mat-color($background-palette, dialog),
+         bg-disabled-button: mat-color($background-palette, disabled-button),
+         bg-raised-button: mat-color($background-palette, raised-button),
+         bg-focused-button: mat-color($background-palette, focused-button),
+         bg-selected-button: mat-color($background-palette, selected-button),
+         bg-selected-disabled-button: mat-color($background-palette, selected-disabled-button),
+         bg-disabled-button-toggle: mat-color($background-palette, disabled-button-toggle),
+         bg-unselected-chip: mat-color($background-palette, unselected-chip),
+         bg-disabled-list-option: mat-color($background-palette, disabled-list-option)
+     );
+   }
+ 
+ // @mixin theme-variables($theme) {
+ //     //---01-PRIMARY---------------------
+ //     $primary-palette: map-get($theme, primary); 
+ //     $primary-color: mat-color($primary-palette, default);
+ //     $primary-light: mat-color($primary-palette, lighter);
+ //     $primary-dark: mat-color($primary-palette, darker); 
+ 
+ //     //---02-ACCENT----------------------
+ //     $accent-palette: map-get($theme, accent); 
+ //     $accent-color: mat-color($accent-palette, default);
+ //     $accent-light: mat-color($accent-palette, lighter);
+ //     $accent-dark: mat-color($accent-palette, darker); 
+ 
+ //     //---03-WARN------------------------
+ //     $warn-palette: map-get($theme, warn); 
+ //     $warn-color: mat-color($warn-palette, default);
+ //     $warn-light: mat-color($warn-palette, lighter);
+ //     $warn-dark: mat-color($warn-palette, darker); 
+ 
+ //     //---04-FOREGROUND------------------
+ //     $foreground-palette: map-get($theme, foreground); 
+ //     $fg-base: mat-color($foreground-palette, base); //full_black or full_white
+ //     $fg-icon: mat-color($foreground-palette, icon);
+ //     $fg-primary-text: mat-color($foreground-palette, text);
+ //     $fg-secondary-text: mat-color($foreground-palette, secondary-text);
+ //     $fg-hint-text: mat-color($foreground-palette, hint-text);
+ //     $fg-disabled: mat-color($foreground-palette, disabled);
+ //     $fg-disabled-button: mat-color($foreground-palette, disabled-button);
+ //     $fg-disabled-text: mat-color($foreground-palette, disabled-text);
+ //     $fg-divider: mat-color($foreground-palette, divider);
+ //     $fg-dividers: mat-color($foreground-palette, dividers);
+ //     $fg-elevation: mat-color($foreground-palette, elevation);
+ //     $fg-icon: mat-color($foreground-palette, icon);
+ //     $fg-icons: mat-color($foreground-palette, icons);
+ //     $fg-slider-min: mat-color($foreground-palette, slider-min);
+ //     $fg-slider-off: mat-color($foreground-palette, slider-off);
+ //     $fg-slider-off-active: mat-color($foreground-palette, slider-off-active);
+ 
+ //     //---05-BACKGROUND------------------
+ //     $background-palette: map-get($theme, background); 
+ //     $bg-color: mat-color($background-palette, background);
+ //     $bg-status-bar: mat-color($background-palette, status-bar);
+ //     $bg-app-bar: mat-color($background-palette, app-bar);
+ //     $bg-hover: mat-color($background-palette, hover);
+ //     $bg-card: mat-color($background-palette, card);
+ //     $bg-dialog: mat-color($background-palette, dialog);
+ //     $bg-disabled-button: mat-color($background-palette, disabled-button);
+ //     $bg-raised-button: mat-color($background-palette, raised-button);
+ //     $bg-focused-button: mat-color($background-palette, focused-button);
+ //     $bg-selected-button: mat-color($background-palette, selected-button);
+ //     $bg-selected-disabled-button: mat-color($background-palette, selected-disabled-button);
+ //     $bg-disabled-button-toggle: mat-color($background-palette, disabled-button-toggle);
+ //     $bg-unselected-chip: mat-color($background-palette, unselected-chip);
+ //     $bg-disabled-list-option: mat-color($background-palette, disabled-list-option);
+ 
+ 
+ //     //---DERIVED_COLORS--------------
+ //     $_bg-ripple: rgba($fg-base, 0.1); //SPEC
+ //     $_bg-list-item: $bg-card;
+ //     $_scrollbar-bg: rgba($fg_icon, .4);
+ //     $_scrollbar-fg: rgba($fg_icon, .05);
+ //     $_scrollbar-hover-bg: rgba($fg_icon, .16);
+ //     $_scrollbar-hover-fg: rgba($fg_icon, .20);
+ 
+ //     $palette: 
+ //     (
+ //         50 : #e9f2f1,
+ //         100 : #c9dedd,
+ //         200 : #a5c8c7,
+ //         300 : #80b2b0,
+ //         400 : #65a29f,
+ //         500 : #4a918e,
+ //         600 : #438986,
+ //         700 : #3a7e7b,
+ //         800 : #327471,
+ //         900 : #22625f,
+ //         A100 : #a4fffb,
+ //         A200 : #71fff8,
+ //         A400 : #3efff6,
+ //         A700 : #25fff4,
+ //         contrast: (
+ //             50: $dark-primary-text,
+ //             100: $dark-primary-text,
+ //             200: $dark-primary-text,
+ //             300: $dark-primary-text,
+ //             400: $dark-primary-text,
+ //             500: $light-primary-text,
+ //             600: $light-primary-text,
+ //             700: $light-primary-text,
+ //             800: $light-primary-text,
+ //             900: $light-primary-text,
+ //             A100: $dark-primary-text,
+ //             A200: $dark-primary-text,
+ //             A400: $dark-primary-text,
+ //             A700: $dark-primary-text,
+ //         )
+ //     );
+ // }
