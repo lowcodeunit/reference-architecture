@@ -78,7 +78,7 @@
 */
 @mixin default-color($palette-name, $color, $name, $map) {
   // creates a class (.primary {}, ...)
-  .#{$palette-name} {
+  %#{$palette-name} {
       background-color: $color !important;
       color: get-font-color($map, $name);
 
@@ -97,7 +97,7 @@
 */
 @mixin variant-color($palette-name, $color, $name, $map) {
   // creates a class (.primary-50 {}, ...)
-  .#{$palette-name}-#{$name} {
+  %#{$palette-name}-#{$name} {
       background-color: $color !important;
       color: get-font-color($map, $name);
     }
@@ -112,7 +112,7 @@
 */
 @mixin contrast-color($palette-name, $color, $name) {
   // creates a class (.primary-contrast-50 {}, ...)
-  .#{$palette-name}-contrast-#{$name} { 
+  %#{$palette-name}-contrast-#{$name} { 
       color: $color !important;
     }
 }
