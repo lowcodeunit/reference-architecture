@@ -3,16 +3,6 @@
 @mixin init() {
     $theme: fathym-ivy-theme(true);
     @include theme-setup($theme);
-    $theme-vars: theme-variables($theme);
-
-    @if $theme-vars {
-        :export {
-            themeVars: $theme-vars;
-        }
-    }
 }
 
 @include init();
-
-
-// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
