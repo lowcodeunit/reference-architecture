@@ -150,6 +150,7 @@
       @include contrast-color($palette-name, $color, $name);
     }
   }
+  }
   @each $name, $color in $theme-variables {
     .#{$name} { 
       color: $color !important;
