@@ -3,10 +3,13 @@
 @mixin init() {
     $theme: fathym-ivy-theme(true);
     @include theme-setup($theme);
-    $theme-vars: theme-variables($theme);
 
-    :export {
-        themeVars: $theme-vars;
+    @if $theme-vars {
+        $theme-vars: theme-variables($theme);
+
+        :export {
+            themeVars: $theme-vars;
+        }
     }
 }
 
