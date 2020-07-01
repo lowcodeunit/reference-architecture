@@ -4,11 +4,13 @@
     $theme: fathym-ivy-theme(true);
     @include theme-setup($theme);
     $theme-vars: theme-variables($theme);
+
+    :export {
+        themeVars: $theme-vars;
+    }
 }
 
 @include init();
-:export {
-    themeVars: $theme-vars;
-}
+
 
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
