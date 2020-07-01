@@ -8,3 +8,8 @@
 
 @include init();
 
+:export {
+    themeVars: $theme-vars;
+}
+
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
