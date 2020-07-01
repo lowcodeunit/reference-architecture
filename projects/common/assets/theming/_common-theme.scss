@@ -3,8 +3,6 @@
 */
 @import "../theming/fathym_themes";
 
-$theme-variables: null !default;
-
 /**
 * Variable to hold the current theme
 *
@@ -131,7 +129,7 @@ $theme-variables: null !default;
   $theme-variables: theme-variables($theme);
   $merged: map-merge($theme-variables, $color-map);
 
-  // @each $name, $color in $color-map {
+  @each $name, $color in $color-map {
     @each $name, $color in $merged {
 
     // If $color is a map (list), make a recursive call back to create-color-classes()
@@ -150,6 +148,12 @@ $theme-variables: null !default;
       // If not $nested-map, then set contrast color
     } @else if $nested-map != null {
       @include contrast-color($palette-name, $color, $name);
+    }
+  }
+  @each $name, $color in $theme-variables {
+    .#{$name} { 
+      color: $color !important;
+      background-color: $color;
     }
   }
 }
