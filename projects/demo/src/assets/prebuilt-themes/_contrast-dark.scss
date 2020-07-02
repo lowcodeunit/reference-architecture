@@ -1,4 +1,4 @@
-@import '../prebuilt-themes-utils.scss';
+@import './prebuilt-themes-utils.scss';
 
 @mixin init() {
     $theme: fathym-contrast-theme(true);
