@@ -129,6 +129,7 @@
   $theme-variables: theme-variables($theme);
   $merged: map-merge($theme-variables, $color-map);
 
+  
   @each $name, $color in $merged {
   // @each $name, $color in $merged {
 
