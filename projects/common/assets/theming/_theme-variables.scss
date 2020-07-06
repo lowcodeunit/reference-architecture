@@ -5,6 +5,7 @@
 @function theme-variables($theme) {
     //---BASE-VARIABLES---------------------
      $primary-palette: map-get($theme, primary); 
+     $primary-color: mat-color($primary-palette, default);
      $accent-palette: map-get($theme, accent); 
      $warn-palette: map-get($theme, warn);
      $foreground-palette: map-get($theme, foreground);
@@ -26,7 +27,7 @@
      
      @return (
             //---01-PRIMARY---------------------
-            primary-color: mat-color($primary-palette, default),
+            primary-color: $primary-color,
             primary-light: mat-color($primary-palette, lighter),
             primary-dark: mat-color($primary-palette, darker), 
 
@@ -114,7 +115,8 @@
 
     :root {
          //---01-PRIMARY---------------------
-         --primary-color: mat-color($primary-palette, default);
+         --primary-color: #{primary-color};
+         // --primary-color: mat-color($primary-palette, default);
          --primary-light: mat-color($primary-palette, lighter);
          --primary-dark: mat-color($primary-palette, darker); 
 
