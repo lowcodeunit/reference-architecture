@@ -129,7 +129,7 @@
          --warn-dark: mat-color($warn-palette, darker); 
 
          //---04-FOREGROUND------------------
-         --fg-base: $--fg-base, //full_black or full_white
+         --fg-base: $--fg-base;
          --fg-primary-text: mat-color($foreground-palette, text);
          --fg-secondary-text: mat-color($foreground-palette, secondary-text);
          --fg-hint-text: mat-color($foreground-palette, hint-text);
@@ -139,7 +139,7 @@
          --fg-divider: mat-color($foreground-palette, divider);
          --fg-dividers: mat-color($foreground-palette, dividers);
          --fg-elevation: mat-color($foreground-palette, elevation);
-         --fg-icon: $--fg-icon,
+         --fg-icon: $--fg-icon;
          --fg-icons: mat-color($foreground-palette, icons);
          --fg-slider-min: mat-color($foreground-palette, slider-min);
          --fg-slider-off: mat-color($foreground-palette, slider-off);
@@ -150,7 +150,7 @@
          --bg-status-bar: mat-color($background-palette, status-bar);
          --bg-app-bar: mat-color($background-palette, app-bar);
          --bg-hover: mat-color($background-palette, hover);
-         --bg-card: $--bg-card,
+         --bg-card: $--bg-card;
          --bg-dialog: mat-color($background-palette, dialog);
          --bg-disabled-button: mat-color($background-palette, disabled-button);
          --bg-raised-button: mat-color($background-palette, raised-button);
