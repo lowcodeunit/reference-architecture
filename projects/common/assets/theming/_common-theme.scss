@@ -129,8 +129,8 @@
   $theme-variables: theme-variables($theme);
   $merged: map-merge($theme-variables, $color-map);
 
-  // @each $name, $color in $color-map {
-    @each $name, $color in $merged {
+  @each $name, $color in $color-map {
+  // @each $name, $color in $merged {
 
     // If $color is a map (list), make a recursive call back to create-color-classes()
     @if type-of($color) == map {
