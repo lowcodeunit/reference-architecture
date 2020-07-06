@@ -115,7 +115,8 @@
 
     :root {
          //---01-PRIMARY---------------------
-         --primary-color: #{primary-color};
+         --primary-color: #{$primary-color};
+         --primary-color-test: $primary-color;
          // --primary-color: mat-color($primary-palette, default);
          --primary-light: mat-color($primary-palette, lighter);
          --primary-dark: mat-color($primary-palette, darker); 
