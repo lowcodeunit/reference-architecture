@@ -8,37 +8,37 @@
 *
 * Default to fathym-ivy-theme
 */
-$global-theme: fathym-ivy-theme(false) !default;
+// $global-theme: fathym-ivy-theme(false) !default;
 
 /**
 * Variable to hold current primary color
 */
-$global-primary: mat-color(map-get($global-theme, primary), 500) !default;
+// $global-primary: mat-color(map-get($global-theme, primary), 500) !default;
 
 /**
 * Variable to hold current primary contrast (font) color
 */
-$global-primary-contrast: mat-color(map-get($global-theme, primary), default-contrast) !default;
+// $global-primary-contrast: mat-color(map-get($global-theme, primary), default-contrast) !default;
 
 /**
 * Variable to hold current accent color
 */
-$global-accent: mat-color(map-get($global-theme, accent), 500) !default;
+// $global-accent: mat-color(map-get($global-theme, accent), 500) !default;
 
 /**
 * Variable to hold current primary accent (font) color
 */
-$global-accent-contrast: mat-color(map-get($global-theme, accent), default-contrast) !default;
+// $global-accent-contrast: mat-color(map-get($global-theme, accent), default-contrast) !default;
 
 /**
 * Variable to hold current warn color
 */
-$global-warn: mat-color(map-get($global-theme, warn), 500) !default;
+// $global-warn: mat-color(map-get($global-theme, warn), 500) !default;
 
 /**
 * Variable to hold current primary warn (font) color
 */
-$global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
+// $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
 
 /**
 * Get things setup and ready to go
@@ -48,14 +48,9 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 *        for specific elements
 */
 @mixin theme-setup($theme, $use-fathym-branding: false) {
-  $global-theme: $theme;
   @include angular-material-theme($theme);
   @include variants($theme);
   @include theme-extras($theme);
-  
-  @if $use-fathym-branding {
-    @include fathym-branding($theme);
-  }
 }
 
 /**
@@ -71,17 +66,25 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
   @return $color-palettes;
 }
 
+@function get-font-color($color-map, $name) {
+  @return map-get(map-get($color-map, contrast), $name);
+}
+
 /**
 * Dynamically create classes for default colors (primary, accent, warn)
 *
 * @param $palette-name (primary, accent, warn)
 * @param $color color value
 */
-@mixin default-color($palette-name, $color) {
+@mixin default-color($palette-name, $color, $name, $map) {
   // creates a class (.primary {}, ...)
   .#{$palette-name} {
-            background-color: $color !important;
-          }
+      background-color: $color !important;
+      color: get-font-color($map, $name);
+
+      // create a sass variable
+      // #{str-remove-whitespace(#{'$'$palette-name'-'$name})}: $color;
+    }
 }
 
 /**
@@ -92,11 +95,12 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 * @param $color color value (#f4f7f6)
 * @param $name color variant value (50, 100, 200, ...)
 */
-@mixin variant-color($palette-name, $color, $name) {
+@mixin variant-color($palette-name, $color, $name, $map) {
   // creates a class (.primary-50 {}, ...)
   .#{$palette-name}-#{$name} {
-          background-color: $color !important;
-        }
+      background-color: $color !important;
+      color: get-font-color($map, $name);
+    }
 }
 
 /**
@@ -109,8 +113,8 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 @mixin contrast-color($palette-name, $color, $name) {
   // creates a class (.primary-contrast-50 {}, ...)
   .#{$palette-name}-contrast-#{$name} { 
-          color: $color !important;
-        }
+      color: $color !important;
+    }
 }
 
 /**
@@ -120,20 +124,25 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 * @param $color-map - list of colors within the palette - Key/Value (50: #f4f7f6)
 * @param $nested-map - Used when the Key of $color-map is a map (list) itself
 */
-@mixin create-color-classes($palette-name, $color-map, $nested-map: null) {
+@mixin create-color-classes($palette-name, $color-map, $theme, $nested-map: null) {
+
+  $theme-variables: theme-variables($theme);
+  $merged: map-merge($theme-variables, $color-map);
+
   @each $name, $color in $color-map {
+  // @each $name, $color in $merged {
 
     // If $color is a map (list), make a recursive call back to create-color-classes()
     @if type-of($color) == map {
-      @include create-color-classes($palette-name, $color, $name);
-      
+      @include create-color-classes($palette-name, $color, $theme, $name);
+
       // If $nested-map is empty, assume top level properties
     } @else if $nested-map == null {
-        @include variant-color($palette-name, $color, $name);
+        @include variant-color($palette-name, $color, $name, $color-map);
       
       // Set default colors
       @if $name == 500 {
-        @include default-color($palette-name, $color);
+        @include default-color($palette-name, $color, $name, $color-map);
       }
       
       // If not $nested-map, then set contrast color
@@ -149,14 +158,14 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 @mixin variants($theme) {
   // Key/Value of $color-palettes: (primary: map-get($global-theme, primary))
   @each $palette-name, $color-map in get-color-palettes($theme) {
-   @include create-color-classes($palette-name, $color-map);
+   @include create-color-classes($palette-name, $color-map, $theme);
   }
 }
 
 /**
 * Set the default theme
 */
-@include theme-setup($global-theme);
+// @include theme-setup($global-theme);
 
 
 

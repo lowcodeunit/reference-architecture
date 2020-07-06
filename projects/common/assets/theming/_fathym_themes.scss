@@ -1,102 +1,15 @@
-@import '~@angular/material/theming';
+@import './node_modules/@angular/material/theming';
 @include mat-core();
 
 @import '../styles/branding/theme-colors/fathym-theme-colors';
 @import '../styles/branding/logos/fathym-icons';
 @import '../styles/branding/fonts/fathym-fonts';
+@import './theme-variables';
 
 /**
 * Set initial fathym logo
 */
-$primary-logo: $fathym-default-logo;
-
-@mixin fathym-branding($theme: null) {
-    // .header-background {
-    //     background-color: mat-color(map-get($theme, accent), A700);
-    // }
-
-    // .mat-tooltip {
-    //     color: mat-color(map-get($theme, accent), 100) !important;
-    //     background: mat-color(map-get($theme, primary), A700) !important;
-    //   }
-
-    // .mat-toolbar {
-    //     &.mat-primary {
-    //         background-color: mat-color(map-get($theme, primary), A700) !important;
-    //     }
-
-    //     // &.mat-accent {
-    //     //     @include _mat-toolbar-color($accent);
-    //     // }
-
-    //     // &.mat-warn {
-    //     //     @include _mat-toolbar-color($warn);
-    //     // }
-    // }
-
-    // /* primary styling for fathym branding of primary buttons */
-
-    // .mat-button.mat-primary,
-    // .mat-stroked-button.mat-primary {
-    //     color: mat-color(map-get($theme, primary), A700) !important;
-    // }
-    // .mat-button.mat-primary:hover,
-    // .mat-stroked-button.mat-primary:hover {
-    //     background-color: mat-color(map-get($theme, accent), 100) !important;
-    // }
-
-    // .mat-raised-button.mat-primary,
-    // .mat-flat-button.mat-primary,
-    // .mat-fab.mat-primary,
-    // .mat-mini-fab.mat-primary {
-    //     color: mat-color(map-get($theme, accent), 100) !important;
-    //     background-color: mat-color(map-get($theme, primary), A700) !important;
-    // }
-
-    // .mat-icon-button.mat-primary {
-    //     color:mat-color(map-get($theme, primary), A700) !important;
-    // }
-
-    // // .mat-card {
-    // //     background-color: mat-color(map-get($theme, primary), 500, .9) !important;
-    // // }
-
-    // .mat-input-element {
-    //     caret-color: mat-color(map-get($theme, primary), A700) !important;
-    // }
-
-    // .mat-form-field-ripple{
-    //     background-color: mat-color(map-get($theme, primary), A700) !important;
-    // }
-    // .mat-focused .mat-form-field-label {
-    //     color: mat-color(map-get($theme, primary), A700) !important;
-    // }
-
-    // // .tooltip-background {
-    // //     color: mat-contrast(map-get($theme, primary), 500) !important;
-    // //     background-color: mat-color(map-get($theme, primary), A700) !important;
-    // // }
-
-    // .mat-raised-button:hover[class*=hover-highlight]{
-    //     &.mat-primary {
-    //         background-color: mat-color(map-get($theme, accent), A700) !important;
-    //     }
-    //   }
-
-    //   /**Branded spinner color**/
-    // .mat-progress-spinner circle, .mat-spinner circle{
-    // stroke: mat-color(map-get($theme, primary), A700) !important;
-    // }
-
-    // .error {
-    //     color: #c43843;
-
-    // }
-
-    // .success {
-    //     color: #4a918e;
-    // }
-}
+$primary-logo: $fathym-default-logo !default;
 
 /**
 * Put some extra love here

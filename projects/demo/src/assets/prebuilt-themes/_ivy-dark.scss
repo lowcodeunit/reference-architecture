@@ -1,0 +1,8 @@
+@import '../prebuilt-themes-utils.scss';
+
+@mixin init() {
+    $theme: fathym-ivy-theme(true);
+    @include theme-setup($theme);
+}
+
+@include init();
