@@ -14,7 +14,7 @@ $global-theme: fathym-ivy-theme(false) !default;
 /**
 * Variable to hold current primary color
 */
-global-primary: mat-color(map-get($global-theme, primary), 500) !default;
+$global-primary: mat-color(map-get($global-theme, primary), 500) !default;
 
 /**
 * Variable to hold current primary contrast (font) color
