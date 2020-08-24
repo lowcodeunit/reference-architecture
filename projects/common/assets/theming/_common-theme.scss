@@ -1,4 +1,3 @@
-
 /**
 * fathym_themes are Fathym's branded theme styles (fathym-ivy-theme, fathym-sea-green-theme, ...)
 */
@@ -130,8 +129,7 @@
   $theme-variables: theme-variables($theme);
   $merged: map-merge($theme-variables, $color-map);
 
-  
-  @each $name, $color in $merged {
+  @each $name, $color in $color-map {
   // @each $name, $color in $merged {
 
     // If $color is a map (list), make a recursive call back to create-color-classes()
@@ -168,6 +166,5 @@
 * Set the default theme
 */
 // @include theme-setup($global-theme);
-
 
 
