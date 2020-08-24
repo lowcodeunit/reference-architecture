@@ -1,7 +1,6 @@
 /**
 * Return theme variables
 */
-
 @function theme-variables($theme) {
     //---BASE-VARIABLES---------------------
      $primary-palette: map-get($theme, primary); 
