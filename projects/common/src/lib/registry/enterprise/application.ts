@@ -26,8 +26,10 @@ export class Application {
   public UserAgentRegex?: string;
 }
 
-export class DAFApplicationConfig {
+export class DAFApplication {
   public ApplicationID?: string;
+
+  public Details?: {};
 
   public ID?: string;
 
@@ -36,7 +38,7 @@ export class DAFApplicationConfig {
   public Priority?: number;
 }
 
-export class DAFAPIApplicationConfig extends DAFApplicationConfig {
+export class DAFAPIApplicationDetails {
   public APIRoot?: string;
 
   public InboundPath?: string;
@@ -46,7 +48,7 @@ export class DAFAPIApplicationConfig extends DAFApplicationConfig {
   public Security?: string;
 }
 
-export class DAFViewApplicationConfig extends DAFApplicationConfig {
+export class DAFViewApplicationDetails {
   public BaseHref?: string;
 
   public NPMPackage?: string;
@@ -54,4 +56,14 @@ export class DAFViewApplicationConfig extends DAFApplicationConfig {
   public PackageVersion?: string;
 
   public StateConfig?: any;
+}
+
+export class DAFRedirectApplicationDetails {
+  public Redirect?: string;
+}
+
+export class DAFAppPointerApplicationDetails {
+  public DAFApplicationID?: string;
+
+  public DAFApplicationRoot?: string;
 }
