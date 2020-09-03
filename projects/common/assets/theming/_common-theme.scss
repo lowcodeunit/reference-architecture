@@ -8,37 +8,37 @@
 *
 * Default to fathym-ivy-theme
 */
-// $global-theme: fathym-ivy-theme(false) !default;
+$global-theme: fathym-ivy-theme(false) !default;
 
 /**
 * Variable to hold current primary color
 */
-// $global-primary: mat-color(map-get($global-theme, primary), 500) !default;
+$global-primary: mat-color(map-get($global-theme, primary), 500) !default;
 
 /**
 * Variable to hold current primary contrast (font) color
 */
-// $global-primary-contrast: mat-color(map-get($global-theme, primary), default-contrast) !default;
+$global-primary-contrast: mat-color(map-get($global-theme, primary), default-contrast) !default;
 
 /**
 * Variable to hold current accent color
 */
-// $global-accent: mat-color(map-get($global-theme, accent), 500) !default;
+$global-accent: mat-color(map-get($global-theme, accent), 500) !default;
 
 /**
 * Variable to hold current primary accent (font) color
 */
-// $global-accent-contrast: mat-color(map-get($global-theme, accent), default-contrast) !default;
+$global-accent-contrast: mat-color(map-get($global-theme, accent), default-contrast) !default;
 
 /**
 * Variable to hold current warn color
 */
-// $global-warn: mat-color(map-get($global-theme, warn), 500) !default;
+$global-warn: mat-color(map-get($global-theme, warn), 500) !default;
 
 /**
 * Variable to hold current primary warn (font) color
 */
-// $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
+$global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast) !default;
 
 /**
 * Get things setup and ready to go
