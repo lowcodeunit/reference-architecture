@@ -43,6 +43,8 @@ export class DAFAPIApplicationDetails {
 
   public InboundPath?: string;
 
+  public Lookup?: string;
+
   public Methods?: string;
 
   public Security?: string;
