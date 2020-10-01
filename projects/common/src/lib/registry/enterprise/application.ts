@@ -60,6 +60,14 @@ export class DAFViewApplicationDetails {
   public StateConfig?: any;
 }
 
+export class DAFLCUApplicationDetails {
+  public Lookup?: string;
+
+  public NPMPackage?: string;
+
+  public PackageVersion?: string;
+}
+
 export class DAFRedirectApplicationDetails {
   public Redirect?: string;
 }
