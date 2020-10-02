@@ -61,11 +61,15 @@ export class DAFViewApplicationDetails {
 }
 
 export class DAFLCUApplicationDetails {
+  public BaseHref?: string;
+
   public Lookup?: string;
 
   public NPMPackage?: string;
 
   public PackageVersion?: string;
+
+  public StateConfig?: any;
 }
 
 export class DAFRedirectApplicationDetails {
