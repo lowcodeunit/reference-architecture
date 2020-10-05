@@ -60,6 +60,14 @@ export class DAFViewApplicationDetails {
   public StateConfig?: any;
 }
 
+export class DAFViewZipApplicationDetails {
+  public BaseHref?: string;
+
+  public ZipFile?: string;
+
+  public StateConfig?: any;
+}
+
 export class DAFLCUApplicationDetails {
   public BaseHref?: string;
 
