@@ -27,8 +27,8 @@ export class FathymSharedModule {
       APIRoot: winAny.LCU && winAny.LCU.APIRoot ? winAny.LCU.APIRoot : '',
       AppConfig: {
         ID: winAny.LCU && winAny.LCU.Application && winAny.LCU.Application.ID ? winAny.LCU.Application.ID : 'test-app',
-        EnterpriseAPIKey:
-          winAny.LCU && winAny.LCU.Application.EnterpriseAPIKey ? winAny.LCU.Application.EnterpriseAPIKey : 'test-app'
+        EnterpriseLookup:
+          winAny.LCU && winAny.LCU.Application.EnterpriseLookup ? winAny.LCU.Application.EnterpriseLookup : 'test-app'
       },
       StateConfig: {
         Environment: winAny.LCU.State ? winAny.LCU.State.Environment : '',
