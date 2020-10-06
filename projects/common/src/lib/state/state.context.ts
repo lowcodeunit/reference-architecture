@@ -164,7 +164,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   protected loadActionPath() {
     const actionRoot = this.loadStateActionRoot();
 
-    return `${actionRoot}`; // ?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}`;
+    return `${actionRoot}`; // ?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-lookup=${this.Settings.AppConfig.EnterpriseLookup}`;
   }
 
   protected loadActionUrl(urlRoot: string) {
@@ -189,7 +189,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected loadHeaders(): { [header: string]: string | string[] } {
     return {
-      'lcu-ent-api-key': this.Settings.AppConfig.EnterpriseAPIKey,
+      'lcu-ent-lookup': this.Settings.AppConfig.EnterpriseLookup,
       'lcu-hub-name': this.loadStateName(),
       'lcu-state-key': this.loadStateKey(),
       'lcu-environment': this.loadEnvironment(),
@@ -204,7 +204,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const unmock = this.loadUsernameMock();
 
-    return `${stateRoot}?lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
+    return `${stateRoot}?lcu-app-ent-lookup=${this.Settings.AppConfig.EnterpriseLookup}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
   }
 
   protected loadHubUrl(urlRoot: string) {

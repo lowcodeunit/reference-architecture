@@ -191,7 +191,7 @@ export class RealTimeService {
   protected loadHubPath() {
     const stateRoot = this.loadStateRoot();
 
-    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-api-key=${this.Settings.AppConfig.EnterpriseAPIKey}&lcu-environment=${this.Settings.StateConfig.Environment || ''}`;
+    return `${stateRoot}?lcu-app-id=${this.Settings.AppConfig.ID}&lcu-app-ent-lookup=${this.Settings.AppConfig.EnterpriseLookup}&lcu-environment=${this.Settings.StateConfig.Environment || ''}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
