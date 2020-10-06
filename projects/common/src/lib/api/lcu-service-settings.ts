@@ -13,7 +13,7 @@ export class LCUServiceSettings {
 export class LCUApplicationConfig {
   public ID: string;
 
-  public EnterpriseAPIKey: string;
+  public EnterpriseLookup: string;
 }
 
 export class LCUStateConfig {

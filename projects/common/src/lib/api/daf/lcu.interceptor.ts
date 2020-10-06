@@ -11,7 +11,7 @@ export class LCUInterceptor implements HttpInterceptor {
     const clonedRequest = req.clone({
       headers: req.headers
         .set('lcu-app-id', this.settings.AppConfig.ID)
-        .set('lcu-app-ent-api-key', this.settings.AppConfig.EnterpriseAPIKey)
+        .set('lcu-app-ent-lookup', this.settings.AppConfig.EnterpriseLookup)
         .set('lcu-environment', this.settings.StateConfig.Environment || '')
         .set('lcu-username-mock', this.settings.StateConfig.UsernameMock || '')
     });
