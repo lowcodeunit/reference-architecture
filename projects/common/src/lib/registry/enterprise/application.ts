@@ -29,7 +29,7 @@ export class Application {
 export class DAFApplication {
   public ApplicationID?: string;
 
-  public Details?: {};
+  public Details?: any;
 
   public ID?: string;
 
@@ -53,31 +53,15 @@ export class DAFAPIApplicationDetails {
 export class DAFViewApplicationDetails {
   public BaseHref?: string;
 
-  public NPMPackage?: string;
+  public Package?: any;
 
-  public PackageVersion?: string;
-
-  public StateConfig?: any;
-}
-
-export class DAFViewZipApplicationDetails {
-  public BaseHref?: string;
-
-  public ZipFile?: string;
+  public PackageType?: DAFApplicationPackageTypes;
 
   public StateConfig?: any;
 }
 
-export class DAFLCUApplicationDetails {
-  public BaseHref?: string;
-
+export class DAFLCUApplicationDetails extends DAFViewApplicationDetails {
   public Lookup?: string;
-
-  public NPMPackage?: string;
-
-  public PackageVersion?: string;
-
-  public StateConfig?: any;
 }
 
 export class DAFRedirectApplicationDetails {
@@ -88,4 +72,26 @@ export class DAFAppPointerApplicationDetails {
   public DAFApplicationID?: string;
 
   public DAFApplicationRoot?: string;
+}
+
+export enum DAFApplicationPackageTypes {
+  Git = "Git",
+  NPM = "NPM",
+  Zip = "Zip",
+}
+
+export class DAFApplicationGitPackage {
+  public Branch?: string;
+
+  public Repository?: string;
+}
+
+export class DAFApplicationNPMPackage {
+  public Name?: string;
+
+  public Version?: string;
+}
+
+export class DAFApplicationZipPackage {
+  public ZipFile?: string;
 }
