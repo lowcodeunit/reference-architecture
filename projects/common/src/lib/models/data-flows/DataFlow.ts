@@ -5,7 +5,7 @@ export class DataFlow {
 
   public ID?: string;
 
-  public IsEditable?: boolean;
+  public PreventEditing?: boolean;
 
   public Lookup?: string;
 
