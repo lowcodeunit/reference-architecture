@@ -5,6 +5,8 @@ export class DataFlow {
 
   public ID?: string;
 
+  public IsEditable?: boolean;
+
   public Lookup?: string;
 
   public ModulePacks?: string[];
