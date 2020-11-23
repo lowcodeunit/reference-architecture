@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 export class LCUServiceSettings {
   [key: string]: any;
 

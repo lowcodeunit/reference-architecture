@@ -10,10 +10,10 @@ export class LCUInterceptor implements HttpInterceptor {
   public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const clonedRequest = req.clone({
       headers: req.headers
-        .set('lcu-app-id', this.settings.AppConfig.ID)
-        .set('lcu-app-ent-lookup', this.settings.AppConfig.EnterpriseLookup)
-        .set('lcu-environment', this.settings.StateConfig.Environment || '')
-        .set('lcu-username-mock', this.settings.StateConfig.UsernameMock || '')
+        .set('lcu-app-id', this.settings.Application.ID)
+        .set('lcu-app-ent-lookup', this.settings.Application.EnterpriseLookup)
+        .set('lcu-environment', this.settings.State.Environment || '')
+        .set('lcu-username-mock', this.settings.State.UsernameMock || '')
     });
 
     // Pass the cloned request instead of the original request to the next handle
