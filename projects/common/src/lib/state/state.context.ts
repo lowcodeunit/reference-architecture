@@ -127,7 +127,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         })
         .subscribe({
           next: (req: any) => {
-            if (req.status && req.status.code === 0) {
+            if ((req.status && req.status.code === 0) || (req.Status && req.Status.Code === 0)) {
               resolve(req.groupName);
             } else {
               reject(
