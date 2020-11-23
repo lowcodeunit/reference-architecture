@@ -1,8 +1,8 @@
 // https://ajonp.com/courses/angularmaterial/angular-material-theming/
 
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
