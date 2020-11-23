@@ -42,12 +42,12 @@ export class FathymSharedModule {
 
     // return <LCUServiceSettings>{
     //   APIRoot: winAny.LCU && winAny.LCU.APIRoot ? winAny.LCU.APIRoot : '',
-    //   AppConfig: {
+    //   Application: {
     //     ID: winAny.LCU && winAny.LCU.Application && winAny.LCU.Application.ID ? winAny.LCU.Application.ID : 'test-app',
     //     EnterpriseLookup:
     //       winAny.LCU && winAny.LCU.Application.EnterpriseLookup ? winAny.LCU.Application.EnterpriseLookup : 'test-app'
     //   },
-    //   StateConfig: winAny.LCU.State.Environment : '',
+    //   State: winAny.LCU.State.Environment : '',
     //     ActionRoot: winAny.LCU.State ? winAny.LCU.State.Root : '',
     //     Root: winAny.LCU.State ? winAny.LCU.State.Root : '',
     //     UsernameMock: winAny.LCU.State ? winAny.LCU.State.UsernameMock : ''

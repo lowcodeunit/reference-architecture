@@ -5,11 +5,11 @@ export class LCUServiceSettings {
 
   public APIRoot?: string;
 
-  public AppConfig?: LCUApplicationConfig;
+  public Application?: LCUApplicationConfig;
 
   public Settings?: any;
 
-  public StateConfig?: LCUStateConfig;
+  public State?: LCUStateConfig;
 }
 
 export class LCUApplicationConfig {
