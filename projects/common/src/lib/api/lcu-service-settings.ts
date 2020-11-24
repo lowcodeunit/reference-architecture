@@ -5,7 +5,7 @@ export class LCUServiceSettings {
 
   public Application?: LCUApplicationConfig;
 
-  public Settings?: any;
+  public Settings?: LCUSettingsConfig;
 
   public State?: LCUStateConfig;
 }
@@ -28,4 +28,8 @@ export class LCUStateConfig {
   public Root?: string;
 
   public UsernameMock?: string;
+}
+
+export class LCUSettingsConfig {
+  [key: string]: any;
 }
