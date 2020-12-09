@@ -11,7 +11,7 @@ export class DataPipeConstants {
     public static readonly DATE_MEDIUMDATE = 'MMM d, y';
     public static readonly DATE_FULLDATE = 'EEEE, MMMM d, y';
     public static readonly DATE_TIME_FMT = `${DataPipeConstants.DATE_FMT} hh:mm:ss`;
-    public static readonly DATE_TIME_ZONE_FMT = `${DataPipeConstants.DATE_TIME_FMT} a z`;
+    public static readonly DATE_TIME_ZONE_FMT = `MM/dd/yyyy hh:mm:ss a z`;
     public static readonly DATE_DAY_TIME = 'EEE h a';
     public static readonly PIPE_DATE = 'date';
     public static readonly PIPE_SHORTDATE = 'shortdate';
