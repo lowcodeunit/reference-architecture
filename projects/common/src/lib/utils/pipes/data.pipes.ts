@@ -2,6 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 import { DataPipeConstants } from '../constants/data-pipe.constants';
 import { TemperatureConversion } from '../conversion/temperature.conversion';
+import { TimezoneConversion } from '../conversion/timezone.conversion';
 
 
 @Pipe({
@@ -53,6 +54,23 @@ export class DataPipes implements PipeTransform {
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, DataPipeConstants.DATE_FULLDATE);
       return transformed;
+    }
+
+    if(args.toLowerCase() === DataPipeConstants.DATE_TIME_ZONE_FMT){
+      const pipe = new DatePipe('en-US');
+      const transformed = pipe.transform(value, DataPipeConstants.DATE_TIME_ZONE_FMT);
+      let splittedString = transformed.split('\\s+');
+      splittedString[splittedString.length -1] = TimezoneConversion.GMTTimezoneConversion(splittedString[splittedString.length-1]);
+      let newDateString: string;
+      splittedString.forEach(st =>{
+        if(splittedString.indexOf(st) < splittedString.length -1){
+          newDateString += st + " ";
+        }
+        else{
+          newDateString += st;
+        }
+      })
+      return newDateString;
     }
 
     /**
