@@ -55,15 +55,17 @@ export class DataPipes implements PipeTransform {
       const transformed = pipe.transform(value, DataPipeConstants.DATE_FULLDATE);
       return transformed;
     }
-
-    if (args.toLowerCase() === DataPipeConstants.DATE_TIME_ZONE_FMT.toLowerCase()){
+    /**
+     * Return dd/MMM/yyyy hh:mm:ss a z
+     */
+    if (args.toLowerCase() === DataPipeConstants.DATE_TIME_ZONE_FMT.toLowerCase()) {
       const pipe = new DatePipe('en-US');
       const transformed = pipe.transform(value, DataPipeConstants.DATE_TIME_ZONE_FMT);
       const splittedString = transformed.split('\\s+');
       splittedString[splittedString.length - 1 ] = TimezoneConversion.GMTTimezoneConversion(splittedString[splittedString.length-1]);
       let newDateString: string;
-      splittedString.forEach(st =>{
-        if(splittedString.indexOf(st) < splittedString.length -1){
+      splittedString.forEach(st => {
+        if(splittedString.indexOf(st) < splittedString.length - 1 ) {
           newDateString += st + ' ';
         } else {
           newDateString += st;
