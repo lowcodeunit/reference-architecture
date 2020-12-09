@@ -56,7 +56,7 @@ export class DataPipes implements PipeTransform {
       return transformed;
     }
     /**
-     * Return dd/MMM/yyyy hh:mm:ss a z
+     * Return MM/dd/yyyy hh:mm:ss a z
      */
     if(args.toLowerCase() === DataPipeConstants.DATE_TIME_ZONE_FMT.toLowerCase()){
       const pipe = new DatePipe('en-US');

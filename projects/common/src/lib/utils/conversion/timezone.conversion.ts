@@ -7,89 +7,89 @@
 export class TimezoneConversion {
 /**
      * Convert gmt time zone to actual timezone
-     * @param val fahrenheit value
+     * @param val gmt timezone value
      */
     public static GMTTimezoneConversion(gmt: string): string {
         switch(gmt){
             case 'GMT':
                 return 'GMT';
 
-            case 'GMT+1:00':
+            case 'GMT+1':
                 return 'ECT';
             
-            case 'GMT+2:00':
+            case 'GMT+2':
                 return 'EET';
 
-            case 'GMT+3:00':
+            case 'GMT+3':
                 return 'EAT';
 
             case 'GMT+3:30':
                 return 'MET';
 
-            case 'GMT+4:00':
+            case 'GMT+4':
                 return 'NET';
 
-            case 'GMT+5:00':
+            case 'GMT+5':
                 return 'PLT';
 
             case 'GMT+5:30':
                 return 'IST';
 
-            case 'GMT+6:00':
+            case 'GMT+6':
                 return 'BST';
 
-            case 'GMT+7:00':
+            case 'GMT+7':
                 return 'VST';
 
-            case 'GMT+8:00':
+            case 'GMT+8':
                 return 'CTT';
 
-            case 'GMT+9:00':
+            case 'GMT+9':
                 return 'JST';
 
             case 'GMT+9:30':
                 return 'ACT';
 
-            case 'GMT+10:00':
+            case 'GMT+10':
                 return 'AET';
 
-            case 'GMT+11:00':
+            case 'GMT+11':
                 return 'SST';
 
-            case 'GMT+12:00':
+            case 'GMT+12':
                 return 'NST';
 
-            case 'GMT-11:00':
+            case 'GMT-11':
                 return 'MIT';
 
-            case 'GMT-10:00':
+            case 'GMT-10':
                 return 'HST';
 
-            case 'GMT-9:00':
+            case 'GMT-9':
                 return 'AST';
 
-            case 'GMT-8:00':
+            case 'GMT-8':
                 return 'PST';
 
-            case 'GMT-7:00':
+            case 'GMT-7':
                 return 'MST';
 
-            case 'GMT-6:00':
+            case 'GMT-6':
                 return 'CST';
 
-            case 'GMT-5:00':
+            case 'GMT-5':
                 return 'EST';
 
-            case 'GMT-4:00':
+            case 'GMT-4':
                 return 'PRT';
 
             case 'GMT-3:30':
                 return 'CNT';
 
-            case 'GMT-3:00':
+            case 'GMT-3':
                 return 'AGT';
 
-            case 'GMT-1:00':
+            case 'GMT-1':
                 return 'CAT';
 
             default:
