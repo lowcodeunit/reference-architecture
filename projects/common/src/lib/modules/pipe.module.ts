@@ -24,8 +24,7 @@ import { StringPipes } from '../utils/pipes/string.pipes';
         DataPipes,
         SanitizeHtmlPipe,
         DecamelizePipe,
-        StringPipes,
-        DataPipeConstants
+        StringPipes
     ]
 })
 
