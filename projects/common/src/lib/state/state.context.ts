@@ -176,8 +176,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
   }
 
   protected loadEnvironment() {
-    let env = this.Settings.StateConfig
-      ? this.Settings.StateConfig.Environment
+    let env = this.Settings.State
+      ? this.Settings.State.Environment
       : null;
 
     if (!env) {
@@ -189,7 +189,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected loadHeaders(): { [header: string]: string | string[] } {
     return {
-      'lcu-ent-lookup': this.Settings.AppConfig.EnterpriseLookup,
+      'lcu-ent-lookup': this.Settings.Application.EnterpriseLookup,
       'lcu-hub-name': this.loadStateName(),
       'lcu-state-key': this.loadStateKey(),
       'lcu-environment': this.loadEnvironment(),
@@ -204,7 +204,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
     const unmock = this.loadUsernameMock();
 
-    return `${stateRoot}?lcu-app-ent-lookup=${this.Settings.AppConfig.EnterpriseLookup}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
+    return `${stateRoot}?lcu-app-ent-lookup=${this.Settings.Application.EnterpriseLookup}&lcu-environment=${env}&lcu-username-mock=${unmock}`;
   }
 
   protected loadHubUrl(urlRoot: string) {
@@ -221,8 +221,8 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected loadStateRoot() {
     const stateRoot =
-      this.Settings.StateConfig && this.Settings.StateConfig.Root !== undefined
-        ? this.Settings.StateConfig.Root
+      this.Settings.State && this.Settings.State.Root !== undefined
+        ? this.Settings.State.Root
         : '';
 
     return `${stateRoot}/${this.loadStateName()}`;
@@ -230,17 +230,17 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected loadStateActionRoot() {
     const stateActinRoot =
-      this.Settings.StateConfig &&
-      this.Settings.StateConfig.ActionRoot !== undefined
-        ? this.Settings.StateConfig.ActionRoot
+      this.Settings.State &&
+      this.Settings.State.ActionRoot !== undefined
+        ? this.Settings.State.ActionRoot
         : '';
 
     return `${stateActinRoot}/${this.loadStateName()}`;
   }
 
   protected loadUsernameMock() {
-    return this.Settings.StateConfig && this.Settings.StateConfig.UsernameMock
-      ? this.Settings.StateConfig.UsernameMock
+    return this.Settings.State && this.Settings.State.UsernameMock
+      ? this.Settings.State.UsernameMock
       : '';
   }
 
