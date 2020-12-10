@@ -2,10 +2,19 @@
 /**
  * @dynamic need this because there are static memebers
  *
- * Data pipe constants
+ * String that represent the transformed format, used
+ * with DataPipes.
+ *
+ * Ex.
+ * // constants outside of a component need to be assigned
+ * // to a local property in order to work
+ *
+ * const dateFmt: string = DataPipeConstants.DATE_FMT;
+ * <span>{{ value | dataPipes:dateFmt }}</span>
  */
 
 export class DataPipeConstants {
+
     public static readonly DATE_FMT = 'dd/MMM/yyyy';
     public static readonly DATE_SHORTDATE = 'M/d/yy';
     public static readonly DATE_MEDIUMDATE = 'MMM d, y';
