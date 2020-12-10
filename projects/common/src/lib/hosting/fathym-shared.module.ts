@@ -6,7 +6,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LCUInterceptor } from '../api/daf/lcu.interceptor';
 import { RealTimeService } from '../api/real-time/real-time.service';
-import { LCUServiceSettings } from '../api/lcu-service-settings';
+import {
+  LCUApplicationConfig,
+  LCUServiceSettings,
+  LCUSettingsConfig,
+  LCUStateConfig,
+} from '../api/lcu-service-settings';
 import { SafePipe } from '../pipes/safe-pipe';
 
 export const winAny = <any>window;
@@ -34,9 +39,19 @@ export class FathymSharedModule {
   ) {
     const lcuSvcSettings = <LCUServiceSettings>winAny.LCU;
 
-    if (!lcuSvcSettings.APIRoot) {
-      lcuSvcSettings.APIRoot = apiRoot || '';
-    }
+    lcuSvcSettings.APIRoot = lcuSvcSettings.APIRoot || apiRoot || '';
+
+    lcuSvcSettings.Application =
+      lcuSvcSettings.Application || <LCUApplicationConfig>{ };
+
+    lcuSvcSettings.Application.EnterpriseLookup =
+      lcuSvcSettings.Application.EnterpriseLookup || 'test-app';
+
+    lcuSvcSettings.Application.ID = lcuSvcSettings.Application.ID || 'test-app';
+
+    lcuSvcSettings.State = lcuSvcSettings.State || <LCUStateConfig>{ };
+
+    lcuSvcSettings.Settings = lcuSvcSettings.Settings || <LCUSettingsConfig>{ };
 
     return lcuSvcSettings;
 
@@ -47,7 +62,8 @@ export class FathymSharedModule {
     //     EnterpriseLookup:
     //       winAny.LCU && winAny.LCU.Application.EnterpriseLookup ? winAny.LCU.Application.EnterpriseLookup : 'test-app'
     //   },
-    //   State: winAny.LCU.State.Environment : '',
+    //   State: {
+    //     Environment:winAny.LCU.State.Environment : '',
     //     ActionRoot: winAny.LCU.State ? winAny.LCU.State.Root : '',
     //     Root: winAny.LCU.State ? winAny.LCU.State.Root : '',
     //     UsernameMock: winAny.LCU.State ? winAny.LCU.State.UsernameMock : ''
