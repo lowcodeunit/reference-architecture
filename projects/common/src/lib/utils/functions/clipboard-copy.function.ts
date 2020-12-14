@@ -9,7 +9,7 @@ export class ClipboardCopyFunction {
          * Copies the string content to the clipboard for the user to paste
          * @param copyContent the content to copy to the clipboard
          */
-        public  static ClipboardCopy(copyContent: string): void {
+        public static ClipboardCopy(copyContent: string): void {
             const el = document.createElement('textarea');
             el.value = copyContent;
             document.body.appendChild(el);
