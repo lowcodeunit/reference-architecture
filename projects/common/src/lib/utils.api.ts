@@ -1,4 +1,5 @@
 export * from './utils/favicons.service';
+export * from './utils/functions/clipboard-copy.function';
 export * from './utils/conversion/temperature.conversion';
 export * from './utils/images/convert-to-base64.util';
 export * from './utils/theming/toggle-theme.utils';
