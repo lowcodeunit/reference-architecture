@@ -3,6 +3,7 @@ import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 import { DataPipeConstants } from '../constants/data-pipe.constants';
 import { TemperatureConversion } from '../conversion/temperature.conversion';
 import { TimezoneConversion } from '../conversion/timezone.conversion';
+import { StringPipeConstants } from '@lcu/common/lib/utils/constants/string-pipe.constants';
 
 
 @Pipe({
@@ -231,6 +232,10 @@ export class DataPipes implements PipeTransform {
       const transformed = pipe.transform(temperature, '1.0-0');
 
       return transformed + ' °C';
+    }
+
+    if(format === DataPipeConstants.PIPE_STRING_SLICE_FIFTY.toLowerCase()){
+      return val.slice(0, 50);
     }
 
     /**
