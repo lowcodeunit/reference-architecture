@@ -3,7 +3,6 @@ import { DatePipe, DecimalPipe, PercentPipe } from '@angular/common';
 import { DataPipeConstants } from '../constants/data-pipe.constants';
 import { TemperatureConversion } from '../conversion/temperature.conversion';
 import { TimezoneConversion } from '../conversion/timezone.conversion';
-import { StringPipeConstants } from '@lcu/common/lib/utils/constants/string-pipe.constants';
 
 
 @Pipe({
