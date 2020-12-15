@@ -234,7 +234,11 @@ export class DataPipes implements PipeTransform {
       return transformed + ' °C';
     }
 
-    if(format === DataPipeConstants.PIPE_STRING_SLICE_FIFTY.toLowerCase()){
+    /**
+     * retrun the string sliced down to 50
+     */
+
+    if(format === DataPipeConstants.PIPE_STRING_SLICE_FIFTY.toLowerCase()) {
       return val.slice(0, 50);
     }
 
