@@ -94,7 +94,7 @@ export class DataPipes implements PipeTransform {
 
       let newDateString: string = '';
 
-      splittedString.forEach(st => {
+      splittedString.forEach((st:string) => {
         if (splittedString.indexOf(st) < splittedString.length - 1) {
           newDateString += st + ' ';
         } else {
@@ -238,7 +238,23 @@ export class DataPipes implements PipeTransform {
      */
 
     if(format === DataPipeConstants.PIPE_STRING_SLICE_FIFTY.toLowerCase()) {
-      return val.slice(0, 50);
+      return val.slice(0, 50) + "...";
+    }
+
+    /**
+     * retrun the string sliced down to 70
+     */
+
+    if(format === DataPipeConstants.PIPE_STRING_SLICE_SEVENTY.toLowerCase()) {
+      return val.slice(0, 70) + "...";
+    }
+
+    /**
+     * retrun the string sliced down to 100
+     */
+
+    if(format === DataPipeConstants.PIPE_STRING_SLICE_HUNDRED.toLowerCase()) {
+      return val.slice(0, 100) + "...";
     }
 
     /**
