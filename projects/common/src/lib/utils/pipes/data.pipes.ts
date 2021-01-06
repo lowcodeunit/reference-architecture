@@ -261,7 +261,7 @@ export class DataPipes implements PipeTransform {
      * Return password visibility
      */
     if (format === DataPipeConstants.PIPE_PASSWORD.toLowerCase()) {
-      return '*'.repeat(val.length);
+      return ' • '.repeat(val.length);
     }
 
     /**
