@@ -39,6 +39,7 @@ export class DataPipeConstants {
     public static readonly PIPE_STRING_SLICE_FIFTY = 'slicefifty';
     public static readonly PIPE_STRING_SLICE_SEVENTY = 'sliceseventy';
     public static readonly PIPE_STRING_SLICE_HUNDRED = 'slicehundred';
+    public static readonly PIPE_PASSWORD = 'password';
 
 
 
