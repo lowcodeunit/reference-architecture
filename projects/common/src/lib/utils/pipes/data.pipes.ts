@@ -94,7 +94,7 @@ export class DataPipes implements PipeTransform {
 
       let newDateString: string = '';
 
-      splittedString.forEach((st:string) => {
+      splittedString.forEach((st: string) => {
         if (splittedString.indexOf(st) < splittedString.length - 1) {
           newDateString += st + ' ';
         } else {
@@ -113,7 +113,7 @@ export class DataPipes implements PipeTransform {
       const pipe = new DatePipe('en-US');
 
       const transformed = pipe.transform(val * 1000, DataPipeConstants.DATE_DAY_TIME);
-      
+
       return transformed;
     }
 
@@ -145,7 +145,7 @@ export class DataPipes implements PipeTransform {
      * Return percentage
      */
     if (format === DataPipeConstants.PIPE_PERCENTAGE.toLowerCase()) {
-      
+
       const pipe = new PercentPipe('en-US');
 
       const transformed = pipe.transform(val);
@@ -237,24 +237,31 @@ export class DataPipes implements PipeTransform {
      * retrun the string sliced down to 50
      */
 
-    if(format === DataPipeConstants.PIPE_STRING_SLICE_FIFTY.toLowerCase()) {
-      return val.slice(0, 50) + "...";
+    if (format === DataPipeConstants.PIPE_STRING_SLICE_FIFTY.toLowerCase()) {
+      return val.slice(0, 50) + '...';
     }
 
     /**
      * retrun the string sliced down to 70
      */
 
-    if(format === DataPipeConstants.PIPE_STRING_SLICE_SEVENTY.toLowerCase()) {
-      return val.slice(0, 70) + "...";
+    if (format === DataPipeConstants.PIPE_STRING_SLICE_SEVENTY.toLowerCase()) {
+      return val.slice(0, 70) + '...';
     }
 
     /**
      * retrun the string sliced down to 100
      */
 
-    if(format === DataPipeConstants.PIPE_STRING_SLICE_HUNDRED.toLowerCase()) {
-      return val.slice(0, 100) + "...";
+    if (format === DataPipeConstants.PIPE_STRING_SLICE_HUNDRED.toLowerCase()) {
+      return val.slice(0, 100) + '...';
+    }
+
+    /**
+     * Return password visibility
+     */
+    if (format === DataPipeConstants.PIPE_PASSWORD.toLowerCase()) {
+      return '*'.repeat(val.length);
     }
 
     /**
