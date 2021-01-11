@@ -157,8 +157,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         ...action,
         Key: stateKey,
         State: stateName,
-      })
-      .subscribe();
+      });
   }
 
   protected loadActionPath() {
