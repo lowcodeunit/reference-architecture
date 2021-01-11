@@ -7,6 +7,14 @@ import { SVGIconsModel } from '../../models/icons/svg-icons.model';
   providedIn: 'root'
 })
 
+/**
+ * Registers custom svg icons to use with <mat-icon>
+ *
+ * <mat-icon color="primary" svgIcon="svgHome"></mat-icon>
+ *
+ * Can use material theme colors when SVG fill property is removed
+ */
+
 export class SvgIconsService {
 
   /**
