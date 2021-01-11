@@ -27,7 +27,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -80,7 +80,8 @@ const providers: Array<any> = [
   MatBottomSheet,
   MatPaginator,
   MatSort,
-  MatTableDataSource
+  MatTableDataSource,
+  MatIconRegistry
 ];
 
 @NgModule({
