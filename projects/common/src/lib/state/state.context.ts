@@ -167,7 +167,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
  
     const stateName = this.loadStateName();
  
-    return new Promise<string>((resolve, reject) => {
+    return new Promise<Observable<Object>>((resolve, reject) => {
       return this.rt
         .InvokeAction(action.Type, this.loadHeaders(), {
           ...action,
