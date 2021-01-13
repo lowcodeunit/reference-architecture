@@ -176,7 +176,7 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
         })
         .subscribe({
           next: (req: any) => {
-            resolve(req.groupName);
+            resolve(req);
           },
           error: (err) => reject(err)
         });
