@@ -147,21 +147,6 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
     return <T>{};
   }
 
-  // protected async executeAction(action: StateAction) {
-  //   const stateKey = this.loadStateKey();
-
-  //   const stateName = this.loadStateName();
-
-  //   return this.rt
-  //     .InvokeAction(action.Type, this.loadHeaders(), {
-  //       ...action,
-  //       Key: stateKey,
-  //       State: stateName,
-  //     })
-  //     .subscribe();
-
-  // }
-
   protected async executeAction(action: StateAction) {
     const stateKey = this.loadStateKey();
  
