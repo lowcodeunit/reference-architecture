@@ -111,7 +111,8 @@ export class RealTimeConnection {
 
     return this.http.post(url, args, {
       headers,
-      withCredentials: true
+      withCredentials: true,
+      observe: 'response'
     });
   }
 
