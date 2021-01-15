@@ -11,7 +11,7 @@ import {
 } from 'rxjs';
 import { RealTimeConnection } from './../api/real-time/real-time.connection';
 import { LCUServiceSettings } from '../api/lcu-service-settings';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Status } from '../status';
 
 //  TODO:  Need to manage reconnection to hub scenarios here
@@ -112,11 +112,11 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected async connectToState(shouldUpdate: boolean): Promise<string> {
     const stateKey = this.loadStateKey();
-
+ 
     const stateName = this.loadStateName();
-
+ 
     const env = this.loadEnvironment();
-
+ 
     return new Promise<string>((resolve, reject) => {
       this.rt
         .InvokeAction('ConnectToState', this.loadHeaders(), {
@@ -126,13 +126,13 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
           Environment: env,
         })
         .subscribe({
-          next: (req: any) => {
-            if ((req.status && req.status.code === 0) || (req.Status && req.Status.Code === 0)) {
-              resolve(req.groupName);
+          next: (req: HttpResponse<any>) => {
+            if ((req.body.status && req.body.status.code === 0) || (req.body.Status && req.body.Status.Code === 0)) {
+              resolve(req.body.groupName);
             } else {
               reject(
-                req.status
-                  ? req.status.message
+                req.body.status
+                  ? req.body.status.message
                   : 'Unknown issue connecting to state.'
               );
             }
@@ -149,15 +149,23 @@ export abstract class StateContext<T> extends ObservableContextService<T> {
 
   protected async executeAction(action: StateAction) {
     const stateKey = this.loadStateKey();
-
+ 
     const stateName = this.loadStateName();
-
-    return this.rt
-      .InvokeAction(action.Type, this.loadHeaders(), {
-        ...action,
-        Key: stateKey,
-        State: stateName,
-      });
+ 
+    return new Promise<object>((resolve, reject) => {
+      return this.rt
+        .InvokeAction(action.Type, this.loadHeaders(), {
+          ...action,
+          Key: stateKey,
+          State: stateName,
+        })
+        .subscribe({
+          next: (req: HttpResponse<any>) => {
+            resolve(req);
+          },
+          error: (err) => reject(err)
+        });
+    });
   }
 
   protected loadActionPath() {
