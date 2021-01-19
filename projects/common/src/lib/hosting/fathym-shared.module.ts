@@ -13,13 +13,11 @@ import {
   LCUStateConfig,
 } from '../api/lcu-service-settings';
 import { SafePipe } from '../pipes/safe-pipe';
-import { LoaderComponent } from '../controls/loader/loader.component';
-import { ApiAccessComponent } from '../controls/api-access/api-access.component';
 
 export const winAny = <any>window;
 
 @NgModule({
-  declarations: [SafePipe, LoaderComponent, ApiAccessComponent],
+  declarations: [SafePipe],
   imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   exports: [
     CommonModule,
@@ -27,8 +25,6 @@ export const winAny = <any>window;
     HttpClientModule,
     RouterModule,
     SafePipe,
-    LoaderComponent,
-    ApiAccessComponent,
   ],
   providers: [],
   entryComponents: [],
