@@ -1,0 +1,49 @@
+<div>
+  <div class="margin-top-4">
+    <h3 class="plain-text-bold margin-top-4">API Keys</h3>
+
+    <div class="table-container">
+      <lcu-data-grid expand [config]="GridParameters"> </lcu-data-grid>
+    </div>
+  </div>
+
+  <div class="margin-top-4">
+    <div fxFlex></div>
+    <!-- <a mat-raised-button href="https://www.iot-ensemble.com/docs/developers/storage-access/overview" target="_blank" color="primary">
+      <mat-icon>description</mat-icon>
+      Storage Access Documentation
+    </a> -->
+  </div>
+
+  <div class="divider-fill-hor margin-top-4"></div>
+
+  <div class="margin-top-4">
+    <h3 class="plain-text-bold margin-top-4">Try It</h3>
+
+    <div class="margin-3" fxLayout="column" fxLayoutGap="10px">
+      <div
+        fxLayout="row"
+        fxLayoutGap="10px"
+        fxLayoutAlign="start center"
+        *ngFor="let apiOption of APIOptions"
+      >
+        <a
+          mat-raised-button
+          color="primary"
+          [class.green-accent]="apiOption.Method == 'POST'"
+          [class.orange-accent]="apiOption.Method == 'GET'"
+          [href]="apiOption.Path"
+          target="_blank"
+        >
+          {{ apiOption.Method }}
+        </a>
+
+        <span class="plain-text">
+          <strong>{{ apiOption.Name }} -</strong> {{ apiOption.Description }}
+        </span>
+      </div>
+    </div>
+
+    <div class="divider-fill-hor margin-top-4"></div>
+  </div>
+</div>
