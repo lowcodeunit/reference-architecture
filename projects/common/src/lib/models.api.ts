@@ -17,4 +17,3 @@ export * from './models/ide/editor';
 export * from './models/ide/panel';
 export * from './models/ide/side-bar';
 export * from './models/data-flows/Solution';
-export * from './models/icons/svg-icons.model';
