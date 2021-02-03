@@ -86,13 +86,16 @@ export class DataPipes implements PipeTransform {
 
       const pipe = new DatePipe('en-US');
 
+      let newDateString: string = '';
+
+
+      if(val !== null){
+
       const transformed = pipe.transform(val, DataPipeConstants.DATE_TIME_ZONE_FMT);
 
       const splittedString = transformed.toString().split(' ');
 
       splittedString[splittedString.length - 1 ] = TimezoneConversion.GMTTimezoneConversion(splittedString[splittedString.length-1]);
-
-      let newDateString: string = '';
 
       splittedString.forEach((st: string) => {
         if (splittedString.indexOf(st) < splittedString.length - 1) {
@@ -101,6 +104,7 @@ export class DataPipes implements PipeTransform {
           newDateString += st;
         }
       });
+    }
 
       return newDateString;
     }
