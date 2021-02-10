@@ -10,7 +10,7 @@
 			"prefix": "lib",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-ng-packagr:build",
+					"builder": "@angular-devkit/build-angular:ng-packagr",
 					"options": {
 						"tsConfig": "projects/common/tsconfig.lib.json",
 						"project": "projects/common/ng-package.json"
@@ -50,7 +50,7 @@
 			"prefix": "lib",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-ng-packagr:build",
+					"builder": "@angular-devkit/build-angular:ng-packagr",
 					"options": {
 						"tsConfig": "projects/elements/tsconfig.lib.json",
 						"project": "projects/elements/ng-package.json"
@@ -102,8 +102,7 @@
 						"main": "projects/demo/src/main.ts",
 						"polyfills": "projects/demo/src/polyfills.ts",
 						"tsConfig": "projects/demo/tsconfig.app.json",
-            "aot": true,
-            "extractCss": true,
+						"aot": true,
 						"assets": [
 							"projects/demo/src/favicon.ico",
 							"projects/demo/src/assets",
@@ -116,85 +115,71 @@
 						"styles": [
 							"projects/demo/src/styles.scss",
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ivy-dark.scss",
 								"bundleName": "assets/prebuilt-themes/ivy-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ivy-light.scss",
 								"bundleName": "assets/prebuilt-themes/ivy-light-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_arctic-dark.scss",
 								"bundleName": "assets/prebuilt-themes/arctic-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_arctic-light.scss",
 								"bundleName": "assets/prebuilt-themes/arctic-light-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_contrast-dark.scss",
 								"bundleName": "assets/prebuilt-themes/contrast-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_contrast-light.scss",
 								"bundleName": "assets/prebuilt-themes/contrast-light-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_cool-candy-dark.scss",
 								"bundleName": "assets/prebuilt-themes/cool-candy-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_cool-candy-light.scss",
 								"bundleName": "assets/prebuilt-themes/cool-candy-light-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_flipper-dark.scss",
 								"bundleName": "assets/prebuilt-themes/flipper-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_flipper-light.scss",
 								"bundleName": "assets/prebuilt-themes/flipper-light-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ice-dark.scss",
 								"bundleName": "assets/prebuilt-themes/ice-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ice-light.scss",
 								"bundleName": "assets/prebuilt-themes/ice-light-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_sea-green-dark.scss",
 								"bundleName": "assets/prebuilt-themes/sea-green-dark-theme"
 							},
 							{
-								"lazy": true,
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_sea-green-light.scss",
 								"bundleName": "assets/prebuilt-themes/sea-green-light-theme"
@@ -213,7 +198,6 @@
 							"optimization": true,
 							"outputHashing": "all",
 							"sourceMap": false,
-							"extractCss": true,
 							"namedChunks": false,
 							"extractLicenses": true,
 							"vendorChunk": false,
