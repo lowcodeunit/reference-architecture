@@ -39,7 +39,6 @@
     "@lcu/common": "^1.59.488",
     "@lowcodeunit-devkit/ng-lcu": "^0.83.428",
     "core-js": "^2.6.1",
-    "node-sass": "^4.14.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
