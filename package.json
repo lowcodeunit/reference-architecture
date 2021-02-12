@@ -36,7 +36,6 @@
 		"@angular/platform-browser-dynamic": "^10.0.8",
 		"@angular/router": "^10.0.8",
 		"@aspnet/signalr": "^1.1.4",
-		"@lcu/common": "^1.59.488",
 		"@lowcodeunit-devkit/ng-lcu": "^0.83.428",
 		"core-js": "^2.6.1",
 		"hammerjs": "^2.0.8",
