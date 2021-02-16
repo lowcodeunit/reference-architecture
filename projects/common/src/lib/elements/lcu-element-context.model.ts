@@ -1,3 +1,3 @@
 export class LCUElementContext<TState> {
-  public State: TState;
+  public State?: TState;
 }
