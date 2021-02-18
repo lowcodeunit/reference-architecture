@@ -12,19 +12,19 @@ export abstract class LcuElementComponent<T> implements OnChanges, OnInit {
   constructor(protected injector: Injector) { }
 
   //  Life Cycle
-  public ngOnChanges() {
-  }
+  public ngOnChanges() { }
 
-  public ngOnInit() {
-  }
+  public ngOnInit() { }
 
   //  API Methods
   @Input()
   public SetContext(ctxt: T) {
-    console.log('Setting context');
+    if (this.Context !== undefined) {
+      console.log('Setting context');
 
-    this.Context = ctxt;
+      this.Context = ctxt;
 
-    console.log(this.Context);
+      console.log(this.Context);
+    }
   }
 }
