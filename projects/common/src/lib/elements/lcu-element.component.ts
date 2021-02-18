@@ -17,7 +17,6 @@ export abstract class LcuElementComponent<T> implements OnChanges, OnInit {
   public ngOnInit() { }
 
   //  API Methods
-  @Input()
   public SetContext(ctxt: T) {
     if (this.Context !== undefined) {
       console.log('Setting context');
