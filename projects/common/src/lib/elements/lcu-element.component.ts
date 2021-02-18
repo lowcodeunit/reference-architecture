@@ -12,7 +12,7 @@ export abstract class LcuElementComponent<T> implements OnChanges, OnInit {
   constructor(protected injector: Injector) { }
 
   //  Life Cycle
-  public OnChanges() {
+  public ngOnChanges() {
     console.log(this.Context);
   }
 
