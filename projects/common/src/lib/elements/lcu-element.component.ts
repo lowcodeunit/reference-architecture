@@ -13,11 +13,9 @@ export abstract class LcuElementComponent<T> implements OnChanges, OnInit {
 
   //  Life Cycle
   public ngOnChanges() {
-    console.log(this.Context);
   }
 
   public ngOnInit() {
-    console.log(this.Context);
   }
 
   //  API Methods
