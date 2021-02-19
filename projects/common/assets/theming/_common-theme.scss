@@ -88,7 +88,7 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 }
 
 /**
-* Dynamically create classes for theme variant colors 
+* Dynamically create classes for theme variant colors
 * (50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700)
 *
 * @param $palette-name (primary, accent, warn)
@@ -112,7 +112,7 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 */
 @mixin contrast-color($palette-name, $color, $name) {
   // creates a class (.primary-contrast-50 {}, ...)
-  .#{$palette-name}-contrast-#{$name} { 
+  .#{$palette-name}-contrast-#{$name} {
       color: $color !important;
     }
 }
@@ -139,12 +139,12 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
       // If $nested-map is empty, assume top level properties
     } @else if $nested-map == null {
         @include variant-color($palette-name, $color, $name, $color-map);
-      
+
       // Set default colors
       @if $name == 500 {
         @include default-color($palette-name, $color, $name, $color-map);
       }
-      
+
       // If not $nested-map, then set contrast color
     } @else if $nested-map != null {
       @include contrast-color($palette-name, $color, $name);
@@ -167,5 +167,30 @@ $global-warn-contrast: mat-color(map-get($global-theme, warn), default-contrast)
 */
 // @include theme-setup($global-theme);
 
+.flex-column {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
 
+.flex-row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
 
+.flex-row-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-button-large {
+  line-height: 48px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 24px !important;
+}
+
+.mat-round {
+  border-radius: 0.5em;
+}
