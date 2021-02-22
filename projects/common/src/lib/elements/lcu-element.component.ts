@@ -1,7 +1,7 @@
 import { OnInit, Input, Injector, Directive, OnChanges } from '@angular/core';
 
 // @Directive()
-export abstract class LcuElementComponent<T> implements OnChanges, OnInit {
+export abstract class LcuElementComponent<T> implements OnInit {
   //  Fields
 
   //  Properties
@@ -12,8 +12,6 @@ export abstract class LcuElementComponent<T> implements OnChanges, OnInit {
   constructor(protected injector: Injector) { }
 
   //  Life Cycle
-  public ngOnChanges() { }
-
   public ngOnInit() { }
 
   //  API Methods
