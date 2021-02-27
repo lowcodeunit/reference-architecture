@@ -1,6 +1,8 @@
 export class LCUServiceSettings {
   [key: string]: any;
 
+  public Actions?: { [key: string]: (event: any) => void };
+
   public APIRoot?: string;
 
   public Application?: LCUApplicationConfig;
