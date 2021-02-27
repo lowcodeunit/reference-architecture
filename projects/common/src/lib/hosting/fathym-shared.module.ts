@@ -1,18 +1,18 @@
-import { CommonModule } from '@angular/common';
-import { NgModule, ModuleWithProviders } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { NgModule, ModuleWithProviders } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
-import { LCUInterceptor } from '../api/daf/lcu.interceptor';
-import { RealTimeService } from '../api/real-time/real-time.service';
+import { LCUInterceptor } from "../api/daf/lcu.interceptor";
+import { RealTimeService } from "../api/real-time/real-time.service";
 import {
   LCUApplicationConfig,
   LCUServiceSettings,
   LCUSettingsConfig,
   LCUStateConfig,
-} from '../api/lcu-service-settings';
-import { SafePipe } from '../pipes/safe-pipe';
+} from "../api/lcu-service-settings";
+import { SafePipe } from "../pipes/safe-pipe";
 
 export const winAny = <any>window;
 
@@ -39,19 +39,21 @@ export class FathymSharedModule {
   ) {
     const lcuSvcSettings = <LCUServiceSettings>winAny.LCU;
 
-    lcuSvcSettings.APIRoot = lcuSvcSettings.APIRoot || apiRoot || '';
+    lcuSvcSettings.Actions = lcuSvcSettings.Actions || {};
+
+    lcuSvcSettings.APIRoot = lcuSvcSettings.APIRoot || apiRoot || "";
 
     lcuSvcSettings.Application =
-      lcuSvcSettings.Application || <LCUApplicationConfig>{ };
+      lcuSvcSettings.Application || <LCUApplicationConfig>{};
 
     lcuSvcSettings.Application.EnterpriseLookup =
-      lcuSvcSettings.Application.EnterpriseLookup || 'test-app';
+      lcuSvcSettings.Application.EnterpriseLookup || "test-app";
 
-    lcuSvcSettings.Application.ID = lcuSvcSettings.Application.ID || 'test-app';
+    lcuSvcSettings.Application.ID = lcuSvcSettings.Application.ID || "test-app";
 
-    lcuSvcSettings.State = lcuSvcSettings.State || <LCUStateConfig>{ };
+    lcuSvcSettings.State = lcuSvcSettings.State || <LCUStateConfig>{};
 
-    lcuSvcSettings.Settings = lcuSvcSettings.Settings || <LCUSettingsConfig>{ };
+    lcuSvcSettings.Settings = lcuSvcSettings.Settings || <LCUSettingsConfig>{};
 
     return lcuSvcSettings;
 
