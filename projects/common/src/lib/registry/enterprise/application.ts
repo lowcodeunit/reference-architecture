@@ -57,6 +57,8 @@ export class DAFViewApplicationDetails {
 
   public PackageType?: DAFApplicationPackageTypes;
 
+  public RegScripts?: string;
+
   public StateConfig?: any;
 }
 
