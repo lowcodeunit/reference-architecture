@@ -1,5 +1,5 @@
 export class Application {
-  public AccessRights?: string[];
+  public Config?: ApplicationLookupConfig;
 
   public Container?: string;
 
@@ -9,21 +9,36 @@ export class Application {
 
   public ID?: string;
 
+  public Name: string;
+
+  public Priority?: number;
+}
+
+export class ApplicationLookupConfig {
+  public AccessRights?: string[];
+
+  public AccessRightsAllAny?: AllAnyTypes;
+
   public IsPrivate?: boolean;
 
   public IsReadOnly?: boolean;
 
+  public IsTriggerSignIn?: boolean;
+
   public Licenses?: string[];
 
-  public Name: string;
+  public LicensesAllAny?: AllAnyTypes;
 
   public PathRegex: string;
-
-  public Priority?: number;
 
   public QueryRegex?: string;
 
   public UserAgentRegex?: string;
+}
+
+export enum AllAnyTypes {
+  All = 'All',
+  Any = 'Any',
 }
 
 export class DAFApplication {
@@ -67,6 +82,10 @@ export class DAFLCUApplicationDetails extends DAFViewApplicationDetails {
 }
 
 export class DAFRedirectApplicationDetails {
+  public Permanent?: boolean;
+
+  public PreserveMethod?: boolean;
+
   public Redirect?: string;
 }
 
@@ -77,9 +96,9 @@ export class DAFAppPointerApplicationDetails {
 }
 
 export enum DAFApplicationPackageTypes {
-  Git = "Git",
-  NPM = "NPM",
-  Zip = "Zip",
+  Git = 'Git',
+  NPM = 'NPM',
+  Zip = 'Zip',
 }
 
 export class DAFApplicationGitPackage {
