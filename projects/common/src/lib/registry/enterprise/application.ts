@@ -1,19 +1,3 @@
-export class Application {
-  public Config?: ApplicationLookupConfig;
-
-  public Container?: string;
-
-  public Description?: string;
-
-  public Hosts?: string[];
-
-  public ID?: string;
-
-  public Name: string;
-
-  public Priority?: number;
-}
-
 export class ApplicationLookupConfig {
   public AccessRights?: string[];
 
@@ -34,6 +18,22 @@ export class ApplicationLookupConfig {
   public QueryRegex?: string;
 
   public UserAgentRegex?: string;
+}
+
+export class Application extends ApplicationLookupConfig {
+  public Config?: ApplicationLookupConfig;
+
+  public Container?: string;
+
+  public Description?: string;
+
+  public Hosts?: string[];
+
+  public ID?: string;
+
+  public Name: string;
+
+  public Priority?: number;
 }
 
 export enum AllAnyTypes {
