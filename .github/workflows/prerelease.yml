@@ -22,10 +22,10 @@ jobs:
     # set branch name variable
     - name: Set branch name variable
       id: vars
-      run: echo ::set-output name=short_ref::${GITHUB_REF#refs/*/}
+      run: echo ::set-output name=branchName::${GITHUB_REF#refs/*/}
 
     - name: Echo current branch
-      run: echo "The current branch is ${{ steps.vars.outputs.short_ref }}"
+      run: echo "The current branch is ${{ steps.vars.outputs.branchName }}"
 
     # bump version and push tag
     - name: Bump version and push tag
