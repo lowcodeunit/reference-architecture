@@ -5,7 +5,7 @@
  */
 
 export class TimezoneConversion {
-/**
+    /**
      * Convert gmt time zone to actual timezone
      * @param val gmt timezone value
      */
