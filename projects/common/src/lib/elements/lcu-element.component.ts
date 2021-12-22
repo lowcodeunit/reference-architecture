@@ -1,7 +1,9 @@
 import { OnInit, Input, Injector, Directive, OnChanges, Component } from '@angular/core';
 
 // @Directive()
-@Component({ })
+@Component({
+  template: ''
+ })
 export abstract class LcuElementComponent<T> implements OnInit {
   //  Fields
 
