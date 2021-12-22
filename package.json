@@ -2,7 +2,7 @@
   "name": "@lcu/reference-architecture",
   "version": "0.0.57",
   "scripts": {
-    "build:demo": "ng build demo --prod",
+    "build:demo": "ng build demo --configuration production",
     "deploy": "npm version patch && npm run deploy:all",
     "deploy:all": "npm run deploy:common && npm run deploy:elements && npm run deploy:demo && npm run publish-projects",
     "deploy:common": "npm version patch --prefix projects/common && ng build common && npm run copy:assets",
