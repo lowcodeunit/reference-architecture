@@ -162,27 +162,27 @@
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_flipper-light.scss",
-								"bundleName": "assets/prebuilt-themes/flipper-light-theme"
+								"bundleName": "flipper-light-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ice-dark.scss",
-								"bundleName": "assets/prebuilt-themes/ice-dark-theme"
+								"bundleName": "ice-dark-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ice-light.scss",
-								"bundleName": "assets/prebuilt-themes/ice-light-theme"
+								"bundleName": "ice-light-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_sea-green-dark.scss",
-								"bundleName": "assets/prebuilt-themes/sea-green-dark-theme"
+								"bundleName": "sea-green-dark-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_sea-green-light.scss",
-								"bundleName": "assets/prebuilt-themes/sea-green-light-theme"
+								"bundleName": "sea-green-light-theme"
 							}
 						],
 						"scripts": []
