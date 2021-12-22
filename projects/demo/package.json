@@ -1,8 +1,4 @@
 {
 	"name": "@lcu/reference-architecture-demo",
-	"version": "0.0.3",
-	"peerDependencies": {
-		"@angular/common": "^11.1.2",
-		"@angular/core": "^11.1.2"
-	}
+	"version": "0.0.3"
 }

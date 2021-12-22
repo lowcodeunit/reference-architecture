@@ -1,8 +1,4 @@
 {
   "name": "@lcu/elements",
-  "version": "0.0.57",
-  "peerDependencies": {
-    "@angular/common": "^11.1.2",
-    "@angular/core": "^11.1.2"
-  }
+  "version": "0.0.57"
 }
