@@ -117,47 +117,47 @@
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ivy-dark.scss",
-								"bundleName": "assets/prebuilt-themes/ivy-dark-theme"
+								"bundleName": "ivy-dark-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_ivy-light.scss",
-								"bundleName": "assets/prebuilt-themes/ivy-light-theme"
+								"bundleName": "ivy-light-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_arctic-dark.scss",
-								"bundleName": "assets/prebuilt-themes/arctic-dark-theme"
+								"bundleName": "arctic-dark-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_arctic-light.scss",
-								"bundleName": "assets/prebuilt-themes/arctic-light-theme"
+								"bundleName": "arctic-light-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_contrast-dark.scss",
-								"bundleName": "assets/prebuilt-themes/contrast-dark-theme"
+								"bundleName": "contrast-dark-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_contrast-light.scss",
-								"bundleName": "assets/prebuilt-themes/contrast-light-theme"
+								"bundleName": "contrast-light-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_cool-candy-dark.scss",
-								"bundleName": "assets/prebuilt-themes/cool-candy-dark-theme"
+								"bundleName": "cool-candy-dark-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_cool-candy-light.scss",
-								"bundleName": "assets/prebuilt-themes/cool-candy-light-theme"
+								"bundleName": "cool-candy-light-theme"
 							},
 							{
 								"inject": false,
 								"input": "projects/demo/src/assets/prebuilt-themes/_flipper-dark.scss",
-								"bundleName": "assets/prebuilt-themes/flipper-dark-theme"
+								"bundleName": "flipper-dark-theme"
 							},
 							{
 								"inject": false,
