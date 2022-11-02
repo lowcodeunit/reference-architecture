@@ -1,22 +1,29 @@
 // @dynamic
 
+import * as moment from 'moment';
+
 /**
  * @dynamic is used because this class contains static properties
  */
 
 export class TimezoneConversion {
-/**
-     * Convert gmt time zone to actual timezone
-     * @param val gmt timezone value
-     */
+    /**
+         * Convert gmt time zone to actual timezone
+         * @param val gmt timezone value
+         */
     public static GMTTimezoneConversion(gmt: string): string {
-        switch(gmt){
+        if (moment().isDST()) {
+            const num = gmt.slice(-1);
+            const newNum = parseInt(num) + 1;
+            gmt = gmt.replace(num, newNum.toString());
+        }
+        switch (gmt) {
             case 'GMT':
                 return 'GMT';
 
             case 'GMT+1':
                 return 'ECT';
-            
+
             case 'GMT+2':
                 return 'EET';
 
