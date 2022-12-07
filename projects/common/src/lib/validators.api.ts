@@ -4,6 +4,7 @@ export * from './form-validation/email.validator';
 export * from './form-validation/password.validator';
 export * from './form-validation/phone.validator';
 export * from './form-validation/user-name.validator';
+export * from './form-validation/json.validator';
 export * from './form-validation/zipcode.validator';
 export * from './utils/constants/constants';
 export * from './utils/constants/email-validation-messages.constants';
