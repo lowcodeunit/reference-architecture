@@ -37,7 +37,7 @@
     "@angular/router": "^11.1.2",
     "@aspnet/signalr": "^1.1.4",
     "@lcu/common": "^1.59.488",
-    "@lowcodeunit-devkit/ng-lcu": "^0.83.428",
+    "@lowcodeunit-devkit/ng-lcu": "^1.28.161",
     "core-js": "^2.6.1",
     "moment": "^2.29.4",
     "rxjs": "~6.6.3",
